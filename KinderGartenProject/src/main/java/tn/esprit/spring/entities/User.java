@@ -25,7 +25,7 @@ public class User implements Serializable {
 	@Enumerated(EnumType.STRING) 
 	private Role role;
 	private boolean actived;
-	
+	private int Score;
 	public User(String login, String password, Role role, boolean actived) {
 		super();
 		this.login = login;
