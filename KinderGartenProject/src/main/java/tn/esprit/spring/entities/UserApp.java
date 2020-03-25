@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,7 +42,10 @@ public class UserApp implements Serializable {
 	private boolean actived;
 	private int Score;
 
+	@OneToOne(mappedBy="userApp")
+	private Parent parent;
 	
-	
+	@OneToOne(mappedBy="userapp")
+	private KinderGarten kindergarten;
 	
 }

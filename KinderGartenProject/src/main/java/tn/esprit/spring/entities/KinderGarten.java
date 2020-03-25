@@ -1,10 +1,9 @@
 package tn.esprit.spring.entities;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,20 +21,21 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Parent implements Serializable{
+public class KinderGarten implements Serializable {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private String firstName;
-	private String lastName;
-	private String image;
+	private String KinderGartenName;
+	private String adresse;
 	private String Email;
+	private int capacite ;
 	private int tel;
-	private Date dateNaissance;
 	@OneToOne
-	private UserApp userApp;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="parent")
-	private Collection<Child> childs= new ArrayList<>();
-
+	private UserApp userapp;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kindergarten")
+	private Collection<Child> kid= new ArrayList<>();
+	
+	
 	
 	
 }
