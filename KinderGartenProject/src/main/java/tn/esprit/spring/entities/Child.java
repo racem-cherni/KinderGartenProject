@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,10 +25,14 @@ private Long id;
 private String childName;
 private Date dateNaissance;
 private String health;
-
+@JsonIgnore
 @ManyToOne 
-private Parent parent;
+private Parent parents;
+@JsonIgnore
 @ManyToOne 
 private KinderGarten kindergarten;
+@JsonIgnore
+@ManyToOne 
+private Classe classe;
 
 }
