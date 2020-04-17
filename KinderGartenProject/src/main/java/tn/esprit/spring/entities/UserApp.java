@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -28,7 +29,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="users")
 @Data
-
 public class UserApp implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
@@ -42,7 +42,7 @@ public class UserApp implements Serializable {
 	@ManyToMany(fetch=FetchType.EAGER)
 	private Collection<RoleApp> roles= new ArrayList<>();
 	private boolean actived;
-	private int Score;
+	private int score;
 	private int point ;
 @JsonIgnore
 	@OneToOne(mappedBy="userApp")
@@ -54,19 +54,30 @@ public class UserApp implements Serializable {
 @OneToMany(cascade = CascadeType.ALL, mappedBy="sourceUser",fetch=FetchType.LAZY)
 private Collection<Advertissement> advertissemented= new ArrayList<>();
 
-public UserApp(long id, String username, String password, Collection<RoleApp> roles, boolean actived, int score) {
+public UserApp(String username, String password, Collection<RoleApp> roles, boolean actived, int score,int point) {
 	super();
-	this.id = id;
+	
 	this.username = username;
 	this.password = password;
 	this.roles = roles;
 	this.actived = false;
-	Score = score;
+	this.score = score;
+	this.point=point;
 }
-
+public UserApp( String username, String password, Collection<RoleApp> roles, boolean actived, int score) {
+	super();
+	
+	this.username = username;
+	this.password = password;
+	this.roles = roles;
+	this.actived = false;
+	this.score = score;
+	this.point=3;
+}
 public UserApp() {
 	super();
 }
+
 
 
 

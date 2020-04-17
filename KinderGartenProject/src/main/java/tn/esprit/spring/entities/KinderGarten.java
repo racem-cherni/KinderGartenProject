@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,12 +30,13 @@ public class KinderGarten implements Serializable {
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
 	private String KinderGartenName;
 	private String adresse;
 	private String Email;
 	private int capacite ;
 	private int tel;
-	private int prix;
+	private Float prix;
 	@JsonIgnore
 	@OneToOne
 	private UserApp userapp;
@@ -50,5 +53,10 @@ public class KinderGarten implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kinderGarten",fetch=FetchType.LAZY)
 	private Collection<Teacher> teachers = new ArrayList<>();
 	
+	
+	@JsonIgnore
+	 @Transient 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kinderGarten",fetch=FetchType.LAZY)
+	private Collection<Event> events = new ArrayList<>();
 	
 }

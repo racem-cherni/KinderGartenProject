@@ -25,6 +25,8 @@ private Long id;
 private String childName;
 private Date dateNaissance;
 private String health;
+private String image;
+
 @JsonIgnore
 @ManyToOne 
 private Parent parents;

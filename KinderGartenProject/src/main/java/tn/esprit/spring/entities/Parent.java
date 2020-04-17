@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,6 +30,7 @@ public class Parent implements Serializable{
 	private String lastName;
 	private String image;
 	private String Email;
+	private String adresse;
 	private int tel;
 	private Date dateNaissance;
 	@OneToOne
