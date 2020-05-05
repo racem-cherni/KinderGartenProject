@@ -12,10 +12,10 @@ import tn.esprit.spring.entities.Offer;
 public interface OfferRepository extends CrudRepository <Offer,Integer>{
 	
 	@Query("SELECT count(*) FROM Offer o"
-		 + " WHERE o.Kindergarten.user.id =:userid AND o.product.id=:productid")
+		 + " WHERE o.user.id =:userid AND o.product.id=:productid")
     public int CheckProduct(@Param("userid") long userid, @Param("productid")int productid);
 	
-	@Query("SELECT o FROM Offer o WHERE o.Kindergarten.user.id =:userid AND o.product.id =:productid")
+	@Query("SELECT o FROM Offer o WHERE o.user.id =:userid AND o.product.id =:productid")
     public Offer getExistedOffer(@Param("userid") long userid, @Param("productid") int productid);
 	
 }
