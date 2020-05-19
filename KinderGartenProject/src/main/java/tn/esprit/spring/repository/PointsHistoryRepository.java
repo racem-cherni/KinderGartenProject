@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import tn.esprit.spring.entities.PointsHistory;
 
+
 public interface PointsHistoryRepository extends CrudRepository <PointsHistory,Integer>{
 	
 
