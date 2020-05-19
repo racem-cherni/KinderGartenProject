@@ -12,5 +12,9 @@ import tn.esprit.spring.entities.UserApp;
 public interface RechercheMenuRepository extends JpaRepository<RechercheMenu, Long>{
 	@Query("select r from RechercheMenu r where r.userapp= :user")
 	public List<RechercheMenu> findByUser(@Param("user") UserApp user);
+	
+	@Query("select r from RechercheMenu r where r.userapp= :user")
+	public List<RechercheMenu> findByUses(@Param("user") UserApp user);
+	
 
 }
