@@ -13,8 +13,8 @@ public int NbrCompParid(@Param("id") Long id);
 public Competence findByNom(@Param("competenceName")String competenceName);
 
 
-@Query("select c from Competence c where c.competenceName= :competenceName")
-public Competence findByNo(@Param("competenceName")String competenceName);
+
+
 
 
 
