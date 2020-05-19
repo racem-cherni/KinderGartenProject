@@ -53,6 +53,12 @@ public class UserApp implements Serializable {
 @Transient 
 @OneToMany(cascade = CascadeType.ALL, mappedBy="sourceUser",fetch=FetchType.LAZY)
 private Collection<Advertissement> advertissemented= new ArrayList<>();
+@JsonIgnore
+@Transient 
+@OneToMany(cascade = CascadeType.ALL,mappedBy="userapp",fetch=FetchType.LAZY)
+private Collection<RechercheMenu> mySearch= new ArrayList<>();
+
+
 
 public UserApp(String username, String password, Collection<RoleApp> roles, boolean actived, int score,int point) {
 	super();

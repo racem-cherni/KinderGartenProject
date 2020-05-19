@@ -6,7 +6,7 @@ import tn.esprit.spring.entities.RoleApp;
 import tn.esprit.spring.entities.UserApp;
 
 
-
+@Service
 public interface AccountService {
 public UserApp saveUser(UserApp user);
 public RoleApp saveRole(RoleApp role);

@@ -37,6 +37,7 @@ public class KinderGarten implements Serializable {
 	private int capacite ;
 	private int tel;
 	private Float prix;
+	private  int maxRdv;
 	@JsonIgnore
 	@OneToOne
 	private UserApp userapp;

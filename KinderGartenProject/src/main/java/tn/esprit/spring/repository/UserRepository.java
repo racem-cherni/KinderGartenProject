@@ -7,14 +7,20 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import tn.esprit.spring.entities.KinderGarten;
+import tn.esprit.spring.entities.Parent;
 import tn.esprit.spring.entities.UserApp;
 
 
 
 public interface UserRepository extends JpaRepository<UserApp,Long> {
 	
-	@Query("select u from UserApp u where u.username= :username and u.actived=true")
+	@Query("select u from UserApp u where u.username= :username ")
 	public UserApp findByUsername(@Param("username")String username);
+	
+	@Query("select u from UserApp u where u.parent= :parent ")
+	public UserApp findUserByParent(@Param("parent")Parent parent);
+	
+	
 	//@Query("select u.role from UserApp u where username= :x  ")
 	//public Role findByRole(@Param("x") String username);
 	

@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +34,7 @@ public class Parent implements Serializable{
 	private String Email;
 	private String adresse;
 	private int tel;
+	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 	@OneToOne
 	private UserApp userApp;

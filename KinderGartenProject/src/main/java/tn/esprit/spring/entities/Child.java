@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,6 +25,8 @@ public class Child {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 private Long id;
 private String childName;
+@Temporal(TemporalType.DATE)
+
 private Date dateNaissance;
 private String health;
 private String image;

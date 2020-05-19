@@ -1,7 +1,9 @@
 package tn.esprit.spring.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Random;
 
@@ -11,6 +13,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.esprit.spring.entities.Advertissement;
 import tn.esprit.spring.entities.EmailPwd;
@@ -41,7 +45,47 @@ public class UserServices implements AccountService{
 private AdvertissementRepository advertissementRepository;
 @Autowired
 private EmailPwdRepository emailPwdRepository;
+
+
 	
+public UserApp saveUserEtape1( RegisterUser user, String role){
+	if(!user.getCfpassword().equals(user.getPassword()))
+		throw new RuntimeException("! you must confirm your password");
+	UserApp usertest=userRepository.findByUsername(user.getUsername());
+	if(usertest!=null)
+		throw new RuntimeException("! this username is alReady used.");
+	
+	RoleApp r=roleRepository.findByRoleName(role);
+	Collection<RoleApp> roles= new ArrayList<>();
+	if(role.equals("ROLE_KINDERGARTEN")){
+		
+		UserApp u=new UserApp(user.getUsername(),user.getPassword(),roles,false,user.getScore(),3);
+		roles.add(r);
+		return saveUser(u);
+	}
+	else if(role.equals("ROLE_PARENT")){
+		
+		roles.add(r);
+		UserApp u=new UserApp(user.getUsername(),user.getPassword(),roles,false,user.getScore(),3);
+		
+		return saveUser(u);
+		}
+	else
+		throw new RuntimeException("! this role don't exist !!! .");
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
 	@Override
 	public UserApp saveUser(UserApp user) {
 		String hash=bCryptPasswordEncoder.encode(user.getPassword());
@@ -75,7 +119,125 @@ private EmailPwdRepository emailPwdRepository;
 	}
 
 	
+	public boolean SendVerificationEmail(String username){
+		
+		UserApp uS=userRepository.findByUsernametest(username);
+		 VerificationToken vi= tokenRepository.findByUser(uS);
+		 if(vi!=null)
+			 tokenRepository.delete(vi);
+		System.out.println(uS.getParent().getEmail());
+		Random rand = new Random();
+		int n = rand.nextInt(10000) + 1;
+		SimpleMailMessage email = new SimpleMailMessage();
+	    email.setTo(uS.getParent().getEmail());
+	    email.setSubject("verification code ");
+	    email.setText("lecode de activation de compte :"+n);
+	    mailSender.send(email);
+	    VerificationToken v=new VerificationToken();
+	    v.setToken(""+n);
+	    v.setUser(uS);
+	    v.setExpiryDate(v.calculateExpiryDate(60));
+	    tokenRepository.save(v);
+	return true;
+
+	}
 	
+public boolean SendVerificationEmailMdp(String username){
+		
+		UserApp uS=userRepository.findByUsername(username);
+		if(uS.isActived())
+			throw new RuntimeException("this user is all ready actived !!!");
+		
+		if(uS.getPoint()<=0)
+			throw new RuntimeException("this user is blocked !!!");
+		Random rand = new Random();
+		int n = rand.nextInt(100000)+ 1;
+		String hash=bCryptPasswordEncoder.encode(""+n);
+		EmailPwd em=new EmailPwd(null,username,hash,null);
+		em.setDate(em.calculateExpiryDate(60));
+		
+		emailPwdRepository.save(em);
+		
+		SimpleMailMessage email = new SimpleMailMessage();
+	    email.setTo(uS.getParent().getEmail());
+	    email.setSubject("verification code ");
+	    email.setText("change my pwd :"+"http://localhost:8081/modifierPasswordEmail/"+hash);
+	    mailSender.send(email);
+	   
+	return true;
+
+	}
+	
+	public boolean verifEmailMdp(ModifierPassword Md,String code){
+		
+EmailPwd em=emailPwdRepository.getEmailPwdByCode(code);
+		if(!Md.getUsername().equals(em.getUsername()))
+			throw new RuntimeException("this not the same user");
+		if(!code.equals(em.getCode()))
+			return false;
+		
+		 Calendar cal = Calendar.getInstance();
+		    if ((em.getDate().getTime() - cal.getTime().getTime()) <= 0) {
+		      return false;
+		    } 
+		
+		
+		emailPwdRepository.delete(em);
+		return true;
+				
+				
+	}
+	
+	
+	
+public boolean cfVerification(String username,String code){
+		
+		UserApp uS=userRepository.findByUsernametest(username);
+		 VerificationToken v= tokenRepository.findByUser(uS);
+		 
+		 
+		 Calendar cal = Calendar.getInstance();
+		    if ((v.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
+		      return false;
+		    } 
+		    
+		     if(!code.equals(v.getToken()))
+		    	 if(!username.equals(v.getUser().getUsername()))
+		    	 return false;
+		     
+		    uS.setActived(true); 
+		    userRepository.save(uS); 
+		    tokenRepository.delete(v);
+	return true;
+
+	}
+
+
+public Advertissement getUserAdvertissement(UserApp target,UserApp source) {
+	
+Advertissement a =advertissementRepository.findtargetAd(target,source);
+a.setActive(true);
+
+return advertissementRepository.save(a);
+
+	
+}
+
+
+public boolean ChangePwdByPassword(ModifierPassword Md){
+	
+	
+	UserApp uS=userRepository.findByUsername(Md.getUsername());
+	String hash=bCryptPasswordEncoder.encode(Md.getPassword());
+	uS.setPassword(hash);
+	userRepository.save(uS);
+	return true;
+	
+	
+	
+}
+
+
 
 
 
