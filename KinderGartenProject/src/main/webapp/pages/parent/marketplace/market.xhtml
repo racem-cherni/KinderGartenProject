@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		<ui:define name="content">
+
+
+			<div class="content-grid"
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+
+				<div class="section-banner"
+					style="background: url(resources/img/banner/banner-bg.png) no-repeat 50%">
+					<!-- SECTION BANNER ICON -->
+					<img class="section-banner-icon"
+						src="resources/img/banner/accounthub-icon.png"
+						alt="accounthub-icon" />
+					<!-- /SECTION BANNER ICON -->
+
+					<!-- SECTION BANNER TITLE -->
+
+					<p class="section-banner-title">Account Hub</p>
+					<!-- /SECTION BANNER TITLE -->
+
+					<!-- SECTION BANNER TEXT -->
+
+					<p class="section-banner-text">Profile info, messages, settings
+						and much more!</p>
+					<!-- /SECTION BANNER TEXT -->
+				</div>
+
+				<div class="grid grid-3-9 medium-space">
+					<!-- GRID COLUMN -->
+
+					<div class="account-hub-sidebar">
+						<!-- SIDEBAR BOX -->
+						<div class="sidebar-box no-padding">
+							<!-- SIDEBAR MENU -->
+							<div class="sidebar-menu round-borders">
+								<!-- SIDEBAR MENU ITEM -->
+
+								<div class="sidebar-menu-item selected">
+									<!-- SIDEBAR MENU HEADER -->
+									<div class="sidebar-menu-header accordion-trigger-linked">
+										<!-- SIDEBAR MENU HEADER ICON -->
+										<svg class="sidebar-menu-header-icon icon-store"> <use
+											xlink:href="#svg-store"></use> </svg>
+										<!-- /SIDEBAR MENU HEADER ICON -->
+
+										<!-- SIDEBAR MENU HEADER CONTROL ICON -->
+										<div class="sidebar-menu-header-control-icon">
+											<!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+											<svg
+												class="sidebar-menu-header-control-icon-open icon-minus-small">
+											<use xlink:href="#svg-minus-small"></use> </svg>
+											<!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+											<!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+											<svg
+												class="sidebar-menu-header-control-icon-closed icon-plus-small">
+											<use xlink:href="#svg-plus-small"></use> </svg>
+											<!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+										</div>
+										<!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+
+										<!-- SIDEBAR MENU HEADER TITLE -->
+										<p class="sidebar-menu-header-title">My Store</p>
+										<!-- /SIDEBAR MENU HEADER TITLE -->
+
+										<!-- SIDEBAR MENU HEADER TEXT -->
+										<p class="sidebar-menu-header-text">Review your account,
+											manage products check stats and much more!</p>
+										<!-- /SIDEBAR MENU HEADER TEXT -->
+									</div>
+									<!-- /SIDEBAR MENU HEADER -->
+
+									<!-- SIDEBAR MENU BODY -->
+
+									<!-- /SIDEBAR MENU BODY -->
+									<div
+										style="overflow: hidden; height: 161px; transition: all 0.3s ease-in-out 0s;">
+										<div
+											class="sidebar-menu-body accordion-content-linked accordion-open">
+											<!-- SIDEBAR MENU LINK -->
+											<a class="sidebar-menu-link" href="hub-store-account.html">My
+												Account</a>
+											<!-- /SIDEBAR MENU LINK -->
+
+											<!-- SIDEBAR MENU LINK -->
+											<a class="sidebar-menu-link" href="hub-store-statement.html">Sales
+												Statement</a>
+											<!-- /SIDEBAR MENU LINK -->
+
+											<!-- SIDEBAR MENU LINK -->
+											<h:link styleClass="sidebar-menu-link active" outcome="market">
+													Manage items
+											</h:link>
+
+											<!-- SIDEBAR MENU LINK -->
+											<h:link styleClass="sidebar-menu-link" outcome="orders">
+													Orders
+											</h:link>
+											<!-- /SIDEBAR MENU LINK -->
+										</div>
+									</div>
+								</div>
+								<!-- /SIDEBAR MENU ITEM -->
+							</div>
+							<!-- /SIDEBAR MENU -->
+						</div>
+						<!-- /SIDEBAR BOX -->
+					</div>
+					<!-- /GRID COLUMN -->
+					<!-- GRID COLUMN -->
+
+					<div class="account-hub-content">
+						<!-- SECTION HEADER -->
+
+						<div class="section-header">
+							<!-- SECTION HEADER INFO -->
+
+							<div class="section-header-info">
+								<!-- SECTION PRETITLE -->
+
+								<p class="section-pretitle">My Store</p>
+								<!-- /SECTION PRETITLE -->
+								<!-- SECTION TITLE -->
+
+								<h2 class="section-title">
+
+									<h:outputText value="Manage Items"></h:outputText>
+
+								</h2>
+								<!-- /SECTION TITLE -->
+							</div>
+							<!-- /SECTION HEADER INFO -->
+						</div>
+						<!-- /SECTION HEADER -->
+						<!-- GRID -->
+
+						<div class="grid grid-3-3-3 centered-on-mobile">
+							<!-- CREATE ENTITY BOX -->
+
+							<div class="create-entity-box v2">
+								<!-- CREATE ENTITY BOX COVER -->
+
+								<div class="create-entity-box-cover" />
+								<!-- /CREATE ENTITY BOX COVER -->
+
+								<!-- CREATE ENTITY BOX AVATAR -->
+
+								<div class="create-entity-box-avatar primary">
+									<!-- CREATE ENTITY BOX AVATAR ICON -->
+									<svg class="[object SVGAnimatedString]"> <use
+										xlink:href="#svg-item" /> </svg>
+									<!-- /CREATE ENTITY BOX AVATAR ICON -->
+								</div>
+								<!-- /CREATE ENTITY BOX AVATAR -->
+
+								<!-- CREATE ENTITY BOX INFO -->
+
+								<div class="create-entity-box-info">
+									<!-- CREATE ENTITY BOX TITLE -->
+
+									<p class="create-entity-box-title">Your Item Name Here</p>
+									<!-- /CREATE ENTITY BOX TITLE -->
+
+									<!-- CREATE ENTITY BOX CATEGORY -->
+
+									<p class="create-entity-box-category">Category</p>
+									<!-- /CREATE ENTITY BOX CATEGORY -->
+
+									<!-- BUTTON -->
+
+									<p class="button primary full popup-manage-item-trigger">Create
+										New Item!</p>
+									<!-- /BUTTON -->
+								</div>
+								<!-- /CREATE ENTITY BOX INFO -->
+							</div>
+							<!-- /CREATE ENTITY BOX -->
+
+							<ui:repeat value="#{marketController.getProducts()}"
+								var="product" varStatus="status">
+
+								<div class="product-preview fixed-height">
+									<!-- PRODUCT PREVIEW IMAGE -->
+									<a href="marketplace-product.html"> <figure
+											class="product-preview-image liquid"
+											style="background: url(&quot;resources/img/marketplace/items/01.jpg&quot;) center center / cover no-repeat;">
+										<img src="resources/img/marketplace/items/01.jpg"
+											alt="item-01" style="display: none;" /> </figure>
+									</a>
+									<!-- /PRODUCT PREVIEW IMAGE -->
+
+									<!-- PRODUCT PREVIEW INFO -->
+
+									<div class="product-preview-info">
+										<!-- TEXT STICKER -->
+
+										<p class="text-sticker">
+											<span class="highlighted">DT
+												#{marketController.getPrice(product.id)}</span>
+										</p>
+										<!-- /TEXT STICKER -->
+
+										<!-- PRODUCT PREVIEW TITLE -->
+
+										<p class="product-preview-title">
+											<a href="marketplace-product.html"><h:outputText
+													value="#{product.name}"></h:outputText></a>
+										</p>
+										<!-- /PRODUCT PREVIEW TITLE -->
+
+										<!-- PRODUCT PREVIEW CATEGORY -->
+
+										<p class="product-preview-category digital">
+											<a href="marketplace-category.html"><h:outputText
+													value="#{product.ref}"></h:outputText></a>
+										</p>
+										<!-- /PRODUCT PREVIEW CATEGORY -->
+
+										<!-- BUTTON -->
+
+										<h:commandButton
+											class="button white full popup-manage-item-trigger"
+											onclick="#{marketController.debug()}" value="Edit Item"
+											update=":change">
+											<f:setPropertyActionListener target="#{marketController.id}"
+												value="5" />
+										</h:commandButton>
+
+
+
+										<!-- /BUTTON -->
+									</div>
+									<!-- /PRODUCT PREVIEW INFO -->
+								</div>
+
+							</ui:repeat>
+						</div>
+						<!-- /GRID -->
+					</div>
+					<!-- /GRID COLUMN -->
+
+				</div>
+
+			</div>
+
+			<div class="popup-box mid popup-manage-item"
+				style="position: absolute; left: 50%; z-index: 100001; opacity: 0; visibility: hidden; transform: translate(0px, -40px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 0px; margin-left: -392px;">
+				<!-- POPUP CLOSE BUTTON -->
+
+				<div class="popup-close-button popup-manage-item-trigger">
+					<!-- POPUP CLOSE BUTTON ICON -->
+					<svg class="popup-close-button-icon icon-cross"> <use
+						xlink:href="#svg-cross" /> </svg>
+					<!-- /POPUP CLOSE BUTTON ICON -->
+				</div>
+				<!-- /POPUP CLOSE BUTTON -->
+				<!-- POPUP BOX BODY -->
+
+				<div class="popup-box-body">
+					<!-- POPUP BOX SIDEBAR -->
+
+					<div class="popup-box-sidebar">
+						<!-- PRODUCT PREVIEW -->
+
+						<div class="product-preview">
+							<!-- PRODUCT PREVIEW IMAGE -->
+							<a href="marketplace-product.html"> <figure
+									class="product-preview-image liquid"
+									style="background: url(&quot;img/marketplace/items/10.jpg&quot;) center center / cover no-repeat;">
+								<img src="resources/img/marketplace/items/10.jpg" alt="item-10"
+									style="display: none;" /> </figure>
+							</a>
+							<!-- /PRODUCT PREVIEW IMAGE -->
+
+							<!-- PRODUCT PREVIEW INFO -->
+
+							<div class="product-preview-info">
+								<!-- TEXT STICKER -->
+
+								<p class="text-sticker">
+									<span class="highlighted">$</span> 26.00
+								</p>
+								<!-- /TEXT STICKER -->
+
+								<!-- PRODUCT PREVIEW TITLE -->
+
+								<p class="product-preview-title">
+									<a href="marketplace-product.html">Pixel Diamond Gaming
+										Magazine</a>
+								</p>
+								<!-- /PRODUCT PREVIEW TITLE -->
+
+								<!-- PRODUCT PREVIEW CATEGORY -->
+
+								<p class="product-preview-category digital">
+									<a href="marketplace-category.html">HTML Templates</a>
+								</p>
+								<!-- /PRODUCT PREVIEW CATEGORY -->
+							</div>
+							<!-- /PRODUCT PREVIEW INFO -->
+						</div>
+						<!-- /PRODUCT PREVIEW -->
+						<!-- SIDEBAR MENU ITEM -->
+
+						<div class="sidebar-menu-item">
+							<!-- SIDEBAR MENU BODY -->
+
+							<div class="sidebar-menu-body">
+								<!-- SIDEBAR MENU LINK -->
+
+								<p class="sidebar-menu-link active">Main Details</p>
+								<!-- /SIDEBAR MENU LINK -->
+								<!-- SIDEBAR MENU LINK -->
+
+								<p class="sidebar-menu-link">Preview Images</p>
+								<!-- /SIDEBAR MENU LINK -->
+								<!-- SIDEBAR MENU LINK -->
+
+								<p class="sidebar-menu-link">Description</p>
+								<!-- /SIDEBAR MENU LINK -->
+								<!-- SIDEBAR MENU LINK -->
+
+								<p class="sidebar-menu-link">Pack Files</p>
+								<!-- /SIDEBAR MENU LINK -->
+							</div>
+							<!-- /SIDEBAR MENU BODY -->
+						</div>
+						<!-- /SIDEBAR MENU ITEM -->
+						<!-- POPUP BOX SIDEBAR FOOTER -->
+
+						<div class="popup-box-sidebar-footer">
+							<!-- BUTTON -->
+
+							<p class="button primary full popup-manage-item-trigger">Save
+								Changes!</p>
+							<!-- /BUTTON -->
+							<!-- BUTTON -->
+
+							<p class="button white full popup-manage-item-trigger">Discard
+								All</p>
+							<!-- /BUTTON -->
+						</div>
+						<!-- /POPUP BOX SIDEBAR FOOTER -->
+					</div>
+					<!-- /POPUP BOX SIDEBAR -->
+
+					<!-- POPUP BOX CONTENT -->
+
+					<div class="popup-box-content limited" data-simplebar="init">
+						<div class="simplebar-wrapper" style="margin: 0px;">
+							<div class="simplebar-height-auto-observer-wrapper">
+								<div class="simplebar-height-auto-observer" />
+							</div>
+							<div class="simplebar-mask">
+								<div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+									<div class="simplebar-content-wrapper"
+										style="height: auto; overflow: hidden scroll;">
+										<div class="simplebar-content" style="padding: 0px;">
+											<!-- WIDGET BOX -->
+
+											<div class="widget-box">
+												<!-- WIDGET BOX TITLE -->
+
+												<p class="widget-box-title">
+													<h:outputText value="#{marketController.id}"></h:outputText>
+
+												</p>
+												<!-- /WIDGET BOX TITLE -->
+
+												<!-- WIDGET BOX CONTENT -->
+
+												<div class="widget-box-content">
+													<!-- FORM -->
+													<form class="form">
+														<!-- FORM ROW -->
+
+														<div class="form-row">
+															<!-- FORM ITEM -->
+
+															<div class="form-item">
+																<!-- FORM INPUT -->
+
+																<div class="form-input small active">
+																	<label for="item-name">Item Name</label> <input
+																		type="text" id="item-name" name="item_name"
+																		value="Pixel Diamond Gaming Magazine" />
+																</div>
+																<!-- /FORM INPUT -->
+															</div>
+															<!-- /FORM ITEM -->
+														</div>
+														<!-- /FORM ROW -->
+														<!-- FORM ROW -->
+
+														<div class="form-row">
+															<!-- FORM ITEM -->
+
+															<div class="form-item">
+																<!-- FORM SELECT -->
+
+																<div class="form-select">
+																	<label for="item-category">Category</label> <select
+																		id="item-category" name="item_category">
+
+																		<option value="1">Digital - HTML Templates</option>
+
+																		<option value="1">Digital - Logos &amp;
+																			Badges</option>
+
+																		<option value="2">Physical - Art Prints</option>
+																	</select>
+																	<!-- FORM SELECT ICON -->
+																	<svg class="form-select-icon icon-small-arrow"> <use
+																		xlink:href="#svg-small-arrow" /> </svg>
+																	<!-- /FORM SELECT ICON -->
+																</div>
+																<!-- /FORM SELECT -->
+															</div>
+															<!-- /FORM ITEM -->
+														</div>
+														<!-- /FORM ROW -->
+														<!-- FORM ROW -->
+
+														<div class="form-row split">
+															<!-- FORM ITEM -->
+
+															<div class="form-item">
+																<!-- FORM COUNTER WRAP -->
+
+																<div class="form-counter-wrap">
+																	<label>Regular License Price</label>
+																	<!-- FORM COUNTER -->
+
+																	<div class="form-counter full with-currency">
+																		<!-- FORM COUNTER VALUE -->
+
+																		<p class="form-counter-value">26</p>
+																		<!-- /FORM COUNTER VALUE -->
+
+																		<!-- FORM COUNTER CONTROLS -->
+
+																		<div class="form-counter-controls">
+																			<!-- FORM COUNTER CONTROL -->
+
+																			<div
+																				class="form-counter-control form-counter-control-increase">
+																				<!-- FORM COUNTER ICON -->
+																				<svg class="form-counter-icon icon-small-arrow">
+																				<use xlink:href="#svg-small-arrow" /> </svg>
+																				<!-- /FORM COUNTER ICON -->
+																			</div>
+																			<!-- /FORM COUNTER CONTROL -->
+
+																			<!-- FORM COUNTER CONTROL -->
+
+																			<div
+																				class="form-counter-control form-counter-control-decrease">
+																				<!-- FORM COUNTER ICON -->
+																				<svg class="form-counter-icon icon-small-arrow">
+																				<use xlink:href="#svg-small-arrow" /> </svg>
+																				<!-- /FORM COUNTER ICON -->
+																			</div>
+																			<!-- /FORM COUNTER CONTROL -->
+																		</div>
+																		<!-- /FORM COUNTER CONTROLS -->
+																	</div>
+																	<!-- /FORM COUNTER -->
+																</div>
+																<!-- /FORM COUNTER WRAP -->
+															</div>
+															<!-- /FORM ITEM -->
+															<!-- FORM ITEM -->
+
+															<div class="form-item">
+																<!-- FORM COUNTER WRAP -->
+
+																<div class="form-counter-wrap">
+																	<label>Extended License Price</label>
+																	<!-- FORM COUNTER -->
+
+																	<div class="form-counter full with-currency">
+																		<!-- FORM COUNTER VALUE -->
+
+																		<p class="form-counter-value">900</p>
+																		<!-- /FORM COUNTER VALUE -->
+
+																		<!-- FORM COUNTER CONTROLS -->
+
+																		<div class="form-counter-controls">
+																			<!-- FORM COUNTER CONTROL -->
+
+																			<div
+																				class="form-counter-control form-counter-control-increase">
+																				<!-- FORM COUNTER ICON -->
+																				<svg class="form-counter-icon icon-small-arrow">
+																				<use xlink:href="#svg-small-arrow" /> </svg>
+																				<!-- /FORM COUNTER ICON -->
+																			</div>
+																			<!-- /FORM COUNTER CONTROL -->
+
+																			<!-- FORM COUNTER CONTROL -->
+
+																			<div
+																				class="form-counter-control form-counter-control-decrease">
+																				<!-- FORM COUNTER ICON -->
+																				<svg class="form-counter-icon icon-small-arrow">
+																				<use xlink:href="#svg-small-arrow" /> </svg>
+																				<!-- /FORM COUNTER ICON -->
+																			</div>
+																			<!-- /FORM COUNTER CONTROL -->
+																		</div>
+																		<!-- /FORM COUNTER CONTROLS -->
+																	</div>
+																	<!-- /FORM COUNTER -->
+																</div>
+																<!-- /FORM COUNTER WRAP -->
+															</div>
+															<!-- /FORM ITEM -->
+														</div>
+														<!-- /FORM ROW -->
+														<!-- FORM ROW -->
+
+														<div class="form-row">
+															<!-- FORM ITEM -->
+
+															<div class="form-item">
+																<!-- FORM INPUT -->
+
+																<div class="form-input small active">
+																	<label for="item-url">Item URL</label> <input
+																		type="text" id="item-url" name="item_url"
+																		value="http://odindesign-themes.com/pixel-diamond/" />
+																</div>
+																<!-- /FORM INPUT -->
+															</div>
+															<!-- /FORM ITEM -->
+														</div>
+														<!-- /FORM ROW -->
+														<!-- FORM ROW -->
+
+														<div class="form-row">
+															<!-- FORM ITEM -->
+
+															<div class="form-item">
+																<!-- FORM INPUT -->
+
+																<div class="form-input small mid-textarea">
+																	<textarea id="item-tags" name="item_tags"
+																		placeholder="Write the items tags here separated by commas (max 15)..."></textarea>
+																</div>
+																<!-- /FORM INPUT -->
+															</div>
+															<!-- /FORM ITEM -->
+														</div>
+														<!-- /FORM ROW -->
+														<!-- FORM ROW -->
+
+														<div class="form-row">
+															<!-- FORM ITEM -->
+
+															<div class="form-item">
+																<!-- FORM INPUT -->
+
+																<div class="form-input small mid-textarea">
+																	<textarea id="item-files" name="item_files"
+																		placeholder="Write the files included here separated by commas..."></textarea>
+																</div>
+																<!-- /FORM INPUT -->
+															</div>
+															<!-- /FORM ITEM -->
+														</div>
+														<!-- /FORM ROW -->
+													</form>
+													<!-- /FORM -->
+												</div>
+												<!-- WIDGET BOX CONTENT -->
+											</div>
+											<!-- /WIDGET BOX -->
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="simplebar-placeholder"
+								style="width: auto; height: 782px;" />
+						</div>
+						<div class="simplebar-track simplebar-horizontal"
+							style="visibility: hidden;">
+							<div class="simplebar-scrollbar"
+								style="width: 0px; display: none;" />
+						</div>
+						<div class="simplebar-track simplebar-vertical"
+							style="visibility: visible;">
+							<div class="simplebar-scrollbar"
+								style="height: 491px; transform: translate3d(0px, 0px, 0px); display: block;" />
+						</div>
+					</div>
+					<!-- /POPUP BOX CONTENT -->
+				</div>
+				<!-- /POPUP BOX BODY -->
+			</div>
+		</ui:define>
+
+
+	</ui:composition>
+
+
+	<script src="app.bundle.min.js"></script>
+
+</body>
+
+</html>
