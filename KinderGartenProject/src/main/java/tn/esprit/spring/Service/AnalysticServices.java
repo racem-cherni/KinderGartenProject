@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.eclipse.jdt.internal.compiler.SourceElementNotifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,35 +48,34 @@ public class AnalysticServices implements IanalysticServices {
 	private CompetenceRepository competenceRepository;
 	@Autowired
 	private ChildRepository childRepository;
-	
+	@Autowired
+	private TeacherServices teacherServices;
+	@Autowired
+	private ClasseServices classeServices;
 	
 	@Override
-	public Map<String, Object> calculerNbredeClasseParJardin(KinderGarten k) {
+	public int calculerNbredeClasseParJardin(KinderGarten k) {
 		
 		List<Classe> cl=classeRepository.findclasseByKinder(k);
-		Map<String, Object> map=new HashMap<>();
-		map.put(k.getKinderGartenName(), cl.size());
 		
-		return map;
+		
+		System.err.println("classe"+cl.size());
+		return cl.size();
 	}
 
 	@Override
-	public Map<String, Object> calculerNbredeKidsParJardin(KinderGarten k) {
-
+	public int calculerNbredeKidsParJardin(KinderGarten k) {
 		
-		Map<String, Object> map=new HashMap<>();;
-		map.put(k.getKinderGartenName(), k.getKid().size());
 		
-		return map;
+		
+return  classeServices.getKidByKinder(k).size();
 		
 	}
 
 	@Override
-	public Map<String, Object> calculerNbredeTeacherParJardin(KinderGarten k) {
-		Map<String, Object> map=new HashMap<>();;
-		map.put(k.getKinderGartenName(),k.getTeachers().size());
+	public int calculerNbredeTeacherParJardin(KinderGarten k) {
 		
-		return map;
+		return teacherServices.getTeachers(k).size();
 		
 	}
 
@@ -95,13 +95,13 @@ public class AnalysticServices implements IanalysticServices {
 	}
 
 	@Override
-	public Map<Long, Object> estimerMonqueDeClasseParNbreparCapacite(KinderGarten k) {
+	public Map<String, Object> estimerMonqueDeClasseParNbreparCapacite(KinderGarten k) {
      List<Classe> cl=classeRepository.findclasseByKinder(k);
-     Map<Long, Object> map=new HashMap<>();;
+     Map<String, Object> map=new HashMap<>();;
 		
      for(Classe c:cl){
     	 if(c.getKid().size()>10)
-    		 map.put(c.getId(),c.getKid().size());
+    		 map.put(c.getNom(),c.getKid().size());
      }
      
      
@@ -109,13 +109,13 @@ public class AnalysticServices implements IanalysticServices {
 	}
 
 	@Override
-	public Map<Long, Object> estimerMonqueDeTeacher(KinderGarten k) {
+	public Map<String, Object> estimerMonqueDeTeacher(KinderGarten k) {
 		 List<Classe> cl=classeRepository.findclasseByKinder(k);
-		 Map<Long, Object> map=new HashMap<>();;
+		 Map<String, Object> map=new HashMap<>();;
 			
 	     for(Classe c:cl){
 	    	 if(c.getTeacher()==null)
-	    		 map.put(c.getId(),"NO TEACHER");
+	    		 map.put(c.getNom(),"NO TEACHER");
 	     }
 	     
 	     
@@ -163,7 +163,7 @@ public class AnalysticServices implements IanalysticServices {
 	
 	}
 	
-	public Map<String, Object> estimerMonqueDeTeacherCompetenceQueJardinMonque(KinderGarten k) {
+	public Map<String, Object> estimerNombreHealthproblem(KinderGarten k) {
 		 int nbre=0;
 		 Map<Long, Object> map=estimerMonqueDeTeacherCompetence(k);
 		 Set<String> ws=new HashSet<>();
@@ -189,7 +189,7 @@ public class AnalysticServices implements IanalysticServices {
 	
 	
 	public Map<String, Object> estimerDeTeacherCompetenceValable(KinderGarten k) {
-		 List<Teacher> tl=(List<Teacher>) k.getTeachers();
+		 List<Teacher> tl=teacherServices.showteaches(k);
 		 List<Competence> Cl=competenceRepository.findAll();
 		 Map<String, Object> map=new HashMap<>();
 			Set<String> set=new HashSet<>();
@@ -225,28 +225,49 @@ public class AnalysticServices implements IanalysticServices {
 	}
 	
 	
+	public Map<String, String> NbreClasseStableForJsf(KinderGarten k) {
+		Map<String, String> map=new HashMap<>();
+		Map<Long, String> mapt=NbreClasseStable(k);
+		Classe cl=new Classe();
+		for (Map.Entry mapentryC : mapt.entrySet()) {
+			cl=classeRepository.findByid( (Long) mapentryC.getKey());
+			
+			
+			map.put(cl.getNom(), (String) mapentryC.getValue());
+			
+		}
+		
+	return map;	
+	}
+	
+	
+	
+	
+	
 	
 	
 	public Map<Long, String> NbreClasseStable(KinderGarten k) {
 		Map<Long, String> map=new HashMap<>();
 		List<Classe> lc=classeRepository.findclasseByKinder(k);
 		Map<Long, Object> mapt=new HashMap<>();
+		Teacher t=new Teacher();
 		for (Classe classe : lc) {
 			mapt.putAll(verifiClasseStable(classe));	
 		}
 		for (Map.Entry mapentryC : mapt.entrySet()) {
 			if((Long) mapentryC.getValue()==0L)
 			{
-				map.put( (Long) mapentryC.getKey(), "pas de teacher ");}
+				map.put( (Long) mapentryC.getKey(), "No de teacher ");}
 			else if((Long) mapentryC.getValue()==1L)
 			{
-				map.put( (Long) mapentryC.getKey(), "Stable ");}
+				map.put( (Long) mapentryC.getKey(), "Stable");}
 			else if((Long) mapentryC.getValue()==2L)
 			{
 				map.put( (Long) mapentryC.getKey(), "non stable your teacher need formation ");}
 			else
 			{
-				map.put( (Long) mapentryC.getKey(), "Non stable recomended  teacher : "+mapentryC.getValue());
+				t=teacherRepository.findById((Long) mapentryC.getValue()).get();
+				map.put( (Long) mapentryC.getKey(), "Non stable recomended  teacher : "+t.getNom()+" phone Number :"+ t.getNumtel());
 			}
 				
 		}
@@ -349,8 +370,42 @@ public 	boolean verif(Teacher t,Classe c){
 	}
 	
 	
+	public Classe getRecomendedClasse(Child c ,KinderGarten k){
+		Map<String, String> map=new HashMap<>();
+		Map<Long, Object> mapt=getClasseForkidswithout(k);
+		Classe cl=new Classe();
+		
+		for (Map.Entry mapentryC : mapt.entrySet()) {
+			if((Long) mapentryC.getKey()==c.getId())
+				cl=classeRepository.findByid( (Long) mapentryC.getValue());
+			
+		}
+		
+		return cl;
+		
+	}
 	
-	public Map<Long, Object> NbreChildwithoutClasse(KinderGarten k) {
+
+	
+	
+	public Map<String, String> getClasseForkidswithoutForJsf(KinderGarten k) {
+		Map<String, String> map=new HashMap<>();
+		Map<Long, Object> mapt=getClasseForkidswithout(k);
+		Classe cl=new Classe();
+		Child c=new Child();
+		for (Map.Entry mapentryC : mapt.entrySet()) {
+			cl=classeRepository.findByid( (Long) mapentryC.getValue());
+			c= childRepository.findById((Long) mapentryC.getKey()).get();
+			
+			map.put(c.getChildName(), cl.getNom());
+			
+		}
+		
+	return map;	
+	}
+	
+	// a implementer
+	public Map<Long, Object> getClasseForkidswithout(KinderGarten k) {
 		Map<Long, Object> map=new HashMap<>();
 
 		List<Child> lc=childRepository.findchildByKinder(k);
@@ -406,11 +461,17 @@ public 	boolean verif(Teacher t,Classe c){
 	
 	
 	public Map<String, List<String>> MyteacherMonqueCompetence(Classe c) {
-		Map<String,List<String>> map=new HashMap<>();
+		Map<String,List<String>> map=new HashMap<>();	
+		List<String> lc=new ArrayList<>();
+		if(c.getTeacher()==null){
+			map.put("No teacher", lc);
+			 return map;
+			
+		}
+			
+		
 		Map<String, Boolean> mapt=techerCompetence( c.getTeacher());
 		Map<String, Boolean> mapC=ClasseCompetence( c);
-		List<String> lc=new ArrayList<>();
-		
 		for (Map.Entry mapentryC : mapC.entrySet()) {
 			 for (Map.Entry mapentryT : mapt.entrySet()) {
 				 if(mapentryC.getKey().equals(mapentryT.getKey()))
@@ -422,8 +483,11 @@ public 	boolean verif(Teacher t,Classe c){
 			 
 			 
 		 }
+		System.err.println();
+		lc.forEach(e-> 		System.err.println("competence "+e)
+);
 		map.put(c.getTeacher().getNom(), lc);
+		
 		 return map;
-	
 	}
 }
