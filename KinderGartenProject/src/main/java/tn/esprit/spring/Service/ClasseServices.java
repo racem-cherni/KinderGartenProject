@@ -1,8 +1,10 @@
 package tn.esprit.spring.Service;
 
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,8 @@ public class ClasseServices {
 	private KinderGartenRepository kinderGartenRepository;
 	
 public Classe saveClasse(Classe cl,KinderGarten kinder){
+	System.err.println("*******************************************"+kinder.getId());
+	cl.setKinderGarten(kinder);
 	int cap=kinder.getCapacite();
 	kinder.setCapacite(cap+cl.getCapacitie());
 	kinderGartenRepository.save(kinder);
@@ -62,15 +66,82 @@ Date today= new Date();
 	
 	int age= (int) (diff/365);
 	List<Classe> cl=classeRepository.findclasseForkid(kinder, age);
+	List<Classe> clfi=cl.stream().filter(e->e.getCapacitie()>0).collect(Collectors.toList());
+	
+	if(cl.size()>0)
+	return clfi.get(0);
 	
 	
-	if(cl!=null)
-	return cl.get(0);
+	//throw new RuntimeException("we dont ha ve classes");
 	
-	throw new RuntimeException("we dont ha ve classes");
+	return null;
+}
+
+public List<Child> filterChild(KinderGarten kinder){
+	List<Child> lch=getKidByKinder(kinder);
+	
+	return lch.stream().filter(e->e.getClasse()==null).collect(Collectors.toList());
+}
+
+public List<Classe> filterClasse(KinderGarten kinder){
+	List<Classe> lc=getClasseBykinder(kinder);
+	return lc.stream().filter(e->e.getCapacitie()>0).collect(Collectors.toList());
+}
+
+
+public void affectationGlobale(){
+	
+	List<KinderGarten> lk=kinderGartenRepository.findAll();
+	List<Child> lch=new ArrayList<>();
+	List<Classe> lc=new ArrayList<>();
+	Classe cl =new Classe();
+	for (KinderGarten kinder : lk) {
+		lch=filterChild(kinder);
+		for (Child child : lch) {
+			
+			cl=getClasseByKidAge(child,kinder);
+			if(cl!=null)
+			{
+				ajoutKidToClasse(child,cl)	;
+				
+				
+				
+			}
+		
+			
+		
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
+	
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 public Classe ajoutKidToClasse(Child c,Classe cl)
@@ -82,8 +153,6 @@ public Classe ajoutKidToClasse(Child c,Classe cl)
 	System.out.println(c.getChildName());
 	cl.getKid().forEach(e->System.out.println(e.getChildName()));
 	
-	if(cl.getId()==c.getClasse().getId())
-		throw new RuntimeException("this kid is all ready exist");
 	cl.getKid().add(c);
 	int cp=cl.getCapacitie();
 	
@@ -101,11 +170,28 @@ public Classe retirerKid(Child c,Classe cl)
 	int cp=cl.getCapacitie();
 	
 	cl.setCapacitie(cp+1);
-	c.setClasse(cl);
+	c.setClasse(null);
 	childRepository.save(c);
 	
 	return classeRepository.save(cl);
 	
+}
+
+public List<Classe> getClasseBykinder(KinderGarten k){
+	return classeRepository.findclasseByKinder(k);
+}
+
+public List<Child> getKidByKinder(KinderGarten k){
+	return childRepository.findchildByKinder(k);
+}
+
+
+public List<Child> getKidByClasse(Classe c){
+	return childRepository.findchildByClasse(c);
+}
+
+public Classe getClasseById(Long id){
+	return classeRepository.findByid(id);
 }
 
 

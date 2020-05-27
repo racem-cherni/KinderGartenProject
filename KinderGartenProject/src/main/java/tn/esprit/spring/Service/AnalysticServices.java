@@ -340,7 +340,7 @@ public 	boolean verif(Teacher t,Classe c){
 		Long i=0L;
 		if(c.getTeacher()==null){
 			List<Teacher> lt=teacherRepository.findByKinder(c.getKinderGarten());
-			lt=(List<Teacher>) lt.stream().filter(e->e.getClasse()==null).collect(Collectors.toList());;
+			lt=(List<Teacher>) lt.stream().filter(e->e.getClasse()==null).collect(Collectors.toList());
 		 //while((!verif( lt.get(i), c))|| i<lt.size())
 		    //   i++;
 			
