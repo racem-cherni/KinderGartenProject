@@ -14,6 +14,8 @@ public interface AdvertissementRepository extends JpaRepository<Advertissement, 
 @Query("select a from Advertissement a where a.sourceUser= :user or a.targetUser= :user ")
 public List<Advertissement> findUserRelation(@Param("user") UserApp user );
 
+@Query("select a from Advertissement a where a.sourceUser= :user1 and a.targetUser= :user2 ")
+public Advertissement findAd(@Param("user1") UserApp user,@Param("user1") UserApp user2 );
 
 
 @Query("select a from Advertissement a where a.targetUser= :target and a.sourceUser= :user   ")
