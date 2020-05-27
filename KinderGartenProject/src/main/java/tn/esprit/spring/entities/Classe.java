@@ -21,6 +21,10 @@ import lombok.Data;
 @Entity
 @Data
 public class Classe implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private  Long id;
@@ -34,7 +38,7 @@ public class Classe implements Serializable {
 	
 	@JsonIgnore
 	 @Transient 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="classe",fetch=FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="classe",fetch=FetchType.EAGER)
 	private Collection<Child> kid= new ArrayList<>();
 	
 	@JsonIgnore

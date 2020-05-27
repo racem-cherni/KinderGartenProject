@@ -27,13 +27,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class KinderGarten implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String KinderGartenName;
+	private String kinderGartenName;
 	private String adresse;
-	private String Email;
+	private String email;
 	private int capacite ;
 	private int tel;
 	private Float prix;

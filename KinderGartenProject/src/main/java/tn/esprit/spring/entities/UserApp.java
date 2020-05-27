@@ -30,6 +30,10 @@ import lombok.NoArgsConstructor;
 @Table(name="users")
 @Data
 public class UserApp implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	@Column(name="id")

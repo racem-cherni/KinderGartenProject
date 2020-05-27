@@ -23,6 +23,12 @@ import lombok.Data;
 @Entity
 @Data
 public class Vote implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@EmbeddedId
 	private VotePK votePK;
 

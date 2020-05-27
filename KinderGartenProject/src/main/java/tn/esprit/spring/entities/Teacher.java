@@ -23,7 +23,11 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
-public class Teacher implements Serializable{
+public class Teacher implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 private Long id;
@@ -42,7 +46,7 @@ private KinderGarten  kinderGarten;
 private Classe classe;
 
 
-@ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+@ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 private Collection<Competence> competences= new ArrayList<>();
 
 
