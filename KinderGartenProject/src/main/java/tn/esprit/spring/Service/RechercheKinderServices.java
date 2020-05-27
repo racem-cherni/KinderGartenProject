@@ -63,7 +63,11 @@ public class RechercheKinderServices {
 	}
 	
 	
-	
+	public List<KinderGarten> findall(){
+
+		List<KinderGarten> lk =kinderGartenRepository.recherchKinder();
+		return lk;
+	}
 	
 	
 	public List<KinderGarten> recherchKinderGarten(String kinder)
@@ -115,7 +119,7 @@ public class RechercheKinderServices {
 			.collect(Collectors.toList());
 		
 		rm.setUserapp(user);
-		
+		lk.forEach(a->		System.err.println(a.getKinderGartenName()));
 		rechercheMenuRepository.save(rm);
 		return lk;
 		

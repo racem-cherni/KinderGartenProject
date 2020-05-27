@@ -59,7 +59,7 @@ public Teacher saveTeacher(Teacher t)
 	return teacherRepository.save(t);
 }
 public void delateTeacher(Teacher t)
-{Teacher  te=teacherRepository.getOne(t.getId());
+{Teacher  te=teacherRepository.findById(t.getId()).get();
 
 	 teacherRepository.delete(te);
 }
@@ -67,7 +67,7 @@ public void delateTeacher(Teacher t)
 public Teacher updateTeacher(Teacher t)
 {
 	
-	Teacher  te=teacherRepository.getOne(t.getId());
+	Teacher  te=teacherRepository.findById(t.getId()).get();
 	
 	te.setAge(t.getAge());
 	te.setNom(t.getNom());
@@ -111,8 +111,7 @@ public List<Teacher> getTeacherTheMostAdecttied(KinderGarten k,Classe cl){
 	lt.forEach(e->System.out.println("teachername :"+e.getNom()));
 
 	return lt;
-	
-	
+
 }
 
 public int ClasseScore(Classe cl){
@@ -124,7 +123,7 @@ List<String> childHealth=chl.stream().map(c->c.getHealth()).collect(Collectors.t
 
  if(childHealth.contains("GOOD"))
 		score=score+1;
-	if(childHealth.contains("MEDICALE_PROBLEM"))
+	if(childHealth.contains("MEDICALECARE"))
 		score=score+10;
 	if(childHealth.contains("AUTISME"))
 		score=score+30;
@@ -153,6 +152,13 @@ public int ScoreForTeacher(Teacher t,Classe cl){
 	return score;
 }
 
+public void saveTeacherCompetenceJsf(List<Competence> lc,Long idt){
+lc.forEach(c->saveTeacherCompetence( c, idt));	
+}
+
+
+
+
 public Teacher saveTeacherCompetence(Competence c,Long idt){
 	Teacher t=teacherRepository.getOne(idt);
 	System.out.println("scoreteacher :"+t.getNom());
@@ -169,7 +175,7 @@ public Teacher saveTeacherCompetence(Competence c,Long idt){
 	return teacherRepository.save(t);
 	}
 	
-	Competence cm =competenceRepository.getOne(c.getId());
+	Competence cm =competenceRepository.findById(c.getId()).get();
 	if(t.getCompetences().contains(cm))
 		throw new RuntimeException("this competence is all ready exist");
 	t.getCompetences().add(cm);
@@ -190,7 +196,9 @@ public List<Competence> showCompetences() {
 
 
 
-
+public List<Teacher> getTeachers(KinderGarten kinder){
+	return teacherRepository.findByKinder(kinder);
+}
 
 
 

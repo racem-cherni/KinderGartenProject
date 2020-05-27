@@ -10,6 +10,8 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import tn.esprit.spring.entities.Advertissement;
 import tn.esprit.spring.entities.EmailPwd;
+import tn.esprit.spring.entities.KinderGarten;
 import tn.esprit.spring.entities.ModifierPassword;
 import tn.esprit.spring.entities.Parent;
 import tn.esprit.spring.entities.RoleApp;
@@ -238,13 +241,27 @@ public boolean ChangePwdByPassword(ModifierPassword Md){
 }
 
 
+public UserApp getUserBykinder(KinderGarten kinder){
+	return userRepository.findByKinder(kinder);
+}
 
 
 
 
 
+public UserApp currentUserJsf(){
+	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	String userName;
 
-
+			if (principal instanceof UserDetails) {
+				userName = ((UserDetails) principal).getUsername();
+			} else {
+				userName = principal.toString();
+			}
+			System.err.println(userName);
+			UserApp user=userRepository.findByUsername(userName);
+			return user;
+}
 
 
 

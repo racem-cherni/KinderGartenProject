@@ -88,6 +88,17 @@ adv.setActive(true);
 	
 	
 }
+public  void DesabonnerAKinderGarten(UserApp sourceUser,UserApp targetUser){
+	
+	
+
+
+	Advertissement adv=advertissementRepository.findAd(sourceUser, targetUser);
+
+		advertissementRepository.delete(adv);
+	
+	
+}
 
 
 public List<KinderGarten> myAbonne(UserApp user){
@@ -109,7 +120,26 @@ public List<KinderGarten> myAbonne(UserApp user){
 	return	l.stream().map(e->e.getKindergarten()).collect(Collectors.toList());
 	
 	}
+public Boolean testAbonner(UserApp user,UserApp target){
+	List<UserApp> l=advertissementRepository.findUserRelation(user).stream().filter( j ->
+	j.getRelation().equals(Relation.ABONNE) && j.isActive()==true && !j.getTargetUser().equals(user)
+	).map(e->
+	e.getTargetUser()
+	).collect(Collectors.toList());//.forEach(e->System.out.println("user : "+e.toString()));
 
+
+	l.addAll(advertissementRepository.findUserRelation(user).stream().filter( j ->
+	j.getRelation().equals(Relation.ABONNE) && j.isActive()==true && !j.getSourceUser().equals(user) 
+	).map(e->
+	e.getSourceUser()
+	).collect(Collectors.toList()));
+	
+	for (UserApp u : l) {
+		if(u.getId()==target.getId())
+			return true;
+	}
+	return false;
+}
 
 
 public List<UserApp> Myfriend(UserApp user){
