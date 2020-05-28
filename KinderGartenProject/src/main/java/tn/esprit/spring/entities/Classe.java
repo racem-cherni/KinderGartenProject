@@ -45,6 +45,10 @@ public class Classe implements Serializable {
 	@OneToOne(mappedBy="classe")
 	private Teacher teacher;
 	
+	@JsonIgnore
+	@OneToOne(mappedBy="classe")
+	private Emploi emploi ;
+	
 	
 	
 	

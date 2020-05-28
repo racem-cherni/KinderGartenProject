@@ -40,5 +40,18 @@ private KinderGarten kindergarten;
 @JsonIgnore
 @ManyToOne 
 private Classe classe;
+@JsonIgnore
+@ManyToOne
+private Presence presence ;
+
+
+
+
+
+
+
+
+
+
 
 }
