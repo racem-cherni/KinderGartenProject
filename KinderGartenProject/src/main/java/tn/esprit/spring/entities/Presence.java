@@ -32,6 +32,8 @@ public class Presence {
 	
 	
 	
+	
+	
 	@OneToOne(mappedBy="presence")
 	private Seance seance  ;
 	
