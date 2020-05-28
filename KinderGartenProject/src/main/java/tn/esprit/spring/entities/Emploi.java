@@ -34,6 +34,9 @@ public class Emploi implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="emploi",fetch=FetchType.LAZY)
 	private List<Seance> seance = new ArrayList() ;
 	
+	
+	
+	
 	@OneToOne 
 	private Classe classe ;
 
