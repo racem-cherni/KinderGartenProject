@@ -163,7 +163,31 @@ public List<UserApp> Myfriend(UserApp user){
 	}
 
 
+public int testfriend(UserApp user,UserApp target){
+	
+	List<Advertissement> l=advertissementRepository.findAll().stream().filter( j ->
+	j.getRelation().equals(Relation.FRIEND)  && j.getTargetUser().getId()==user.getId() && j.getSourceUser().getId()==target.getId()
+	).collect(Collectors.toList());//.forEach(e->System.out.println("user : "+e.toString()));
 
+
+	l.addAll(advertissementRepository.findAll().stream().filter( j ->
+	j.getRelation().equals(Relation.FRIEND) && j.getTargetUser().getId()==target.getId() && j.getSourceUser().getId()==user.getId()
+	).collect(Collectors.toList()));
+	
+System.err.println("relation"+target.getId());
+l.forEach(e->System.err.println("relation "+e.isActive()));	
+for (Advertissement advertissement : l) {
+	if(advertissement.isActive()){
+		return 1;
+	}
+	if(!advertissement.isActive()){
+		return 2;
+	}
+	
+}
+
+return 0;
+}
 
 
 

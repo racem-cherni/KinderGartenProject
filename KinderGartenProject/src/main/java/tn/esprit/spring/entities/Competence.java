@@ -14,9 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
 public class Competence implements Serializable {
@@ -31,5 +29,35 @@ private Long id;
 	@Column(unique=true)
 private String competenceName;
 private Float note;
+public Long getId() {
+	return id;
+}
+public void setId(Long id) {
+	this.id = id;
+}
+public String getCompetenceName() {
+	return competenceName;
+}
+public void setCompetenceName(String competenceName) {
+	this.competenceName = competenceName;
+}
+public Float getNote() {
+	return note;
+}
+public void setNote(Float note) {
+	this.note = note;
+}
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+public Competence(Long id, String competenceName, Float note) {
+	super();
+	this.id = id;
+	this.competenceName = competenceName;
+	this.note = note;
+}
+public Competence() {
+	super();
+}
 
 }

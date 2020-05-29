@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Entity
-@Data
+
 public class Vote implements Serializable {
 	/**
 	 * 
@@ -73,6 +73,160 @@ public Vote(VotePK votePK, KinderGarten sourceUser, Parent targetUser, int note,
 	this.targetUser = targetUser;
 	this.note = note;
 	this.date = date;
+}
+
+
+
+
+
+
+
+
+
+
+
+public VotePK getVotePK() {
+	return votePK;
+}
+
+
+
+
+
+
+
+
+
+
+
+public void setVotePK(VotePK votePK) {
+	this.votePK = votePK;
+}
+
+
+
+
+
+
+
+
+
+
+
+public KinderGarten getSourceUser() {
+	return sourceUser;
+}
+
+
+
+
+
+
+
+
+
+
+
+public void setSourceUser(KinderGarten sourceUser) {
+	this.sourceUser = sourceUser;
+}
+
+
+
+
+
+
+
+
+
+
+
+public Parent getTargetUser() {
+	return targetUser;
+}
+
+
+
+
+
+
+
+
+
+
+
+public void setTargetUser(Parent targetUser) {
+	this.targetUser = targetUser;
+}
+
+
+
+
+
+
+
+
+
+
+
+public int getNote() {
+	return note;
+}
+
+
+
+
+
+
+
+
+
+
+
+public void setNote(int note) {
+	this.note = note;
+}
+
+
+
+
+
+
+
+
+
+
+
+public Date getDate() {
+	return date;
+}
+
+
+
+
+
+
+
+
+
+
+
+public void setDate(Date date) {
+	this.date = date;
+}
+
+
+
+
+
+
+
+
+
+
+
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
 
 

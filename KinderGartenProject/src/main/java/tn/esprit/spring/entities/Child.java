@@ -18,9 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class Child {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 private Long id;
@@ -43,6 +41,76 @@ private Classe classe;
 @JsonIgnore
 @ManyToOne
 private Presence presence ;
+public Long getId() {
+	return id;
+}
+public void setId(Long id) {
+	this.id = id;
+}
+public String getChildName() {
+	return childName;
+}
+public void setChildName(String childName) {
+	this.childName = childName;
+}
+public Date getDateNaissance() {
+	return dateNaissance;
+}
+public void setDateNaissance(Date dateNaissance) {
+	this.dateNaissance = dateNaissance;
+}
+public String getHealth() {
+	return health;
+}
+public void setHealth(String health) {
+	this.health = health;
+}
+public String getImage() {
+	return image;
+}
+public void setImage(String image) {
+	this.image = image;
+}
+public Parent getParents() {
+	return parents;
+}
+public void setParents(Parent parents) {
+	this.parents = parents;
+}
+public KinderGarten getKindergarten() {
+	return kindergarten;
+}
+public void setKindergarten(KinderGarten kindergarten) {
+	this.kindergarten = kindergarten;
+}
+public Classe getClasse() {
+	return classe;
+}
+public void setClasse(Classe classe) {
+	this.classe = classe;
+}
+public Presence getPresence() {
+	return presence;
+}
+public void setPresence(Presence presence) {
+	this.presence = presence;
+}
+public Child(Long id, String childName, Date dateNaissance, String health, String image, Parent parents,
+		KinderGarten kindergarten, Classe classe, Presence presence) {
+	super();
+	this.id = id;
+	this.childName = childName;
+	this.dateNaissance = dateNaissance;
+	this.health = health;
+	this.image = image;
+	this.parents = parents;
+	this.kindergarten = kindergarten;
+	this.classe = classe;
+	this.presence = presence;
+}
+public Child() {
+	super();
+}
 
 
 

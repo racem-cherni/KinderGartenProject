@@ -23,9 +23,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class KinderGarten implements Serializable {
 	/**
 	 * 
@@ -64,5 +62,170 @@ public class KinderGarten implements Serializable {
 	 @Transient 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kinderGarten",fetch=FetchType.LAZY)
 	private Collection<Event> events = new ArrayList<>();
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getKinderGartenName() {
+		return kinderGartenName;
+	}
+
+
+	public void setKinderGartenName(String kinderGartenName) {
+		this.kinderGartenName = kinderGartenName;
+	}
+
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public int getCapacite() {
+		return capacite;
+	}
+
+
+	public void setCapacite(int capacite) {
+		this.capacite = capacite;
+	}
+
+
+	public int getTel() {
+		return tel;
+	}
+
+
+	public void setTel(int tel) {
+		this.tel = tel;
+	}
+
+
+	public Float getPrix() {
+		return prix;
+	}
+
+
+	public void setPrix(Float prix) {
+		this.prix = prix;
+	}
+
+
+	public int getMaxRdv() {
+		return maxRdv;
+	}
+
+
+	public void setMaxRdv(int maxRdv) {
+		this.maxRdv = maxRdv;
+	}
+
+
+	public UserApp getUserapp() {
+		return userapp;
+	}
+
+
+	public void setUserapp(UserApp userapp) {
+		this.userapp = userapp;
+	}
+
+
+	public Collection<Child> getKid() {
+		return kid;
+	}
+
+
+	public void setKid(Collection<Child> kid) {
+		this.kid = kid;
+	}
+
+
+	public Collection<Classe> getClasses() {
+		return classes;
+	}
+
+
+	public void setClasses(Collection<Classe> classes) {
+		this.classes = classes;
+	}
+
+
+	public Collection<Teacher> getTeachers() {
+		return teachers;
+	}
+
+
+	public void setTeachers(Collection<Teacher> teachers) {
+		this.teachers = teachers;
+	}
+
+
+	public Collection<Event> getEvents() {
+		return events;
+	}
+
+
+	public void setEvents(Collection<Event> events) {
+		this.events = events;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	public KinderGarten(Long id, String kinderGartenName, String adresse, String email, int capacite, int tel,
+			Float prix, int maxRdv, UserApp userapp, Collection<Child> kid, Collection<Classe> classes,
+			Collection<Teacher> teachers, Collection<Event> events) {
+		super();
+		this.id = id;
+		this.kinderGartenName = kinderGartenName;
+		this.adresse = adresse;
+		this.email = email;
+		this.capacite = capacite;
+		this.tel = tel;
+		this.prix = prix;
+		this.maxRdv = maxRdv;
+		this.userapp = userapp;
+		this.kid = kid;
+		this.classes = classes;
+		this.teachers = teachers;
+		this.events = events;
+	}
+
+
+	public KinderGarten() {
+		super();
+	}
+	
+	
+	
+	
+	
 	
 }

@@ -23,7 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+
 public class Advertissement implements Serializable {
 	
 	private static final long serialVersionUID = 3876346912862238239L;
@@ -54,6 +54,50 @@ public Advertissement(AdvertissementPK advertissementPK, tn.esprit.spring.entiti
 
 public Advertissement() {
 	super();
+}
+
+public AdvertissementPK getAdvertissementPK() {
+	return advertissementPK;
+}
+
+public void setAdvertissementPK(AdvertissementPK advertissementPK) {
+	this.advertissementPK = advertissementPK;
+}
+
+public UserApp getSourceUser() {
+	return sourceUser;
+}
+
+public void setSourceUser(UserApp sourceUser) {
+	this.sourceUser = sourceUser;
+}
+
+public UserApp getTargetUser() {
+	return targetUser;
+}
+
+public void setTargetUser(UserApp targetUser) {
+	this.targetUser = targetUser;
+}
+
+public tn.esprit.spring.entities.Relation getRelation() {
+	return relation;
+}
+
+public void setRelation(tn.esprit.spring.entities.Relation relation) {
+	this.relation = relation;
+}
+
+public boolean isActive() {
+	return active;
+}
+
+public void setActive(boolean active) {
+	this.active = active;
+}
+
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
 
 
