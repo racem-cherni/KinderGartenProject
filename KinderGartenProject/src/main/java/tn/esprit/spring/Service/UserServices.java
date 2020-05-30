@@ -1,26 +1,22 @@
 package tn.esprit.spring.Service;
 
-import java.security.Principal;
+import java.security.Principal; 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tn.esprit.spring.entities.Advertissement;
 import tn.esprit.spring.entities.EmailPwd;
-import tn.esprit.spring.entities.ModifierPassword;
 import tn.esprit.spring.entities.Parent;
 import tn.esprit.spring.entities.RoleApp;
 import tn.esprit.spring.entities.UserApp;
 import tn.esprit.spring.entities.VerificationToken;
-import tn.esprit.spring.repository.AdvertissementRepository;
-import tn.esprit.spring.repository.EmailPwdRepository;
+
 import tn.esprit.spring.repository.RoleRepository;
 import tn.esprit.spring.repository.UserRepository;
 import tn.esprit.spring.repository.VerificationTokenRepository;
@@ -35,12 +31,13 @@ public class UserServices implements AccountService{
 	private RoleRepository roleRepository;
 	@Autowired
     private VerificationTokenRepository tokenRepository;
-	@Autowired
+
+/*	@Autowired
 	private JavaMailSender mailSender;
 @Autowired
 private AdvertissementRepository advertissementRepository;
 @Autowired
-private EmailPwdRepository emailPwdRepository;
+private EmailPwdRepository emailPwdRepository;*/
 	
 	@Override
 	public UserApp saveUser(UserApp user) {
