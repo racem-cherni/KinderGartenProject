@@ -1,6 +1,6 @@
 package tn.esprit.spring.entities;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 
 import javax.management.relation.Relation;
 import javax.persistence.Embeddable;
