@@ -4,6 +4,7 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,9 +55,35 @@ public class KinderGarten implements Serializable {
 	private Collection<Teacher> teachers = new ArrayList<>();
 	
 	
+//	@JsonIgnore
+	// @Transient 
+	//@OneToMany(cascade = CascadeType.ALL, mappedBy="kinderGarten",fetch=FetchType.LAZY)
+	//private Collection<Event> events = new ArrayList<>();
+	
 	@JsonIgnore
-	 @Transient 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="kinderGarten",fetch=FetchType.LAZY)
-	private Collection<Event> events = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="kindereventmaker")
+	private List<Event> eventm;
+
+     
+	public List<Event> getEventm() {
+		return eventm;
+	}
+
+
+	public void setEventm(List<Event> eventm) {
+		this.eventm = eventm;
+	}
+
+
+	public Collection<Child> getKid() {
+		return kid;
+	}
+
+
+	public void setKid(Collection<Child> kid) {
+		this.kid = kid;
+	}
+	
+	
 	
 }
