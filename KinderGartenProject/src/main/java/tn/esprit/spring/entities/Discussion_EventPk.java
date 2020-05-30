@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Embeddable
+@Embeddable 
 public class Discussion_EventPk implements Serializable {
 	
 	private static final long serialVersionUID = 5377539445871317492L;

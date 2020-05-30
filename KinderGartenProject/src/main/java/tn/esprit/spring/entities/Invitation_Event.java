@@ -26,7 +26,7 @@ public class Invitation_Event implements Serializable {
 	@EmbeddedId
 	private Invitation_EventPk invitationpk ;
 	
-	
+	  
 	
     @Column(name="Date_Invitation")
 	private Date date_invitation ;

@@ -65,7 +65,7 @@ public class Invitation_EventPk implements Serializable {
 		this.idparent = idparent;
 	}
 	
-	
+	   
 	
 	
 
