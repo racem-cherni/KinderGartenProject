@@ -451,7 +451,7 @@ private static final long serialVersionUID = 1L;
 				+ nbr_invites + ", event_budget=" + event_budget + ", entry_price=" + entry_price + ", category="
 				+ category + ", etat_event=" + etat_event + ", type_event=" + type_event + ", kindereventmaker="
 				+ kindereventmaker  + "]";
-	} 
+	}  
 
 
 
