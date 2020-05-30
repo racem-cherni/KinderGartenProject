@@ -114,15 +114,15 @@ private static final long serialVersionUID = 1L;
 	KinderGarten kindereventmaker;
 
 	
-	//@JsonIgnore
-	//@OneToOne
-	//private Salle_event salle_event ;
-	
-	//@JsonIgnore
-	//@OneToOne
-	//private Facture_Event facture_event ;
-	
 	/*@JsonIgnore
+	@OneToOne
+	private Salle_event salle_event ;
+	
+	@JsonIgnore
+	@OneToOne
+	private Facture_Event facture_event ;
+	
+	@JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="event")
 	private  List<Reservation_Stock_interne> reservation_stock_interne;*/
@@ -132,7 +132,7 @@ private static final long serialVersionUID = 1L;
     @OneToMany(cascade = CascadeType.ALL, mappedBy="event_invitation")
 	private  List<Invitation_Event> invitations;
 	
-	/*@JsonIgnore
+/*	@JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="event_evaluation")
 	private  List<Evaluation_Event> evaluations; */
@@ -427,7 +427,7 @@ private static final long serialVersionUID = 1L;
 		Discussions = discussions;
 	}
     
-    //updated entity//
+    
      
     public Locationevent getLocation_event() {
 		return location_event;
@@ -450,8 +450,8 @@ private static final long serialVersionUID = 1L;
 				+ ", nbr_places_occupes=" + nbr_places_occupes + ", Nbr_ignorer=" + Nbr_ignorer + ", nbr_invites="
 				+ nbr_invites + ", event_budget=" + event_budget + ", entry_price=" + entry_price + ", category="
 				+ category + ", etat_event=" + etat_event + ", type_event=" + type_event + ", kindereventmaker="
-				+ kindereventmaker  + "]";
-	}  
+				+ kindereventmaker +  "]";
+	}
 
 
 
@@ -468,11 +468,11 @@ private static final long serialVersionUID = 1L;
 		this.entry_price = entry_price;
 		this.category = category;
 		this.type_event = type_event;
-		this.event_start_heure=event_start_heure; 
+		this.event_start_heure=event_start_heure;
 		this.event_fin_heure = event_fin_heure ;
 		this.location_event = location_event;
 
-	} 
+	}
 
 
 
