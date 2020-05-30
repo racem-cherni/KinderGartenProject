@@ -37,4 +37,19 @@ private KinderGarten kindergarten;
 @ManyToOne 
 private Classe classe;
 
+public Parent getParents() {
+	return parents;
+}
+public void setParents(Parent parents) {
+	this.parents = parents;
+}
+@Override
+public String toString() {
+	return "Child [id=" + id + ", childName=" + childName + ", dateNaissance=" + dateNaissance + ", health=" + health
+			+ ", image=" + image + ", parents=" + parents + ", kindergarten=" + kindergarten + ", classe=" + classe
+			+ "]";
+}
+
+
+
 }
