@@ -427,7 +427,7 @@ private static final long serialVersionUID = 1L;
 		Discussions = discussions;
 	}
     
-    //updated//
+    //updated entity//
      
     public Locationevent getLocation_event() {
 		return location_event;
