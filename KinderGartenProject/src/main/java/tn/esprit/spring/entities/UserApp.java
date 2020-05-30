@@ -31,6 +31,7 @@ import lombok.NoArgsConstructor;
 @Table(name="users")
 public class UserApp implements Serializable {
 	
+	
 	/**
 	 * 
 	 */
