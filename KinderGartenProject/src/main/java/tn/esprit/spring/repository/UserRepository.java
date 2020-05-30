@@ -38,5 +38,7 @@ public interface UserRepository extends JpaRepository<UserApp,Long> {
 	
 	@Query("select u from UserApp u where u.username= :username ")
 	public UserApp findByUsernametest(@Param("username")String username);
+	
+	
 }
  
