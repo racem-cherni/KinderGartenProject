@@ -8,6 +8,7 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>KinderGartenProject</artifactId>
 	<version>1.0</version>
