@@ -427,7 +427,7 @@ private static final long serialVersionUID = 1L;
 		Discussions = discussions;
 	}
     
-    
+    //updated//
      
     public Locationevent getLocation_event() {
 		return location_event;
@@ -468,7 +468,7 @@ private static final long serialVersionUID = 1L;
 		this.entry_price = entry_price;
 		this.category = category;
 		this.type_event = type_event;
-		this.event_start_heure=event_start_heure;
+		this.event_start_heure=event_start_heure; 
 		this.event_fin_heure = event_fin_heure ;
 		this.location_event = location_event;
 
