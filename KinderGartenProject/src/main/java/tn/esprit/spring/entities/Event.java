@@ -472,7 +472,7 @@ private static final long serialVersionUID = 1L;
 		this.event_fin_heure = event_fin_heure ;
 		this.location_event = location_event;
 
-	}
+	} 
 
 
 
