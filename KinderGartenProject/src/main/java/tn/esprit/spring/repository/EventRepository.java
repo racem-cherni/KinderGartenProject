@@ -57,4 +57,6 @@ public interface EventRepository extends CrudRepository<Event,Long> {
 	public List<Event>  eventassociesjsf(@Param("kindergarten")KinderGarten kindergarten,@Param("category") Category_event categorie,@Param("idevent") Long id);
     
 
+
+
 }
