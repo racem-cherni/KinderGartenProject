@@ -29,8 +29,12 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="users")
-@Data
 public class UserApp implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	@Column(name="id")
@@ -54,6 +58,12 @@ public class UserApp implements Serializable {
 @Transient 
 @OneToMany(cascade = CascadeType.ALL, mappedBy="sourceUser",fetch=FetchType.LAZY)
 private Collection<Advertissement> advertissemented= new ArrayList<>();
+@JsonIgnore
+@Transient 
+@OneToMany(cascade = CascadeType.ALL,mappedBy="userapp",fetch=FetchType.LAZY)
+private Collection<RechercheMenu> mySearch= new ArrayList<>();
+
+
 
 
 
@@ -150,5 +160,16 @@ public void setAdvertissemented(Collection<Advertissement> advertissemented) {
 
 
 
+
+	
+public Collection<RechercheMenu> getMySearch() {
+	return mySearch;
+}
+public void setMySearch(Collection<RechercheMenu> mySearch) {
+	this.mySearch = mySearch;
+}
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
 
 }
