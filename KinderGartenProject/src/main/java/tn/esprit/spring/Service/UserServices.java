@@ -164,12 +164,38 @@ public boolean SendVerificationEmailMdp(String username){
 		SimpleMailMessage email = new SimpleMailMessage();
 	    email.setTo(uS.getParent().getEmail());
 	    email.setSubject("verification code ");
-	    email.setText("change my pwd :"+"http://localhost:8081/modifierPasswordEmail/"+hash);
+	    email.setText("change my pwd :"+"http://localhost:8082/modifierPasswordEmail/"+hash);
 	    mailSender.send(email);
 	   
 	return true;
 
 	}
+
+public boolean SendVerificationEmailMdpJSF(String username){
+	
+	UserApp uS=userRepository.findByUsername(username);
+	if(!uS.isActived())
+		throw new RuntimeException("this user is all ready actived !!!");
+	
+	if(uS.getPoint()<=0)
+		throw new RuntimeException("this user is blocked !!!");
+	Random rand = new Random();
+	int n = rand.nextInt(100000)+ 1;
+	String hash=bCryptPasswordEncoder.encode(""+n);
+	EmailPwd em=new EmailPwd(null,username,hash,null);
+	em.setDate(em.calculateExpiryDate(60));
+	
+	emailPwdRepository.save(em);
+	
+	SimpleMailMessage email = new SimpleMailMessage();
+    email.setTo(uS.getParent().getEmail());
+    email.setSubject("verification code ");
+    email.setText("change my pwd Code :"+hash);
+    mailSender.send(email);
+   
+return true;
+
+}
 	
 	public boolean verifEmailMdp(ModifierPassword Md,String code){
 		

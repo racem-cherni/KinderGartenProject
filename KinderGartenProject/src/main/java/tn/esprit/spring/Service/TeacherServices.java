@@ -81,14 +81,14 @@ public Teacher updateTeacher(Teacher t)
 
 
 public Teacher affecttacherToClasse(Teacher t, Classe cl){
-	Teacher  te=teacherRepository.getOne(t.getId());
-if(te.getClasse()!=null)
-	throw new RuntimeException("this teacher has classe");
+	Teacher  te=teacherRepository.findById(t.getId()).get();
+
 
 	te.setClasse(cl);
 	System.out.println("cl :"+cl.getNom());
-
+cl.setTeacher(t);
 	System.out.println("teachername :"+te.getClasse().getNom());
+	//classeRepository.save(cl);
 	return teacherRepository.save(te);
 	}
 	
