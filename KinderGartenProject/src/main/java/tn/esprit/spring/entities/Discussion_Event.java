@@ -37,7 +37,7 @@ public class Discussion_Event implements Serializable {
 
 	public Discussion_Event() {
 		super();
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub//
 	}
 
 	public Discussion_EventPk getDiscussioneventpk() {
