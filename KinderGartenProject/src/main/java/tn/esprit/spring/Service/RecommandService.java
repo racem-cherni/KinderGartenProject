@@ -1,4 +1,4 @@
-package tn.esprit.spring.repository;
+package tn.esprit.spring.Service;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,6 +24,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
+import tn.esprit.spring.repository.ProductRepository;
 
 
 @Service

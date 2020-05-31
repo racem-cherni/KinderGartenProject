@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -35,6 +37,18 @@ public class PanierProduct implements Serializable {
 	@OneToOne
 	@JoinColumn(nullable = true)
 	private UserApp refuser;
+	
+	@Enumerated(EnumType.STRING)
+	private PanierProductState state;
+	
+	public PanierProduct(PanierProductPK panierPK, int qty, Offer offer, Panier panier, UserApp refuser) {
+		super();
+		this.panierPK = panierPK;
+		this.qty = qty;
+		this.offer = offer;
+		this.panier = panier;
+		this.refuser = refuser;
+	}
 
 	public PanierProductPK getPanierPK() {
 		return panierPK;
@@ -80,13 +94,12 @@ public class PanierProduct implements Serializable {
 		this.refuser = refuser;
 	}
 
-	public PanierProduct(PanierProductPK panierPK, int qty, Offer offer, Panier panier, UserApp refuser) {
-		super();
-		this.panierPK = panierPK;
-		this.qty = qty;
-		this.offer = offer;
-		this.panier = panier;
-		this.refuser = refuser;
+	public PanierProductState getState() {
+		return state;
+	}
+
+	public void setState(PanierProductState state) {
+		this.state = state;
 	}
 
 	
