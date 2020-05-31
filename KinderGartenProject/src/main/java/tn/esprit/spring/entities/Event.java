@@ -369,7 +369,7 @@ private static final long serialVersionUID = 1L;
 	public void setEvaluations(List<Evaluation_Event> evaluations) {
 		this.evaluations = evaluations;
 	}*/
-
+//
 
 
 	public Type_Event getType_event() {
