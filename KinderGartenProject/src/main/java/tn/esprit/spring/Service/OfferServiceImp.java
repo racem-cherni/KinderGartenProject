@@ -18,11 +18,11 @@ public class OfferServiceImp implements OfferService {
 	@Override
 	public Offer addOffer(Offer p) {
 		
-		if (OfferRepository.CheckProduct((int) p.getUser().getId(), p.getProduct().getId()) == 0)
+		if (OfferRepository.CheckProduct((int) p.getKindergarten().getUserapp().getId(), p.getProduct().getId()) == 0)
 			return OfferRepository.save(p);
 		
 		else {
-			Offer o = OfferRepository.getExistedOffer( p.getUser().getId(), p.getProduct().getId());
+			Offer o = OfferRepository.getExistedOffer( p.getKindergarten().getUserapp().getId(), p.getProduct().getId());
 			o.setQty(o.getQty() + p.getQty());
 			
 			if (o.getPrice()>p.getPrice())
