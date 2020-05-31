@@ -82,6 +82,12 @@ public class Product  implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", description=" + description + ", photo=" + photo + ", ref=" + ref + ", name="
+				+ name + "]";
+	}
 	
 	
 	
