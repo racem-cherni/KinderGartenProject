@@ -114,9 +114,7 @@ private static final long serialVersionUID = 1L;
 	KinderGarten kindereventmaker;
 
 	
-    @JsonIgnore
-	@OneToOne
-	private Salle_event salle_event ;
+    
 	
 	@JsonIgnore
 	@OneToOne
@@ -324,13 +322,7 @@ private static final long serialVersionUID = 1L;
 
 	
 
-   public Salle_event getSalle_event() {
-		return salle_event;
-	}
-
-	public void setSalle_event(Salle_event salle_event) {
-		this.salle_event = salle_event;
-	}
+   
 
 	public Facture_Event getFacture_event() {
 		return facture_event;
