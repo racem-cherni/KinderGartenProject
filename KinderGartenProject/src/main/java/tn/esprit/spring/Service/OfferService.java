@@ -14,6 +14,10 @@ public interface OfferService {
 	void deleteOffer(int id);
 	Offer updateOffer(Offer u);
 	Offer retrieveOffer(int id);
+	List<Offer> getOffersByKindergarten(Long id);
+	List<Offer> getOffersByProduct(int id);
+	Offer getSelectedOffer(Long user, int id);
+	int getOfferCount(Long user);
 	///////////////////////////////
 	
 	Offer updateOfferMultiplicity(Offer u);

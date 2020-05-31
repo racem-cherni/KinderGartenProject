@@ -19,8 +19,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 @Entity
-@Data
+
 public class Classe implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private  Long id;
@@ -34,12 +39,16 @@ public class Classe implements Serializable {
 	
 	@JsonIgnore
 	 @Transient 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="classe",fetch=FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="classe",fetch=FetchType.EAGER)
 	private Collection<Child> kid= new ArrayList<>();
 	
 	@JsonIgnore
 	@OneToOne(mappedBy="classe")
 	private Teacher teacher;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy="classe")
+	private Emploi emploi ;
 	
 	
 	
@@ -65,7 +74,57 @@ public class Classe implements Serializable {
 
 	
 	
-	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public int getCapacitie() {
+		return capacitie;
+	}
+	public void setCapacitie(int capacitie) {
+		this.capacitie = capacitie;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public KinderGarten getKinderGarten() {
+		return kinderGarten;
+	}
+	public void setKinderGarten(KinderGarten kinderGarten) {
+		this.kinderGarten = kinderGarten;
+	}
+	public Collection<Child> getKid() {
+		return kid;
+	}
+	public void setKid(Collection<Child> kid) {
+		this.kid = kid;
+	}
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+	public Emploi getEmploi() {
+		return emploi;
+	}
+	public void setEmploi(Emploi emploi) {
+		this.emploi = emploi;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 	
 	

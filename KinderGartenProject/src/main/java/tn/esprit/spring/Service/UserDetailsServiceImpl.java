@@ -1,6 +1,6 @@
 package tn.esprit.spring.Service;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.Collection;
 
 
@@ -20,10 +20,11 @@ import tn.esprit.spring.entities.UserApp;
 
 
 @Service
-
 public class UserDetailsServiceImpl implements UserDetailsService {
+	
 @Autowired
 private AccountService accountService;
+
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

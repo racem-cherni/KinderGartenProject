@@ -13,10 +13,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class RoleApp implements Serializable  {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 @Id
 @GeneratedValue
 private Long id;
@@ -34,5 +36,19 @@ public String getRoleName() {
 public void setRoleName(String roleName) {
 	this.roleName = roleName;
 }
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+public RoleApp(Long id, String roleName) {
+	super();
+	this.id = id;
+	this.roleName = roleName;
+}
+public RoleApp() {
+	super();
+}
+
+
+
 
 }

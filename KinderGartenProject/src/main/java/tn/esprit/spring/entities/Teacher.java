@@ -20,10 +20,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 @Entity
-@Data
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
-public class Teacher implements Serializable{
+public class Teacher implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 private Long id;
@@ -42,7 +46,7 @@ private KinderGarten  kinderGarten;
 private Classe classe;
 
 
-@ManyToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+@ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 private Collection<Competence> competences= new ArrayList<>();
 
 
@@ -66,6 +70,63 @@ public Teacher(String nom, int age, int numtel, String email) {
 	this.age = age;
 	this.numtel = numtel;
 	this.email = email;
+}
+public Long getId() {
+	return id;
+}
+public void setId(Long id) {
+	this.id = id;
+}
+public String getNom() {
+	return nom;
+}
+public void setNom(String nom) {
+	this.nom = nom;
+}
+public int getAge() {
+	return age;
+}
+public void setAge(int age) {
+	this.age = age;
+}
+public int getNumtel() {
+	return numtel;
+}
+public void setNumtel(int numtel) {
+	this.numtel = numtel;
+}
+public String getEmail() {
+	return email;
+}
+public void setEmail(String email) {
+	this.email = email;
+}
+public String getImage() {
+	return image;
+}
+public void setImage(String image) {
+	this.image = image;
+}
+public KinderGarten getKinderGarten() {
+	return kinderGarten;
+}
+public void setKinderGarten(KinderGarten kinderGarten) {
+	this.kinderGarten = kinderGarten;
+}
+public Classe getClasse() {
+	return classe;
+}
+public void setClasse(Classe classe) {
+	this.classe = classe;
+}
+public Collection<Competence> getCompetences() {
+	return competences;
+}
+public void setCompetences(Collection<Competence> competences) {
+	this.competences = competences;
+}
+public static long getSerialversionuid() {
+	return serialVersionUID;
 }
 
 

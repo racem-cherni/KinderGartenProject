@@ -1,6 +1,6 @@
 package tn.esprit.spring.Service;
 
-import java.security.Principal;
+import java.security.Principal; 
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,11 +14,11 @@ import tn.esprit.spring.repository.UserRepository;
 public class Session {
 	@Autowired
 	private UserRepository userRepository;
-	public static UserApp user;
+	//public static UserApp user;
 	public UserApp session(HttpServletRequest request){
 		
 		Principal principal = request.getUserPrincipal();
-		 user=userRepository.findByUsername(principal.getName());
+		UserApp user=userRepository.findByUsername(principal.getName());
 		
 		return user;
 		

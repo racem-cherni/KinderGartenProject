@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 		
 	}
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
@@ -45,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.POST,"/saveUser/cfverif/*/*").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.POST,"/saveUser/saveParent/*").permitAll();
 		
+	http.authorizeRequests().antMatchers("/**").permitAll();
 		
 		http.authorizeRequests().antMatchers("/",
                 "/favicon.ico",
@@ -60,6 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		
 		http.addFilterBefore(new JWTAuthorizationFilter()  , UsernamePasswordAuthenticationFilter.class);
+		
+		
 		
 		
 		

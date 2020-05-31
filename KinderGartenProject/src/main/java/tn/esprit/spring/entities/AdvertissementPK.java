@@ -12,13 +12,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@Data
+
 @Embeddable
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class AdvertissementPK implements Serializable {
 
 	
+
+
 	private static final long serialVersionUID = 5377539445871317492L;
 	
 	private Long idsourceUser;
@@ -27,6 +28,42 @@ public class AdvertissementPK implements Serializable {
 	
 	private Long idtargetUser;
 	
-	
+
+	public Long getIdsourceUser() {
+		return idsourceUser;
+	}
+
+
+
+	public void setIdsourceUser(Long idsourceUser) {
+		this.idsourceUser = idsourceUser;
+	}
+
+
+
+	public Long getIdtargetUser() {
+		return idtargetUser;
+	}
+
+
+
+	public void setIdtargetUser(Long idtargetUser) {
+		this.idtargetUser = idtargetUser;
+	}
+
+
+
+	public AdvertissementPK() {
+		super();
+	}
+
+
+
+	public AdvertissementPK(Long idsourceUser, Long idtargetUser) {
+		super();
+		this.idsourceUser = idsourceUser;
+		this.idtargetUser = idtargetUser;
+	}
+
 	
 }

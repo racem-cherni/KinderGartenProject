@@ -12,11 +12,16 @@ import tn.esprit.spring.entities.Offer;
 import tn.esprit.spring.entities.Panier;
 import tn.esprit.spring.entities.PanierProduct;
 import tn.esprit.spring.entities.PanierProductPK;
+import tn.esprit.spring.entities.PanierProductState;
+import tn.esprit.spring.entities.PanierSession;
+import tn.esprit.spring.entities.SessionFake;
 import tn.esprit.spring.entities.UserApp;
-import tn.esprit.spring.repository.PanierRepository;
-import tn.esprit.spring.repository.UserRepository;
 import tn.esprit.spring.repository.PanierProductRepository;
-import tn.esprit.spring.repository.OfferRepository;
+import tn.esprit.spring.repository.PanierRepository;
+import tn.esprit.spring.repository.OrderRepository;
+import tn.esprit.spring.repository.UserRepository;
+import tn.esprit.spring.repository.PanierSessionRepository;
+
 
 @Service
 public class PanierProductServiceImp implements PanierProductService {
@@ -28,52 +33,62 @@ public class PanierProductServiceImp implements PanierProductService {
 	private PanierRepository PanierRepository;
 
 	@Autowired
-	private OfferRepository OfferRepository;
-	
+	private OrderRepository OfferRepository;
+
 	@Autowired
 	private UserRepository UserRepository;
 
+	@Autowired
+	private PanierSessionRepository PanierSessionRepository;
+
+	@Autowired
+	private PanierService PanierService;
+
 	@Override
-	public PanierProduct addProductToPanier(int panierid, int offerid, int qty, Long refuser) {
+	public PanierProduct addProductToPanier(Offer offer, int qty, Long refuser) {
 
-		Offer o = OfferRepository.findById(offerid).orElse(null);
-		Panier p = PanierRepository.findById(panierid).orElse(null);
-		
-		UserApp u = new UserApp();
-		
-		u = UserRepository.findById(refuser).orElse(null);
-		
-		if (o == null)
-			throw new RuntimeException("The offer dosen't exist!");
+		UserApp user = new UserApp();
+		PanierSession session = new PanierSession();
+		Panier panier;
 
-		if (o.getQty() >= qty) {
+		user = UserRepository.findById(refuser).orElse(null);
+		session = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId());
 
-			if (p == null) {
+		if (session == null)
+			panier = PanierService.addPanier(new Panier());
+		else
+			panier = session.getPanier();
 
-				p = new Panier();
-
-				p.setDate(new Date());
-				p.setId(panierid);
-				PanierRepository.save(p);
-
-			}
-
-			p = PanierRepository.findById(panierid).orElse(null);
-			PanierProductPK prk = new PanierProductPK(panierid, offerid);
-			PanierProduct pr = new PanierProduct(prk, qty, o, p, u);
-			return PanierProductRepository.save(pr);
-		}
-
-		throw new RuntimeException("The product's quantity is inferior to the one you are trying to order!");
+		PanierProductPK prk = new PanierProductPK(panier.getId(), offer.getId());
+		PanierProduct pr = new PanierProduct(prk, qty, offer, panier, user);
+		pr.setState(PanierProductState.WAITING);
+		return PanierProductRepository.save(pr);
 	}
 
 	@Override
 	public void removeProductFromPanier(int id) {
 
+		PanierSession session = new PanierSession();
+		Panier panier;
+
+		session = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId());
+
+		if (session == null)
+			panier = PanierService.addPanier(new Panier());
+		else
+			panier = session.getPanier();
+
+		PanierProductRepository.deleteOfferFromPanier(panier.getId(), id);
 	}
 
 	@Override
-	public List<Offer> retrieveAlOffdersOfPanier(int id) {
+	public List<Offer> retrieveAlOffdersOfPanier() {
+
+		long user_id = SessionFake.getId();
+		PanierSession panier_session = PanierSessionRepository.getPanierSessionByUser(user_id);
+
+		if (panier_session != null)
+			return PanierProductRepository.getOffersByPanier(panier_session.getPanier().getId());
 
 		return null;
 	}

@@ -41,7 +41,7 @@ public class Offer implements Serializable {
 	Product product;
 
 	@ManyToOne
-	UserApp user;
+	KinderGarten Kindergarten;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "offer")
@@ -49,6 +49,14 @@ public class Offer implements Serializable {
 
 	public Offer() {
 		super();
+	}
+
+	public KinderGarten getKindergarten() {
+		return Kindergarten;
+	}
+
+	public void setKindergarten(KinderGarten kindergarten) {
+		Kindergarten = kindergarten;
 	}
 
 	public int getId() {
@@ -103,15 +111,12 @@ public class Offer implements Serializable {
 		this.paniers = paniers;
 	}
 
-	public UserApp getUser() {
-		return user;
+	@Override
+	public String toString() {
+		return "Offer [id=" + id + ", price=" + price + ", pub_date=" + pub_date + ", qty=" + qty + "]";
 	}
 
-	public void setUser(UserApp user) {
-		this.user = user;
-	}
-
-	public Offer(int id, double price, Date pub_date, int qty, Product product, UserApp user,
+	public Offer(int id, double price, Date pub_date, int qty, Product product, KinderGarten kindergarten,
 			List<PanierProduct> paniers) {
 		super();
 		this.id = id;
@@ -119,14 +124,8 @@ public class Offer implements Serializable {
 		this.pub_date = pub_date;
 		this.qty = qty;
 		this.product = product;
-		this.user = user;
+		Kindergarten = kindergarten;
 		this.paniers = paniers;
-	}
-
-
-
-
-	
-	
+	}	
 
 }
