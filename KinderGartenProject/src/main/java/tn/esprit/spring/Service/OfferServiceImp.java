@@ -35,6 +35,7 @@ public class OfferServiceImp implements OfferService {
 	@Override
 	public void deleteOffer(int id) {
 
+		
 		OfferRepository.deleteById(id);
 	}
 
@@ -61,6 +62,30 @@ public class OfferServiceImp implements OfferService {
 	public Offer updateOfferMultiplicity(Offer u) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Offer> getOffersByKindergarten(Long id) {
+		
+		return OfferRepository.getOffersByKindergarten(id);
+	}
+
+	@Override
+	public List<Offer> getOffersByProduct(int id) {
+		
+		return OfferRepository.getOffersByProduct(id);
+	}
+
+	@Override
+	public Offer getSelectedOffer(Long user, int id) {
+		
+		return OfferRepository.getExistedOffer(user, id);
+	}
+
+	@Override
+	public int getOfferCount(Long user) {
+		
+		return OfferRepository.getOfferCount(user);
 	}
 	
 
