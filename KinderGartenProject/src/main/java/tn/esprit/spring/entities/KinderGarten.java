@@ -83,6 +83,17 @@ public class KinderGarten implements Serializable {
 	public void setKid(Collection<Child> kid) {
 		this.kid = kid;
 	}
+
+
+	public UserApp getUserapp() {
+		return userapp;
+	}
+
+
+	public void setUserapp(UserApp userapp) {
+		this.userapp = userapp;
+	}
+	
 	
 	
 	
