@@ -113,8 +113,8 @@ private static final long serialVersionUID = 1L;
     @ManyToOne
 	KinderGarten kindereventmaker;
 
-	//
-	/*@JsonIgnore
+//	
+/*	@JsonIgnore
 	@OneToOne
 	private Salle_event salle_event ;
 	
@@ -122,7 +122,7 @@ private static final long serialVersionUID = 1L;
 	@OneToOne
 	private Facture_Event facture_event ;*/
 	
-   /* @JsonIgnore
+  /*  @JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="event")
 	private  List<Reservation_Stock_interne> reservation_stock_interne;*/
@@ -132,7 +132,7 @@ private static final long serialVersionUID = 1L;
     @OneToMany(cascade = CascadeType.ALL, mappedBy="event_invitation")
 	private  List<Invitation_Event> invitations;
 	
-    /*@JsonIgnore
+  /*  @JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="event_evaluation")
 	private  List<Evaluation_Event> evaluations; */
@@ -324,7 +324,7 @@ private static final long serialVersionUID = 1L;
 
 	
 
-  /* public Salle_event getSalle_event() {
+ /* public Salle_event getSalle_event() {
 		return salle_event;
 	}
 
