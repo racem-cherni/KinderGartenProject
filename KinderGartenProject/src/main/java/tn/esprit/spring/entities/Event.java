@@ -108,12 +108,12 @@ private static final long serialVersionUID = 1L;
 	@Enumerated(EnumType.STRING)
 	private Locationevent location_event ;
 	
-	//dddd//
+	//dddd////
 	@JsonIgnore
     @ManyToOne
 	KinderGarten kindereventmaker;
 
-	
+	//
 	/*@JsonIgnore
 	@OneToOne
 	private Salle_event salle_event ;
@@ -122,7 +122,7 @@ private static final long serialVersionUID = 1L;
 	@OneToOne
 	private Facture_Event facture_event ;*/
 	
-	/*@JsonIgnore
+   /* @JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="event")
 	private  List<Reservation_Stock_interne> reservation_stock_interne;*/
@@ -324,7 +324,7 @@ private static final long serialVersionUID = 1L;
 
 	
 
-/*	public Salle_event getSalle_event() {
+  /* public Salle_event getSalle_event() {
 		return salle_event;
 	}
 
@@ -338,9 +338,9 @@ private static final long serialVersionUID = 1L;
 
 	public void setFacture_event(Facture_Event facture_event) {
 		this.facture_event = facture_event;
-	}*/
+	}
 
-	/*public List<Reservation_Stock_interne> getReservation_stock_interne() {
+	public List<Reservation_Stock_interne> getReservation_stock_interne() {
 		return reservation_stock_interne;
 	}
 
@@ -369,7 +369,7 @@ private static final long serialVersionUID = 1L;
 	public void setEvaluations(List<Evaluation_Event> evaluations) {
 		this.evaluations = evaluations;
 	}*/
-
+//
 
 
 	public Type_Event getType_event() {

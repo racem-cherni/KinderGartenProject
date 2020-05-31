@@ -48,7 +48,7 @@ public class Invitation_Event implements Serializable {
 
 	public Invitation_Event() {
 		super();
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub//
 	}
 
 	public Invitation_EventPk getInvitationpk() {

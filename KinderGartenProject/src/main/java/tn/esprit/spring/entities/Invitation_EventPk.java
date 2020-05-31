@@ -67,6 +67,6 @@ public class Invitation_EventPk implements Serializable {
 	
 	   
 	
-	
+	//
 
 }

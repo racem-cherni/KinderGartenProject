@@ -26,7 +26,7 @@ public class Discussion_EventPk implements Serializable {
 	
 	public Discussion_EventPk() {
 		super();
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub//
 	}
 
    
