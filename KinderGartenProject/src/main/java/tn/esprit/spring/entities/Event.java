@@ -108,7 +108,7 @@ private static final long serialVersionUID = 1L;
 	@Enumerated(EnumType.STRING)
 	private Locationevent location_event ;
 	
-	//dddd//
+	//dddd////
 	@JsonIgnore
     @ManyToOne
 	KinderGarten kindereventmaker;
