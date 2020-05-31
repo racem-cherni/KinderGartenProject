@@ -43,7 +43,7 @@ public class Order implements Serializable {
 	private double pointspent;
 
 	@Enumerated(EnumType.STRING)
-	private OrderState state = OrderState.WAITING;
+	private OrderState state;
 
 	@OneToOne
 	private Panier panier;
@@ -123,8 +123,9 @@ public class Order implements Serializable {
 		this.pointspent = pointspent;
 	}
 
-	public Order(int id, Date order_date, double total_price, double reducedprice, double pointspent, OrderState state,
-			Panier panier, UserApp user) {
+	public Order(int id, Date order_date, double total_price, double reducedprice, double pointspent,
+			tn.esprit.spring.entities.OrderState state, tn.esprit.spring.entities.Panier panier,
+			tn.esprit.spring.entities.UserApp user) {
 		super();
 		this.id = id;
 		this.order_date = order_date;
@@ -136,6 +137,4 @@ public class Order implements Serializable {
 		User = user;
 	}
 	
-	
-
 }
