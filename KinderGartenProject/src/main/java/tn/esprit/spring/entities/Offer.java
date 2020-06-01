@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
 @Table(name = "offers")
 public class Offer implements Serializable {
@@ -127,5 +128,15 @@ public class Offer implements Serializable {
 		Kindergarten = kindergarten;
 		this.paniers = paniers;
 	}	
+	
+	public Offer(double price, int qty, Product product,
+			KinderGarten kindergarten) {
+		super();
+		this.price = price;
+		this.pub_date = new Date();
+		this.qty = qty;
+		this.product = product;
+		Kindergarten = kindergarten;
+	}
 
 }
