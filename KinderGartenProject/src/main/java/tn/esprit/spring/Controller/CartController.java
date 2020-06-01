@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -70,14 +69,11 @@ public class CartController {
 		this.offer_qty = offer_qty;
 	}
 
-	public double calculatePrice(){
+	public void calculatePrice(){
 		
-		double total_price = 0;
-		
-		System.out.println(this.offer_price.get(35));
-		
-		return this.offer_price.get(35);
-		
+total_price++;
+		System.out.println(total_price);
+
 	}
 	
 	public void onload(){
@@ -92,7 +88,13 @@ public class CartController {
 		if (offers_temp != null)
 			this.offers = offers_temp ;
 		
-		System.out.println(offer_qty);
+		double total_price = 0;
+		
+		for(Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()){
+			total_price += offer.getValue() * (this.getOffer_price().get(offer.getKey()));
+		}
+		
+		this.total_price = total_price;
 
 	}
 	
