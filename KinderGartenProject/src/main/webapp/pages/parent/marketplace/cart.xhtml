@@ -151,18 +151,17 @@
 												<!-- FORM COUNTER VALUE -->
 
 												<h:form>
-													<p:inputText id="input-qty"
+													<h:inputText id="input-qty"
 														onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"
-														value="#{cartController.qty}">
-														<p:ajax event="blur" update="out"/>
-													</p:inputText>
-													<h:outputText id="out" value="#{cartController.qty}" />
+														value="#{cartController.offer_qty[offer.id]}">
+														<f:ajax event="keyup" execute="input-qty" render="total"></f:ajax>
+													</h:inputText>
 												</h:form>
 
 												<!-- /FORM COUNTER -->
 											</div>
 											<!-- /TABLE COLUMN -->
-											
+
 											<!-- TABLE COLUMN -->
 
 											<div class="table-column centered padded-left">
@@ -264,7 +263,7 @@
 										<!-- PRICE TITLE -->
 
 										<p class="price-title big">
-											#{cartController.calculatePrice()} <span class="currency">DT</span>
+											#{cartController.offer_qty[(35).intValue()]} <span class="currency">DT</span>
 										</p>
 										<!-- /PRICE TITLE -->
 										<!-- TOTALS LINE LIST -->
@@ -279,7 +278,7 @@
 												<!-- /TOTALS LINE TITLE -->
 												<!-- PRICE TITLE -->
 
-												<h:outputText styleClass="price-title" id="out1" value="#{cartController.qty}">
+												<h:outputText styleClass="price-title" valye="#{cartController.calculatePrice()}">
 
 												</h:outputText>
 												<!-- /PRICE TITLE -->
