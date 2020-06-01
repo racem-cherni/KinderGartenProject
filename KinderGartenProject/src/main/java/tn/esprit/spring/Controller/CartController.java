@@ -21,13 +21,14 @@ import tn.esprit.spring.Service.PanierProductService;
 import tn.esprit.spring.entities.Offer;
 
 
-
-@Named
-@RequestScoped
+@Scope(value = "session")
+@Controller(value = "cartController")
+@ELBeanName(value = "cartController")
+@Join(path = "/cart", to = "/pages/parent/marketplace/cart.jsf")
 public class CartController {
 	
 	@Autowired
-	private PanierProductService PanierProductService;
+	PanierProductService PanierProductService;
 	
 	@Autowired
 	private OfferService offerservice;
