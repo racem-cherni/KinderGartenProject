@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		<ui:define name="content">
+
+			<div class="content-grid"
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+
+				<div class="section-banner"
+					style="background: url(resources/img/banner/banner-bg.png) no-repeat 50%">
+					<!-- SECTION BANNER ICON -->
+					<img class="section-banner-icon"
+						src="resources/img/banner/accounthub-icon.png"
+						alt="accounthub-icon" />
+					<!-- /SECTION BANNER ICON -->
+
+					<!-- SECTION BANNER TITLE -->
+
+					<p class="section-banner-title">Account Hub</p>
+					<!-- /SECTION BANNER TITLE -->
+
+					<!-- SECTION BANNER TEXT -->
+
+					<p class="section-banner-text">Profile info, messages, settings
+						and much more!</p>
+					<!-- /SECTION BANNER TEXT -->
+				</div>
+
+				<div class="section-header">
+					<!-- SECTION HEADER INFO -->
+					<div class="section-header-info">
+						<!-- SECTION PRETITLE -->
+						<p class="section-pretitle">Browse your Offers</p>
+						<!-- /SECTION PRETITLE -->
+
+						<!-- SECTION TITLE -->
+						<h2 class="section-title">
+							Manage Offers <span class="highlighted">#{marketController.count}</span>
+						</h2>
+						<!-- /SECTION TITLE -->
+					</div>
+					<!-- /SECTION HEADER INFO -->
+				</div>
+
+				<div class="section-filters-bar v6">
+					<!-- SECTION FILTERS BAR ACTIONS -->
+
+					<div class="section-filters-bar-actions">
+						<!-- FORM -->
+						<form class="form">
+							<!-- FORM ITEM -->
+
+							<div class="form-item split">
+								<!-- FORM INPUT -->
+
+								<h:form>
+
+									<div class="form-input small">
+										<label for="events-search">Search Products</label>
+										<h:inputText id="input" value="#{createofferController.msg}">
+											<f:ajax event="keyup" execute="input" render="output"></f:ajax>
+										</h:inputText>
+									</div>
+
+								</h:form>
+								<!-- /FORM INPUT -->
+
+								<!-- BUTTON -->
+								<p class="button primary">
+									<!-- ICON MAGNIFYING GLASS -->
+									<svg class="icon-magnifying-glass"> <use
+										xlink:href="#svg-magnifying-glass" /> </svg>
+									<!-- /ICON MAGNIFYING GLASS -->
+								</p>
+
+								<!-- /BUTTON -->
+							</div>
+							<!-- /FORM ITEM -->
+						</form>
+						<!-- /FORM -->
+					</div>
+					<!-- /SECTION FILTERS BAR ACTIONS -->
+
+					<!-- SECTION FILTERS BAR ACTIONS -->
+
+					<div class="section-filters-bar-actions">
+						<!-- BUTTON -->
+
+						<h:link outcome="createoffer">
+							<p class="button secondary popup-event-creation-trigger">+
+								Create a new Offer!</p>
+						</h:link>
+						<!-- /BUTTON -->
+					</div>
+					<!-- /SECTION FILTERS BAR ACTIONS -->
+				</div>
+				<h:panelGroup id="output">
+					<div class="grid grid-3-3-3-3 centered">
+
+						<ui:repeat value="#{marketController.getOffers()}" var="offer">
+
+							<div class="user-preview">
+								<!-- USER PREVIEW COVER -->
+								<figure class="user-preview-cover liquid"
+									style="background: url(&quot;img/cover/48.jpg&quot;) center center / cover no-repeat;">
+								<img src="resources/img/cover/48.jpg" alt="cover-48"
+									style="display: none;" /> </figure>
+								<!-- /USER PREVIEW COVER -->
+
+								<!-- USER PREVIEW INFO -->
+
+								<div class="user-preview-info">
+									<!-- TAG STICKER -->
+
+									<!-- /TAG STICKER -->
+
+									<!-- USER SHORT DESCRIPTION -->
+
+									<div class="user-short-description">
+
+										<!-- USER SHORT DESCRIPTION TITLE -->
+
+										<p class="user-short-description-title">
+											#{offer.product.name}</p>
+										<f:param name="id" value="#{offer.id}" />
+
+
+										<!-- /USER SHORT DESCRIPTION TITLE -->
+
+										<!-- USER SHORT DESCRIPTION TEXT -->
+
+										<p class="user-short-description-text">#{offer.pub_date}</p>
+										<!-- /USER SHORT DESCRIPTION TEXT -->
+									</div>
+									<!-- /USER SHORT DESCRIPTION -->
+
+									<!-- USER STATS -->
+
+									<div class="user-stats">
+										<!-- USER STAT -->
+
+
+										<div class="user-stat">
+											<!-- USER STAT TITLE -->
+
+											<p class="user-stat-title">#{offer.price} DT</p>
+											<!-- /USER STAT TITLE -->
+
+											<!-- USER STAT TEXT -->
+
+											<p class="user-stat-text">Price</p>
+											<!-- /USER STAT TEXT -->
+										</div>
+										<!-- /USER STAT -->
+
+										<!-- USER STAT -->
+
+										<div class="user-stat">
+											<!-- USER STAT TITLE -->
+
+											<p class="user-stat-title">#{offer.qty}</p>
+											<!-- /USER STAT TITLE -->
+
+											<!-- USER STAT TEXT -->
+
+											<p class="user-stat-text">Quantity</p>
+											<!-- /USER STAT TEXT -->
+										</div>
+										<!-- /USER STAT -->
+									</div>
+									<!-- /USER STATS -->
+
+									<!-- USER PREVIEW ACTIONS -->
+	
+										<div class="user-preview-actions">
+											<h:link styleClass="button secondary" outcome="offer"
+												value="Edit Offer">
+												<f:param name="id" value="#{offer.id}" />
+											</h:link>
+											<!-- /BUTTON -->
+										</div>
+
+									<!-- /USER PREVIEW ACTIONS -->
+								</div>
+								<!-- /USER PREVIEW INFO -->
+							</div>
+							<!-- /EVENT PREVIEW -->
+						</ui:repeat>
+					</div>
+				</h:panelGroup>
+			</div>
+		</ui:define>
+
+
+	</ui:composition>
+
+
+	<script src="app.bundle.min.js"></script>
+
+</body>
+
+</html>

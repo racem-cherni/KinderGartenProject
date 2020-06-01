@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		<ui:define name="content">
+
+			<div class="content-grid">
+
+				<!-- SECTION BANNER -->
+
+				<div class="section-banner"
+					style="background: url(resources/img/banner/banner-bg.png) no-repeat 50%">
+
+					<!-- SECTION BANNER ICON -->
+					<img class="section-banner-icon"
+						src="resources/img/banner/marketplace-icon.png"
+						alt="marketplace-icon" />
+					<!-- /SECTION BANNER ICON -->
+					<!-- SECTION BANNER TITLE -->
+
+					<p class="section-banner-title">Marketplace</p>
+					<!-- /SECTION BANNER TITLE -->
+					<!-- SECTION BANNER TEXT -->
+
+					<p class="section-banner-text">The best place for the community
+						to buy and sell!</p>
+					<!-- /SECTION BANNER TEXT -->
+
+				</div>
+				<!-- /SECTION BANNER -->
+				<!-- SECTION HEADER -->
+
+
+				<!-- /GRID -->
+				<!-- SECTION HEADER -->
+
+				<div class="section-header">
+					<!-- SECTION HEADER INFO -->
+
+					<div class="section-header-info">
+						<!-- SECTION PRETITLE -->
+
+						<p class="section-pretitle">See what's new!</p>
+						<!-- /SECTION PRETITLE -->
+						<!-- SECTION TITLE -->
+
+						<h2 class="section-title">Best Sellers</h2>
+						<!-- /SECTION TITLE -->
+					</div>
+					<!-- /SECTION HEADER INFO -->
+					<!-- SECTION HEADER ACTIONS -->
+
+					<div class="section-header-actions">
+						<!-- SECTION HEADER ACTION -->
+
+						<!-- /SECTION HEADER ACTION -->
+					</div>
+					<!-- /SECTION HEADER ACTIONS -->
+				</div>
+				<!-- /SECTION HEADER -->
+				<!-- GRID -->
+
+				<div class="grid grid-3-3-3-3 centered">
+					<!-- PRODUCT PREVIEW -->
+
+
+					<ui:repeat value="#{productController.getBestSellers(6)}" var="product">
+
+						<div class="product-preview">
+							<!-- PRODUCT PREVIEW IMAGE -->
+							<a href="marketplace-product.html"> <figure
+									class="product-preview-image liquid"
+									style="background: url(&quot;resources/img/marketplace/items/01.jpg&quot;) center center / cover no-repeat;">
+								<img src="resources/img/marketplace/items/01.jpg" alt="item-01"
+									style="display: none;" /> </figure>
+							</a>
+							<!-- /PRODUCT PREVIEW IMAGE -->
+							<!-- PRODUCT PREVIEW INFO -->
+
+							<div class="product-preview-info">
+								<!-- TEXT STICKER -->
+
+								<p class="text-sticker" style="margin: 0px 40px 0px 0px">
+									<h:outputText
+										value="#{productController.getOffernumber(product.id)} Offers starting at"></h:outputText>
+									<span class="highlighted"><h:outputText
+											value=" #{productController.getPrice(product.id)} dt"></h:outputText></span>
+								</p>
+								<!-- /TEXT STICKER -->
+								<!-- PRODUCT PREVIEW TITLE -->
+
+								<p class="product-preview-title">
+									<h:link outcome="product">
+										<h:outputText value="#{product.name}"></h:outputText>
+										<f:param name="id" value="#{product.id}" />
+									</h:link>
+								</p>
+								<!-- /PRODUCT PREVIEW TITLE -->
+								<!-- PRODUCT PREVIEW CATEGORY -->
+
+								<p class="product-preview-category digital">
+									<a href="marketplace-category.html"><h:outputText
+											value="#{product.ref}  "></h:outputText></a>
+								</p>
+								<!-- /PRODUCT PREVIEW CATEGORY -->
+								<!-- PRODUCT PREVIEW TEXT -->
+
+								<p class="product-preview-text">Awesome hexagon themed
+									stream pack, you can change all colors and...</p>
+								<!-- /PRODUCT PREVIEW TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW INFO -->
+							<!-- PRODUCT PREVIEW META -->
+
+							<div class="product-preview-meta">
+								<!-- PRODUCT PREVIEW AUTHOR -->
+
+								<div class="product-preview-author">
+									<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+									<a
+										class="product-preview-author-image user-avatar micro no-border"
+										href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+										<div class="user-avatar-content">
+											<!-- HEXAGON -->
+
+											<div class="hexagon-image-18-20"
+												data-src="resources/img/avatar/01.jpg"
+												style="width: 18px; height: 20px; position: relative;">
+												<canvas width="18" height="20"
+													style="position: absolute; top: 0px; left: 0px;" />
+											</div>
+											<!-- /HEXAGON -->
+										</div> <!-- /USER AVATAR CONTENT -->
+									</a>
+									<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+									<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+									<p class="product-preview-author-title">
+										<h:outputText
+											value="This sold has been"></h:outputText>
+									</p>
+									<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+									<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+									<p class="product-preview-author-text">
+										<a href="profile-timeline.html"><h:outputText
+											value="#{productController.getSoldNumber(product.id)} Times !"></h:outputText></a>
+									</p>
+									<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+								</div>
+								<!-- /PRODUCT PREVIEW AUTHOR -->
+								<!-- RATING LIST -->
+
+								<div class="rating-list">
+									<!-- RATING -->
+
+
+									<ui:repeat value="#{productController.fillStars(product.id)}"
+										var="i">
+										<div class="rating filled">
+											<!-- RATING ICON -->
+											<svg class="rating-icon icon-star"> <use
+												xlink:href="#svg-star" /> </svg>
+											<!-- /RATING ICON -->
+										</div>
+										<!-- /RATING -->
+									</ui:repeat>
+									<!-- RATING -->
+
+
+									<ui:repeat value="#{productController.unfillStars(product.id)}"
+										var="i">
+										<div class="rating">
+											<!-- RATING ICON -->
+											<svg class="rating-icon icon-star"> <use
+												xlink:href="#svg-star" /> </svg>
+											<!-- /RATING ICON -->
+										</div>
+									</ui:repeat>
+									<!-- /RATING -->
+
+								</div>
+								<!-- /RATING LIST -->
+							</div>
+							<!-- /PRODUCT PREVIEW META -->
+						</div>
+						<!-- /PRODUCT PREVIEW -->
+						<!-- PRODUCT PREVIEW -->
+					</ui:repeat>
+
+
+				</div>
+
+				<div class="section-header">
+					<!-- SECTION HEADER INFO -->
+
+					<div class="section-header-info">
+						<!-- SECTION PRETITLE -->
+
+						<p class="section-pretitle">See what's new!</p>
+						<!-- /SECTION PRETITLE -->
+						<!-- SECTION TITLE -->
+
+						<h2 class="section-title">Recommended items</h2>
+						<!-- /SECTION TITLE -->
+					</div>
+					<!-- /SECTION HEADER INFO -->
+					<!-- SECTION HEADER ACTIONS -->
+
+					<div class="section-header-actions">
+						<!-- SECTION HEADER ACTION -->
+
+						<!-- /SECTION HEADER ACTION -->
+					</div>
+					<!-- /SECTION HEADER ACTIONS -->
+				</div>
+
+				<div class="section-header">
+					<!-- SECTION HEADER INFO -->
+
+					<div class="section-header-info">
+						<!-- SECTION PRETITLE -->
+
+						<p class="section-pretitle">See what's new!</p>
+						<!-- /SECTION PRETITLE -->
+						<!-- SECTION TITLE -->
+
+						<h2 class="section-title">Your kindergarten Items</h2>
+						<!-- /SECTION TITLE -->
+					</div>
+					<!-- /SECTION HEADER INFO -->
+					<!-- SECTION HEADER ACTIONS -->
+
+					<div class="section-header-actions">
+						<!-- SECTION HEADER ACTION -->
+
+						<!-- /SECTION HEADER ACTION -->
+					</div>
+					<!-- /SECTION HEADER ACTIONS -->
+				</div>
+
+				<div class="grid grid-3-3-3-3 centered">
+
+					<ui:repeat value="#{productController.getRandom()}" var="product">
+
+						<div class="product-preview">
+							<!-- PRODUCT PREVIEW IMAGE -->
+							<a href="marketplace-product.html"> <figure
+									class="product-preview-image liquid"
+									style="background: url(&quot;resources/img/marketplace/items/01.jpg&quot;) center center / cover no-repeat;">
+								<img src="resources/img/marketplace/items/01.jpg" alt="item-01"
+									style="display: none;" /> </figure>
+							</a>
+							<!-- /PRODUCT PREVIEW IMAGE -->
+							<!-- PRODUCT PREVIEW INFO -->
+
+							<div class="product-preview-info">
+								<!-- TEXT STICKER -->
+
+								<p class="text-sticker" style="margin: 0px 40px 0px 0px">
+									<h:outputText
+										value="#{productController.getOffernumber(product.id)} Offers starting at"></h:outputText>
+									<span class="highlighted"><h:outputText
+											value=" #{productController.getPrice(product.id)} dt"></h:outputText></span>
+								</p>
+								<!-- /TEXT STICKER -->
+								<!-- PRODUCT PREVIEW TITLE -->
+
+								<p class="product-preview-title">
+									<h:link outcome="product">
+										<h:outputText value="#{product.name}"></h:outputText>
+										<f:param name="id" value="#{product.id}" />
+									</h:link>
+								</p>
+								<!-- /PRODUCT PREVIEW TITLE -->
+								<!-- PRODUCT PREVIEW CATEGORY -->
+
+								<p class="product-preview-category digital">
+									<a href="marketplace-category.html"><h:outputText
+											value="#{product.ref}  "></h:outputText></a>
+								</p>
+								<!-- /PRODUCT PREVIEW CATEGORY -->
+								<!-- PRODUCT PREVIEW TEXT -->
+
+								<p class="product-preview-text">Awesome hexagon themed
+									stream pack, you can change all colors and...</p>
+								<!-- /PRODUCT PREVIEW TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW INFO -->
+							<!-- PRODUCT PREVIEW META -->
+
+							<div class="product-preview-meta">
+								<!-- PRODUCT PREVIEW AUTHOR -->
+
+								<div class="product-preview-author">
+									<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+									<a
+										class="product-preview-author-image user-avatar micro no-border"
+										href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+										<div class="user-avatar-content">
+											<!-- HEXAGON -->
+
+											<div class="hexagon-image-18-20"
+												data-src="resources/img/avatar/01.jpg"
+												style="width: 18px; height: 20px; position: relative;">
+												<canvas width="18" height="20"
+													style="position: absolute; top: 0px; left: 0px;" />
+											</div>
+											<!-- /HEXAGON -->
+										</div> <!-- /USER AVATAR CONTENT -->
+									</a>
+									<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+									<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+									<p class="product-preview-author-title">
+										<h:outputText
+											value="posted by"></h:outputText>
+									</p>
+									<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+									<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+									
+
+									<p class="product-preview-author-text">
+										<a href="profile-timeline.html">Marina Valentine</a>
+									</p>
+									<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+								</div>
+								<!-- /PRODUCT PREVIEW AUTHOR -->
+								<!-- RATING LIST -->
+
+								<div class="rating-list">
+									<!-- RATING -->
+
+
+
+	
+										<div class="rating filled">
+											<!-- RATING ICON -->
+											<svg class="rating-icon icon-star"> <use
+												xlink:href="#svg-star" /> </svg>
+											<!-- /RATING ICON -->
+										</div>
+										<!-- /RATING -->
+
+									<!-- RATING -->
+
+
+
+
+										<div class="rating">
+											<!-- RATING ICON -->
+											<svg class="rating-icon icon-star"> <use
+												xlink:href="#svg-star" /> </svg>
+											<!-- /RATING ICON -->
+										</div>
+
+									<!-- /RATING -->
+
+								</div>
+								<!-- /RATING LIST -->
+							</div>
+							<!-- /PRODUCT PREVIEW META -->
+						</div>
+						<!-- /PRODUCT PREVIEW -->
+						<!-- PRODUCT PREVIEW -->
+					</ui:repeat>
+
+				</div>
+
+			</div>
+		</ui:define>
+
+
+	</ui:composition>
+
+
+<script src="app.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		<f:metadata>
+			<f:viewParam name="ref" value="#{cartController.ref}" />
+			<f:viewParam name="id" value="#{productController.id}" />
+			<f:viewAction action="#{productController.onload()}" />
+		</f:metadata>
+
+		<ui:define name="content">
+			<div class="content-grid">
+				<div class="section-banner"
+					style="background: url(resources/img/banner/banner-bg.png) no-repeat 50%">
+					<!-- SECTION BANNER ICON -->
+					<img class="section-banner-icon"
+						src="resources/img/banner/marketplace-icon.png"
+						alt="marketplace-icon" />
+					<!-- /SECTION BANNER ICON -->
+
+					<!-- SECTION BANNER TITLE -->
+
+					<p class="section-banner-title">Marketplace</p>
+					<!-- /SECTION BANNER TITLE -->
+
+					<!-- SECTION BANNER TEXT -->
+
+					<p class="section-banner-text">The best place for the community
+						to buy and sell!</p>
+					<!-- /SECTION BANNER TEXT -->
+				</div>
+
+				<div class="section-header">
+					<!-- SECTION HEADER INFO -->
+
+					<div class="section-header-info">
+						<!-- SECTION PRETITLE -->
+
+						<p class="section-pretitle">HTML Templates</p>
+						<!-- /SECTION PRETITLE -->
+
+						<!-- SECTION TITLE -->
+
+						<h2 class="section-title">#{productController.getProductbyId(productController.id).name}</h2>
+						<!-- /SECTION TITLE -->
+					</div>
+					<!-- /SECTION HEADER INFO -->
+					<!-- SECTION HEADER ACTIONS -->
+
+					<div class="section-header-actions">
+						<!-- SECTION HEADER SUBSECTION -->
+						<a class="section-header-subsection" href="marketplace.html">Marketplace</a>
+						<!-- /SECTION HEADER SUBSECTION -->
+						<!-- /SECTION HEADER SUBSECTION -->
+
+						<!-- SECTION HEADER SUBSECTION -->
+
+						<p class="section-header-subsection">#{productController.getProductbyId(productController.id).name}</p>
+						<!-- /SECTION HEADER SUBSECTION -->
+					</div>
+					<!-- /SECTION HEADER ACTIONS -->
+				</div>
+
+				<div class="grid grid-9-3">
+
+
+					<div class="marketplace-content grid-column">
+						<!-- SLIDER PANEL -->
+
+						<div class="slider-panel">
+							<!-- SLIDER PANEL SLIDES -->
+
+							<div class="tns-outer" id="product-box-slider-items-ow">
+								<div class="tns-liveregion tns-visually-hidden"
+									aria-live="polite" aria-atomic="true">
+									slide <span class="current">2</span> of 7
+								</div>
+								<div class="tns-inner" id="product-box-slider-items-iw">
+									<div id="product-box-slider-items"
+										class="slider-panel-slides tns-slider tns-gallery tns-subpixel tns-calc tns-horizontal">
+										<!-- SLIDER PANEL SLIDE -->
+
+										<div class="slider-panel-slide tns-item tns-normal"
+											id="product-box-slider-items-item0" aria-hidden="true"
+											tabindex="-1">
+											<!-- SLIDER PANEL SLIDE IMAGE -->
+											<figure class="slider-panel-slide-image liquid"
+												style="background: url(&quot;img/marketplace/items/10.jpg&quot;) center center / cover no-repeat;">
+											<img src="resources/img/marketplace/items/10.jpg"
+												alt="item-10" style="display: none;" /> </figure>
+											<!-- /SLIDER PANEL SLIDE IMAGE -->
+										</div>
+										<!-- /SLIDER PANEL SLIDE -->
+										<!-- SLIDER PANEL SLIDE -->
+
+										<div
+											class="slider-panel-slide tns-item tns-slide-active tns-fadeIn"
+											id="product-box-slider-items-item1" style="left: 0%;">
+											<!-- SLIDER PANEL SLIDE IMAGE -->
+											<figure class="slider-panel-slide-image liquid"
+												style="background: url(&quot;img/marketplace/items/15.jpg&quot;) center center / cover no-repeat;">
+											<img src="resources/img/marketplace/items/15.jpg"
+												alt="item-15" style="display: none;" /> </figure>
+											<!-- /SLIDER PANEL SLIDE IMAGE -->
+										</div>
+										<!-- /SLIDER PANEL SLIDE -->
+										<!-- SLIDER PANEL SLIDE -->
+
+										<div class="slider-panel-slide tns-item tns-normal"
+											id="product-box-slider-items-item2" aria-hidden="true"
+											tabindex="-1">
+											<!-- SLIDER PANEL SLIDE IMAGE -->
+											<figure class="slider-panel-slide-image liquid"
+												style="background: url(&quot;img/marketplace/items/16.jpg&quot;) center center / cover no-repeat;">
+											<img src="resources/img/marketplace/items/16.jpg"
+												alt="item-16" style="display: none;" /> </figure>
+											<!-- /SLIDER PANEL SLIDE IMAGE -->
+										</div>
+										<!-- /SLIDER PANEL SLIDE -->
+										<!-- SLIDER PANEL SLIDE -->
+
+										<div class="slider-panel-slide tns-item tns-normal"
+											id="product-box-slider-items-item3" aria-hidden="true"
+											tabindex="-1">
+											<!-- SLIDER PANEL SLIDE IMAGE -->
+											<figure class="slider-panel-slide-image liquid"
+												style="background: url(&quot;img/marketplace/items/17.jpg&quot;) center center / cover no-repeat;">
+											<img src="resources/img/marketplace/items/17.jpg"
+												alt="item-17" style="display: none;" /> </figure>
+											<!-- /SLIDER PANEL SLIDE IMAGE -->
+										</div>
+										<!-- /SLIDER PANEL SLIDE -->
+										<!-- SLIDER PANEL SLIDE -->
+
+										<div class="slider-panel-slide tns-item tns-normal"
+											id="product-box-slider-items-item4" aria-hidden="true"
+											tabindex="-1">
+											<!-- SLIDER PANEL SLIDE IMAGE -->
+											<figure class="slider-panel-slide-image liquid"
+												style="background: url(&quot;img/marketplace/items/18.jpg&quot;) center center / cover no-repeat;">
+											<img src="resources/img/marketplace/items/18.jpg"
+												alt="item-18" style="display: none;" /> </figure>
+											<!-- /SLIDER PANEL SLIDE IMAGE -->
+										</div>
+										<!-- /SLIDER PANEL SLIDE -->
+										<!-- SLIDER PANEL SLIDE -->
+
+										<div class="slider-panel-slide tns-item tns-normal"
+											id="product-box-slider-items-item5" aria-hidden="true"
+											tabindex="-1">
+											<!-- SLIDER PANEL SLIDE IMAGE -->
+											<figure class="slider-panel-slide-image liquid"
+												style="background: url(&quot;img/marketplace/items/19.jpg&quot;) center center / cover no-repeat;">
+											<img src="resources/img/marketplace/items/19.jpg"
+												alt="item-19" style="display: none;" /> </figure>
+											<!-- /SLIDER PANEL SLIDE IMAGE -->
+										</div>
+										<!-- /SLIDER PANEL SLIDE -->
+										<!-- SLIDER PANEL SLIDE -->
+
+										<div class="slider-panel-slide tns-item tns-normal"
+											id="product-box-slider-items-item6" aria-hidden="true"
+											tabindex="-1">
+											<!-- SLIDER PANEL SLIDE IMAGE -->
+											<figure class="slider-panel-slide-image liquid"
+												style="background: url(&quot;img/marketplace/items/20.jpg&quot;) center center / cover no-repeat;">
+											<img src="resources/img/marketplace/items/20.jpg"
+												alt="item-20" style="display: none;" /> </figure>
+											<!-- /SLIDER PANEL SLIDE IMAGE -->
+										</div>
+										<!-- /SLIDER PANEL SLIDE -->
+
+										<div class="slider-panel-slide tns-item tns-normal"
+											aria-hidden="true" tabindex="-1">
+											<!-- SLIDER PANEL SLIDE IMAGE -->
+											<figure class="slider-panel-slide-image liquid"
+												style="background: url(&quot;img/marketplace/items/10.jpg&quot;) center center / cover no-repeat;">
+											<img src="resources/img/marketplace/items/10.jpg"
+												alt="item-10" style="display: none;" /> </figure>
+											<!-- /SLIDER PANEL SLIDE IMAGE -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /SLIDER PANEL -->
+						<!-- TAB BOX -->
+
+						<div class="tab-box">
+							<!-- TAB BOX OPTIONS -->
+
+							<div class="tab-box-options">
+								<!-- TAB BOX OPTION -->
+
+								<div class="tab-box-option active">
+									<!-- TAB BOX OPTION TITLE -->
+
+									<p class="tab-box-option-title">Description</p>
+									<!-- /TAB BOX OPTION TITLE -->
+								</div>
+								<!-- /TAB BOX OPTION -->
+
+							</div>
+							<!-- /TAB BOX OPTIONS -->
+
+							<!-- TAB BOX ITEMS -->
+
+							<div class="tab-box-items">
+								<!-- TAB BOX ITEM -->
+
+								<div class="tab-box-item"
+									style="display: block; transition: none 0s ease 0s;">
+									<!-- TAB BOX ITEM CONTENT -->
+
+									<div class="tab-box-item-content">
+										<!-- TAB BOX ITEM TITLE -->
+
+										<p class="tab-box-item-paragraph">#{productController.getProductbyId(productController.id).description}</p>
+										<!-- /TAB BOX ITEM PARAGRAPH -->
+
+										<!-- /TAB BOX ITEM PARAGRAPH -->
+									</div>
+									<!-- /TAB BOX ITEM CONTENT -->
+								</div>
+
+							</div>
+							<!-- /TAB BOX ITEMS -->
+						</div>
+
+						<div class="section-header">
+							<!-- SECTION HEADER INFO -->
+
+							<div class="section-header-info">
+								<!-- SECTION PRETITLE -->
+
+								<p class="section-pretitle">Browse</p>
+								<!-- /SECTION PRETITLE -->
+								<!-- SECTION TITLE -->
+
+								<h2 class="section-title">
+									Offers <span class="highlighted"></span>
+								</h2>
+								<!-- /SECTION TITLE -->
+							</div>
+							<!-- /SECTION HEADER INFO -->
+						</div>
+
+						<div class="table-wrap" data-simplebar="init">
+							<div class="simplebar-wrapper" style="margin: 0px;">
+
+
+
+								<!-- TABLE -->
+
+								<div class="table table-downloads split-rows">
+									<!-- TABLE HEADER -->
+
+									<div class="table-header">
+										<!-- TABLE HEADER COLUMN -->
+
+										<div class="table-header-column">
+											<!-- TABLE HEADER TITLE -->
+
+											<p class="table-header-title">Seller</p>
+											<!-- /TABLE HEADER TITLE -->
+										</div>
+										<!-- /TABLE HEADER COLUMN -->
+
+										<!-- TABLE HEADER COLUMN -->
+
+										<div class="table-header-column padded">
+											<!-- TABLE HEADER TITLE -->
+
+											<p class="table-header-title">Seller's Ratings</p>
+											<!-- /TABLE HEADER TITLE -->
+										</div>
+										<!-- /TABLE HEADER COLUMN -->
+
+										<!-- TABLE HEADER COLUMN -->
+
+										<div class="table-header-column padded">
+											<!-- TABLE HEADER TITLE -->
+
+											<p class="table-header-title">Price</p>
+											<!-- /TABLE HEADER TITLE -->
+										</div>
+										<!-- /TABLE HEADER COLUMN -->
+
+										<!-- TABLE HEADER COLUMN -->
+
+										<div class="table-header-column padded">
+											<!-- TABLE HEADER TITLE -->
+
+											<p class="table-header-title">Quantity</p>
+											<!-- /TABLE HEADER TITLE -->
+										</div>
+										<!-- /TABLE HEADER COLUMN -->
+
+										<!-- TABLE HEADER COLUMN -->
+
+										<div class="table-header-column padded-left" />
+										<!-- /TABLE HEADER COLUMN -->
+									</div>
+									<!-- /TABLE HEADER -->
+
+									<!-- TABLE BODY -->
+
+									<ui:repeat value="#{productController.getOffers()}" var="offer">
+										<div class="table-body same-color-rows">
+
+
+											<!-- TABLE ROW -->
+
+											<div class="table-row medium">
+												<!-- TABLE COLUMN -->
+
+												<div class="table-column">
+													<!-- PRODUCT PREVIEW -->
+
+													<div class="product-preview tiny">
+														<!-- PRODUCT PREVIEW IMAGE -->
+														<a href="marketplace-product.html"> <figure
+																class="product-preview-image short liquid"
+																style="background: url(&quot;resources/img/badge/gempost-b.png&quot;) center center / cover no-repeat;">
+															<img src="resources/img/badge/gempost-b.png"
+																alt="item-11" style="display: none;" /> </figure>
+														</a>
+														<!-- /PRODUCT PREVIEW IMAGE -->
+
+														<!-- PRODUCT PREVIEW INFO -->
+
+														<div class="product-preview-info">
+															<!-- PRODUCT PREVIEW TITLE -->
+
+
+															<p class="product-preview-creator">
+																<a href="profile-timeline.html">Offer By</a>
+															</p>
+
+															<p class="product-preview-category digital">
+																<a href="marketplace-category.html">#{offer.kindergarten.name}</a>
+															</p>
+
+														</div>
+
+													</div>
+
+												</div>
+
+												<div class="table-column padded">
+
+													<div class="button with-only-icon popup-review-trigger">
+														<!-- RATING LIST -->
+
+														<div class="rating-list">
+															<!-- RATING -->
+
+															<div class="rating dark filled">
+																<!-- RATING ICON -->
+																<svg class="rating-icon icon-star"> <use
+																	xlink:href="#svg-star" /> </svg>
+																<!-- /RATING ICON -->
+															</div>
+															<!-- /RATING -->
+
+															<!-- RATING -->
+
+															<div class="rating dark filled">
+																<!-- RATING ICON -->
+																<svg class="rating-icon icon-star"> <use
+																	xlink:href="#svg-star" /> </svg>
+																<!-- /RATING ICON -->
+															</div>
+															<!-- /RATING -->
+
+															<!-- RATING -->
+
+															<div class="rating dark filled">
+																<!-- RATING ICON -->
+																<svg class="rating-icon icon-star"> <use
+																	xlink:href="#svg-star" /> </svg>
+																<!-- /RATING ICON -->
+															</div>
+															<!-- /RATING -->
+
+															<!-- RATING -->
+
+															<div class="rating dark filled">
+																<!-- RATING ICON -->
+																<svg class="rating-icon icon-star"> <use
+																	xlink:href="#svg-star" /> </svg>
+																<!-- /RATING ICON -->
+															</div>
+															<!-- /RATING -->
+
+															<!-- RATING -->
+
+															<div class="rating dark filled">
+																<!-- RATING ICON -->
+																<svg class="rating-icon icon-star"> <use
+																	xlink:href="#svg-star" /> </svg>
+																<!-- /RATING ICON -->
+															</div>
+															<!-- /RATING -->
+														</div>
+														<!-- /RATING LIST -->
+													</div>
+												</div>
+												<!-- /TABLE COLUMN -->
+
+												<!-- TABLE COLUMN -->
+
+												<!-- /TABLE COLUMN -->
+
+												<!-- TABLE COLUMN -->
+
+												<div class="table-column padded">
+													<!-- PRICE TITLE -->
+
+													<p class="price-title">
+														#{offer.price} <span class="currency">DT</span>
+													</p>
+													<!-- /PRICE TITLE -->
+												</div>
+
+												<div class="table-column padded">
+													<!-- TABLE TITLE -->
+
+													<p class="table-title">#{offer.qty}</p>
+													<!-- /TABLE TITLE -->
+												</div>
+												<!-- /TABLE COLUMN -->
+
+												<!-- TABLE COLUMN -->
+
+												<div class="table-column padded-left">
+													<!-- TABLE ACTIONS -->
+
+													<div class="table-actions">
+														<!-- BUTTON -->
+														<h:form>
+															<h:commandButton styleClass="button secondary"
+																value="Add to Cart"
+																action="#{cartController.addToCart(offer)}">
+															</h:commandButton>
+														</h:form>
+														<!-- /BUTTON -->
+
+														<!-- BUTTON -->
+
+														<!-- /BUTTON -->
+													</div>
+													<!-- /TABLE ACTIONS -->
+												</div>
+												<!-- /TABLE COLUMN -->
+											</div>
+
+										</div>
+									</ui:repeat>
+
+									<!-- /TABLE BODY -->
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+
+					<div class="container">
+						<div class="row">
+							<h:panelGroup id="field">
+								<div class="marketplace-sidebar">
+
+									<!-- MARKETPLACE CONTENT -->
+									<div class="sidebar-box">
+										<!-- SIDEBAR BOX ITEMS -->
+
+										<div class="sidebar-box-items">
+											<!-- PRICE TITLE -->
+
+											<p class="price-title big">
+
+												<h:outputText
+													value=" #{productController.getPrice(productController.id)} "></h:outputText>
+												<span class="currency">DT</span>
+											</p>
+											<!-- /PRICE TITLE -->
+
+											<!-- FORM -->
+											<form class="form">
+												<!-- CHECKBOX WRAP -->
+
+												<div class="checkbox-wrap selected">
+													<input type="radio" id="license-regular"
+														name="license_type" value="license-regular"
+														checked="checked" />
+													<!-- CHECKBOX BOX -->
+
+													<div class="checkbox-box">
+														<!-- ICON CROSS -->
+														<svg class="icon-cross"> <use
+															xlink:href="#svg-cross"></use> </svg>
+														<!-- /ICON CROSS -->
+													</div>
+													<!-- /CHECKBOX BOX -->
+													<label class="accordion-trigger-linked"
+														for="license-regular">Regular License</label>
+
+													<!-- CHECKBOX INFO -->
+
+													<!-- /CHECKBOX INFO -->
+
+													<div
+														style="overflow: hidden; height: 32px; transition: all 0.3s ease-in-out 0s;">
+														<div
+															class="checkbox-info accordion-content-linked accordion-open">
+															<!-- CHECKBOX INFO TEXT -->
+
+															<p class="checkbox-info-text">
+																For use, by you or one client, in a single end product
+																which end users are not charged for. <a href="#">View
+																	Details</a>
+															</p>
+															<!-- /CHECKBOX INFO TEXT -->
+														</div>
+													</div>
+												</div>
+												<!-- /CHECKBOX WRAP -->
+
+												<!-- CHECKBOX WRAP -->
+
+												<div class="checkbox-wrap">
+													<input type="radio" id="license-extended"
+														name="license_type" value="license-extended" />
+													<!-- CHECKBOX BOX -->
+
+													<div class="checkbox-box">
+														<!-- ICON CROSS -->
+														<svg class="icon-cross"> <use
+															xlink:href="#svg-cross"></use> </svg>
+														<!-- /ICON CROSS -->
+													</div>
+													<!-- /CHECKBOX BOX -->
+													<label class="accordion-trigger-linked"
+														for="license-extended">Extended License</label>
+
+													<!-- CHECKBOX INFO -->
+
+													<!-- /CHECKBOX INFO -->
+
+													<div
+														style="overflow: hidden; height: 0px; transition: all 0.3s ease-in-out 0s;">
+														<div class="checkbox-info accordion-content-linked">
+															<!-- CHECKBOX INFO TEXT -->
+
+															<p class="checkbox-info-text">
+																For use, by you or one client, in a single end product
+																which end users can be charged for. <a href="#">View
+																	Details</a>
+															</p>
+															<!-- /CHECKBOX INFO TEXT -->
+														</div>
+													</div>
+												</div>
+												<!-- /CHECKBOX WRAP -->
+											</form>
+											<!-- /FORM -->
+
+											<!-- BUTTON -->
+
+											<p class="button primary">Add to Your Cart!</p>
+
+
+											<!-- USER STATS -->
+
+											<div class="user-stats">
+												<!-- USER STAT -->
+
+												<div class="user-stat big">
+													<!-- USER STAT TITLE -->
+
+													<p class="user-stat-title">
+														<h:outputText
+															value="#{productController.getSoldNumber(productController.id)}"></h:outputText>
+													</p>
+													<!-- /USER STAT TITLE -->
+
+													<!-- USER STAT TEXT -->
+
+													<p class="user-stat-text">sales</p>
+													<!-- /USER STAT TEXT -->
+												</div>
+												<!-- /USER STAT -->
+
+												<!-- USER STAT -->
+
+												<div class="user-stat big">
+													<!-- USER STAT TITLE -->
+
+													<p class="user-stat-title">
+														<h:outputText
+															value="#{productController.getProductRating(productController.id)}"></h:outputText>
+														/5
+													</p>
+													<!-- /USER STAT TITLE -->
+
+													<!-- RATING LIST -->
+
+													<div class="rating-list">
+														<!-- RATING -->
+
+														<div class="rating filled">
+															<!-- RATING ICON -->
+															<svg class="rating-icon medium icon-star"> <use
+																xlink:href="#svg-star" /> </svg>
+															<!-- /RATING ICON -->
+														</div>
+														<!-- /RATING -->
+
+														<!-- RATING -->
+
+														<div class="rating filled">
+															<!-- RATING ICON -->
+															<svg class="rating-icon medium icon-star"> <use
+																xlink:href="#svg-star" /> </svg>
+															<!-- /RATING ICON -->
+														</div>
+														<!-- /RATING -->
+
+														<!-- RATING -->
+
+														<div class="rating filled">
+															<!-- RATING ICON -->
+															<svg class="rating-icon medium icon-star"> <use
+																xlink:href="#svg-star" /> </svg>
+															<!-- /RATING ICON -->
+														</div>
+														<!-- /RATING -->
+
+														<!-- RATING -->
+
+														<div class="rating filled">
+															<!-- RATING ICON -->
+															<svg class="rating-icon medium icon-star"> <use
+																xlink:href="#svg-star" /> </svg>
+															<!-- /RATING ICON -->
+														</div>
+														<!-- /RATING -->
+
+														<!-- RATING -->
+
+														<div class="rating">
+															<!-- RATING ICON -->
+															<svg class="rating-icon medium icon-star"> <use
+																xlink:href="#svg-star" /> </svg>
+															<!-- /RATING ICON -->
+														</div>
+														<!-- /RATING -->
+													</div>
+													<!-- /RATING LIST -->
+
+												</div>
+												<!-- /USER STAT -->
+											</div>
+											<!-- /USER STATS -->
+
+											<h:form>
+												<h:commandButton styleClass="button bg-warning"
+													action="#{productController.setFulllink()}"
+													value="Generate referral link!">
+													<f:ajax render="field" />
+												</h:commandButton>
+											</h:form>
+
+											<h:panelGroup rendered="#{productController.rendered}">
+												<div class="row">
+													<div class="col-sm-12">
+														<p class="checkbox-info-text align-self-justify"
+															style="margin: 20px 0px 0px 0px;">Share this link and
+															gain</p>
+														<span class="highlighted">KinderPoints!</span>
+														<h:inputText id="linktext"
+															value="#{productController.fulllink}" />
+
+														<!-- /BUTTON -->
+													</div>
+												</div>
+											</h:panelGroup>
+
+										</div>
+										<!-- /SIDEBAR BOX ITEMS -->
+
+										<!-- SIDEBAR BOX TITLE -->
+
+									</div>
+								</div>
+							</h:panelGroup>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</ui:define>
+
+
+	</ui:composition>
+
+
+	<script src="app.bundle.min.js"></script>
+
+</body>
+
+</html>

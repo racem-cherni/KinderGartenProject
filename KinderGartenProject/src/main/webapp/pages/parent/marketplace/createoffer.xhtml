@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="https://primefaces.org/ui">
+
+<h:body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		<f:metadata>
+			<f:viewAction action="#{createofferController.onload()}" />
+		</f:metadata>
+
+		<ui:define name="content">
+			<div class="content-grid">
+				<h:panelGroup id="step">
+					<h:panelGroup rendered="#{createofferController.render1}">
+						<h:panelGroup id="toggle">
+							<h:panelGroup rendered="#{createofferController.render_msg}">
+								<div class="section-header">
+									<!-- SECTION HEADER INFO -->
+									<div class="section-header-info">
+										<!-- SECTION PRETITLE -->
+										<p class="section-pretitle">Step 1</p>
+										<!-- /SECTION PRETITLE -->
+
+										<!-- SECTION TITLE -->
+										<h2 class="section-title">Choose your product!</h2>
+										<p>Suggested Products :</p>
+										<!-- /SECTION TITLE -->
+
+									</div>
+									<h:form>
+										<h:commandButton action="#{createofferController.render()}"
+											styleClass="btn btn-block bg-success text-white btn-rounded"
+											disabled="true" value="Next"
+											style="padding : 0px 40px 0px 40px">
+											<f:ajax render="step" />
+										</h:commandButton>
+									</h:form>
+									<!-- /SECTION HEADER INFO -->
+								</div>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{!createofferController.render_msg}">
+								<div class="section-header">
+									<!-- SECTION HEADER INFO -->
+									<div class="section-header-info">
+										<!-- SECTION PRETITLE -->
+										<p class="section-pretitle">Step 1</p>
+										<!-- /SECTION PRETITLE -->
+
+										<!-- SECTION TITLE -->
+										<h2 class="section-title">
+											Currently Selected : <span class="highlighted">#{createofferController.product_name}</span>
+										</h2>
+										<!-- /SECTION TITLE -->
+									</div>
+									<!-- /SECTION HEADER INFO -->
+									<h:form>
+										<h:commandButton action="#{createofferController.render()}"
+											styleClass="btn bg-success text-white" disabled="false"
+											value="Next"
+											style="padding : 0px 40px 0px 40px">
+											<f:ajax render="step" />
+										</h:commandButton>
+									</h:form>
+								</div>
+							</h:panelGroup>
+							<div class="grid grid-3-3-3-3 centered">
+								<ui:repeat value="#{productController.getBestSellers(3)}"
+									var="product">
+									<div class="streamer-box small">
+										<!-- STREAMER BOX COVER -->
+										<figure class="streamer-box-cover liquid"
+											style="background: url(&quot;resources/img/cover/04.jpg&quot;) center center / cover no-repeat;">
+										<img src="resources/img/cover/04.jpg" alt="cover-04"
+											style="display: none;" /> </figure>
+										<!-- /STREAMER BOX COVER -->
+										<!-- STREAMER BOX INFO -->
+										<div class="streamer-box-info">
+											<!-- STREAMER BOX IMAGE -->
+
+											<!-- /STREAMER BOX IMAGE -->
+
+											<!-- STREAMER BOX TITLE -->
+
+											<p class="streamer-box-title">#{product.name}</p>
+											<!-- /STREAMER BOX TITLE -->
+
+											<!-- STREAMER BOX TEXT -->
+
+											<p class="streamer-box-text">#{product.description}</p>
+											<!-- /STREAMER BOX TEXT -->
+
+											<!-- STREAMER BOX STATUS -->
+
+											<p class="streamer-box-status active">HOT</p>
+											<!-- /STREAMER BOX STATUS -->
+
+											<!-- BUTTON -->
+
+											<!-- /BUTTON -->
+
+											<!-- BUTTON -->
+
+											<h:panelGroup
+												rendered="#{createofferController.isSelect(product)}">
+												<h:form>
+													<h:commandButton styleClass="button bg-info"
+														action="#{createofferController.select(product.id)}"
+														value="Select">
+														<f:ajax render="toggle" />
+													</h:commandButton>
+												</h:form>
+											</h:panelGroup>
+											<h:panelGroup
+												rendered="#{!createofferController.isSelect(product)}">
+												<h:form>
+													<h:commandButton styleClass="button white white-tertiary"
+														action="#{createofferController.deselect()}"
+														value="Deselect">
+														<f:ajax render="toggle" />
+													</h:commandButton>
+												</h:form>
+											</h:panelGroup>
+											<!-- /BUTTON -->
+										</div>
+										<!-- /STREAMER BOX INFO -->
+									</div>
+								</ui:repeat>
+							</div>
+
+							<div class="section-header">
+								<!-- SECTION HEADER INFO -->
+								<div class="section-header-info">
+									<!-- SECTION PRETITLE -->
+									<p class="section-pretitle">Browse all Products</p>
+									<!-- /SECTION PRETITLE -->
+
+									<!-- SECTION TITLE -->
+									<h2 class="section-title">Search a Product</h2>
+									<p>
+										<span class="highlighted">Can't find your Product ?
+											Click Here!</span>
+									</p>
+
+									<!-- /SECTION TITLE -->
+								</div>
+								<!-- /SECTION HEADER INFO -->
+							</div>
+
+							<div class="section-filters-bar v6">
+								<!-- SECTION FILTERS BAR ACTIONS -->
+
+								<div class="section-filters-bar-actions">
+									<!-- FORM -->
+									<form class="form">
+										<!-- FORM ITEM -->
+
+										<div class="form-item split">
+											<!-- FORM INPUT -->
+
+
+											<div class="form-input small">
+												<label for="events-search">Search Products</label>
+												<h:form>
+													<h:inputText id="input"
+														value="#{createofferController.msg}">
+														<f:ajax event="keyup" execute="input" render="products"></f:ajax>
+													</h:inputText>
+												</h:form>
+											</div>
+
+											<!-- /BUTTON -->
+										</div>
+										<!-- /FORM ITEM -->
+									</form>
+									<!-- /FORM -->
+								</div>
+
+							</div>
+							<h:panelGroup id="products">
+								<div class="grid grid-3-3-3-3 centered">
+									<ui:repeat value="#{createofferController.getAllProducts()}"
+										var="product">
+										<div class="streamer-box small">
+											<!-- STREAMER BOX COVER -->
+											<figure class="streamer-box-cover liquid"
+												style="background: url(&quot;resources/img/cover/04.jpg&quot;) center center / cover no-repeat;">
+											<img src="resources/img/cover/04.jpg" alt="cover-04"
+												style="display: none;" /> </figure>
+											<!-- /STREAMER BOX COVER -->
+											<!-- STREAMER BOX INFO -->
+											<div class="streamer-box-info">
+												<!-- STREAMER BOX IMAGE -->
+
+												<!-- /STREAMER BOX IMAGE -->
+
+												<!-- STREAMER BOX TITLE -->
+
+												<p class="streamer-box-title">#{product.name}</p>
+												<!-- /STREAMER BOX TITLE -->
+
+												<!-- STREAMER BOX TEXT -->
+
+												<p class="streamer-box-text">#{product.description}</p>
+												<!-- /STREAMER BOX TEXT -->
+
+												<!-- STREAMER BOX STATUS -->
+
+												
+												<!-- /STREAMER BOX STATUS -->
+
+												<!-- BUTTON -->
+
+												<!-- /BUTTON -->
+
+												<!-- BUTTON -->
+
+												<h:panelGroup
+													rendered="#{createofferController.isSelect(product)}">
+													<h:form>
+														<h:commandButton styleClass="button bg-info"
+															action="#{createofferController.select(product.id)}"
+															value="Select">
+															<f:ajax render="toggle" />
+														</h:commandButton>
+													</h:form>
+												</h:panelGroup>
+												<h:panelGroup
+													rendered="#{!createofferController.isSelect(product)}">
+													<h:form>
+														<h:commandButton styleClass="button white white-tertiary"
+															action="#{createofferController.deselect()}"
+															value="Deselect">
+															<f:ajax render="toggle" />
+														</h:commandButton>
+													</h:form>
+												</h:panelGroup>
+												<!-- /BUTTON -->
+											</div>
+											<!-- /STREAMER BOX INFO -->
+										</div>
+									</ui:repeat>
+								</div>
+							</h:panelGroup>
+						</h:panelGroup>
+					</h:panelGroup>
+					<h:panelGroup rendered="#{createofferController.render2}">
+						<div class="section-header">
+							<!-- SECTION HEADER INFO -->
+							<div class="section-header-info">
+								<!-- SECTION PRETITLE -->
+								<p class="section-pretitle">Step 2</p>
+								<!-- /SECTION PRETITLE -->
+								<!-- SECTION TITLE -->
+								<h2 class="section-title">Step 2 : Create your Offer!</h2>
+								<!-- /SECTION TITLE -->
+							</div>
+							<!-- /SECTION HEADER INFO -->
+							<h:form>
+								<h:commandButton action="#{createofferController.render()}"
+									styleClass="btn btn-block bg-danger text-white" style="padding : 0px 40px 0px 40px" disabled="false"
+									value="Back">
+									<f:ajax render="step" />
+								</h:commandButton>
+							</h:form>
+						</div>
+
+						<div class="grid grid-8-4 small-space">
+							<!-- GRID COLUMN -->
+
+							<div class="grid-column">
+								<!-- WIDGET BOX -->
+
+								<div class="widget-box">
+									<!-- WIDGET BOX TITLE -->
+
+									<p class="widget-box-title">Offer Details</p>
+									<!-- /WIDGET BOX TITLE -->
+									<!-- WIDGET BOX CONTENT -->
+									<form class="form" id="offer-form"
+										style="margin: 10px 0px 0px;">
+
+										<div class="widget-box-content">
+											<!-- FORM -->
+											<!-- FORM ROW -->
+
+											<div class="form-row">
+												<!-- FORM ITEM -->
+
+												<div class="form-item">
+													<!-- FORM INPUT -->
+
+													<div class="form-input small">
+														<h:outputLabel for="price">Price</h:outputLabel>
+														<h:inputText id="price"
+															value="#{createofferController.price}" />
+													</div>
+													<!-- /FORM INPUT -->
+												</div>
+												<!-- /FORM ITEM -->
+											</div>
+
+											<div class="form-row">
+												<!-- FORM ITEM -->
+
+												<div class="form-item">
+													<!-- FORM INPUT -->
+
+													<div class="form-input small">
+														<h:outputLabel for="qty">Quantity</h:outputLabel>
+														<h:inputText id="qty" value="#{createofferController.qty}" />
+													</div>
+													<!-- /FORM INPUT -->
+												</div>
+												<!-- /FORM ITEM -->
+											</div>
+											<div class="row" style="margin: 20px 0px 0px 0px">
+												<!-- BUTTON -->
+												<div class="col-sm-6 offset-sm-6">
+													<h:commandButton type="submit"
+														styleClass="button btn-block bg-success" value="Create"
+														action="#{createofferController.addOffer()}">
+													</h:commandButton>
+													<!-- /BUTTON -->
+												</div>
+											</div>
+										</div>
+									</form>
+
+									<!-- WIDGET BOX CONTENT -->
+								</div>
+								<!-- /WIDGET BOX -->
+							</div>
+
+							<div class="user-preview">
+								<!-- USER PREVIEW COVER -->
+								<figure class="user-preview-cover liquid"
+									style="background: url(&quot;resources/img/cover/48.jpg&quot;) center center / cover no-repeat;">
+								<img src="resources/img/cover/48.jpg" alt="cover-48"
+									style="display: none;" /> </figure>
+								<!-- /USER PREVIEW COVER -->
+								<!-- USER PREVIEW INFO -->
+
+								<div class="user-preview-info">
+									<!-- TAG STICKER -->
+									<!-- /TAG STICKER -->
+									<!-- USER SHORT DESCRIPTION -->
+
+									<div class="user-short-description">
+										<!-- USER SHORT DESCRIPTION TITLE -->
+
+										<p class="user-short-description-title" style="padding: 0px;">
+											<a href="group-timeline.html">#{createofferController.product.name}</a>
+										</p>
+										<!-- /USER SHORT DESCRIPTION TITLE -->
+										<!-- USER SHORT DESCRIPTION TEXT -->
+
+										<p class="user-short-description-text">1985-04-19
+											02:01:24.0</p>
+										<!-- /USER SHORT DESCRIPTION TEXT -->
+									</div>
+									<!-- /USER SHORT DESCRIPTION -->
+									<!-- USER STATS -->
+
+									<div class="user-stats">
+										<!-- USER STAT -->
+
+										<div class="user-stat">
+											<!-- USER STAT TITLE -->
+
+											<p class="user-stat-title">1.0 DT</p>
+											<!-- /USER STAT TITLE -->
+											<!-- USER STAT TEXT -->
+
+											<p class="user-stat-text">Price</p>
+											<!-- /USER STAT TEXT -->
+										</div>
+										<!-- /USER STAT -->
+										<!-- USER STAT -->
+
+										<div class="user-stat">
+											<!-- USER STAT TITLE -->
+
+											<p class="user-stat-title">15</p>
+											<!-- /USER STAT TITLE -->
+											<!-- USER STAT TEXT -->
+
+											<p class="user-stat-text">Quantity</p>
+											<!-- /USER STAT TEXT -->
+										</div>
+										<!-- /USER STAT -->
+									</div>
+
+								</div>
+								<!-- /USER PREVIEW INFO -->
+							</div>
+						</div>
+					</h:panelGroup>
+				</h:panelGroup>
+
+			</div>
+
+		</ui:define>
+
+
+	</ui:composition>
+
+
+	<script src="app.bundle.min.js"></script>
+
+</h:body>
+</html>

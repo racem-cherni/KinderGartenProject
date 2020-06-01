@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="https://primefaces.org/ui">
+
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		<f:metadata>
+			<f:viewParam name="id" value="#{offerController.id}" />
+			<f:viewAction action="#{offerController.onload()}" />
+		</f:metadata>
+
+		<ui:define name="content">
+			<div class="content-grid"
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+				<!-- SECTION BANNER -->
+
+				<div class="section-banner">
+					<!-- SECTION BANNER ICON -->
+					<img class="section-banner-icon"
+						src="resources/img/banner/marketplace-icon.png"
+						alt="marketplace-icon" />
+					<!-- /SECTION BANNER ICON -->
+
+					<!-- SECTION BANNER TITLE -->
+
+					<p class="section-banner-title">Marketplace</p>
+					<!-- /SECTION BANNER TITLE -->
+
+					<!-- SECTION BANNER TEXT -->
+
+					<p class="section-banner-text">The best place for the community
+						to buy and sell!</p>
+					<!-- /SECTION BANNER TEXT -->
+				</div>
+				<!-- /SECTION BANNER -->
+				<!-- SECTION HEADER -->
+
+				<div class="section-header">
+					<!-- SECTION HEADER INFO -->
+					<div class="section-header-info">
+						<!-- SECTION PRETITLE -->
+						<h:link outcome="market">
+							<p class="section-pretitle">Back to your offers</p>
+						</h:link>
+						<!-- /SECTION PRETITLE -->
+
+					</div>
+					<!-- /SECTION HEADER INFO -->
+				</div>
+				<!-- /SECTION HEADER -->
+				<!-- GRID -->
+
+
+				<div class="grid grid-8-4 small-space">
+					<!-- GRID COLUMN -->
+
+					<div class="grid-column">
+						<!-- WIDGET BOX -->
+
+						<div class="widget-box">
+							<!-- WIDGET BOX TITLE -->
+
+							<p class="widget-box-title">Offer Details</p>
+							<!-- /WIDGET BOX TITLE -->
+
+							<!-- WIDGET BOX CONTENT -->
+							<form class="form" id="offer-form"
+								style="margin: 10px 0px 0px 0px">
+								<div class="widget-box-content">
+									<!-- FORM -->
+
+									<!-- FORM ROW -->
+
+									<div class="form-row">
+										<!-- FORM ITEM -->
+
+										<div class="form-item">
+											<!-- FORM INPUT -->
+
+											<div class="form-input small">
+												<h:outputLabel for="price">Price</h:outputLabel>
+												<h:inputText id="price" value="#{offerController.price}" />
+											</div>
+											<!-- /FORM INPUT -->
+										</div>
+										<!-- /FORM ITEM -->
+									</div>
+
+									<div class="form-row">
+										<!-- FORM ITEM -->
+
+										<div class="form-item">
+											<!-- FORM INPUT -->
+
+											<div class="form-input small">
+												<h:outputLabel for="qty">Quantity</h:outputLabel>
+												<h:inputText id="qty" value="#{offerController.qty}" />
+											</div>
+											<!-- /FORM INPUT -->
+										</div>
+										<!-- /FORM ITEM -->
+									</div>
+
+									<!-- /FORM -->
+								</div>
+								<div class="row" style="margin: 20px 0px 0px 0px">
+									<!-- BUTTON -->
+									<div class="col-sm-6">
+										<h:form>
+											<h:commandButton type="submit"
+												styleClass="button btn-block bg-success" value="Apply"
+												action="#{offerController.updateOffer()}">
+											</h:commandButton>
+										</h:form>
+										<!-- /BUTTON -->
+									</div>
+
+									<div class="col-sm-6">
+										<!-- BUTTON -->
+										<h:form>
+											<h:commandButton
+												styleClass="button btn-block white white-tertiary"
+												value="Delete">
+											</h:commandButton>
+										</h:form>
+									</div>
+									<!-- /BUTTON -->
+								</div>
+							</form>
+
+							<!-- WIDGET BOX CONTENT -->
+						</div>
+						<!-- /WIDGET BOX -->
+					</div>
+
+					<div class="user-preview">
+						<!-- USER PREVIEW COVER -->
+						<figure class="user-preview-cover liquid"
+							style="background: url(&quot;resources/img/cover/48.jpg&quot;) center center / cover no-repeat;">
+						<img src="resources/img/cover/48.jpg" alt="cover-48"
+							style="display: none;" /> </figure>
+						<!-- /USER PREVIEW COVER -->
+						<!-- USER PREVIEW INFO -->
+
+						<div class="user-preview-info">
+							<!-- TAG STICKER -->
+							<!-- /TAG STICKER -->
+							<!-- USER SHORT DESCRIPTION -->
+
+							<div class="user-short-description">
+								<!-- USER SHORT DESCRIPTION TITLE -->
+
+								<p class="user-short-description-title"
+									style="padding: 0px 0px 0px 0px">
+									<a href="group-timeline.html">#{offerController.offer.product.name}</a>
+								</p>
+								<!-- /USER SHORT DESCRIPTION TITLE -->
+								<!-- USER SHORT DESCRIPTION TEXT -->
+
+								<p class="user-short-description-text">#{offerController.offer.pub_date}</p>
+								<!-- /USER SHORT DESCRIPTION TEXT -->
+							</div>
+							<!-- /USER SHORT DESCRIPTION -->
+							<!-- USER STATS -->
+
+							<div class="user-stats">
+								<!-- USER STAT -->
+
+								<div class="user-stat">
+									<!-- USER STAT TITLE -->
+
+									<p class="user-stat-title">#{offerController.price} DT</p>
+									<!-- /USER STAT TITLE -->
+									<!-- USER STAT TEXT -->
+
+									<p class="user-stat-text">Price</p>
+									<!-- /USER STAT TEXT -->
+								</div>
+								<!-- /USER STAT -->
+								<!-- USER STAT -->
+
+								<div class="user-stat">
+									<!-- USER STAT TITLE -->
+
+									<p class="user-stat-title">#{offerController.qty}</p>
+									<!-- /USER STAT TITLE -->
+									<!-- USER STAT TEXT -->
+
+									<p class="user-stat-text">Quantity</p>
+									<!-- /USER STAT TEXT -->
+								</div>
+								<!-- /USER STAT -->
+							</div>
+							<!-- /USER STATS -->
+							<!-- USER PREVIEW ACTIONS -->
+							<!-- /USER PREVIEW ACTIONS -->
+						</div>
+						<!-- /USER PREVIEW INFO -->
+					</div>
+				</div>
+				<!-- /GRID -->
+
+
+
+			</div>
+
+
+
+		</ui:define>
+
+
+	</ui:composition>
+
+
+	<script src="app.bundle.min.js"></script>
+
+</body>
+
+</html>
