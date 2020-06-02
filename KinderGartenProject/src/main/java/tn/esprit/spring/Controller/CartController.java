@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,10 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import tn.esprit.spring.Service.OfferService;
-import tn.esprit.spring.Service.PanierProductService;
-import tn.esprit.spring.entities.Offer;
-
+import tn.esprit.spring.projet.entity.Offer;
+import tn.esprit.spring.projet.entity.Product;
+import tn.esprit.spring.projet.entity.SessionFake;
+import tn.esprit.spring.projet.services.OfferService;
+import tn.esprit.spring.projet.services.PanierProductService;
+import tn.esprit.spring.projet.services.PanierService;
+import tn.esprit.spring.projet.services.ProductService;
 
 @Scope(value = "session")
 @Controller(value = "cartController")
@@ -32,11 +36,14 @@ public class CartController {
 	@Autowired
 	private OfferService offerservice;
 	
+	@Autowired
+	private PanierService panierservice;
+	
 	private List<Offer> offers;
 	
 	private Double total_price;
 	
-	private Map<Integer, Integer> offer_qty = new HashMap<Integer, Integer>();
+	private Map<Integer, Integer> offer_qty = new  HashMap<Integer, Integer>();
 	
 	private Map<Integer, Double> offer_price = new HashMap<Integer, Double>();
 	
@@ -69,10 +76,21 @@ public class CartController {
 		this.offer_qty = offer_qty;
 	}
 
-	public void calculatePrice(){
+	public void calculatePrice(int offer_id){
 		
-total_price++;
-		System.out.println(total_price);
+		int qty = Integer.parseInt(this.qty);
+		int old_qty = this.offer_qty.get(offer_id);
+		
+		Double price = this.offer_price.get(offer_id);
+		
+		if (qty > old_qty) 
+			this.total_price += (qty-old_qty) * price;
+		else 
+			this.total_price -= (old_qty-qty) * price;
+		
+		this.offer_qty.replace(offer_id, qty);
+		
+		
 
 	}
 	
@@ -95,6 +113,8 @@ total_price++;
 		}
 		
 		this.total_price = total_price;
+		
+		this.qty = "1" ;
 
 	}
 	
