@@ -154,7 +154,8 @@
 													<h:inputText id="input-qty"
 														onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"
 														value="#{cartController.qty}">
-														<f:ajax event="blur" execute="input-qty" render="total" listener="#{cartController.calculatePrice(offer.id)}"></f:ajax>
+														<f:ajax event="blur" execute="input-qty" render="total"
+															listener="#{cartController.calculatePrice(offer.id)}"></f:ajax>
 													</h:inputText>
 												</h:form>
 
@@ -224,7 +225,35 @@
 
 									<!-- BUTTON -->
 
-									<p class="button secondary">Redeem Code</p>
+									<p class="button secondary">Apply Code</p>
+									<!-- /BUTTON -->
+
+								</div>
+
+							</div>
+
+							<div class="promo-line">
+								<!-- PROMO LINE TEXT -->
+
+
+
+								<!-- /PROMO LINE TEXT -->
+
+								<!-- PROMO LINE ACTIONS -->
+
+								<div class="promo-line-actions"
+									style="margin: 0px 10px 0px 10px">
+									<!-- FORM INPUT -->
+
+									<div class="form-input small">
+										<label for="promo-code">Points</label> <input type="text"
+											id="promo-code" name="promo_code" />
+									</div>
+									<!-- /FORM INPUT -->
+
+									<!-- BUTTON -->
+
+									<p class="button secondary">Apply Code</p>
 									<!-- /BUTTON -->
 
 								</div>
@@ -232,14 +261,6 @@
 							</div>
 
 
-
-							<div class="row">
-
-								<div class="col-sm-12">
-									<input type="range" class="custom-range" id="customRange1" />
-								</div>
-
-							</div>
 
 							<!-- /PROMO LINE ACTIONS -->
 
@@ -251,97 +272,102 @@
 
 						<div class="grid-column">
 							<!-- SIDEBAR BOX -->
+							<h:panelGroup id="total">
+								<div class="sidebar-box margin-top">
+									<!-- SIDEBAR BOX TITLE -->
 
-							<div class="sidebar-box margin-top">
-								<!-- SIDEBAR BOX TITLE -->
+									<p class="sidebar-box-title">Order Totals</p>
+									<!-- /SIDEBAR BOX TITLE -->
+									<!-- SIDEBAR BOX ITEMS -->
 
-								<p class="sidebar-box-title">Order Totals</p>
-								<!-- /SIDEBAR BOX TITLE -->
-								<!-- SIDEBAR BOX ITEMS -->
+									<div class="sidebar-box-items">
+										<!-- PRICE TITLE -->
 
-								<div class="sidebar-box-items">
-									<!-- PRICE TITLE -->
-									<h:panelGroup id="total">
 										<p class="price-title big">
-											#{cartController.total_price} <span
-												class="currency">DT</span>
+											#{cartController.total_price} <span class="currency">DT</span>
 										</p>
-									</h:panelGroup>
-									<!-- /PRICE TITLE -->
-									<!-- TOTALS LINE LIST -->
 
-									<div class="totals-line-list">
-										<!-- TOTALS LINE -->
+										<!-- /PRICE TITLE -->
+										<!-- TOTALS LINE LIST -->
 
-										<div class="totals-line">
-											<!-- TOTALS LINE TITLE -->
+										<div class="totals-line-list">
+											<!-- TOTALS LINE -->
 
-											<p class="totals-line-title">Cart</p>
-											<!-- /TOTALS LINE TITLE -->
-											<!-- PRICE TITLE -->
+											<div class="totals-line">
+												<!-- TOTALS LINE TITLE -->
 
-											<p class="price-title">
-												#{cartController.total_price}</p>
-											<!-- /PRICE TITLE -->
+												<p class="totals-line-title">Cart</p>
+												<!-- /TOTALS LINE TITLE -->
+												<!-- PRICE TITLE -->
+
+												<p class="price-title">
+													#{cartController.total_price} <span class="currency">DT</span>
+												</p>
+												<!-- /PRICE TITLE -->
+											</div>
+											<!-- /TOTALS LINE -->
+											<!-- TOTALS LINE -->
+
+											<div class="totals-line">
+												<!-- TOTALS LINE TITLE -->
+
+												<p class="totals-line-title">Code</p>
+
+
+												<!-- /TOTALS LINE TITLE -->
+												<!-- PRICE TITLE -->
+
+												<p class="price-title">
+													-5.00 <span class="currency">DT</span>
+												</p>
+												<!-- /PRICE TITLE -->
+											</div>
+
+											<div class="totals-line">
+												<!-- TOTALS LINE TITLE -->
+
+												<p class="totals-line-title">Points</p>
+
+
+												<!-- /TOTALS LINE TITLE -->
+												<!-- PRICE TITLE -->
+
+												<p class="price-title">
+													-5.00 <span class="currency">DT</span>
+												</p>
+												<!-- /PRICE TITLE -->
+											</div>
+											<!-- /TOTALS LINE -->
+											<!-- TOTALS LINE -->
+
+											<div class="totals-line">
+												<!-- TOTALS LINE TITLE -->
+
+												<p class="totals-line-title">Total</p>
+												<!-- /TOTALS LINE TITLE -->
+												<!-- PRICE TITLE -->
+
+												<p class="price-title">
+													39.00 <span class="currency">DT</span>
+												</p>
+												<!-- /PRICE TITLE -->
+											</div>
+											<!-- /TOTALS LINE -->
 										</div>
-										<!-- /TOTALS LINE -->
-										<!-- TOTALS LINE -->
+										<!-- /TOTALS LINE LIST -->
 
-										<div class="totals-line">
-											<!-- TOTALS LINE TITLE -->
-
-											<p class="totals-line-title">Code</p>
-
-
-											<!-- /TOTALS LINE TITLE -->
-											<!-- PRICE TITLE -->
-
-											<p class="price-title">
-												-5.00 <span class="currency">DT</span>
-											</p>
-											<!-- /PRICE TITLE -->
-										</div>
-
-										<div class="totals-line">
-											<!-- TOTALS LINE TITLE -->
-
-											<p class="totals-line-title">Points</p>
-
-
-											<!-- /TOTALS LINE TITLE -->
-											<!-- PRICE TITLE -->
-
-											<p class="price-title">
-												-5.00 <span class="currency">DT</span>
-											</p>
-											<!-- /PRICE TITLE -->
-										</div>
-										<!-- /TOTALS LINE -->
-										<!-- TOTALS LINE -->
-
-										<div class="totals-line">
-											<!-- TOTALS LINE TITLE -->
-
-											<p class="totals-line-title">Total</p>
-											<!-- /TOTALS LINE TITLE -->
-											<!-- PRICE TITLE -->
-
-											<p class="price-title">
-												39.00 <span class="currency">DT</span>
-											</p>
-											<!-- /PRICE TITLE -->
-										</div>
-										<!-- /TOTALS LINE -->
+										<!-- BUTTON -->
+										<h:form>
+											<h:commandButton styleClass="button white small-space"
+												value="PLACE ORDER" action="#{cartController.placeOrder()}">
+											</h:commandButton>
+										</h:form>
+										<!-- /BUTTON -->
 									</div>
-									<!-- /TOTALS LINE LIST -->
 
-									<!-- BUTTON -->
-
-									<p class="button white small-space">Place Order</p>
-									<!-- /BUTTON -->
+									<!-- /SIDEBAR BOX ITEMS -->
 								</div>
-								<!-- /SIDEBAR BOX ITEMS -->
-							</div>
+							</h:panelGroup>
 							<!-- /SIDEBAR BOX -->
 						</div>
 

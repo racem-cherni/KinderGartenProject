@@ -16,12 +16,7 @@ import tn.esprit.spring.entities.PanierProductState;
 import tn.esprit.spring.entities.PanierSession;
 import tn.esprit.spring.entities.SessionFake;
 import tn.esprit.spring.entities.UserApp;
-import tn.esprit.spring.repository.PanierProductRepository;
-import tn.esprit.spring.repository.PanierRepository;
-import tn.esprit.spring.repository.OrderRepository;
-import tn.esprit.spring.repository.UserRepository;
-import tn.esprit.spring.repository.PanierSessionRepository;
-
+import tn.esprit.spring.repository.*;
 
 @Service
 public class PanierProductServiceImp implements PanierProductService {
@@ -33,7 +28,7 @@ public class PanierProductServiceImp implements PanierProductService {
 	private PanierRepository PanierRepository;
 
 	@Autowired
-	private OrderRepository OfferRepository;
+	private OfferRepository OfferRepository;
 
 	@Autowired
 	private UserRepository UserRepository;
@@ -91,6 +86,18 @@ public class PanierProductServiceImp implements PanierProductService {
 			return PanierProductRepository.getOffersByPanier(panier_session.getPanier().getId());
 
 		return null;
+	}
+
+	@Override
+	public PanierProduct getProductPanierByOfferAndPanier(int offer, int panier) {
+		
+		return PanierProductRepository.getProductPanierByOfferAndPanier(offer, panier);
+	}
+
+	@Override
+	public PanierProduct updateProduct(PanierProduct panier_product) {
+		
+		return PanierProductRepository.save(panier_product);
 	}
 
 }

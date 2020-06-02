@@ -23,4 +23,7 @@ public interface PanierProductRepository extends CrudRepository <PanierProduct, 
 	@Modifying
 	@Query("DELETE FROM PanierProduct WHERE panier.id =:panier AND offer.id=:offer")
 	void deleteOfferFromPanier(@Param("panier") int panier_id, @Param("offer") int offer_id);
+	
+	@Query("SELECT o FROM PanierProduct o WHERE panier.id =:panier AND offer.id=:offer")
+	PanierProduct  getProductPanierByOfferAndPanier(@Param("offer") int offer, @Param("panier") int panier);
 }

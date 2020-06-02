@@ -16,13 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import tn.esprit.spring.projet.entity.Offer;
-import tn.esprit.spring.projet.entity.Product;
-import tn.esprit.spring.projet.entity.SessionFake;
-import tn.esprit.spring.projet.services.OfferService;
-import tn.esprit.spring.projet.services.PanierProductService;
-import tn.esprit.spring.projet.services.PanierService;
-import tn.esprit.spring.projet.services.ProductService;
+import tn.esprit.spring.Service.OfferService;
+import tn.esprit.spring.Service.OrderService;
+import tn.esprit.spring.Service.PanierProductService;
+import tn.esprit.spring.Service.PanierService;
+import tn.esprit.spring.entities.Offer;
+
+import tn.esprit.spring.repository.PanierSessionRepository;
 
 @Scope(value = "session")
 @Controller(value = "cartController")
@@ -37,7 +37,13 @@ public class CartController {
 	private OfferService offerservice;
 	
 	@Autowired
+	private OrderService orderservice;
+	
+	@Autowired
 	private PanierService panierservice;
+	
+	@Autowired
+	private PanierSessionRepository PanierSessionRepository;
 	
 	private List<Offer> offers;
 	
@@ -48,9 +54,7 @@ public class CartController {
 	private Map<Integer, Double> offer_price = new HashMap<Integer, Double>();
 	
 	private String qty ;
-	
-	
-	
+
 	public Map<Integer, Double> getOffer_price() {
 		return offer_price;
 	}
@@ -67,7 +71,6 @@ public class CartController {
 		return qty;
 	}
 
-	
 	public Map<Integer, Integer> getOffer_qty() {
 		return offer_qty;
 	}
@@ -97,7 +100,12 @@ public class CartController {
 	public void onload(){
 		
 		this.offers = Collections.emptyList();
+		this.offer_qty = new HashMap<Integer,Integer>();
+		this.offer_price = new HashMap<Integer,Double>();
 		List<Offer> offers_temp = PanierProductService.retrieveAlOffdersOfPanier();
+		
+		
+		
 		for(Offer offer : offers_temp){
 			this.offer_qty.put(offer.getId(), 1);
 			this.offer_price.put(offer.getId(), offer.getPrice());
@@ -144,7 +152,19 @@ public class CartController {
 		
 		PanierProductService.removeProductFromPanier(id);
 		this.offers = PanierProductService.retrieveAlOffdersOfPanier();
-		System.out.println(this.offers);
+		
+		this.offer_price.remove(id);
+		this.offer_qty.remove(id);
+		
+		double total_price = 0;
+		
+		for(Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()){
+			total_price += offer.getValue() * (this.getOffer_price().get(offer.getKey()));
+		}
+		
+		this.total_price = total_price;
+	
+		
 	}
 
 	public Double getTotal_price() {
@@ -157,6 +177,25 @@ public class CartController {
 	
 	public int getQuantity(int offer_id){
 		return this.offer_qty.get(offer_id);
+	}
+	
+	public void placeOrder(){
+		
+		Order order = new Order();
+		
+		int panier_id = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()).getPanier().getId();
+		
+		for (Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()){
+			PanierProduct panier_product = PanierProductService.getProductPanierByOfferAndPanier(offer.getKey(), panier_id);
+			panier_product.setQty(offer.getValue());
+			PanierProductService.updateProduct(panier_product);
+		}
+		
+		order.setPointspent(0.0);
+		
+		
+		orderservice.addOrder(order, panier_id, SessionFake.getId());
+		
 	}
 	
 	
