@@ -180,13 +180,14 @@ public class OrderServiceImp implements OrderService {
 		if (count == o.getPanier().getOrderedoffers().size()) {
 
 			o.setState(OrderState.DISPATCHED);
-			PointsHistoryRepository.save(new PointsHistory(o.getUser(), (int) o.getPointspent() * (-1)));
+			if (o.getPointspent()>0)
+				PointsHistoryRepository.save(new PointsHistory(o.getUser(), (int) o.getPointspent() * (-1)));
 
 			for (PanierProduct p : o.getPanier().getOrderedoffers()) {
 
 				if (p.getRefuser() != null) {
 					PointsHistory ph = new PointsHistory(p.getRefuser(),
-							(int) Math.ceil(p.getOffer().getPrice() * 0.05));
+							(int) Math.ceil(p.getOffer().getPrice() * 0.05 * 1000) * p.getQty());
 					PointsHistoryRepository.save(ph);
 				}
 
