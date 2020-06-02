@@ -21,7 +21,9 @@ import tn.esprit.spring.Service.OrderService;
 import tn.esprit.spring.Service.PanierProductService;
 import tn.esprit.spring.Service.PanierService;
 import tn.esprit.spring.entities.Offer;
-
+import tn.esprit.spring.entities.Order;
+import tn.esprit.spring.entities.PanierProduct;
+import tn.esprit.spring.entities.SessionFake;
 import tn.esprit.spring.repository.PanierSessionRepository;
 
 @Scope(value = "session")
@@ -105,15 +107,14 @@ public class CartController {
 		List<Offer> offers_temp = PanierProductService.retrieveAlOffdersOfPanier();
 		
 		
-		
-		for(Offer offer : offers_temp){
-			this.offer_qty.put(offer.getId(), 1);
-			this.offer_price.put(offer.getId(), offer.getPrice());
-		}
-		
-		if (offers_temp != null)
+		if (offers_temp != null) {
+			for(Offer offer : offers_temp){
+				this.offer_qty.put(offer.getId(), 1);
+				this.offer_price.put(offer.getId(), offer.getPrice());
+			}
 			this.offers = offers_temp ;
-		
+		}
+
 		double total_price = 0;
 		
 		for(Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()){
