@@ -240,7 +240,8 @@ public class CartController {
 
 		if (PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()) != null)
 			panier_id = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()).getPanier().getId();
-
+		else return;
+		
 		for (Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()) {
 			PanierProduct panier_product = PanierProductService.getProductPanierByOfferAndPanier(offer.getKey(),
 					panier_id);
