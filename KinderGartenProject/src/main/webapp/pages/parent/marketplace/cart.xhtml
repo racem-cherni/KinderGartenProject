@@ -202,32 +202,47 @@
 
 						<!-- /TABLE -->
 
-						<div class="promo-line">
-							<!-- PROMO LINE TEXT -->
+						<h:panelGroup id="points">
 
-							<p class="promo-line-text">
-								You currently Have <strong>0 Points</strong> equivalent to <strong>0
-									DT</strong>.<br /> You are about to reduce the price by <strong>0 DT </strong> (<strong>0 Points</strong>)
-							</p>
+							<div class="promo-line">
+								<!-- PROMO LINE TEXT -->
 
-							<!-- PROMO LINE ACTIONS -->
-							<div class="promo-line-actions" style="margin: 0px 10px 0px 10px">
-								<!-- FORM INPUT -->
+								<p class="promo-line-text">
+									You currently Have <strong>#{cartController.getTotalPoints()}
+										Points</strong> equivalent to <strong>#{cartController.getEquivalentPrice()}
+										DT</strong>.<br /> You are about to reduce the price by <strong>#{cartController.points}
+										DT </strong>(<strong>#{cartController.points2} Points</strong>)
+								</p>
 
-								<div class="form-input small">
-									<label for="promo-code">Points (DT)</label> <input type="text"
-										id="promo-code" name="promo_code" />
+								<!-- PROMO LINE ACTIONS -->
+								<div class="promo-line-actions"
+									style="margin: 0px 10px 0px 10px">
+									<!-- FORM INPUT -->
+
+									<h:form>
+										<h:inputText id="input-points" styleClass="form-input small"
+											onkeypress="if(event.which &lt; 48 || event.which &gt; 57 || event.which &#61; 46) return false;"
+											value="#{cartController.points}">
+											<f:ajax event="blur" execute="input-points" render="points"
+												listener="#{cartController.manipulatePoints()}"></f:ajax>
+										</h:inputText>
+									</h:form>
+
+									<!-- /FORM INPUT -->
+
+									<!-- BUTTON -->
+									<h:form>
+										<h:commandButton styleClass="button secondary"
+											value="Apply Points">
+											<f:ajax render="total" listener="#{cartController.updatePrice()}"/>
+										</h:commandButton>
+									</h:form>
+									<!-- /BUTTON -->
+
 								</div>
-								<!-- /FORM INPUT -->
-
-								<!-- BUTTON -->
-
-								<p class="button secondary">Apply Code</p>
-								<!-- /BUTTON -->
 
 							</div>
-
-						</div>
+						</h:panelGroup>
 
 						<div class="promo-line">
 							<!-- PROMO LINE TEXT -->
@@ -282,7 +297,7 @@
 									<!-- PRICE TITLE -->
 
 									<p class="price-title big">
-										#{cartController.total_price} <span class="currency">DT</span>
+										#{cartController.reduced_price} <span class="currency">DT</span>
 									</p>
 
 									<!-- /PRICE TITLE -->
@@ -316,7 +331,7 @@
 											<!-- PRICE TITLE -->
 
 											<p class="price-title">
-												-5.00 <span class="currency">DT</span>
+												-#{cartController.points} <span class="currency">DT</span>
 											</p>
 											<!-- /PRICE TITLE -->
 										</div>
@@ -346,7 +361,7 @@
 											<!-- PRICE TITLE -->
 
 											<p class="price-title">
-												39.00 <span class="currency">DT</span>
+												#{cartController.reduced_price} <span class="currency">DT</span>
 											</p>
 											<!-- /PRICE TITLE -->
 										</div>
