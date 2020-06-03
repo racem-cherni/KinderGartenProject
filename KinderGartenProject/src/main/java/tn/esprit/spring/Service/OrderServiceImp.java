@@ -54,13 +54,6 @@ public class OrderServiceImp implements OrderService {
 
 		p.setTotal_price(totalprice);
 
-		if (p.getPointspent() > 0)
-
-			p.setReducedprice(totalprice - p.getPointspent() * 10);
-
-		else
-			p.setReducedprice(totalprice);
-
 		p.setUser(UserRepository.findById(userid).orElse(null));
 
 		p.setPanier(pa);
