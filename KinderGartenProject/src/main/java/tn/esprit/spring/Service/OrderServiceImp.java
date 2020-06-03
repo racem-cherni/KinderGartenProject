@@ -57,6 +57,8 @@ public class OrderServiceImp implements OrderService {
 			totalprice += pp.getQty() * pp.getOffer().getPrice();
 
 		}
+		
+		p.setTotal_price(totalprice);
 
 		p.setUser(UserRepository.findById(userid).orElse(null));
 

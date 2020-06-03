@@ -246,8 +246,9 @@ public class CartController {
 			PanierProductService.updateProduct(panier_product);
 		}
 
-		order.setPointspent(Double.parseDouble(this.points));
-		if (Double.parseDouble(this.points) > 0)
+		order.setPointspent(Double.parseDouble(this.points)*50);
+		
+		if (Double.parseDouble(this.points)>0)
 			order.setReducedprice(Double.parseDouble(this.reduced_price));
 		else
 			order.setReducedprice(this.total_price);
