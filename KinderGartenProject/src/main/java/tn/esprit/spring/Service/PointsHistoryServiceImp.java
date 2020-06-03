@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.PointsHistory;
 import tn.esprit.spring.repository.PointsHistoryRepository;
 
+
 @Service
 public class PointsHistoryServiceImp implements PointsHistoryService {
 
@@ -23,7 +24,7 @@ public class PointsHistoryServiceImp implements PointsHistoryService {
 	}
 
 	@Override
-	public int getPointsUser(int id) {
+	public int getPointsUser(Long id) {
 
 		if (PointsHistoryRepository.getPointsUser(id) != null)
 			return PointsHistoryRepository.getPointsUser(id);

@@ -5,7 +5,7 @@ import tn.esprit.spring.entities.PointsHistory;
 public interface PointsHistoryService {
 	
 	PointsHistory addActivity(PointsHistory p);
-	int getPointsUser(int id);
+	int getPointsUser(Long id);
 	
 
 }
