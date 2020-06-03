@@ -7,381 +7,379 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui">
->
 
-<body>
-	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		template="/template/template.xhtml">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
 
-		<f:metadata>
-			<f:viewAction action="#{cartController.onload()}" />
-		</f:metadata>
+	<f:metadata>
+		<f:viewAction action="#{cartController.onload()}" />
+	</f:metadata>
 
-		<ui:define name="content">
+	<ui:define name="content">
 
-			<div class="content-grid"
-				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+		<div class="content-grid"
+			style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
 
-				<div class="section-banner"
-					style="background: url(resources/img/banner/banner-bg.png) no-repeat 50%">
-					<!-- SECTION BANNER ICON -->
-					<img class="section-banner-icon"
-						src="resources/img/banner/accounthub-icon.png"
-						alt="accounthub-icon" />
-					<!-- /SECTION BANNER ICON -->
+			<div class="section-banner"
+				style="background: url(resources/img/banner/banner-bg.png) no-repeat 50%">
+				<!-- SECTION BANNER ICON -->
+				<img class="section-banner-icon"
+					src="resources/img/banner/accounthub-icon.png"
+					alt="accounthub-icon" />
+				<!-- /SECTION BANNER ICON -->
 
-					<!-- SECTION BANNER TITLE -->
+				<!-- SECTION BANNER TITLE -->
 
-					<p class="section-banner-title">Account Hub</p>
-					<!-- /SECTION BANNER TITLE -->
+				<p class="section-banner-title">Account Hub</p>
+				<!-- /SECTION BANNER TITLE -->
 
-					<!-- SECTION BANNER TEXT -->
+				<!-- SECTION BANNER TEXT -->
 
-					<p class="section-banner-text">Profile info, messages, settings
-						and much more!</p>
-					<!-- /SECTION BANNER TEXT -->
-				</div>
-				<h:panelGroup id="field">
-					<div class="grid grid-9-3 small-space">
-						<!-- GRID COLUMN -->
-
-						<div class="grid-column">
-							<!-- TABLE WRAP -->
-
-							<!-- TABLE -->
-
-							<div class="table table-cart split-rows">
-								<!-- TABLE HEADER -->
-
-								<div class="table-header">
-									<!-- TABLE HEADER COLUMN -->
-
-									<div class="table-header-column">
-										<!-- TABLE HEADER TITLE -->
-
-										<p class="table-header-title">Item</p>
-										<!-- /TABLE HEADER TITLE -->
-									</div>
-
-
-									<div class="table-header-column padded-left">
-										<!-- TABLE HEADER TITLE -->
-
-										<p class="table-header-title">Quantity</p>
-										<!-- /TABLE HEADER TITLE -->
-									</div>
-									<!-- /TABLE HEADER COLUMN -->
-
-									<!-- TABLE HEADER COLUMN -->
-
-									<div class="table-header-column centered padded-left">
-										<!-- TABLE HEADER TITLE -->
-
-										<p class="table-header-title">Price</p>
-										<!-- /TABLE HEADER TITLE -->
-									</div>
-									<!-- /TABLE HEADER COLUMN -->
-
-									<!-- TABLE HEADER COLUMN -->
-
-									<div class="table-header-column padded-big-left" />
-									<!-- /TABLE HEADER COLUMN -->
-								</div>
-								<!-- /TABLE HEADER -->
-
-								<!-- TABLE BODY -->
-
-
-								<ui:repeat value="#{cartController.getOffers()}" var="offer">
-									<div class="table-body same-color-rows">
-										<!-- TABLE ROW -->
-
-										<div class="table-row medium">
-											<!-- TABLE COLUMN -->
-
-											<div class="table-column">
-												<!-- PRODUCT PREVIEW -->
-
-												<div class="product-preview tiny">
-													<!-- PRODUCT PREVIEW IMAGE -->
-													<a href="marketplace-product.html"> <figure
-															class="product-preview-image liquid"
-															style="background: url(&quot;resources/img/marketplace/items/01.jpg&quot;) center center / cover no-repeat;">
-														<img src="resources/img/marketplace/items/01.jpg"
-															alt="item-01" style="display: none;" /> </figure>
-													</a>
-													<!-- /PRODUCT PREVIEW IMAGE -->
-
-													<!-- PRODUCT PREVIEW INFO -->
-
-													<div class="product-preview-info">
-														<!-- PRODUCT PREVIEW TITLE -->
-
-														<p class="product-preview-title">
-															<a href="marketplace-product.html">#{offer.product.name}</a>
-														</p>
-														<!-- /PRODUCT PREVIEW TITLE -->
-
-														<!-- PRODUCT PREVIEW CATEGORY -->
-
-														<p class="product-preview-category digital">
-															<a href="marketplace-category.html">#{offer.product.ref}</a>
-														</p>
-														<!-- /PRODUCT PREVIEW CATEGORY -->
-
-														<!-- PRODUCT PREVIEW CREATOR -->
-
-														<p class="product-preview-creator">
-															<a href="profile-timeline.html">Posted by
-																#{offer.kindergarten.name}</a>
-														</p>
-														<!-- /PRODUCT PREVIEW CREATOR -->
-													</div>
-													<!-- /PRODUCT PREVIEW INFO -->
-												</div>
-												<!-- /PRODUCT PREVIEW -->
-											</div>
-
-											<div class="table-column">
-												<!-- FORM COUNTER -->
-
-												<!-- FORM COUNTER VALUE -->
-
-												<h:form>
-													<h:inputText id="input-qty"
-														onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"
-														value="#{cartController.qty}">
-														<f:ajax event="blur" execute="input-qty" render="total"
-															listener="#{cartController.calculatePrice(offer.id)}"></f:ajax>
-													</h:inputText>
-												</h:form>
-
-												<!-- /FORM COUNTER -->
-											</div>
-											<!-- /TABLE COLUMN -->
-
-											<!-- TABLE COLUMN -->
-
-											<div class="table-column centered padded-left">
-												<!-- PRICE TITLE -->
-
-												<p class="price-title">
-													#{offer.price} <span class="currency">DT</span>
-												</p>
-												<!-- /PRICE TITLE -->
-											</div>
-											<!-- /TABLE COLUMN -->
-
-											<!-- TABLE COLUMN -->
-
-											<div class="table-column padded-big-left">
-												<!-- TABLE ACTION -->
-
-												<div class="table-action">
-													<!-- ICON DELETE -->
-													<h:form>
-														<h:commandLink
-															action="#{cartController.deleteOffer(offer.id)}">
-															<f:ajax render="field" />
-															<svg class="icon-delete"> <use
-																xlink:href="#svg-delete" /> </svg>
-															<!-- /ICON DELETE -->
-														</h:commandLink>
-													</h:form>
-												</div>
-												<!-- /TABLE ACTION -->
-											</div>
-											<!-- /TABLE COLUMN -->
-										</div>
-									</div>
-								</ui:repeat>
-
-								<!-- /TABLE BODY -->
-							</div>
-
-							<!-- /TABLE -->
-
-
-							<div class="promo-line">
-								<!-- PROMO LINE TEXT -->
-
-								<p class="promo-line-text">If you have a promotional or a
-									discount code, please enter it right here to redeem it!</p>
-								<!-- /PROMO LINE TEXT -->
-
-								<!-- PROMO LINE ACTIONS -->
-
-								<div class="promo-line-actions">
-									<!-- FORM INPUT -->
-
-									<div class="form-input small">
-										<label for="promo-code">Promo Code</label> <input type="text"
-											id="promo-code" name="promo_code" />
-									</div>
-									<!-- /FORM INPUT -->
-
-									<!-- BUTTON -->
-
-									<p class="button secondary">Apply Code</p>
-									<!-- /BUTTON -->
-
-								</div>
-
-							</div>
-
-							<div class="promo-line">
-								<!-- PROMO LINE TEXT -->
-
-
-
-								<!-- /PROMO LINE TEXT -->
-
-								<!-- PROMO LINE ACTIONS -->
-
-								<div class="promo-line-actions"
-									style="margin: 0px 10px 0px 10px">
-									<!-- FORM INPUT -->
-
-									<div class="form-input small">
-										<label for="promo-code">Points</label> <input type="text"
-											id="promo-code" name="promo_code" />
-									</div>
-									<!-- /FORM INPUT -->
-
-									<!-- BUTTON -->
-
-									<p class="button secondary">Apply Code</p>
-									<!-- /BUTTON -->
-
-								</div>
-
-							</div>
-
-
-
-							<!-- /PROMO LINE ACTIONS -->
-
-							<!-- /PROMO LINE -->
-						</div>
-						<!-- /GRID COLUMN -->
-						<!-- GRID COLUMN -->
-
-
-						<div class="grid-column">
-							<!-- SIDEBAR BOX -->
-							<h:panelGroup id="total">
-								<div class="sidebar-box margin-top">
-									<!-- SIDEBAR BOX TITLE -->
-
-									<p class="sidebar-box-title">Order Totals</p>
-									<!-- /SIDEBAR BOX TITLE -->
-									<!-- SIDEBAR BOX ITEMS -->
-
-									<div class="sidebar-box-items">
-										<!-- PRICE TITLE -->
-
-										<p class="price-title big">
-											#{cartController.total_price} <span class="currency">DT</span>
-										</p>
-
-										<!-- /PRICE TITLE -->
-										<!-- TOTALS LINE LIST -->
-
-										<div class="totals-line-list">
-											<!-- TOTALS LINE -->
-
-											<div class="totals-line">
-												<!-- TOTALS LINE TITLE -->
-
-												<p class="totals-line-title">Cart</p>
-												<!-- /TOTALS LINE TITLE -->
-												<!-- PRICE TITLE -->
-
-												<p class="price-title">
-													#{cartController.total_price} <span class="currency">DT</span>
-												</p>
-												<!-- /PRICE TITLE -->
-											</div>
-											<!-- /TOTALS LINE -->
-											<!-- TOTALS LINE -->
-
-											<div class="totals-line">
-												<!-- TOTALS LINE TITLE -->
-
-												<p class="totals-line-title">Code</p>
-
-
-												<!-- /TOTALS LINE TITLE -->
-												<!-- PRICE TITLE -->
-
-												<p class="price-title">
-													-5.00 <span class="currency">DT</span>
-												</p>
-												<!-- /PRICE TITLE -->
-											</div>
-
-											<div class="totals-line">
-												<!-- TOTALS LINE TITLE -->
-
-												<p class="totals-line-title">Points</p>
-
-
-												<!-- /TOTALS LINE TITLE -->
-												<!-- PRICE TITLE -->
-
-												<p class="price-title">
-													-5.00 <span class="currency">DT</span>
-												</p>
-												<!-- /PRICE TITLE -->
-											</div>
-											<!-- /TOTALS LINE -->
-											<!-- TOTALS LINE -->
-
-											<div class="totals-line">
-												<!-- TOTALS LINE TITLE -->
-
-												<p class="totals-line-title">Total</p>
-												<!-- /TOTALS LINE TITLE -->
-												<!-- PRICE TITLE -->
-
-												<p class="price-title">
-													39.00 <span class="currency">DT</span>
-												</p>
-												<!-- /PRICE TITLE -->
-											</div>
-											<!-- /TOTALS LINE -->
-										</div>
-										<!-- /TOTALS LINE LIST -->
-
-										<!-- BUTTON -->
-										<h:form>
-											<h:commandButton styleClass="button white small-space"
-												value="PLACE ORDER" action="#{cartController.placeOrder()}">
-											</h:commandButton>
-										</h:form>
-										<!-- /BUTTON -->
-									</div>
-
-									<!-- /SIDEBAR BOX ITEMS -->
-								</div>
-							</h:panelGroup>
-							<!-- /SIDEBAR BOX -->
-						</div>
-
-						<!-- /GRID COLUMN -->
-					</div>
-				</h:panelGroup>
-
+				<p class="section-banner-text">Profile info, messages, settings
+					and much more!</p>
+				<!-- /SECTION BANNER TEXT -->
 			</div>
-		</ui:define>
-	</ui:composition>
+			<h:panelGroup id="field">
+				<div class="grid grid-9-3 small-space">
+					<!-- GRID COLUMN -->
+
+					<div class="grid-column">
+						<!-- TABLE WRAP -->
+
+						<!-- TABLE -->
+
+						<div class="table table-cart split-rows">
+							<!-- TABLE HEADER -->
+
+							<div class="table-header">
+								<!-- TABLE HEADER COLUMN -->
+
+								<div class="table-header-column">
+									<!-- TABLE HEADER TITLE -->
+
+									<p class="table-header-title">Item</p>
+									<!-- /TABLE HEADER TITLE -->
+								</div>
 
 
-	<script src="app.bundle.min.js"></script>
+								<div class="table-header-column padded-left">
+									<!-- TABLE HEADER TITLE -->
 
-</body>
+									<p class="table-header-title">Quantity</p>
+									<!-- /TABLE HEADER TITLE -->
+								</div>
+								<!-- /TABLE HEADER COLUMN -->
+
+								<!-- TABLE HEADER COLUMN -->
+
+								<div class="table-header-column centered padded-left">
+									<!-- TABLE HEADER TITLE -->
+
+									<p class="table-header-title">Price</p>
+									<!-- /TABLE HEADER TITLE -->
+								</div>
+								<!-- /TABLE HEADER COLUMN -->
+
+								<!-- TABLE HEADER COLUMN -->
+
+								<div class="table-header-column padded-big-left" />
+								<!-- /TABLE HEADER COLUMN -->
+							</div>
+							<!-- /TABLE HEADER -->
+
+							<!-- TABLE BODY -->
+
+
+							<ui:repeat value="#{cartController.getOffers()}" var="offer">
+								<div class="table-body same-color-rows">
+									<!-- TABLE ROW -->
+
+									<div class="table-row medium">
+										<!-- TABLE COLUMN -->
+
+										<div class="table-column">
+											<!-- PRODUCT PREVIEW -->
+
+											<div class="product-preview tiny">
+												<!-- PRODUCT PREVIEW IMAGE -->
+												<a href="marketplace-product.html"> <figure
+														class="product-preview-image liquid"
+														style="background: url(&quot;resources/img/marketplace/items/01.jpg&quot;) center center / cover no-repeat;">
+													<img src="resources/img/marketplace/items/01.jpg"
+														alt="item-01" style="display: none;" /> </figure>
+												</a>
+												<!-- /PRODUCT PREVIEW IMAGE -->
+
+												<!-- PRODUCT PREVIEW INFO -->
+
+												<div class="product-preview-info">
+													<!-- PRODUCT PREVIEW TITLE -->
+
+													<p class="product-preview-title">
+														<a href="marketplace-product.html">#{offer.product.name}</a>
+													</p>
+													<!-- /PRODUCT PREVIEW TITLE -->
+
+													<!-- PRODUCT PREVIEW CATEGORY -->
+
+													<p class="product-preview-category digital">
+														<a href="marketplace-category.html">#{offer.product.ref}</a>
+													</p>
+													<!-- /PRODUCT PREVIEW CATEGORY -->
+
+													<!-- PRODUCT PREVIEW CREATOR -->
+
+													<p class="product-preview-creator">
+														<a href="profile-timeline.html">Posted by
+															#{offer.kindergarten.name}</a>
+													</p>
+													<!-- /PRODUCT PREVIEW CREATOR -->
+												</div>
+												<!-- /PRODUCT PREVIEW INFO -->
+											</div>
+											<!-- /PRODUCT PREVIEW -->
+										</div>
+
+										<div class="table-column">
+											<!-- FORM COUNTER -->
+
+											<!-- FORM COUNTER VALUE -->
+
+											<h:form>
+												<h:inputText id="input-qty"
+													onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"
+													value="#{cartController.qty}">
+													<f:ajax event="blur" execute="input-qty" render="total"
+														listener="#{cartController.calculatePrice(offer.id)}"></f:ajax>
+												</h:inputText>
+											</h:form>
+
+											<!-- /FORM COUNTER -->
+										</div>
+										<!-- /TABLE COLUMN -->
+
+										<!-- TABLE COLUMN -->
+
+										<div class="table-column centered padded-left">
+											<!-- PRICE TITLE -->
+
+											<p class="price-title">
+												#{offer.price} <span class="currency">DT</span>
+											</p>
+											<!-- /PRICE TITLE -->
+										</div>
+										<!-- /TABLE COLUMN -->
+
+										<!-- TABLE COLUMN -->
+
+										<div class="table-column padded-big-left">
+											<!-- TABLE ACTION -->
+
+											<div class="table-action">
+												<!-- ICON DELETE -->
+												<h:form>
+													<h:commandLink
+														action="#{cartController.deleteOffer(offer.id)}">
+														<f:ajax render="field" />
+														<svg class="icon-delete"> <use
+															xlink:href="#svg-delete" /> </svg>
+														<!-- /ICON DELETE -->
+													</h:commandLink>
+												</h:form>
+											</div>
+											<!-- /TABLE ACTION -->
+										</div>
+										<!-- /TABLE COLUMN -->
+									</div>
+								</div>
+							</ui:repeat>
+
+							<!-- /TABLE BODY -->
+						</div>
+
+						<!-- /TABLE -->
+
+						<div class="promo-line">
+							<!-- PROMO LINE TEXT -->
+
+							<p class="promo-line-text">
+								You currently Have <strong>0 Points</strong> equivalent to <strong>0
+									DT</strong>.<br /> You are about to reduce the price by <strong>0 DT </strong> (<strong>0 Points</strong>)
+							</p>
+
+							<!-- PROMO LINE ACTIONS -->
+							<div class="promo-line-actions" style="margin: 0px 10px 0px 10px">
+								<!-- FORM INPUT -->
+
+								<div class="form-input small">
+									<label for="promo-code">Points (DT)</label> <input type="text"
+										id="promo-code" name="promo_code" />
+								</div>
+								<!-- /FORM INPUT -->
+
+								<!-- BUTTON -->
+
+								<p class="button secondary">Apply Code</p>
+								<!-- /BUTTON -->
+
+							</div>
+
+						</div>
+
+						<div class="promo-line">
+							<!-- PROMO LINE TEXT -->
+
+							<p class="promo-line-text">If you have a promotional or a
+								discount code, please enter it right here to redeem it!</p>
+							<!-- /PROMO LINE TEXT -->
+
+							<!-- PROMO LINE ACTIONS -->
+
+							<div class="promo-line-actions">
+								<!-- FORM INPUT -->
+
+								<div class="form-input small">
+									<label for="promo-code">Promo Code</label> <input type="text"
+										id="promo-code" name="promo_code" />
+								</div>
+								<!-- /FORM INPUT -->
+
+								<!-- BUTTON -->
+
+								<p class="button secondary">Apply Code</p>
+								<!-- /BUTTON -->
+
+							</div>
+
+						</div>
+
+
+
+
+
+						<!-- /PROMO LINE ACTIONS -->
+
+						<!-- /PROMO LINE -->
+					</div>
+					<!-- /GRID COLUMN -->
+					<!-- GRID COLUMN -->
+
+
+					<div class="grid-column">
+						<!-- SIDEBAR BOX -->
+						<h:panelGroup id="total">
+							<div class="sidebar-box margin-top">
+								<!-- SIDEBAR BOX TITLE -->
+
+								<p class="sidebar-box-title">Order Totals</p>
+								<!-- /SIDEBAR BOX TITLE -->
+								<!-- SIDEBAR BOX ITEMS -->
+
+								<div class="sidebar-box-items">
+									<!-- PRICE TITLE -->
+
+									<p class="price-title big">
+										#{cartController.total_price} <span class="currency">DT</span>
+									</p>
+
+									<!-- /PRICE TITLE -->
+									<!-- TOTALS LINE LIST -->
+
+									<div class="totals-line-list">
+										<!-- TOTALS LINE -->
+
+										<div class="totals-line">
+											<!-- TOTALS LINE TITLE -->
+
+											<p class="totals-line-title">Cart</p>
+											<!-- /TOTALS LINE TITLE -->
+											<!-- PRICE TITLE -->
+
+											<p class="price-title">
+												#{cartController.total_price} <span class="currency">DT</span>
+											</p>
+											<!-- /PRICE TITLE -->
+										</div>
+										<!-- /TOTALS LINE -->
+										<!-- TOTALS LINE -->
+
+										<div class="totals-line">
+											<!-- TOTALS LINE TITLE -->
+
+											<p class="totals-line-title">Points</p>
+
+
+											<!-- /TOTALS LINE TITLE -->
+											<!-- PRICE TITLE -->
+
+											<p class="price-title">
+												-5.00 <span class="currency">DT</span>
+											</p>
+											<!-- /PRICE TITLE -->
+										</div>
+
+										<div class="totals-line">
+											<!-- TOTALS LINE TITLE -->
+
+											<p class="totals-line-title">Code</p>
+
+
+											<!-- /TOTALS LINE TITLE -->
+											<!-- PRICE TITLE -->
+
+											<p class="price-title">
+												-0.00 <span class="currency">DT</span>
+											</p>
+											<!-- /PRICE TITLE -->
+										</div>
+										<!-- /TOTALS LINE -->
+										<!-- TOTALS LINE -->
+
+										<div class="totals-line">
+											<!-- TOTALS LINE TITLE -->
+
+											<p class="totals-line-title">Total</p>
+											<!-- /TOTALS LINE TITLE -->
+											<!-- PRICE TITLE -->
+
+											<p class="price-title">
+												39.00 <span class="currency">DT</span>
+											</p>
+											<!-- /PRICE TITLE -->
+										</div>
+										<!-- /TOTALS LINE -->
+									</div>
+									<!-- /TOTALS LINE LIST -->
+
+									<!-- BUTTON -->
+									<h:form>
+										<h:commandButton styleClass="button white small-space"
+											value="PLACE ORDER" action="#{cartController.placeOrder()}">
+										</h:commandButton>
+									</h:form>
+									<!-- /BUTTON -->
+								</div>
+
+								<!-- /SIDEBAR BOX ITEMS -->
+							</div>
+						</h:panelGroup>
+						<!-- /SIDEBAR BOX -->
+					</div>
+
+					<!-- /GRID COLUMN -->
+				</div>
+			</h:panelGroup>
+
+		</div>
+	</ui:define>
+</ui:composition>
+
+
+<script src="app.bundle.min.js"></script>
+
+
 
 </html>
