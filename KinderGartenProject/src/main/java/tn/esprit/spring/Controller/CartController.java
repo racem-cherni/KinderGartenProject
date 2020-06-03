@@ -236,8 +236,10 @@ public class CartController {
 	public void placeOrder() {
 
 		Order order = new Order();
+		int panier_id;
 
-		int panier_id = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()).getPanier().getId();
+		if (PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()) != null)
+			panier_id = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()).getPanier().getId();
 
 		for (Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()) {
 			PanierProduct panier_product = PanierProductService.getProductPanierByOfferAndPanier(offer.getKey(),
