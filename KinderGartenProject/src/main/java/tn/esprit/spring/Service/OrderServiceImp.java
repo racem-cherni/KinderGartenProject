@@ -12,7 +12,10 @@ import tn.esprit.spring.entities.Order;
 import tn.esprit.spring.entities.OrderState;
 import tn.esprit.spring.entities.Panier;
 import tn.esprit.spring.entities.PanierProduct;
+import tn.esprit.spring.entities.PanierSession;
 import tn.esprit.spring.entities.PointsHistory;
+import tn.esprit.spring.entities.UserApp;
+import tn.esprit.spring.repository.PanierSessionRepository;
 import tn.esprit.spring.repository.OfferRepository;
 import tn.esprit.spring.repository.PanierRepository;
 import tn.esprit.spring.repository.PointsHistoryRepository;
@@ -36,6 +39,9 @@ public class OrderServiceImp implements OrderService {
 
 	@Autowired
 	private PointsHistoryRepository PointsHistoryRepository;
+	
+	@Autowired
+	private PanierSessionRepository PanierSessionRepository;
 
 	@Override
 	public Order addOrder(Order p, int panierid, Long userid) {
@@ -52,13 +58,18 @@ public class OrderServiceImp implements OrderService {
 
 		}
 
-		p.setTotal_price(totalprice);
-
 		p.setUser(UserRepository.findById(userid).orElse(null));
 
 		p.setPanier(pa);
 		p.setOrder_date(new Date());
 
+		UserApp user = UserRepository.findById(userid).orElse(null);
+		PanierSession panier_session = PanierSessionRepository.getPanierSessionByUser(userid);
+		
+		if (p.getPointspent()>0)
+			PointsHistoryRepository.save(new PointsHistory(p.getUser(), (int) p.getPointspent() * (-1)));
+
+		PanierSessionRepository.deleteById(panier_session.getId());
 		return OrderRepository.save(p);
 	}
 
@@ -173,14 +184,12 @@ public class OrderServiceImp implements OrderService {
 		if (count == o.getPanier().getOrderedoffers().size()) {
 
 			o.setState(OrderState.DISPATCHED);
-			if (o.getPointspent()>0)
-				PointsHistoryRepository.save(new PointsHistory(o.getUser(), (int) o.getPointspent() * (-1)));
-
+			
 			for (PanierProduct p : o.getPanier().getOrderedoffers()) {
 
 				if (p.getRefuser() != null) {
 					PointsHistory ph = new PointsHistory(p.getRefuser(),
-							(int) Math.ceil(p.getOffer().getPrice() * 0.05 * 1000) * p.getQty());
+							(int) Math.ceil(p.getOffer().getPrice() * 0.05 * 1000));
 					PointsHistoryRepository.save(ph);
 				}
 
