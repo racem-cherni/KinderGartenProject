@@ -69,6 +69,16 @@ public class CartController {
 
 	private String reduced_price;
 
+	private boolean cartEmpty;
+
+	public boolean isCartEmpty() {
+		return cartEmpty;
+	}
+
+	public void setCartEmpty(boolean cartEmpty) {
+		this.cartEmpty = cartEmpty;
+	}
+
 	public String getReduced_price() {
 		return reduced_price;
 	}
@@ -143,36 +153,40 @@ public class CartController {
 
 	}
 
-	public void onload() {
-
+public void onload(){
+		
 		this.offers = Collections.emptyList();
-		this.offer_qty = new HashMap<Integer, Integer>();
-		this.offer_price = new HashMap<Integer, Double>();
+		this.offer_qty = new HashMap<Integer,Integer>();
+		this.offer_price = new HashMap<Integer,Double>();
 		List<Offer> offers_temp = PanierProductService.retrieveAlOffdersOfPanier();
-
-		if (offers_temp != null) {
-			for (Offer offer : offers_temp) {
+		
+		
+		if (offers_temp != null && offers_temp.size()>0) {
+			for(Offer offer : offers_temp){
 				this.offer_qty.put(offer.getId(), 1);
 				this.offer_price.put(offer.getId(), offer.getPrice());
 			}
-			this.offers = offers_temp;
+			this.offers = offers_temp ;
+			this.cartEmpty = false;
 
+		} else {
+			this.cartEmpty = true;
 		}
 
 		double total_price = 0;
-
-		for (Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()) {
+		
+		for(Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()){
 			total_price += offer.getValue() * (this.getOffer_price().get(offer.getKey()));
 		}
-
+		
 		this.total_price = total_price;
-
-		this.qty = "1";
-
+		
+		this.qty = "1" ;
+		
 		this.points = "0.0";
 		this.points2 = "0";
-
-		this.reduced_price = "" + this.total_price;
+		
+		this.reduced_price = ""+this.total_price;
 
 	}
 
@@ -205,6 +219,10 @@ public class CartController {
 
 		this.offer_price.remove(id);
 		this.offer_qty.remove(id);
+		
+		if (offer_qty.size() == 0){
+			this.cartEmpty = true;
+		}
 
 		double total_price = 0;
 
@@ -213,10 +231,10 @@ public class CartController {
 		}
 
 		this.total_price = total_price;
-
+		
 		this.points = "0.0";
 		this.points2 = "0.0";
-
+		
 		this.updatePrice();
 
 	}
@@ -240,8 +258,9 @@ public class CartController {
 
 		if (PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()) != null)
 			panier_id = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()).getPanier().getId();
-		else return;
-		
+		else
+			return;
+
 		for (Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()) {
 			PanierProduct panier_product = PanierProductService.getProductPanierByOfferAndPanier(offer.getKey(),
 					panier_id);
@@ -249,14 +268,16 @@ public class CartController {
 			PanierProductService.updateProduct(panier_product);
 		}
 
-		order.setPointspent(Double.parseDouble(this.points)*50);
-		
-		if (Double.parseDouble(this.points)>0)
+		order.setPointspent(Double.parseDouble(this.points) * 50);
+
+		if (Double.parseDouble(this.points) > 0)
 			order.setReducedprice(Double.parseDouble(this.reduced_price));
 		else
 			order.setReducedprice(this.total_price);
 
 		orderservice.addOrder(order, panier_id, SessionFake.getId());
+
+		this.cartEmpty = true;
 
 	}
 
