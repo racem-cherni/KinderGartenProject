@@ -23,19 +23,19 @@ public interface ProductRepository extends CrudRepository <Product,Integer>{
 	public List<Product> getProductsOnSale();
 	
 	@Query(nativeQuery = true, value = "SELECT a.id "
-			+ "FROM ( SELECT of.product_id id, count(*) "
-					+ "from orders o "
-					+ "JOIN paniers p "
-					+ "on p.id = o.panier_id "
-					+ "JOIN panierproduct pp "
-					+ "on pp.id_panier = p.id "
-					+ "JOIN offers of "
-					+ "ON of.id = pp.id_offer "
-					+ "where o.state = 'DISPATCHED' and YEAR(o.order_date) > 2010 "
-							+ "group by of.product_id "
-							+ "order by count(*) DESC "
-							+ "limit :limit) a")
-	public List<Integer> getBestSeller(@Param("limit") int limit); 
+			+ "FROM ( SELECT of.product_id id, count(*) * pp.qty "
+		    + "from orders o "
+		    + "JOIN paniers p "
+		    + "on p.id = o.panier_id "
+		    + "JOIN panierproduct pp "
+		    + "on pp.id_panier = p.id "
+		    + "JOIN offers of "
+		    + "ON of.id = pp.id_offer "
+		    + "where pp.state = 'DISPATCHED' and YEAR(o.order_date) > 2010 "
+		    + "group by of.product_id "
+		    + "order by count(*) * pp.qty  DESC "
+			+ "limit :limit) a")
+	public List<Integer> getBestSeller(@Param("limit") int limit);  
 	
 	@Query(nativeQuery = true, value ="SELECT count(*) from orders o JOIN paniers p  on p.id = o.panier_id JOIN panierproduct pp on pp.id_panier = p.id JOIN offers of ON of.id = pp.id_offer  where o.state = 'DISPATCHED' or o.state = 'CONFIRMED' and of.product_id = :id")
 	public int getSoldNumber(@Param("id") int id);
