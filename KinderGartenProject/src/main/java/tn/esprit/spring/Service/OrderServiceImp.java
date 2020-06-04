@@ -114,7 +114,7 @@ public class OrderServiceImp implements OrderService {
 		if (o.getState().equals(OrderState.WAITING) || o.getState().equals(OrderState.CONFIRMED)) {
 
 			if (o.getPointspent() > 0) {
-
+				PointsHistoryRepository.save(new PointsHistory(o.getUser(), (int) o.getPointspent()));
 			}
 
 			o.setState(OrderState.CANCELED);
@@ -133,6 +133,10 @@ public class OrderServiceImp implements OrderService {
 		Order o = OrderRepository.findById(id).orElse(null);
 
 		if (o.getState().equals(OrderState.WAITING) || o.getState().equals(OrderState.CONFIRMED)) {
+			
+			if (o.getPointspent() > 0) {
+				PointsHistoryRepository.save(new PointsHistory(o.getUser(), (int) o.getPointspent()));
+			}
 
 			o.setState(OrderState.REFUSED);
 			return OrderRepository.save(o);
