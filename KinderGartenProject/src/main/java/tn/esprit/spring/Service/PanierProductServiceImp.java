@@ -100,4 +100,17 @@ public class PanierProductServiceImp implements PanierProductService {
 		return PanierProductRepository.save(panier_product);
 	}
 
+	@Override
+	public void cancelAllProductsByPanier(int panier_id) {
+		
+		List<PanierProduct> panier_products = PanierProductRepository.getAllProductsByPanier(panier_id);
+		
+		for (PanierProduct panier_product : panier_products){
+			panier_product.setState(PanierProductState.CANCELED);
+			PanierProductRepository.save(panier_product);
+		}
+		
+	}
+
+
 }

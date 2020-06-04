@@ -13,5 +13,6 @@ public interface PanierProductService {
 	List<Offer> retrieveAlOffdersOfPanier();
 	PanierProduct getProductPanierByOfferAndPanier(int offer, int panier);
 	PanierProduct updateProduct(PanierProduct panier_product);
+	void cancelAllProductsByPanier(int panier_id);
 
 }

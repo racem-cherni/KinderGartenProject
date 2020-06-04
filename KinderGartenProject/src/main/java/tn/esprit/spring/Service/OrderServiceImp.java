@@ -42,6 +42,9 @@ public class OrderServiceImp implements OrderService {
 	
 	@Autowired
 	private PanierSessionRepository PanierSessionRepository;
+	
+	@Autowired
+	private PanierProductService PanierProductService;
 
 	@Override
 	public Order addOrder(Order p, int panierid, Long userid) {
@@ -118,7 +121,7 @@ public class OrderServiceImp implements OrderService {
 			}
 
 			o.setState(OrderState.CANCELED);
-
+			PanierProductService.cancelAllProductsByPanier(o.getPanier().getId());
 			return OrderRepository.save(o);
 
 		}
@@ -139,6 +142,7 @@ public class OrderServiceImp implements OrderService {
 			}
 
 			o.setState(OrderState.REFUSED);
+			PanierProductService.cancelAllProductsByPanier(o.getPanier().getId());
 			return OrderRepository.save(o);
 
 		}
