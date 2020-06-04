@@ -12,10 +12,12 @@ import tn.esprit.spring.entities.Order;
 import tn.esprit.spring.entities.OrderState;
 import tn.esprit.spring.entities.Panier;
 import tn.esprit.spring.entities.PanierProduct;
+import tn.esprit.spring.entities.PanierProductState;
 import tn.esprit.spring.entities.PanierSession;
 import tn.esprit.spring.entities.PointsHistory;
 import tn.esprit.spring.entities.UserApp;
 import tn.esprit.spring.repository.PanierSessionRepository;
+import tn.esprit.spring.repository.PanierProductRepository;
 import tn.esprit.spring.repository.OfferRepository;
 import tn.esprit.spring.repository.PanierRepository;
 import tn.esprit.spring.repository.PointsHistoryRepository;
@@ -42,6 +44,9 @@ public class OrderServiceImp implements OrderService {
 	
 	@Autowired
 	private PanierSessionRepository PanierSessionRepository;
+	
+	@Autowired
+	private PanierProductRepository PanierProductRepository;
 	
 	@Autowired
 	private PanierProductService PanierProductService;
@@ -169,57 +174,49 @@ public class OrderServiceImp implements OrderService {
 	@Override
 	public Order dispatchOrder(int id) {
 
-		Order o = this.retrieveOrder(id);
-		Offer of = new Offer();
+		Order order = this.retrieveOrder(id);
+		Offer offer = new Offer();
 		int count = 0;
 
-		if (!(o.getState().equals(OrderState.CONFIRMED)))
+		if (!(order.getState().equals(OrderState.CONFIRMED)))
 			throw new RuntimeException("You must CONFIRM the order before DISPATCHING it !");
 
-		for (PanierProduct pp : o.getPanier().getOrderedoffers()) {
+		for (PanierProduct panier_product : order.getPanier().getOrderedoffers()) {
 
-			of = pp.getOffer();
-
-			if (of.getQty() > pp.getQty()) {
+			offer = panier_product.getOffer();
+			
+			if (offer.getQty() > panier_product.getQty()) {
 
 				count++;
-				of.setQty(of.getQty() - pp.getQty());
-
-				OfferRepository.save(of);
-
-			}
-
-		}
-
-		if (count == o.getPanier().getOrderedoffers().size()) {
-
-			o.setState(OrderState.DISPATCHED);
-			
-			for (PanierProduct p : o.getPanier().getOrderedoffers()) {
-
-				if (p.getRefuser() != null) {
-					PointsHistory ph = new PointsHistory(p.getRefuser(),
-							(int) Math.ceil(p.getOffer().getPrice() * 0.05 * 1000));
+				
+				offer.setQty(offer.getQty() - panier_product.getQty());
+				
+				panier_product.setState(PanierProductState.DISPATCHED);
+				PanierProductRepository.save(panier_product);
+				
+				if (panier_product.getRefuser() != null) {
+					PointsHistory ph = new PointsHistory(panier_product.getRefuser(),
+							(int) Math.ceil(panier_product.getOffer().getPrice() * 0.05 * 1000));
 					PointsHistoryRepository.save(ph);
 				}
+				
+				OfferRepository.save(offer);
 
+			} else {
+				
+				panier_product.setState(PanierProductState.CANCELED);
+				PanierProductRepository.save(panier_product);
+				
 			}
 
 		}
 
-		/*
-		 * if (op.getQty() > o.getQty()) {
-		 * 
-		 * o.setState(OrderState.DISPATCHED); /op.setQty(op.getQty() -
-		 * o.getQty()); OfferRepository.save(op); o = OrderRepository.save(o);
-		 */
-		return OrderRepository.save(o);
-		// }
+		if (count > 0)
+			order.setState(OrderState.DISPATCHED);
+		else
+			order.setState(OrderState.CANCELED);
 
-		// o.setState(OrderState.WAITING);
-		// OrderRepository.save(o);
-		// throw new RuntimeException("Product out of stock !, ORDER state set
-		// back to WAITING");
+		return OrderRepository.save(order);
 	}
 
 }
