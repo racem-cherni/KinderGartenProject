@@ -18,7 +18,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.Service.PointsHistoryService;
+import tn.esprit.spring.Service.PanierProductService;
 import tn.esprit.spring.entities.SessionFake;
+
 
 @Scope(value = "session")
 @Controller(value = "storeaccountController")
@@ -28,8 +30,15 @@ public class StoreAccountController {
 	
 	@Autowired
 	PointsHistoryService PointsHistoryService;
+	
+	@Autowired
+	PanierProductService PanierProductService;
 
 	private int total_points;
+	
+	private int total_sales_count;
+	
+	private double total_sales;
 	
 	public String getTotal_points() {
 		this.total_points = PointsHistoryService.getPointsUser(SessionFake.getId());
@@ -38,6 +47,24 @@ public class StoreAccountController {
 
 	public void setTotal_points(int total_points) {
 		this.total_points = total_points;
+	}
+
+	public int getTotal_sales_count() {
+		this.total_sales_count = PanierProductService.getSalesCount(SessionFake.getId());
+		return this.total_sales_count;
+	}
+
+	public void setTotal_sales_count(int total_sales_count) {
+		this.total_sales_count = total_sales_count;
+	}
+
+	public double getTotal_sales() {
+		this.total_sales = PanierProductService.getSalesTotalPrice(SessionFake.getId());
+		return this.total_sales;
+	}
+
+	public void setTotal_sales(double total_sales) {
+		this.total_sales = total_sales;
 	}
    
 	
