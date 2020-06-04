@@ -111,6 +111,31 @@ public class PanierProductServiceImp implements PanierProductService {
 		}
 		
 	}
+	
+	@Override
+	public int getSalesCount(long id) {
+		
+		try {
+				return PanierProductRepository.getSalesCount(id);
+			}
+			catch(Exception e) {
+			 	return 0;
+			}
+		
+	}
+
+	@Override
+	public double getSalesTotalPrice(long id) {
+		
+		try {
+			return PanierProductRepository.getSalesTotalPrice(id);
+			}
+			catch(Exception e) {
+			  return 0.0;
+			}
+		
+		
+	}
 
 
 }
