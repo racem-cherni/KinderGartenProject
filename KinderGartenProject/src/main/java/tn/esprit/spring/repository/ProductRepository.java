@@ -32,7 +32,7 @@ public interface ProductRepository extends CrudRepository <Product,Integer>{
 			+ "limit :limit) a")
 	public List<Integer> getBestSeller(@Param("limit") int limit);  
 	
-	@Query(nativeQuery = true, value ="SELECT count(*) from orders o JOIN paniers p  on p.id = o.panier_id JOIN panierproduct pp on pp.id_panier = p.id JOIN offers of ON of.id = pp.id_offer  where o.state = 'DISPATCHED' or o.state = 'CONFIRMED' and of.product_id = :id")
+	@Query(nativeQuery = true, value ="SELECT Sum(p.qty) FROM `panierproduct` p JOIN offers o ON o.id = p.id_offer WHERE  p.state = 'DISPATCHED' AND o.product_id = :id")
 	public int getSoldNumber(@Param("id") int id);
 	
 	@Query(nativeQuery = true, value = "SELECT count(*) from offers	WHERE product_id = :id")
