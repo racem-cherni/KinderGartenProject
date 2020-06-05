@@ -1,6 +1,7 @@
 package tn.esprit.spring.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -135,6 +136,19 @@ public class PanierProductServiceImp implements PanierProductService {
 			}
 		
 		
+	}
+	
+	@Override
+	public List<PanierProduct> getAllBoughtProductsByUser(Long user) {
+		
+		List<PanierProduct> products = new ArrayList<PanierProduct>();
+		
+		List<Object[]> products_objs = PanierProductRepository.getAllBoughtProductsByUser(user);
+		
+		for (Object[] obj : products_objs)
+			products.add(PanierProductRepository.getProductPanierByOfferAndPanier((int) obj[0], (int) obj[1]));
+		
+		return products;
 	}
 
 

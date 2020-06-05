@@ -16,5 +16,6 @@ public interface PanierProductService {
 	void cancelAllProductsByPanier(int panier_id);
 	int getSalesCount(long id);
 	double getSalesTotalPrice(long id);
+	List<PanierProduct> getAllBoughtProductsByUser(Long user);
 
 }

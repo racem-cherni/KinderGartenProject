@@ -35,4 +35,7 @@ public interface PanierProductRepository extends CrudRepository <PanierProduct, 
 	
 	@Query(nativeQuery = true, value="SELECT SUM(o.price * p.qty) FROM `panierproduct` p JOIN offers o ON o.id = p.id_offer WHERE  p.state = 'DISPATCHED' AND o.kindergarten_user_id = :id")
 	Double getSalesTotalPrice(@Param("id") long id);
+	
+	@Query(nativeQuery = true, value="SELECT p.id_offer, p.id_panier FROM orders o JOIN panierproduct p ON p.id_panier = o.panier_id LEFT JOIN panier_session ps ON ps.panier_id = p.id_panier WHERE o.user_id = 1 AND ps.panier_id IS NULL ORDER BY o.order_date DESC")
+	List<Object[]> getAllBoughtProductsByUser(@Param("user") Long user);
 }
