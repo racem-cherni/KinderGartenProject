@@ -25,10 +25,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class KinderGarten implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -66,6 +69,96 @@ public class KinderGarten implements Serializable {
 	private List<Event> eventm;
 
      
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getKinderGartenName() {
+		return KinderGartenName;
+	}
+
+
+	public void setKinderGartenName(String kinderGartenName) {
+		KinderGartenName = kinderGartenName;
+	}
+
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+
+	public String getEmail() {
+		return Email;
+	}
+
+
+	public void setEmail(String email) {
+		Email = email;
+	}
+
+
+	public int getCapacite() {
+		return capacite;
+	}
+
+
+	public void setCapacite(int capacite) {
+		this.capacite = capacite;
+	}
+
+
+	public int getTel() {
+		return tel;
+	}
+
+
+	public void setTel(int tel) {
+		this.tel = tel;
+	}
+
+
+	public Float getPrix() {
+		return prix;
+	}
+
+
+	public void setPrix(Float prix) {
+		this.prix = prix;
+	}
+
+
+	public Collection<Classe> getClasses() {
+		return classes;
+	}
+
+
+	public void setClasses(Collection<Classe> classes) {
+		this.classes = classes;
+	}
+
+
+	public Collection<Teacher> getTeachers() {
+		return teachers;
+	}
+
+
+	public void setTeachers(Collection<Teacher> teachers) {
+		this.teachers = teachers;
+	}
+
+
 	public List<Event> getEventm() {
 		return eventm;
 	}
@@ -93,6 +186,11 @@ public class KinderGarten implements Serializable {
 
 	public void setUserapp(UserApp userapp) {
 		this.userapp = userapp;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 	
