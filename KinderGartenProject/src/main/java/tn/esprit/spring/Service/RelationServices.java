@@ -3,6 +3,7 @@ package tn.esprit.spring.Service;
 import tn.esprit.spring.entities.Relation;
 import tn.esprit.spring.entities.RoleApp;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.Advertissement;
 import tn.esprit.spring.entities.AdvertissementPK;
 import tn.esprit.spring.entities.KinderGarten;
+import tn.esprit.spring.entities.Parent;
 import tn.esprit.spring.entities.UserApp;
 import tn.esprit.spring.repository.AdvertissementRepository;
 import tn.esprit.spring.repository.UserRepository;
@@ -145,16 +147,16 @@ public Boolean testAbonner(UserApp user,UserApp target){
 public List<UserApp> Myfriend(UserApp user){
 	
 	List<UserApp> l=advertissementRepository.findUserRelation(user).stream().filter( j ->
-	j.getRelation().equals(Relation.FRIEND) && j.isActive()==true && !j.getTargetUser().equals(user)
+	j.getRelation().equals(Relation.FRIEND) //&& j.isActive()==true && j.getTargetUser().equals(user)
 	).map(e->
-	e.getTargetUser()
+	e.getSourceUser()
 	).collect(Collectors.toList());//.forEach(e->System.out.println("user : "+e.toString()));
 
 
 	l.addAll(advertissementRepository.findUserRelation(user).stream().filter( j ->
-	j.getRelation().equals(Relation.FRIEND) && j.isActive()==true && !j.getSourceUser().equals(user) 
+	j.getRelation().equals(Relation.FRIEND) //&& j.isActive()==true && j.getSourceUser().equals(user) 
 	).map(e->
-	e.getSourceUser()
+	e.getTargetUser()
 	).collect(Collectors.toList()));
 
 
@@ -189,7 +191,16 @@ for (Advertissement advertissement : l) {
 return 0;
 }
 
-
+public List<Parent> parentDuplex(List<Parent> lp,Parent p){
+	
+	Iterator<Parent> iterator2 = lp.iterator();
+	while (iterator2.hasNext()) {
+		
+		if(iterator2.next().getId()==p.getId())
+		iterator2.remove(); // On supprime l'élément courant
+	}
+	return lp;
+}
 
 
 }

@@ -68,6 +68,24 @@ private ChildRepository childRepository;
 	}
 	
 	
+
+	
+	
+	public void deleteParent(Parent p){
+		 parentRepository.deleteById(p.getId());
+		 UserApp u=userRepository.findUserByParent(p);
+		 userRepository.delete(u);
+		 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

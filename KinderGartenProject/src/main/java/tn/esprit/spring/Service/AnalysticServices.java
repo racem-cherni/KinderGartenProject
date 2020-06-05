@@ -52,7 +52,8 @@ public class AnalysticServices implements IanalysticServices {
 	private TeacherServices teacherServices;
 	@Autowired
 	private ClasseServices classeServices;
-	
+	@Autowired
+	UserServices userServices;
 	@Override
 	public int calculerNbredeClasseParJardin(KinderGarten k) {
 		
@@ -490,4 +491,163 @@ public 	boolean verif(Teacher t,Classe c){
 		
 		 return map;
 	}
+	
+	
+	
+public Long nbreUser(){
+	return (long) userServices.getAllUser().size();
+}
+	
+	
+public Long nbreParent(){
+	return (long) userServices.getAllParent().size();
+	}
+	
+	
+	
+	
+public Long nbrekinder(){
+	return (long) userServices.getAllkinder().size();	
+}
+
+	
+	
+public Long NbrechildParkinder(KinderGarten k){
+
+	return (long) childRepository.findchildByKinder(k).size();
+	
+}
+
+public Long NbrechildNoAffecter(KinderGarten k){
+
+	return (long) childRepository.findAll().stream().filter(e->e.getKindergarten()==null).collect(Collectors.toList()).size();
+	
+}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public List<KinderGarten> topKinder(){
+	List<KinderGarten> lk=kinderGartenRepository.findAll().stream().sorted((e1 , e2)->
+		verif(e1)-verif(e2)).collect(Collectors.toList());
+	
+	return lk  ;
+}
+
+	
+	
+public int verif(KinderGarten k)	{
+	List<Classe> lc=classeServices.getClasseBykinder(k);
+	int nubreclasse=lc.size();
+	int note=0;
+	if(NumbreClasseNocharger(k)>(nubreclasse*0.7))
+		note=note+5;
+	if(NumbreClasseNoPlein(k)>(nubreclasse*0.7))
+		note=note+2;
+	if(Numbredeteacher(k))
+		note=note+3;
+	if(numberDeClasseParAge(k))
+		note=note+5;
+	if(NumbreClasseStable(k)>(nubreclasse*0.7))
+		note=note+5;
+	
+	return 0;
+}
+	
+public int NumbreClasseNocharger(KinderGarten k)	{
+	List<Classe> lc=classeServices.getClasseBykinder(k);
+	int i=0;
+	for (Classe classe : lc) {
+		if(childRepository.findchildByClasse(classe).size()<10){
+			i++;
+		}
+			
+	}
+	return i;	
+	
+	
+}	
+public int NumbreClasseNoPlein(KinderGarten k)	{
+	List<Classe> lc=classeServices.getClasseBykinder(k);
+	int i=0;
+	for (Classe classe : lc) {
+		if(classe.getCapacitie()>0)
+			i++;
+			
+	}
+	return i;	
+	
+	
+}
+public boolean Numbredeteacher(KinderGarten k)	{
+
+List<Teacher> lt=teacherRepository.findByKinder(k);
+List<Classe> lc=classeServices.getClasseBykinder(k);
+
+if(lt.size()>lc.size())
+	return true;
+	
+return false;	
+	
+}
+	
+	
+public boolean numberDeClasseParAge(KinderGarten k)	{
+	List<Classe> lc=classeServices.getClasseBykinder(k);
+	int i=0;
+	Set<Integer> setAge=new HashSet<>();
+	
+	for (Classe classe : lc) {
+		
+		setAge.add(classe.getAge());
+	}
+	for(i=0;i<6;i++)
+	{
+		if(!setAge.contains(i))
+			return false;
+	}
+	
+	
+	return true;	
+	
+	
+}
+	
+public int NumbreClasseStable(KinderGarten k)	{
+	int i=0;
+	List<Classe> lc=classeRepository.findclasseByKinder(k);
+	Map<Long, Object> mapt=new HashMap<>();
+	Teacher t=new Teacher();
+	for (Classe classe : lc) {
+		mapt.putAll(verifiClasseStable(classe));	
+	}
+	for (Map.Entry mapentryC : mapt.entrySet()) {
+		
+		 if((Long) mapentryC.getValue()==1L)
+		{
+		i++	 ;
+		}
+		}
+	
+return i;	
+}
+
 }

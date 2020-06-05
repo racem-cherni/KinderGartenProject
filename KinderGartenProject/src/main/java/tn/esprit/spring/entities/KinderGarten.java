@@ -42,6 +42,9 @@ public class KinderGarten implements Serializable {
 	private int capacite ;
 	private int tel;
 	private Float prix;
+	private  int maxRdv;
+	private String image;
+	private String imageBack;
 	@JsonIgnore
 	@OneToOne
 	private UserApp userapp;
@@ -191,6 +194,36 @@ public class KinderGarten implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+
+	public int getMaxRdv() {
+		return maxRdv;
+	}
+
+
+	public void setMaxRdv(int maxRdv) {
+		this.maxRdv = maxRdv;
+	}
+
+
+	public String getImageBack() {
+		return imageBack;
+	}
+
+
+	public void setImageBack(String imageBack) {
+		this.imageBack = imageBack;
+	}
+
+
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 	

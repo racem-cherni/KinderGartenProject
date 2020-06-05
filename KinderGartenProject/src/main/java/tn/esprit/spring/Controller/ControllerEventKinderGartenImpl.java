@@ -13,14 +13,14 @@ import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.Service.IEventService;
 import tn.esprit.spring.Service.IInvitation_EventService;
-import tn.esprit.spring.Service.ISalle_eventService;
+//import tn.esprit.spring.Service.ISalle_eventService;
 import tn.esprit.spring.Service.IStockeventService;
 import tn.esprit.spring.entities.Category_event;
 import tn.esprit.spring.entities.Discussion_Event;
 import tn.esprit.spring.entities.Etat_event;
 import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.entities.Locationevent;
-import tn.esprit.spring.entities.Salle_event;
+//import tn.esprit.spring.entities.Salle_event;
 import tn.esprit.spring.entities.Stock_event;
 import tn.esprit.spring.entities.Type_Event;
 
@@ -67,9 +67,9 @@ public class ControllerEventKinderGartenImpl {
 	@Autowired
     IInvitation_EventService iinvitationservice ;
 	
-	@Autowired
-    ISalle_eventService isalleservice ;
-	
+//	@Autowired
+//    ISalle_eventService isalleservice ;
+//	
 	private Long idevent ;
 	
 	private int number5;
@@ -150,7 +150,7 @@ public class ControllerEventKinderGartenImpl {
 	}
 	
 	
-	private Salle_event salle_event;
+	//private Salle_event salle_event;
 	
 	private Part  cinf;
 	
@@ -237,13 +237,13 @@ public class ControllerEventKinderGartenImpl {
 		this.type_event = type_event;
 	}
 
-	public Salle_event getSalle_event() {
-		return salle_event;
-	}
-
-	public void setSalle_event(Salle_event salle_event) {
-		this.salle_event = salle_event;
-	}
+//	public Salle_event getSalle_event() {
+//		return salle_event;
+//	}
+//
+//	public void setSalle_event(Salle_event salle_event) {
+//		this.salle_event = salle_event;
+//	}
 
 	public String getPhoto() {
 		return photo;

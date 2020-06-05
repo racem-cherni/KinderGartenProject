@@ -120,20 +120,20 @@ private static final long serialVersionUID = 1L;
 	@OneToOne
 	private Facture_Event facture_event ;
 	
-    @JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="event")
-	private  List<Reservation_Stock_interne> reservation_stock_interne;
+//    @JsonIgnore
+//	@LazyCollection(LazyCollectionOption.FALSE)
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="event")
+//	private  List<Reservation_Stock_interne> reservation_stock_interne;
 	
 	@JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="event_invitation")
 	private  List<Invitation_Event> invitations;
 	
-    @JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="event_evaluation")
-	private  List<Evaluation_Event> evaluations; 
+//    @JsonIgnore
+//	@LazyCollection(LazyCollectionOption.FALSE)
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="event_evaluation")
+//	private  List<Evaluation_Event> evaluations; 
 	
 	
 	@JsonIgnore
@@ -332,13 +332,13 @@ private static final long serialVersionUID = 1L;
 		this.facture_event = facture_event;
 	}
 
-	public List<Reservation_Stock_interne> getReservation_stock_interne() {
-		return reservation_stock_interne;
-	}
-
-	public void setReservation_stock_interne(List<Reservation_Stock_interne> reservation_stock_interne) {
-		this.reservation_stock_interne = reservation_stock_interne;
-	}
+//	public List<Reservation_Stock_interne> getReservation_stock_interne() {
+//		return reservation_stock_interne;
+//	}
+//
+//	public void setReservation_stock_interne(List<Reservation_Stock_interne> reservation_stock_interne) {
+//		this.reservation_stock_interne = reservation_stock_interne;
+//	}
 
 	
 
@@ -354,13 +354,13 @@ private static final long serialVersionUID = 1L;
 
 
 
-	public List<Evaluation_Event> getEvaluations() {
-		return evaluations;
-	}
-
-	public void setEvaluations(List<Evaluation_Event> evaluations) {
-		this.evaluations = evaluations;
-	}
+//	public List<Evaluation_Event> getEvaluations() {
+//		return evaluations;
+//	}
+//
+//	public void setEvaluations(List<Evaluation_Event> evaluations) {
+//		this.evaluations = evaluations;
+//	}
 
 
 	public Type_Event getType_event() {

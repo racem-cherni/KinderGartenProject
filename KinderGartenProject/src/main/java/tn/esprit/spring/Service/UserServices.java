@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ import tn.esprit.spring.entities.RoleApp;
 import tn.esprit.spring.entities.UserApp;
 import tn.esprit.spring.entities.VerificationToken;
 import tn.esprit.spring.repository.AdvertissementRepository;
+import tn.esprit.spring.repository.EmailPwdRepository;
+import tn.esprit.spring.repository.KinderGartenRepository;
+import tn.esprit.spring.repository.ParentRepository;
 import tn.esprit.spring.repository.RoleRepository;
 import tn.esprit.spring.repository.UserRepository;
 import tn.esprit.spring.repository.VerificationTokenRepository;
@@ -44,18 +48,17 @@ public class UserServices implements AccountService{
 	@Autowired
     private VerificationTokenRepository tokenRepository;
 
-/*	@Autowired
+	@Autowired
 	private JavaMailSender mailSender;
 @Autowired
 private AdvertissementRepository advertissementRepository;
 @Autowired
-<<<<<<< HEAD
-private EmailPwdRepository emailPwdRepository;*/
 
+private EmailPwdRepository emailPwdRepository;
 @Autowired
-private AdvertissementRepository  advertissementRepository ;
-
-
+KinderGartenRepository kinderGartenRepository;
+@Autowired
+ParentRepository parentRepository;
 	
 public UserApp saveUserEtape1( RegisterUser user, String role){
 	if(!user.getCfpassword().equals(user.getPassword()))
@@ -128,7 +131,7 @@ public UserApp saveUserEtape1( RegisterUser user, String role){
 	}
 
 	
-/*	public boolean SendVerificationEmail(String username){
+	public boolean SendVerificationEmail(String username){
 		
 		UserApp uS=userRepository.findByUsernametest(username);
 		 VerificationToken vi= tokenRepository.findByUser(uS);
@@ -149,11 +152,11 @@ public UserApp saveUserEtape1( RegisterUser user, String role){
 	    tokenRepository.save(v);
 	return true;
 
-	}*/
+	}
 	
 public boolean SendVerificationEmailMdp(String username){
 		
-	/*	UserApp uS=userRepository.findByUsername(username);
+		UserApp uS=userRepository.findByUsername(username);
 		if(uS.isActived())
 			throw new RuntimeException("this user is all ready actived !!!");
 		
@@ -171,13 +174,13 @@ public boolean SendVerificationEmailMdp(String username){
 	    email.setTo(uS.getParent().getEmail());
 	    email.setSubject("verification code ");
 	    email.setText("change my pwd :"+"http://localhost:8081/modifierPasswordEmail/"+hash);
-	    mailSender.send(email);*/
+	    mailSender.send(email);
 	   
 	return true;
 
 	}
 	
-/*	public boolean verifEmailMdp(ModifierPassword Md,String code){
+public boolean verifEmailMdp(ModifierPassword Md,String code){
 		
 EmailPwd em=emailPwdRepository.getEmailPwdByCode(code);
 		if(!Md.getUsername().equals(em.getUsername()))
@@ -195,7 +198,7 @@ EmailPwd em=emailPwdRepository.getEmailPwdByCode(code);
 		return true;
 				
 				
-	}*/
+	}
 	
 	
 	
@@ -274,10 +277,49 @@ public UserApp currentUserJsf(){
 
 
 
+public List<UserApp> getAllUser(){
+	return userRepository.findAll();
+}
+
+
+public List<KinderGarten> getAllkinder(){
+	
+	return kinderGartenRepository.recherchKinder();
+}
+
+public List<Parent> getAllParent(){
+	return parentRepository.findAll();
+}
 
 
 
 
+
+public boolean SendVerificationEmailMdpJSF(String username){
+	
+	UserApp uS=userRepository.findByUsername(username);
+	if(!uS.isActived())
+		throw new RuntimeException("this user is all ready actived !!!");
+	
+	if(uS.getPoint()<=0)
+		throw new RuntimeException("this user is blocked !!!");
+	Random rand = new Random();
+	int n = rand.nextInt(100000)+ 1;
+	String hash=bCryptPasswordEncoder.encode(""+n);
+	EmailPwd em=new EmailPwd(null,username,hash,null);
+	em.setDate(em.calculateExpiryDate(60));
+	
+	emailPwdRepository.save(em);
+	
+	SimpleMailMessage email = new SimpleMailMessage();
+    email.setTo(uS.getParent().getEmail());
+    email.setSubject("verification code ");
+    email.setText("change my pwd Code :"+hash);
+    mailSender.send(email);
+   
+return true;
+
+}
 
 
 

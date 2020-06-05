@@ -122,9 +122,9 @@ public class Parent implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="parent_invitation")
 	private  List<Invitation_Event> invitations;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="parent_evaluation")
-	private  List<Evaluation_Event> evaluations;
-	
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy="parent_evaluation")
+//	private  List<Evaluation_Event> evaluations;
+//	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="parent_discussion")
 	private  List<Discussion_Event> discussions;
 
@@ -138,13 +138,13 @@ public class Parent implements Serializable{
 		this.invitations = invitations;
 	}
 
-	public List<Evaluation_Event> getEvaluations() {
-		return evaluations;
-	}
-
-	public void setEvaluations(List<Evaluation_Event> evaluations) {
-		this.evaluations = evaluations;
-	}
+//	public List<Evaluation_Event> getEvaluations() {
+//		return evaluations;
+//	}
+//
+//	public void setEvaluations(List<Evaluation_Event> evaluations) {
+//		this.evaluations = evaluations;
+//	}
 
 	
 

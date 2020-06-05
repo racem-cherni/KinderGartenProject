@@ -17,8 +17,8 @@ import tn.esprit.spring.entities.Discussion_Event;
 import tn.esprit.spring.entities.Discussion_EventPk;
 import tn.esprit.spring.entities.Etat_Invitation_Event;
 import tn.esprit.spring.entities.Etat_event;
-import tn.esprit.spring.entities.Evaluation_Event;
-import tn.esprit.spring.entities.Evaluation_EventPk;
+//import tn.esprit.spring.entities.Evaluation_Event;
+//import tn.esprit.spring.entities.Evaluation_EventPk;
 import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.entities.Facture_Event;
 import tn.esprit.spring.entities.Invitation_Event;
@@ -29,7 +29,7 @@ import tn.esprit.spring.entities.Type_Event;
 import tn.esprit.spring.entities.UserApp;
 import tn.esprit.spring.repository.ChildRepository;
 import tn.esprit.spring.repository.DiscussionEventRepository;
-import tn.esprit.spring.repository.Evaluation_EventRepository;
+//import tn.esprit.spring.repository.Evaluation_EventRepository;
 import tn.esprit.spring.repository.EventRepository;
 import tn.esprit.spring.repository.Facture_EventRepository;
 import tn.esprit.spring.repository.Invitation_EventRepository;
@@ -66,8 +66,8 @@ public class EventServiceImpl implements IEventService {
     
     Invitation_EventRepository invitationrepository ;
 
-@Autowired 
-Evaluation_EventRepository evaluationrepository ;
+//@Autowired 
+//Evaluation_EventRepository evaluationrepository ;
 
 @Autowired
 private IInvitation_EventService invitationservice ;
@@ -171,7 +171,7 @@ private IInvitation_EventService invitationservice ;
 		return eventrepository.getEventPourToday(kindergarten);
 	}
 //////////////////////////////////////evaluation/////////////////////////////////////////////
-	@Override
+	/*@Override
 	public void evaluer_event(Long eventId, int valeur, HttpServletRequest request) {
 		Date date = new Date();
 		UserApp user = sessionservice.session(request); 
@@ -194,8 +194,8 @@ private IInvitation_EventService invitationservice ;
 		//	}
 		else System.out.println("pas inscrit a cette evenement");
         }
-
-	@Override
+*/
+	/*@Override
 	public Event event_most_evalue(HttpServletRequest request) {
         UserApp user = sessionservice.session(request); 
 		
@@ -205,7 +205,7 @@ private IInvitation_EventService invitationservice ;
 		
 		return event;
 	}
-
+*/
 	@Override
 	public List<Event> getallevents() {
 		
@@ -389,6 +389,18 @@ public List<Event> eventassocies(Long idevent) {
 public int nbrdisscussion(Long idevent) {
 	Event e = eventrepository.findById(idevent).get();
     return discussionrepository.nbrdiscussion(e);
+}
+
+@Override
+public void evaluer_event(Long eventId, int valeur, HttpServletRequest request) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public Event event_most_evalue(HttpServletRequest request) {
+	// TODO Auto-generated method stub
+	return null;
 }
 
 

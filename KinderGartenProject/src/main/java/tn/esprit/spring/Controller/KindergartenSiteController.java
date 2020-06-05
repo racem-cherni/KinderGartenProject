@@ -137,7 +137,7 @@ private Long id;
 	public String Abonner(KinderGarten kinder){
 		
 
-	//	relationServices.abonnerAKinderGarten(userServices.currentUserJsf(), kinder.getUserapp());
+		relationServices.abonnerAKinderGarten(userServices.currentUserJsf(), kinder.getUserapp());
 		
 		
 	return null;	

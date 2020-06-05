@@ -47,9 +47,7 @@ public Authentication attemptAuthentication(HttpServletRequest request, HttpServ
 		throw new RuntimeException(e);
 	}
 	
-	System.out.println("*************************************");
-	System.out.println("username : "+userapp.getUsername());
-	System.out.println("password : "+ userapp.getPassword());
+	
 	return authenticationManager.authenticate(
 			new UsernamePasswordAuthenticationToken(userapp.getUsername(), userapp.getPassword())
 			);
@@ -69,4 +67,21 @@ public Authentication attemptAuthentication(HttpServletRequest request, HttpServ
 			
 		
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

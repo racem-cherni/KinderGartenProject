@@ -1,5 +1,7 @@
 package tn.esprit.spring.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,4 +35,32 @@ if(test==false)
 		System.err.println(k.getKinderGartenName());
 			return kinderGartenRepository.save(k);
 		}
+	
+	
+
+	public List<KinderGarten> getallKinderNonActived(){
+return		kinderGartenRepository.getkinderforAdmin();
+		
+		
+		
+	}
+	
+	public void deleteKinder(KinderGarten  k ){
+		KinderGarten kinder=kinderGartenRepository.findById(k.getId()) .get();
+		
+		
+		UserApp u=userRepository.findByKinder(kinder);
+		u.setActived(false);
+		userRepository.save(u);
+	}
+	
+	
+	
+	public KinderGarten activerKinder(KinderGarten  k){
+		KinderGarten kinder=		 kinderGartenRepository.findById(k.getId()) .get();
+		UserApp u=userRepository.findByKinder(kinder);
+		u.setActived(true);
+		userRepository.save(u);
+		return kinder;
+	 }
 }

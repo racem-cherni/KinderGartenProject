@@ -92,9 +92,9 @@ public class RecherchController {
 		r.setVille(ville);
 		r.setVillage(village);
 		r.setRue(rue);
-		//rechercheKinderServices.getKinderByRechercheMenu(r, userServices.currentUserJsf()).forEach(e->System.err.println(e.getKinderGartenName()));;
+		rechercheKinderServices.getKinderByRechercheMenu(r, userServices.currentUserJsf()).forEach(e->System.err.println(e.getKinderGartenName()));;
 		
-//		this.kinders=rechercheKinderServices.getKinderByRechercheMenu(r, userServices.currentUserJsf());
+	this.kinders=rechercheKinderServices.getKinderByRechercheMenu(r, userServices.currentUserJsf());
 		
 	return	null;
 		
@@ -106,7 +106,7 @@ public class RecherchController {
 public String showVisitor(KinderGarten kinder){
 		this.ki=kinder;
 		System.err.println("*************************************"+ kinder.getId());
-	//	this.testE=relationServices.testAbonner(userServices.currentUserJsf(),userServices.getUserBykinder(kinder) );
+	this.testE=relationServices.testAbonner(userServices.currentUserJsf(),userServices.getUserBykinder(kinder) );
 	 this.kinderGartenName=kinder.getKinderGartenName();
 	 this. adresse=kinder.getAdresse();
 	 this.email =kinder.getEmail();
@@ -127,7 +127,7 @@ public String showVisitor(KinderGarten kinder){
 		return true;
 		
 	}
-/*	
+
 public String Abonner(){
 	
 System.err.println("*************************************"+ ki.getUserapp().getUsername());
@@ -144,7 +144,7 @@ System.err.println("*************************************"+ ki.getUserapp().getU
 	
 	
 return null;	
-}*/
+}
 	
 	
 	

@@ -16,6 +16,7 @@ import javax.faces.event.ValueChangeEvent;
 import org.eclipse.jdt.internal.compiler.SourceElementNotifier;
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
+import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -65,7 +66,7 @@ public class ProfilController  {
 	private String search;
 	private DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
 
-	
+	private Long idChild;
 	private String firstNameO;
 	private String lastNameO;
 	private String imageO;
@@ -79,12 +80,14 @@ public class ProfilController  {
 	
 	
 	
+	private UploadedFile file;
 
 	
 	
 	private Long idChildToupdate;
 	private String searchString="";
-
+	private String searchFriend="";
+	private String searchAbonner="";
 	
 	List<Child> childs=new ArrayList<>();
 	List<Parent> friends=new ArrayList<>();
@@ -108,9 +111,12 @@ private AdvertissementRepository advertissementRepository;
 	@PostConstruct
 	public void init(){
 	this.parents=	 rechercheKinderServices.findallPARENTS();
+	
+
+	
 	}
 	
-/*	public String show(Parent p){
+	public String show(Parent p){
 		this.adresseO=p.getAdresse();
 		this.emailO=p.getEmail();
 		this.firstNameO=p.getFirstName();
@@ -138,9 +144,11 @@ private AdvertissementRepository advertissementRepository;
 		System.err.println("1223456");
 		return "?faces-redirect=true";
 		
+		
 	}
 	public String recomen(){
 		this.parents=rechercheKinderServices.recomendedParent(userServices.currentUserJsf());
+		this.parents=relationServices.parentDuplex(this.parents,userServices.currentUserJsf().getParent() );
 		return null;
 	}
 	
@@ -162,32 +170,30 @@ private AdvertissementRepository advertissementRepository;
 	}
 	
 	public String AddChild(){
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		String userName;
-		System.err.println("add child");
-				if (principal instanceof UserDetails) {
-					userName = ((UserDetails) principal).getUsername();
-				} else {
-					userName = principal.toString();
-				}
-				System.err.println(userName);
-				UserApp user=userRepository.findByUsername(userName);
+		
+				UserApp user=userServices.currentUserJsf();
 		Parent p=user.getParent();
 		Child c=new Child();
 		c.setChildName(childName);
 		this.childName="";
 		c.setDateNaissance(dateNaissanceChild);
 		this.dateNaissanceChild=null;
-		c.setImage(imageChild);
+		c.setImage("unknown.png");
 		this.imageChild="";
 		c.setHealth(health);
 		this.health="";
 		c.setParents(p);
 		childRepository.save(c);
-		this.childs.add(c);
-		return "/pages/parent/parentprofil.xhtml?faces-redirect=true";
+		//this.idChild=childRepository.findchildByParentName(p,childName).getId();
 		
+		
+		
+		
+		return "/pages/parent/uplodimageforchild.xhtml?faces-redirect=true";	
+	}
+	public int testFriend(Parent p){
+	//System.out.println(p.getFirstName());
+return 0	;	//relationServices.testfriend(userServices.currentUserJsf(), p.getUserApp());
 		
 	}
 	
@@ -195,22 +201,27 @@ private AdvertissementRepository advertissementRepository;
 	public String recherch(){
 		if(search==""){
 			this.parents=	 rechercheKinderServices.findallPARENTS();
+			this.parents=relationServices.parentDuplex(this.parents,userServices.currentUserJsf().getParent() );
 			return null;
 		}
 		this.parents=this.parents.stream().filter(e->e.getFirstName().contains(this.search) || e.getLastName().contains(this.search)).collect(Collectors.toList());
 		//System.out.println();
-		this.parents.forEach(c->System.out.println(c.getFirstName()));
+		this.parents=relationServices.parentDuplex(this.parents,userServices.currentUserJsf().getParent() );
 		return null;
 	}
 	
 	public List<Parent> getFriends() {
 		
-		
+		if(!this.searchFriend.equals(""))
+		{
+			friends=friends.stream().filter(e->e.getFirstName().contains(this.searchFriend) ||e.getLastName().contains(this.searchFriend)).collect(Collectors.toList());
+			return	friends;
+		}
 		List<UserApp>ls=relationServices.Myfriend(userServices.currentUserJsf());
 		friends=ls.stream().map(e->e.getParent()).
 				collect(Collectors.toList());
+		friends=relationServices.parentDuplex(friends,userServices.currentUserJsf().getParent() );
 		System.err.println("friends");
-		friends.forEach(f->System.err.println(f.getFirstName()));
 	return	friends;
 
 	}
@@ -236,6 +247,7 @@ private AdvertissementRepository advertissementRepository;
 return user.getParent().getImage();
 		
 	}
+
 	public boolean imageuser(){
 		
 		
@@ -250,6 +262,7 @@ return user.getParent().getImage();
 			return false;
 		}
 		return true;
+		
 		
 		
 	}
@@ -281,36 +294,40 @@ return user.getParent().getImage();
 	
 	
 	
+	public void supprimerChild(Child c){
+		childRepository.deleteById(c.getId());
+		this.childs.remove(c);
+		
+	}
 	
 	
-	
-	
+
 	public String dispatchChild(Child c){
 		this.idChildToupdate=c.getId();
 		this.childName=c.getChildName();
 		this.health=c.getHealth();
 		this.dateNaissance=c.getDateNaissance();
 		this.imageChild=c.getImage();
+		this.idChild=c.getId();
 		
-	return	"/pages/parent/addChild.xhtml?faces-redirect=true";
+	return	"/pages/parent/updateChild.xhtml?faces-redirect=true";
 		
 	}
 	public String updateChild(){
 		
-		Child c=childRepository.getOne(idChildToupdate);
+		Child c=childRepository.findById(idChildToupdate).get();
 		
 		c.setChildName(childName);
 		c.setDateNaissance(dateNaissance);
 		c.setImage(imageChild);
 		c.setHealth(health);
-		
-		
+
 		childRepository.save(c);
 		
 		return "/pages/parent/parentprofil.xhtml?faces-redirect=true";
 		
-		
 	}
+	
 	
 	public List<Parent> shearch(String ch){
 	 this.parents=this.getParents().stream().filter(e->e.getFirstName().contains(ch) || e.getLastName().contains(ch)).collect(Collectors.toList());
@@ -342,6 +359,7 @@ return user.getParent().getImage();
 	
 		return this.getP().getFirstName();
 	}
+	
 
 	public Parent getP() {
 	
@@ -349,6 +367,7 @@ return user.getParent().getImage();
 		Parent p=user.getParent();
 		return p;
 	}
+	
 
 	public void setP(Parent p) {
 		this.p = p;
@@ -434,7 +453,19 @@ return user.getParent().getImage();
 	public String getImageChild() {
 		return imageChild;
 	}
+	
+	
+	
+	
 
+	public String uplodechild(Child c){
+	this.idChildToupdate=c.getId();
+	this.childName=c.getChildName();
+	this.imageChild=c.getImage();
+	return "/pages/parent/uplodimageforchild.xhtml?faces-redirect=true";
+	}
+
+	
 	public void setImageChild(String imageChild) {
 		this.imageChild = imageChild;
 	}
@@ -524,7 +555,16 @@ return user.getParent().getImage();
 	public void setRechercheKinderServices(RechercheKinderServices rechercheKinderServices) {
 		this.rechercheKinderServices = rechercheKinderServices;
 	}
+	
+	
 	public List<KinderGarten> getAbonner() {
+		if(!this.searchAbonner.equals("")){
+			return	relationServices.myAbonne(userServices.currentUserJsf()).stream().filter(e->e.getKinderGartenName().contains(this.searchAbonner)).collect(Collectors.toList());	
+		}
+		
+		
+		
+		
 		return relationServices.myAbonne(userServices.currentUserJsf());
 	}
 	public void setAbonner(List<KinderGarten> abonner) {
@@ -569,6 +609,7 @@ return user.getParent().getImage();
 		this.imageO = imageO;
 	}
 
+	
 	public String getEmailO() {
 		return emailO;
 	}
@@ -577,6 +618,7 @@ return user.getParent().getImage();
 		this.emailO = emailO;
 	}
 
+	
 	public String getAdresseO() {
 		return adresseO;
 	}
@@ -644,8 +686,40 @@ return user.getParent().getImage();
 	public void setRecomendidKinder(List<KinderGarten> recomendidKinder) {
 		this.recomendidKinder = recomendidKinder;
 	}
+
+	public Long getIdChild() {
+		return idChild;
+	}
+
+	public void setIdChild(Long idChild) {
+		this.idChild = idChild;
+	}
+
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
+
+	public String getSearchFriend() {
+		return searchFriend;
+	}
+
+	public void setSearchFriend(String searchFriend) {
+		this.searchFriend = searchFriend;
+	}
+
+	public String getSearchAbonner() {
+		return searchAbonner;
+	}
+
+	public void setSearchAbonner(String searchAbonner) {
+		this.searchAbonner = searchAbonner;
+	}
 	
-	*/
+	
 	
 	
 	

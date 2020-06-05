@@ -25,7 +25,7 @@ import tn.esprit.spring.entities.Etat_Invitation_Event;
 import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.entities.Invitation_Event;
 import tn.esprit.spring.entities.Locationevent;
-import tn.esprit.spring.entities.Salle_event;
+//import tn.esprit.spring.entities.Salle_event;
 import tn.esprit.spring.entities.Type_Event;
 
 
@@ -90,7 +90,7 @@ public class ControllerEventImpl {
 	
 	private Type_Event type_event;
 	
-	private Salle_event salle_event;
+//	private Salle_event salle_event;
 	
 	private Long idevent ;
 	
@@ -266,14 +266,14 @@ public class ControllerEventImpl {
 	}
 
 
-	public Salle_event getSalle_event() {
-		return salle_event;
-	}
-
-
-	public void setSalle_event(Salle_event salle_event) {
-		this.salle_event = salle_event;
-	}
+//	public Salle_event getSalle_event() {
+//		return salle_event;
+//	}
+//
+//
+//	public void setSalle_event(Salle_event salle_event) {
+//		this.salle_event = salle_event;
+//	}
 
 
 	public Event Eventtpop(int eventid) {
@@ -371,7 +371,7 @@ public class ControllerEventImpl {
 		this.setDateevent(event.getDate_event());
 		this.setHeurestart(event.getEvent_start_heure());
 		this.setHeurefin(event.getEvent_fin_heure());
-		this.setSalle_event(event.getSalle_event());
+		//this.setSalle_event(event.getSalle_event());
 		this.setCategory(event.getCategory());
 		this.setNb_interssants(event.getNbr_interssants());
 		this.setNb_participants(event.getNbr_participants());

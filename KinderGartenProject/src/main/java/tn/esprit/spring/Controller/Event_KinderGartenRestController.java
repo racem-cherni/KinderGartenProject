@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.Service.IEventService;
 import tn.esprit.spring.Service.IInvitation_EventService;
-import tn.esprit.spring.Service.ISalle_eventService;
+//import tn.esprit.spring.Service.ISalle_eventService;
 import tn.esprit.spring.entities.Category_event;
 import tn.esprit.spring.entities.Child;
 import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.entities.KinderGarten;
 import tn.esprit.spring.entities.Parent;
-import tn.esprit.spring.entities.Salle_event;
+//import tn.esprit.spring.entities.Salle_event;
 import tn.esprit.spring.entities.UserApp;
 
 
@@ -32,9 +32,9 @@ public class Event_KinderGartenRestController {
 	@Autowired
     IEventService ieventservice ;
 	
-	@Autowired
-	ISalle_eventService isalleeventservice ;
-	
+//	@Autowired
+//	ISalle_eventService isalleeventservice ;
+//	
 	@Autowired
 	IInvitation_EventService iinvitationservice ;
 	
@@ -104,26 +104,26 @@ public class Event_KinderGartenRestController {
 		
 ////////////////////////////////////////////salleevent/////////////////////////////////////////////////
 		        //Ajouter Salle : http://localhost:8081/add-salleevent
-				@PostMapping("/add-salleevent")
-				@ResponseBody
-				
-				public void addsalleEvent(@RequestBody Salle_event s ,HttpServletRequest request) {
-				 isalleeventservice.addsalle_event(s, request);
-			     }
-				
+//				@PostMapping("/add-salleevent")
+//				@ResponseBody
+//				
+//				public void addsalleEvent(@RequestBody Salle_event s ,HttpServletRequest request) {
+//				 isalleeventservice.addsalle_event(s, request);
+//			     }
+//				
 				//http://localhost:8081/SpringMVC/servlet/listsallesevent
-				@GetMapping(path="/list-salleevent")
-				@ResponseBody
-				public List<Salle_event> Allsallesevent(HttpServletRequest request) {
-					
-				return isalleeventservice.ListSalleEvent(request);
-				 }
-				
-				// http://localhost:8081/SpringMVC/servlet/affectersalleAEvent/1/1
-			    @PutMapping(value = "/affectersalleAEvent/{EventId}/{salleeventId}") 
-				public void affectersalleAEvent(@PathVariable("EventId")Long EventId, @PathVariable("salleeventId")Long salleId,HttpServletRequest request,String exept) throws Exception {
-			    	isalleeventservice.affecter_Salle_Event(EventId, salleId,request,exept);
-				}
+//				@GetMapping(path="/list-salleevent")
+//				@ResponseBody
+//				public List<Salle_event> Allsallesevent(HttpServletRequest request) {
+//					
+//				return isalleeventservice.ListSalleEvent(request);
+//				 }
+//				
+//				// http://localhost:8081/SpringMVC/servlet/affectersalleAEvent/1/1
+//			    @PutMapping(value = "/affectersalleAEvent/{EventId}/{salleeventId}") 
+//				public void affectersalleAEvent(@PathVariable("EventId")Long EventId, @PathVariable("salleeventId")Long salleId,HttpServletRequest request,String exept) throws Exception {
+//			    	isalleeventservice.affecter_Salle_Event(EventId, salleId,request,exept);
+//				}
 /////////////////////////////////////////////Invitation///////////////////////////////////////////////
 			    
 			  //inviter parent : http://localhost:8081/SpringMVC/servlet/inviter_parent/

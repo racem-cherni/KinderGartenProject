@@ -1,6 +1,6 @@
 package tn.esprit.spring.Controller;
 
-import java.io.IOException; 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -50,8 +50,8 @@ import tn.esprit.spring.repository.UserRepository;
 @Join(path = "/login2", to = "/login/NewFile.jsf")
 
 public class AuthController {
-/*	@Autowired
-	AuthenticationManager authenticationManager;*/
+	@Autowired
+	AuthenticationManager authenticationManager;
 	@Autowired
 	TokenProvider tokenProvider;
 	@Autowired
@@ -140,7 +140,7 @@ public	static  String token;
 	
 	
 	
-/*	public String signin() throws IOException, ServletException {
+	public String signin() throws IOException, ServletException {
 
 		System.err.println("token l gdim " + this.token);
 
@@ -170,19 +170,19 @@ public	static  String token;
 		List<String> roles = new ArrayList<String>();
 		for (GrantedAuthority a : authorities) {
 			roles.add(a.getAuthority());
-		}*/
+		}
 		
 		
 		
 
 		String url = "";
-	/*	UserApp user=userRepository.findByUsername(userName);
+		UserApp user=userRepository.findByUsername(userName);
 		if (roles.contains("ROLE_PARENT")){
 			
 			if(!user.isActived())
 			{
 
-			//	if(userServices.SendVerificationEmail(userName))
+				if(userServices.SendVerificationEmail(userName))
 					return "/login/sendEmail.xhtml?faces-redirect=false";
 				
 			}
@@ -196,6 +196,13 @@ public	static  String token;
 			
 			
 		}
+		
+		if (roles.contains("ROLE_ADMIN")){
+			return"/pages/admin/dashcontroll.xhtml?faces-redirect=true";
+		}
+		
+		
+		
 		System.err.println(roles + " : roles");
 
 		ExternalContext ex = FacesContext.getCurrentInstance().getExternalContext();
@@ -205,15 +212,15 @@ public	static  String token;
 //		System.err.println(response.getHeader(SecurityConstants.HEADER_STRING) + " : header");
 		//response.sendRedirect("http://localhost:8082/SpringMVC/"+url);
 		return url;
-	}*/
-/*	public String register1() throws IOException, ServletException{
+	}
+	public String register1() throws IOException, ServletException{
 		RegisterUser ru=new RegisterUser();
 		System.err.println(cfpassword+" passw "+ passwordr+" username "+usernamer +"role"+role);
 		ru.setCfpassword(cfpassword);
 		ru.setPassword(passwordr);
 		ru.setUsername(usernamer);
 		
-	//	UserApp user=userServices.saveUserEtape1(ru, "ROLE_PARENT");
+		UserApp user=userServices.saveUserEtape1(ru, "ROLE_PARENT");
 		
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(usernamer, passwordr));
@@ -233,15 +240,15 @@ public	static  String token;
 		
 		
 		
-	}*/
-	/*public String register2() throws IOException, ServletException{
+	}
+	public String register2() throws IOException, ServletException{
 		RegisterUser ru=new RegisterUser();
 		System.err.println(cfpassword+" passw "+ passwordr+" username "+usernamer +"role"+role);
 		ru.setCfpassword(cfpassword);
 		ru.setPassword(passwordr);
 		ru.setUsername(usernamer);
 		
-	//	UserApp user=userServices.saveUserEtape1(ru, "ROLE_KINDERGARTEN");
+		UserApp user=userServices.saveUserEtape1(ru, "ROLE_KINDERGARTEN");
 		
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(usernamer, passwordr));
@@ -259,10 +266,10 @@ public	static  String token;
 		
 		
 		
-	}*/
+	}
 	
 	
-	/*public String registerparent(){
+	public String registerparent(){
 		if(this.usernamer==null || this.passwordr==null)
 			return "/login/NewFile.xhtml?faces-redirect=false";
 		Parent p=new Parent();
@@ -282,7 +289,7 @@ public	static  String token;
 		
 		return null ;
 	}
-	*/
+	
 	public String registerkinder(){
 		if(this.usernamer==null || this.passwordr==null)
 			return "/login/NewFile.xhtml?faces-redirect=false";
@@ -327,7 +334,7 @@ public	static  String token;
 		
 	}
 	
-/*	public String ForgetPassWord1(){
+	public String ForgetPassWord1(){
 
 		if(userServices.SendVerificationEmailMdpJSF(this.username))
 			return "/login/FsendEmail.xhtml?faces-redirect=false";
@@ -335,17 +342,17 @@ public	static  String token;
 		
 		
 		return null;
-	}*/
+	}
 	public String ForgetPassWord2(){
 
 		ModifierPassword m=new ModifierPassword();
 		m.setUsername(this.username);
-//		if(userServices.verifEmailMdp(m, this.forgetPasswordCode))
+		if(userServices.verifEmailMdp(m, this.forgetPasswordCode))
 			return "/login/FchangePassword.xhtml?faces-redirect=true";
 		
-	//	System.out.println(this.username);
-	//	System.out.println("test value : "+ userServices.cfVerification(this.username, this.forgetPasswordCode));
-	//	return null;
+		System.out.println(this.username);
+		System.out.println("test value : "+ userServices.cfVerification(this.username, this.forgetPasswordCode));
+		return null;
 	}
 	
 	
@@ -360,7 +367,7 @@ public	static  String token;
 			m.setCfpassword(this.forgetPasswordCfpassword);
 			m.setPassword(this.forgetPasswordpassword);
 			m.setUsername(this.username);
-			//userServices.ChangePwdByPassword(m);
+			userServices.ChangePwdByPassword(m);
 			return"/login/NewFile.xhtml?faces-redirect=true";
 		}
 			
@@ -373,8 +380,8 @@ public	static  String token;
 			ModifierPassword m=new ModifierPassword();
 			m.setCfpassword(this.changePassworcfpassword);
 			m.setPassword(this.changePassworpassword);
-	////		m.setUsername(userServices.currentUserJsf().getUsername());
-	//		userServices.ChangePwdByPassword(m);
+			m.setUsername(userServices.currentUserJsf().getUsername());
+			userServices.ChangePwdByPassword(m);
 			return"/login/NewFile.xhtml?faces-redirect=true";
 		}
 			
@@ -383,7 +390,7 @@ public	static  String token;
 	}
 	
 
-/*	public AuthenticationManager getAuthenticationManager() {
+	public AuthenticationManager getAuthenticationManager() {
 		return authenticationManager;
 	}
 
@@ -397,7 +404,7 @@ public	static  String token;
 
 	public void setTokenProvider(TokenProvider tokenProvider) {
 		this.tokenProvider = tokenProvider;
-	}*/
+	}
 
 	
 
