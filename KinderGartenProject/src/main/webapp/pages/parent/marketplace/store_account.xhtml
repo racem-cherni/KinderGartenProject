@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:xlink="http://www.w3.org/1999/xlink">
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:ct="http://www.chartistjsf.org/charts"
+	xmlns:p="http://primefaces.org/ui">
 
 <body>
 	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
@@ -21,7 +23,8 @@
 				<div class="section-banner">
 					<!-- SECTION BANNER ICON -->
 					<img class="section-banner-icon"
-						src="resources/img/banner/accounthub-icon.png" alt="accounthub-icon" />
+						src="resources/img/banner/accounthub-icon.png"
+						alt="accounthub-icon" />
 					<!-- /SECTION BANNER ICON -->
 
 					<!-- SECTION BANNER TITLE -->
@@ -71,8 +74,7 @@
 							<!-- EARNING STAT BOX TITLE -->
 
 							<p class="earning-stat-box-title">
-								#{storeaccountController.total_points}
-							</p>
+								#{storeaccountController.total_points}</p>
 							<!-- /EARNING STAT BOX TITLE -->
 
 							<!-- EARNING STAT BOX TEXT -->
@@ -152,8 +154,132 @@
 						<!-- /EARNING STAT BOX -->
 
 					</div>
-					<!-- /GRID -->
+					<div class="section-header">
+						<!-- SECTION HEADER INFO -->
 
+						<div class="section-header-info">
+							<!-- SECTION PRETITLE -->
+
+							<p class="section-pretitle">BROWSE ORDERS</p>
+							<!-- /SECTION PRETITLE -->
+							<!-- SECTION TITLE -->
+
+							<h2 class="section-title">Order Statements</h2>
+							<!-- /SECTION TITLE -->
+						</div>
+						<!-- /SECTION HEADER INFO -->
+					</div>
+					<!-- /GRID -->
+					<div class="table table-sales">
+						<!-- TABLE HEADER -->
+						<div class="table-header">
+							<!-- TABLE HEADER COLUMN -->
+							<div class="table-header-column">
+								<!-- TABLE HEADER TITLE -->
+								<p class="table-header-title">Date</p>
+								<!-- /TABLE HEADER TITLE -->
+							</div>
+
+
+							<!-- TABLE HEADER COLUMN -->
+							<div class="table-header-column centered padded">
+								<!-- TABLE HEADER TITLE -->
+								<p class="table-header-title">USER</p>
+								<!-- /TABLE HEADER TITLE -->
+							</div>
+							<!-- /TABLE HEADER COLUMN -->
+
+							<!-- TABLE HEADER COLUMN -->
+							<div class="table-header-column centered padded">
+								<!-- TABLE HEADER TITLE -->
+								<p class="table-header-title">STATE</p>
+								<!-- /TABLE HEADER TITLE -->
+							</div>
+							<!-- /TABLE HEADER COLUMN -->
+
+							<!-- TABLE HEADER COLUMN -->
+							<div class="table-header-column centered padded">
+								<!-- TABLE HEADER TITLE -->
+								<p class="table-header-title">PRICE</p>
+								<!-- /TABLE HEADER TITLE -->
+							</div>
+							<!-- /TABLE HEADER COLUMN -->
+
+							<!-- TABLE HEADER COLUMN -->
+							<div class="table-header-column centered padded">
+								<!-- TABLE HEADER TITLE -->
+								<p class="table-header-title">DISCOUNT</p>
+								<!-- /TABLE HEADER TITLE -->
+							</div>
+							<!-- /TABLE HEADER COLUMN -->
+							<!-- /TABLE HEADER COLUMN -->
+						</div>
+						<!-- /TABLE HEADER -->
+
+						<!-- TABLE BODY -->
+						<div class="table-body same-color-rows">
+							<!-- TABLE ROW -->
+							<ui:repeat value="#{storeaccountController.getProducts()}"
+								var="product">
+								<div class="table-row micro">
+									<!-- TABLE COLUMN -->
+									<div class="table-column">
+										<!-- TABLE TEXT -->
+										<p class="table-text">
+											<span class="light"> <h:outputText value="#{product.panier.date}">
+													<f:convertDateTime type="date" dateStyle="medium" />
+												</h:outputText>
+											</span>
+										</p>
+										<!-- /TABLE TEXT -->
+									</div>
+									<!-- /TABLE COLUMN -->
+
+									<!-- TABLE COLUMN -->
+									<div class="table-column padded-left">
+										<!-- TABLE LINK -->
+										<h:link outcome="product" styleClass="table-link">
+											<span class="highlighted">#{product.offer.product.name}</span>
+											<f:param name="id" value="#{product.offer.product.id}" />
+										</h:link>
+										<!-- /TABLE LINK -->
+									</div>
+									<!-- /TABLE COLUMN -->
+
+									<!-- TABLE COLUMN -->
+
+									<div class="table-column centered padded">
+										<!-- TABLE TITLE -->
+										<p
+											class="table-title text-red font-weight-bold #{storeaccountController.getColor(product.state)}">#{product.state}</p>
+										<!-- /TABLE TITLE -->
+									</div>
+									<!-- /TABLE COLUMN -->
+
+									<!-- TABLE COLUMN -->
+									<div class="table-column centered padded">
+										<!-- TABLE TEXT -->
+										<p class="table-text">
+											<span class="light">#{product.offer.price}</span><span
+												class="highlighted"> DT</span>
+										</p>
+										<!-- /TABLE TEXT -->
+									</div>
+									<!-- /TABLE COLUMN -->
+
+									<!-- TABLE COLUMN -->
+									<div class="table-column centered padded">
+										<!-- TABLE TITLE -->
+										<p class="table-title">10%</p>
+										<!-- /TABLE TITLE -->
+									</div>
+
+								</div>
+							</ui:repeat>
+
+						</div>
+						<!-- /TABLE BODY -->
+					</div>
 					<!-- GRID -->
 
 					<!-- /GRID -->
