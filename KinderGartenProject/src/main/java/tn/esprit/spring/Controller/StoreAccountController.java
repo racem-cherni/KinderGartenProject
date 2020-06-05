@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.Service.PointsHistoryService;
 import tn.esprit.spring.Service.PanierProductService;
+import tn.esprit.spring.entities.PanierProduct;
 import tn.esprit.spring.entities.SessionFake;
 
 
@@ -39,6 +40,8 @@ public class StoreAccountController {
 	private int total_sales_count;
 	
 	private double total_sales;
+	
+	private List<PanierProduct> products;
 	
 	public String getTotal_points() {
 		this.total_points = PointsHistoryService.getPointsUser(SessionFake.getId());
@@ -66,7 +69,29 @@ public class StoreAccountController {
 	public void setTotal_sales(double total_sales) {
 		this.total_sales = total_sales;
 	}
+
+	public List<PanierProduct> getProducts() {
+		this.products = PanierProductService.getAllBoughtProductsByUser(SessionFake.getId());
+		return products;
+	}
+
+	public void setProducts(List<PanierProduct> products) {
+		this.products = products;
+	}
+	
+	public String getColor(String state) {
+		
+		if (state.equals("WAITING"))
+			return "text-info";
+		else if (state.equals("CANCELED"))
+			return "text-danger";
+		else
+			return "text-success";
+		
+		
+	}
    
 	
 
 }
+
