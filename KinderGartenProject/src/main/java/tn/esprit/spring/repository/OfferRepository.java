@@ -21,7 +21,7 @@ public interface OfferRepository extends CrudRepository <Offer,Integer>{
 			 + " WHERE o.Kindergarten.user.id =:userid")
 	public int getOfferCount(@Param("userid") long userid);
 	
-	@Query("SELECT o FROM Offer o WHERE o.Kindergarten.user.id =:userid AND o.product.id =:productid")
+	@Query("SELECT o FROM Offer o WHERE o.Kindergarten.userapp.id =:userid AND o.product.id =:productid")
     public Offer getExistedOffer(@Param("userid") long userid, @Param("productid") int productid);
 	
 	@Query("SELECT o FROM Offer o WHERE o.Kindergarten.user.id =:id GROUP BY o.product")
