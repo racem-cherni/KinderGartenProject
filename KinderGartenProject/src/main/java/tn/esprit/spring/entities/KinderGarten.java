@@ -15,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
@@ -70,6 +71,11 @@ public class KinderGarten implements Serializable {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="kindereventmaker")
 	private List<Event> eventm;
+	
+	@JsonIgnore
+	@Transient 
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="kinderGarten",fetch=FetchType.LAZY)
+	private Collection<foodsandtheircallories> foodsandtheircallories = new ArrayList<>();
 
      
 	public Long getId() {
@@ -224,6 +230,16 @@ public class KinderGarten implements Serializable {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+
+	public Collection<foodsandtheircallories> getFoodsandtheircallories() {
+		return foodsandtheircallories;
+	}
+
+
+	public void setFoodsandtheircallories(Collection<foodsandtheircallories> foodsandtheircallories) {
+		this.foodsandtheircallories = foodsandtheircallories;
 	}
 	
 	
