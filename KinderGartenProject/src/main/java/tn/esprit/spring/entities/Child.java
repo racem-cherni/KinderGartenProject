@@ -41,6 +41,9 @@ private Classe classe;
 @JsonIgnore
 @ManyToOne
 private Presence presence ;
+@JsonIgnore
+@OneToOne 
+private MedicalRec MedicalRec;
 public Long getId() {
 	return id;
 }
@@ -123,6 +126,12 @@ public Child() {
 
 
 
+public MedicalRec getMedicalRec() {
+	return MedicalRec;
+}
+public void setMedicalRec(MedicalRec medicalRec) {
+	MedicalRec = medicalRec;
+}
 @Override
 public String toString() {
 	return "Child [id=" + id + ", childName=" + childName + ", dateNaissance=" + dateNaissance + ", health=" + health

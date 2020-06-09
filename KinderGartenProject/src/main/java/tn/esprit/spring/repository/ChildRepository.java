@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import tn.esprit.spring.entities.Child;
 import tn.esprit.spring.entities.Classe;
 import tn.esprit.spring.entities.KinderGarten;
+import tn.esprit.spring.entities.MedicalRec;
 import tn.esprit.spring.entities.Parent;
 
 public interface ChildRepository extends JpaRepository<Child, Long>{
@@ -36,4 +37,43 @@ public List<Classe> findchildClasseByparent(@Param("parent") Parent parent );
 
 @Query("select c.parents from Child c where c.classe= :classe ")
 public List<Parent> findchildParentByClasse(@Param("classe") Classe classe);
+
+@Query("select e.id from Child e "
+		+ "join e.MedicalRec t "
+		+ "where t.Allergy=:allergy")
+ public List<Integer> getAllchildbyallergy(@Param("allergy") String allergy);
+
+@Query("select e from Child e "
+		+ "join e.MedicalRec t "
+		+ "where t.Medicalprob=:medprob")
+ public List<Child> getAllchildbymedicalprob(@Param("medprob") String medrpob);
+
+
+@Query("select e from Child e "
+		+ "join e.kindergarten t "
+		+ "where t.id=:idkindr")
+ public List<Child> getAllchildbykindergarten(@Param("idkindr") long idkindr);
+
+@Query("select e.MedicalRec from Child e "
+		 +"join e.kindergarten t "
+		 +"where t.id=:id")
+  public List<MedicalRec> getAllmedicalrecdbykindergartene(@Param("id") long id);
+
+@Query("select e from Child e "
+		 +"join e.parents t "
+		 +"where t.id=:id")
+  public List<Child> getAllchildbyparentid(@Param("id") long id);
+
+
+@Query("select e.value from callories e "
+		 +"join e.MedicalRec t "
+		 +"join t.child c "
+		 +"where c.id=:id")
+  public float getcaloriesvaluebyidchildd(@Param("id") long id);
+
+
+
+
+
+
 }
