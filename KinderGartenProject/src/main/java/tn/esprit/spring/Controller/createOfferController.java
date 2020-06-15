@@ -183,7 +183,7 @@ public class createOfferController {
 		
 	
 		if (this.msg.length() == 0)
-			return productservice.retrieveAllProducts();
+			return productservice.getAllActivated();
 		else
 			return productservice.searchProducts(msg);
 	}
