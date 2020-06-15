@@ -17,10 +17,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import tn.esprit.spring.entities.Product;
+import tn.esprit.spring.entities.ProductState;
+import tn.esprit.spring.entities.SessionFake;
 import tn.esprit.spring.repository.ProductRepository;
 import tn.esprit.spring.repository.UserRepository;
 import tn.esprit.spring.repository.SaleRatingHistoryRepository;
 import tn.esprit.spring.repository.OrderRepository;
+import tn.esprit.spring.repository.PanierProductRepository;
 import tn.esprit.spring.Service.RecommandService;
 
 
@@ -40,6 +43,9 @@ public class ProductServiceImp implements ProductService {
 
 	@Autowired
 	private OrderRepository OrderRepository;
+	
+	@Autowired
+	private PanierProductRepository PanierProductRepository;
 	
 	@Autowired
 	private RecommandService RecommandService;
@@ -248,5 +254,58 @@ public class ProductServiceImp implements ProductService {
 
 		return ProductRepository.searchProducts(msg);
 	}
-	
+	@Override
+	public String getAlphaNumericString(int n) {
+		// chose a Character random from this String 
+	      String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	                                  + "0123456789"
+	                                  + "abcdefghijklmnopqrstuvxyz"; 
+
+	      // create StringBuffer size of AlphaNumericString 
+	      StringBuilder sb = new StringBuilder(n); 
+
+	      for (int i = 0; i < n; i++) { 
+
+	          // generate a random number between 
+	          // 0 to AlphaNumericString variable length 
+	          int index 
+	              = (int)(AlphaNumericString.length() 
+	                      * Math.random()); 
+
+	          // add Character one by one in end of sb 
+	          sb.append(AlphaNumericString 
+	                        .charAt(index)); 
+	      } 
+
+	      return sb.toString(); 
+	}
+
+	@Override
+	public List<Product> getAllActivated() {
+		
+		return ProductRepository.getAllActivated();
+	}
+
+	@Override
+	public void confirmProduct(int id) {
+		Product product = this.retrieveProduct(id);
+		product.setState(ProductState.ACTIVATED);
+		ProductRepository.save(product);
+	}
+
+	@Override
+	public void cancelProduct(int id) {
+		Product product = this.retrieveProduct(id);
+		product.setState(ProductState.CANCELED);
+		ProductRepository.save(product);
+	}
+
+	@Override
+	public boolean ifBought(int product) {
+		
+		if (PanierProductRepository.getCountBought(SessionFake.getId(), product) > 0 )
+			return true;
+		
+		return false;
+	}
 }
