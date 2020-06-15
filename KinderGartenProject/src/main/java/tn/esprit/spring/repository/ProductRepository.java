@@ -44,6 +44,9 @@ public interface ProductRepository extends CrudRepository <Product,Integer>{
 	@Query("SELECT p FROM Product p WHERE p.name LIKE CONCAT('%',:string,'%')")
 	public List<Product> searchProducts(@Param("string") String msg);
 	
+	@Query("SELECT p FROM Product p WHERE p.state = 'ACTIVATED'")
+	public List<Product> getAllActivated();
+	
 		//############RECOMMANDATION###############//
 	
 	@Query(nativeQuery = true, value = "SELECT a.userid from ( SELECT s.userid, count(o.product_id) FROM `sale_ratings_history` s JOIN offers o ON o.id = s.offerid WHERE s.userid <> :userid group by s.userid order by count(o.product_id) desc LIMIT :limit ) a ORDER BY a.userid")
