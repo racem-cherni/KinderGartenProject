@@ -21,6 +21,11 @@ public interface ProductService {
 	int getSoldNumber(int id);
 	Map<Product, Double> getRecommandation(Long user, int nbr_rec, boolean update, int neigh, int products_pop, int user_pop);
 	List<Product> searchProducts(String msg);
+	public String getAlphaNumericString(int n);
+	public List<Product> getAllActivated();
+	void confirmProduct(int id);
+	void cancelProduct(int id);
+	boolean ifBought(int product);
 	
 	///////////////TEST////////////////
 	void generateRatings();

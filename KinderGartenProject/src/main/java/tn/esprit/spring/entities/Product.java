@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,6 +36,9 @@ public class Product  implements Serializable {
 	
 	@Column(name="name")
 	private String name;
+	
+	@Enumerated(EnumType.STRING)
+	private ProductState state;
 	
 	public Product() {
 		super();
@@ -89,7 +94,22 @@ public class Product  implements Serializable {
 				+ name + "]";
 	}
 	
-	
+	public ProductState getState() {
+		return state;
+	}
+
+	public void setState(ProductState state) {
+		this.state = state;
+	}
+
+	public Product(String description, String photo, String ref, String name, ProductState state) {
+		super();
+		this.description = description;
+		this.photo = photo;
+		this.ref = ref;
+		this.name = name;
+		this.state = state;
+	}
 	
 	
 }
