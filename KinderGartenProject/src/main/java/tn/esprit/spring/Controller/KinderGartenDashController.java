@@ -107,8 +107,8 @@ private String prenom;
 	
 	@PostConstruct
 	public void init(){
-	Classe cl=classeServices.getClasseById(16L);
-		System.err.println("classe "+cl.getNom());
+	//Classe cl=classeServices.getClasseById(16L);
+		/*System.err.println("classe "+cl.getNom());
 		this.agec=cl.getAge();
 		this.id=cl.getId();
 		this.capacitiec=cl.getCapacitie();
@@ -121,7 +121,7 @@ private String prenom;
 		this.map.putAll(analysticServices.MyteacherMonqueCompetence(cl));
 		this.kidcl.clear();
 		this.kidcl=classeServices.getKidByClasse(cl);
-		System.err.println("**********************************************");
+		System.err.println("**********************************************");*/
 		
 	}
 	
