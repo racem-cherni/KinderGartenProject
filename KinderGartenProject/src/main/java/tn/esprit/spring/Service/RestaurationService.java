@@ -70,6 +70,8 @@ public class RestaurationService {
     @Autowired
 	FoodmedrecwithgramageRepository foodgrammage;
 	
+    @Autowired
+    UserServices sc;
 	public void affecterchildbyCategory(long id_mdrec)
 	{
 		
@@ -119,6 +121,8 @@ public class RestaurationService {
 		}
 	@Transactional
 	public void affecterfoodtokindergarten(long idkinder){
+
+		idkinder=sc.currentUserJsf().getKindergarten().getId();
 		List<foodsandtheircallories> fd =food.findAll();
 		KinderGarten kindertoaffect=kinder.findById(idkinder).get();
 		for(foodsandtheircallories food:fd){
@@ -136,8 +140,9 @@ public class RestaurationService {
 	
 	@Transactional
 	public void affectmedicalrectofood(long idkinder,long idfood) throws ParseException{
-		/*List<foodsandtheircallories> foods=food.foodbyidkinder(idkinder);
-		//List<MedicalRec> medicals=child.getAllmedicalrecdbykindergartene(idkinder);
+		idkinder=sc.currentUserJsf().getKindergarten().getId();
+		List<foodsandtheircallories> foods=food.foodbyidkinder(idkinder);
+		List<MedicalRec> medicals=child.getAllmedicalrecdbykindergartene(idkinder);
 		foodsandtheircallories onefood=food.findById(idfood).get();
 
 			for(MedicalRec onemed:medicals)
@@ -246,16 +251,19 @@ public class RestaurationService {
 			        	foodgrammage.save(fb);	   
 		           } 
 	           }      
-		}	*/
+		}	
 	}
 	
-	public List<foodsandtheircallories> fd(long idkinder){
+	public List<foodsandtheircallories> fd(){
+		
+		long idkinder=sc.currentUserJsf().getKindergarten().getId();
 		return food.foodbyidkinder(idkinder);
 		
 	}
 	
-	public List<foodmedrecwithgramage> listfoodsgrmmagebykinder(long idkinder)
+	public List<foodmedrecwithgramage> listfoodsgrmmagebykinder()
 	{
+		long idkinder=sc.currentUserJsf().getKindergarten().getId();
 		return foodgrammage.foodbyidkinder(idkinder);
 
 	}
@@ -266,9 +274,9 @@ public class RestaurationService {
 		
 	}
 	public List<foodsandtheircallories> foodcalorbyidchild2(long id){
+
 		return foodgrammage.foodcalorbychildid(id);
-		
-		
+	
 	}
 }
 	

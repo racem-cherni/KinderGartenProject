@@ -136,5 +136,14 @@ public class Order implements Serializable {
 		this.panier = panier;
 		User = user;
 	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", order_date=" + order_date + ", total_price=" + total_price + ", reducedprice="
+				+ reducedprice + ", pointspent=" + pointspent + ", state=" + state + ", panier=" + panier + ", User="
+				+ User + "]";
+	}
+	
+	
 	
 }

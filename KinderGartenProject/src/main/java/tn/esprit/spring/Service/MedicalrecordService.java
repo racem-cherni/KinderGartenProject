@@ -52,11 +52,16 @@ public class MedicalrecordService {
 	
 	@Autowired
 	FoodmedrecwithgramageRepository foodgrammage;
+	
+	@Autowired 
+	UserServices sc;
+
 	public List<MedicalRec> getAllMedrec() {
 		return (List<MedicalRec>) medrec.findAll();
 	}
 
-	public List<MedicalRec> getAllMedrec1(long id) {
+	public List<MedicalRec> getAllMedrec1() {
+		long id=sc.currentUserJsf().getKindergarten().getId();
 		return (List<MedicalRec>) child.getAllmedicalrecdbykindergartene(id);
 	}
 
@@ -84,8 +89,9 @@ public class MedicalrecordService {
 		ch.setMedicalRec(med);
 		child.save(ch);
 	}
-	public List<Child> getallbyidparent(long idparent){
-		
+	public List<Child> getallbyidparent(){
+
+		long idparent=sc.currentUserJsf().getParent().getId();
 		return child.getAllchildbyparentid(idparent);
 		
 	}
@@ -99,13 +105,27 @@ public class MedicalrecordService {
 		medrec.delete(medrec1);
 	}
 
-	public void updatemederec(long id, String prob, String allergy) {
-
+	public long updatemederec(long id,String allergy, String prob, String Medicaltreat,
+			String blood_groups,float weight,float height){
 		MedicalRec medrec1 = medrec.findById(id).get();
-		medrec1.setMedicalprob(prob);
-		medrec1.setAllergy(allergy);
-		medrec.save(medrec1);
+		if(medrec1==null) {
+			ajouterMedicalrecord(medrec1);
+			medrec.save(medrec1);
+			return medrec1.getId();
 
+		}
+	//	
+		else{
+		medrec1.setAllergy(allergy);
+		medrec1.setMedicalprob(prob);
+		medrec1.setMedicaltreat(Medicaltreat);
+		medrec1.setBlood_groups(blood_groups);
+		medrec1.setWeight(weight);
+		medrec1.setHeight(height);
+
+		medrec.save(medrec1);
+		return medrec1.getId();
+		}
 	}
 
 	public List<Integer> getallchildbyallergy(String allergy) {
@@ -115,15 +135,16 @@ public class MedicalrecordService {
 public MedicalRec gtmedrcbyidchild(long idchild){
 	return merep.foodbyidkinder(idchild);
 }
-	public List<Child> getallchildbykindergarten(long id) 
-	{
+	public List<Child> getallchildbykindergarten() 
+	{   long id=sc.currentUserJsf().getKindergarten().getId();
 		return child.getAllchildbykindergarten(id);
 
 	}
 
 	
-	public void medicalCategory(long idkindergarten) {
-		List<MedicalRec> listofmedicalrec = getAllMedrec1(idkindergarten);
+	public void medicalCategory() {
+		long idkindergarten=sc.currentUserJsf().getKindergarten().getId();
+		List<MedicalRec> listofmedicalrec = getAllMedrec1();
 			
 		categories cat1 =cat.findById((long)1).get();
 		categories cat2 =cat.findById((long)2).get();
@@ -161,9 +182,10 @@ public MedicalRec gtmedrcbyidchild(long idchild){
 		
 	}
 	
-	public void setcalloriesbychildrenofkindergarten(long idkindergarten)
+	public void setcalloriesbychildrenofkindergarten()
 	
 	{
+		long idkindergarten=sc.currentUserJsf().getKindergarten().getId();
 		List <callories> gt =calory.findAll();
 		for(callories ct:gt)
 		{
@@ -173,7 +195,7 @@ public MedicalRec gtmedrcbyidchild(long idchild){
 		/*Calcul de ses besoins caloriques journaliers (Déjeuner 40% des besoins formule en tenant compte 
 		 * que tout les enfants du jardin d'enfant sont de sexualité masculine car c relier avec la base qu'on a oublié de 
 		 * specifier le sexe de l'enfant dans les attributs)*/
-		List<MedicalRec> listofmedicalrec = getAllMedrec1(idkindergarten);
+		List<MedicalRec> listofmedicalrec = getAllMedrec1();
 		
 		float calories ;
 		for (MedicalRec med : listofmedicalrec) 
@@ -191,9 +213,10 @@ public MedicalRec gtmedrcbyidchild(long idchild){
 	
 /*add class named (affectchildbyhiscalloriesandcategory to a 1 of the 3 categories of +-10% calori or stable calory regime*/ 
 /**/	@Transactional
-	public void setmedicalrecordbycaloriesandcategory(long idkindergarten)
+	public void setmedicalrecordbycaloriesandcategory()
 	{
-		List<MedicalRec> listofmedicalrec = getAllMedrec1(idkindergarten);
+	long idkindergarten=sc.currentUserJsf().getKindergarten().getId();
+		List<MedicalRec> listofmedicalrec = getAllMedrec1();
 		categories cat1 =cat.findById((long)1).get();
 		categories cat2 =cat.findById((long)2).get();
 		categories cat3 =cat.findById((long)3).get();
@@ -304,17 +327,22 @@ public MedicalRec gtmedrcbyidchild(long idchild){
 			ex.printStackTrace();
 		}
 		}*/
-public int calcnbrchildbyallergy(long idkinder,String glut){
+public int calcnbrchildbyallergy(String glut){
+	long idkinder=sc.currentUserJsf().getKindergarten().getId();
 	return medrec.calculnbrallegrybychild(idkinder,glut);
 	
 	
 }
-public int calcnbrinfct(long idkinder,String glut){
+public int calcnbrinfct(String glut){
+
+	long idkinder=sc.currentUserJsf().getKindergarten().getId();
 	return medrec.calculnbrinfection(idkinder,glut);
 	
 	
 }
-public int calcnbrblood(long idkinder,String blood){
+public int calcnbrblood(String blood){
+
+	long idkinder=sc.currentUserJsf().getKindergarten().getId();
 	return medrec.calculnbralblood(idkinder,blood);
 	
 	
@@ -325,9 +353,10 @@ public float getsumgrams(Date date){
 	return foodgrammage.calculgramsforthisday(date);		
 	
 }
-public List<foodmedrecwithgramage> getallbydate(long idkinder){
+public List<foodmedrecwithgramage> getallbydate(){
 	
-	
+
+	long idkinder=sc.currentUserJsf().getKindergarten().getId();
 	return foodgrammage.foodbyidkinder(idkinder);
 }
 

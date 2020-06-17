@@ -28,6 +28,9 @@ public List<KinderGarten> recherchKinder();
 @Query("select  k from KinderGarten k join k.userapp u where  u.actived=false  ")	
 public List<KinderGarten> getkinderforAdmin();
 
+@Query("select  k from KinderGarten k where k.userapp.id =:id")
+public KinderGarten getKinder(@Param("id") Long id);
+
 
 
 

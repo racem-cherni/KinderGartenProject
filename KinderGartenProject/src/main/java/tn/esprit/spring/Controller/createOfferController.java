@@ -12,11 +12,13 @@ import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.Service.OfferService;
 import tn.esprit.spring.Service.ProductService;
+import tn.esprit.spring.Service.UserServices;
 import tn.esprit.spring.entities.KinderGarten;
 import tn.esprit.spring.entities.Offer;
 import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.SessionFake;
 import tn.esprit.spring.entities.UserApp;
+import tn.esprit.spring.repository.KinderGartenRepository;
 
 @ViewScoped
 @Controller(value = "createofferController")
@@ -29,6 +31,12 @@ public class createOfferController {
 	
 	@Autowired
 	private OfferService offerservice;
+	
+	@Autowired
+	private UserServices userServices;
+	
+	@Autowired
+	private KinderGartenRepository KindergartenRepository;
 
 	private boolean render1 = true;
 	
@@ -166,10 +174,10 @@ public class createOfferController {
 		System.out.println(qty);
 		
 		UserApp user = new UserApp();
-		user.setId(SessionFake.getId());
-		KinderGarten k = new KinderGarten();
 		
-		k.setUserapp(user);
+		System.out.println(userServices.currentUserJsf().getId());
+	
+		KinderGarten k = KindergartenRepository.getKinder(userServices.currentUserJsf().getId());
 		
 		Offer o = new Offer(Double.valueOf(price), Integer.parseInt(qty), productservice.retrieveProduct(id), k);
 		

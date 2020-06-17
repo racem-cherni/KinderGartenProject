@@ -14,11 +14,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="products")
 public class Product  implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -93,7 +94,7 @@ public class Product  implements Serializable {
 		return "Product [id=" + id + ", description=" + description + ", photo=" + photo + ", ref=" + ref + ", name="
 				+ name + "]";
 	}
-	
+
 	public ProductState getState() {
 		return state;
 	}

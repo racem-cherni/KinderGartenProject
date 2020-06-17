@@ -109,7 +109,8 @@
 													<a href="marketplace-product.html"> <figure
 															class="product-preview-image liquid"
 															style="background: url(&quot;resources/marketplaceimgs/#{offer.product.photo}&quot;) center center / cover no-repeat;">
-														<img src="resources/marketplaceimgs/#{offer.product.photo}"
+														<img
+															src="resources/marketplaceimgs/#{offer.product.photo}"
 															alt="item-01" style="display: none;" /> </figure>
 													</a>
 													<!-- /PRODUCT PREVIEW IMAGE -->
@@ -135,7 +136,7 @@
 
 														<p class="product-preview-creator">
 															<a href="profile-timeline.html">Posted by
-																#{offer.kindergarten.name}</a>
+																#{offer.kindergarten.getKinderGartenName()}</a>
 														</p>
 														<!-- /PRODUCT PREVIEW CREATOR -->
 													</div>
@@ -370,17 +371,15 @@
 											<!-- /TOTALS LINE -->
 										</div>
 										<!-- /TOTALS LINE LIST -->
-
 										<!-- BUTTON -->
 										<h:form>
 											<h:commandButton styleClass="button white small-space"
 												value="PLACE ORDER" action="#{cartController.placeOrder()}">
-												<f:ajax render="field"/>
+												<f:ajax render="field" />
 											</h:commandButton>
 										</h:form>
 										<!-- /BUTTON -->
 									</div>
-
 									<!-- /SIDEBAR BOX ITEMS -->
 								</div>
 							</h:panelGroup>

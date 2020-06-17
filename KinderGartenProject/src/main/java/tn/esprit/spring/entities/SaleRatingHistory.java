@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "SaleRatings_History")
 public class SaleRatingHistory implements Serializable {
@@ -97,5 +98,15 @@ public class SaleRatingHistory implements Serializable {
 	public void setReview(String review) {
 		this.review = review;
 	}
+
+	public SaleRatingHistory(RateUsersPK rateuser, int rating, String review) {
+		super();
+		this.rateuser = rateuser;
+		this.date = new Date();
+		this.rating = rating;
+		this.review = review;
+	}
+	
+	
 
 }

@@ -1,8 +1,8 @@
 package tn.esprit.spring.Controller;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date; 
+import java.util.Date;
 import java.util.List;
 
 import org.ocpsoft.rewrite.annotation.Join;
@@ -51,127 +51,123 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAccessor;
 
-
-
 @Scope(value = "session")
 @Controller(value = "eventkinderController")
 @ELBeanName(value = "eventkinderController")
 @Join(path = "/jardinevent", to = "/pages/Jardin/Event/WelcomeEvent.jsf")
 public class ControllerEventKinderGartenImpl {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	@Autowired
-	IStockeventService istockservice ;
 
 	@Autowired
-    IEventService ieventservice ;
-	
+	IStockeventService istockservice;
+
 	@Autowired
-    IInvitation_EventService iinvitationservice ;
-	
-	//@Autowired
-    //ISalle_eventService isalleservice ;
-	
-	private Long idevent ;
-	
-	private int nbrinvite ;
-	
-	private int numbersearch ;
-	
-	private double prixtotalereservation ;
-	
+	IEventService ieventservice;
+
+	@Autowired
+	IInvitation_EventService iinvitationservice;
+
+	// @Autowired
+	// ISalle_eventService isalleservice ;
+
+	private Long idevent;
+
+	private int nbrinvite;
+
+	private int numbersearch;
+
+	private double prixtotalereservation;
+
 	private int quantite;
-	
-	private int nbrreservation ;
-	
-	private StockCategory categoriestocksearch ;
-	
-	private List<Reservation_stock_event> listreservations ;
-	
-	private String namestocksearch ;
-	
-	private List<Event> listevents ;
-	
-	private List<Stock_event> liststockeventsearch ;
-	
-	private List<Discussion_Event> listdiscussions ;
+
+	private int nbrreservation;
+
+	private StockCategory categoriestocksearch;
+
+	private List<Reservation_stock_event> listreservations;
+
+	private String namestocksearch;
+
+	private List<Event> listevents;
+
+	private List<Stock_event> liststockeventsearch;
+
+	private List<Discussion_Event> listdiscussions;
 
 	private int nbrdusscussions;
 
-	private Long ideventreserve ;
-	
+	private Long ideventreserve;
+
 	private List<Event> upcomingevents;
 
-	private Locationevent location_event ;
-	
-	public Locationevent[] getLocationevents(){
+	private Locationevent location_event;
+
+	public Locationevent[] getLocationevents() {
 		return Locationevent.values();
 	}
-	
-	private Type_Event typesearch  ;
-	public Type_Event[] getTypesearchs(){
+
+	private Type_Event typesearch;
+
+	public Type_Event[] getTypesearchs() {
 		return Type_Event.values();
 	}
-	
-	private Category_event categorysearch ;
-	public Category_event[] getCategoriesearchs(){
+
+	private Category_event categorysearch;
+
+	public Category_event[] getCategoriesearchs() {
 		return Category_event.values();
 	}
-    
-	private Etat_event etatsearch ;
-	public Etat_event[] getEtatsearchs(){
+
+	private Etat_event etatsearch;
+
+	public Etat_event[] getEtatsearchs() {
 		return Etat_event.values();
 	}
-	
-	private String heurestartstr ;
-	
-	private String heurefinstr ;
+
+	private String heurestartstr;
+
+	private String heurefinstr;
 	private Event todayevents;
 
-    private Date dateeventsearch ;
-	
-    private String title;
-	
-	private String description ;
-	
-	private Date dateevent ;
-	
-	private java.sql.Time heurestart ;
-	
+	private Date dateeventsearch;
+
+	private String title;
+
+	private String description;
+
+	private Date dateevent;
+
+	private java.sql.Time heurestart;
+
 	private java.sql.Time heurefin;
-	
+
 	private Date datefinreservation;
-	
-	private int nbr_places ;
-	
-	private String photo ;
-	
-	private Double entry_price ;
-	
-	private Event searchevent ;
 
+	private int nbr_places;
 
-	private Category_event category ;
-	
-	public Category_event[] getCategories(){
+	private String photo;
+
+	private Double entry_price;
+
+	private Event searchevent;
+
+	private Category_event category;
+
+	public Category_event[] getCategories() {
 		return Category_event.values();
 	}
-	
+
 	private Type_Event type_event;
-	public Type_Event[] getTypes(){
+
+	public Type_Event[] getTypes() {
 		return Type_Event.values();
 	}
-	
-	
-	
-	private Part  cinf;
-	
-	
-	
+
+	private Part cinf;
 
 	public Long getIdeventreserve() {
 		return ideventreserve;
@@ -253,8 +249,6 @@ public class ControllerEventKinderGartenImpl {
 		this.type_event = type_event;
 	}
 
-	
-
 	public String getPhoto() {
 		return photo;
 	}
@@ -271,7 +265,6 @@ public class ControllerEventKinderGartenImpl {
 		this.entry_price = entry_price;
 	}
 
-	
 	public Part getCinf() {
 		return cinf;
 	}
@@ -279,9 +272,7 @@ public class ControllerEventKinderGartenImpl {
 	public void setCinf(Part cinf) {
 		this.cinf = cinf;
 	}
-	
-	
- 
+
 	public Type_Event getTypesearch() {
 		return typesearch;
 	}
@@ -302,8 +293,6 @@ public class ControllerEventKinderGartenImpl {
 		return etatsearch;
 	}
 
-	
-	
 	public Long getIdevent() {
 		return idevent;
 	}
@@ -333,17 +322,13 @@ public class ControllerEventKinderGartenImpl {
 	}
 
 	public Date getDateeventsearch() {
-		
+
 		return dateeventsearch;
 	}
 
 	public void setDateeventsearch(Date dateeventsearch) {
 		this.dateeventsearch = dateeventsearch;
 	}
-	
-	
-	
-	
 
 	public String getNamestocksearch() {
 		return namestocksearch;
@@ -353,11 +338,8 @@ public class ControllerEventKinderGartenImpl {
 		this.namestocksearch = namestocksearch;
 	}
 
-	
-	
-	
 	public StockCategory getCategoriestocksearch() {
-		
+
 		return categoriestocksearch;
 	}
 
@@ -372,40 +354,29 @@ public class ControllerEventKinderGartenImpl {
 	public void setLocation_event(Locationevent location_event) {
 		this.location_event = location_event;
 	}
-	
-	
-	
-	public boolean verifierlistdiscussion(){
-		if( ieventservice.listdiscussion(idevent).size() == 0)
-			return true ;
-		else return false ;
+
+	public boolean verifierlistdiscussion() {
+		if (ieventservice.listdiscussion(idevent).size() == 0)
+			return true;
+		else
+			return false;
 	}
-	
 
 	public List<Discussion_Event> getListdiscussions() {
 		listdiscussions = ieventservice.listdiscussion(idevent);
-		return listdiscussions ;	
-		}
+		return listdiscussions;
+	}
 
 	public void setListdiscussions(List<Discussion_Event> listdiscussions) {
 		this.listdiscussions = listdiscussions;
 	}
-	
-	
-
-
-	
 
 	public String gotoeventpage() {
-		String navigateTo ="null";
+		String navigateTo = "null";
 		navigateTo = "/pages/Jardin/Event/Eventdash.xhtml?faces-redirect=false";
-	    return navigateTo;
+		return navigateTo;
 	}
-	
-	
-	
-	
-	
+
 	public Event getSearchevent() {
 		return searchevent;
 	}
@@ -414,18 +385,16 @@ public class ControllerEventKinderGartenImpl {
 		this.searchevent = searchevent;
 	}
 
-	public boolean verifierdateevent (){
+	public boolean verifierdateevent() {
 		List<Date> list = ieventservice.listalleventsjsf();
-		
+
 		if (list.contains(dateevent))
 			return true;
-			else return false;
-	
-	    
+		else
+			return false;
+
 	}
-	
-	
-	
+
 	public int getNbrinvite() {
 		nbrinvite = ieventservice.nombreinvites();
 		return nbrinvite;
@@ -435,135 +404,128 @@ public class ControllerEventKinderGartenImpl {
 		this.nbrinvite = nbrinvite;
 	}
 
-	public String addEvent() throws IOException, ParseException  {
-		String navigateTo ="null";
-		/*cinf.write("C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"+cinf.getSubmittedFileName());        
-	    File oldFile=new File("C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"+cinf.getSubmittedFileName());
-	    String img= ieventservice.getAlphaNumericString(7)+cinf.getSubmittedFileName();
-	    File newfile =new File("C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"+img);
-	    oldFile.renameTo(newfile);*/
-	    
-	    
-	    
-		ieventservice.addevent(new Event(title, description, dateevent,datefinreservation,changestringtotime(heurestartstr),changestringtotime(heurefinstr),
-				nbr_places,entry_price,category,type_event,location_event,ieventservice.nombreinvites()));
-	    navigateTo = "/pages/Jardin/Event/WelcomeEvent.xhtml?faces-redirect=false";
+	public String addEvent() throws IOException, ParseException {
+		String navigateTo = "null";
+		/*
+		 * cinf.write(
+		 * "C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
+		 * +cinf.getSubmittedFileName()); File oldFile=new File(
+		 * "C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
+		 * +cinf.getSubmittedFileName()); String img=
+		 * ieventservice.getAlphaNumericString(7)+cinf.getSubmittedFileName();
+		 * File newfile =new File(
+		 * "C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
+		 * +img); oldFile.renameTo(newfile);
+		 */
+
+		ieventservice.addevent(new Event(title, description, dateevent, datefinreservation,
+				changestringtotime(heurestartstr), changestringtotime(heurefinstr), nbr_places, entry_price, category,
+				type_event, location_event, ieventservice.nombreinvites()));
+		navigateTo = "/pages/Jardin/Event/WelcomeEvent.xhtml?faces-redirect=false";
 
 		return navigateTo;
 	}
-	
-	public Event searcheventbydate() {
-	 searchevent = ieventservice.geteventbydate(dateeventsearch);
-	 return searchevent;
-	}
-	
-	
 
-	
+	public Event searcheventbydate() {
+		searchevent = ieventservice.geteventbydate(dateeventsearch);
+		return searchevent;
+	}
+
 	public Event getTodayevents() {
 		todayevents = ieventservice.eventtodayjsf();
 		return todayevents;
-		}
-
-	
-	public boolean testevent(){
-		if (ieventservice.eventtodayjsf() == null )
-			return true ;
-		else return false ;
 	}
-	
+
+	public boolean testevent() {
+		if (ieventservice.eventtodayjsf() == null)
+			return true;
+		else
+			return false;
+	}
 
 	public void setTodayevents(Event todayevents) {
 		this.todayevents = todayevents;
 	}
-	
-	
 
 	public List<Event> getListevents() {
 		listevents = ieventservice.filterevents(categorysearch, typesearch, etatsearch);
-        return listevents;
+		return listevents;
 	}
 
 	public void setListevents(List<Event> listevents) {
 		this.listevents = listevents;
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public Time changestringtotime(String time) throws ParseException {
-     
+
 		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 		long ms = sdf.parse(time).getTime();
 		Time t = new Time(ms);
-		t.setHours(t.getHours()+1);
+		t.setHours(t.getHours() + 1);
 		return t;
 	}
-	
+
 	@SuppressWarnings("deprecation")
-	public String changetimetostirng (Time time) {
-		
-		time.setHours(time.getHours()-1);
+	public String changetimetostirng(Time time) {
+
+		time.setHours(time.getHours() - 1);
 		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 		String strtime = sdf.format(time);
 		return strtime;
-         
-		
-		
+
 	}
-	
-	public Event geteventbyid (){
-		return  ieventservice.geteventbyid(idevent);
-		
+
+	public Event geteventbyid() {
+		return ieventservice.geteventbyid(idevent);
+
 	}
-	
-	 public String gottodetailevent(Event event) {
-			String navigateTo ="null";
-            this.setIdevent(event.getId());
-            this.setCategory(event.getCategory());
-            this.setTitle(event.getTitle());
-            this.setType_event(event.getType_event());
-            this.setDateevent(event.getDate_event());
-            this.setDatefinreservation(event.getDate_final_reservation());
-            this.setDescription(event.getDescription());
-            this.setEntry_price(event.getEntry_price());
-            this.setHeurestartstr(changetimetostirng(event.getEvent_start_heure()));
-            this.setHeurefinstr(changetimetostirng(event.getEvent_fin_heure()));
-            this.setNbr_places(event.getNbr_places());
-            this.setPhoto((event.getPhoto()));
-            this.setLocation_event(event.getLocation_event());
-		    navigateTo = "/pages/Jardin/Event/detaileventjardin.xhtml?faces-redirect=false";
-			return navigateTo;
-	 
-	 }
-	 
-	 public String gottodetailtodayevent() {
-			String navigateTo ="null";
-        this.setIdevent(todayevents.getId());
-        this.setCategory(todayevents.getCategory());
-         this.setTitle(todayevents.getTitle());
-         this.setType_event(todayevents.getType_event());
-         this.setDateevent(todayevents.getDate_event());
-         this.setDatefinreservation(todayevents.getDate_final_reservation());
-         this.setDescription(todayevents.getDescription());
-         this.setEntry_price(todayevents.getEntry_price());
-         this.setHeurestartstr(changetimetostirng(todayevents.getEvent_start_heure()));
-         this.setHeurefinstr(changetimetostirng(todayevents.getEvent_fin_heure()));
-         this.setNbr_places(todayevents.getNbr_places());
-         this.setPhoto((todayevents.getPhoto()));
-         this.setLocation_event(todayevents.getLocation_event());
-		    navigateTo = "/pages/Jardin/Event/detaileventjardin.xhtml?faces-redirect=false";
-			return navigateTo;
-	 
-	 }
-	 public String gotohomeevents() {
-			String navigateTo ="null";
-			navigateTo = "/pages/Jardin/Event/WelcomeEvent.xhtml?faces-redirect=true";
-		    return navigateTo;
-		}
 
+	public String gottodetailevent(Event event) {
+		String navigateTo = "null";
+		this.setIdevent(event.getId());
+		this.setCategory(event.getCategory());
+		this.setTitle(event.getTitle());
+		this.setType_event(event.getType_event());
+		this.setDateevent(event.getDate_event());
+		this.setDatefinreservation(event.getDate_final_reservation());
+		this.setDescription(event.getDescription());
+		this.setEntry_price(event.getEntry_price());
+		this.setHeurestartstr(changetimetostirng(event.getEvent_start_heure()));
+		this.setHeurefinstr(changetimetostirng(event.getEvent_fin_heure()));
+		this.setNbr_places(event.getNbr_places());
+		this.setPhoto((event.getPhoto()));
+		this.setLocation_event(event.getLocation_event());
+		navigateTo = "/pages/Jardin/Event/detaileventjardin.xhtml?faces-redirect=false";
+		return navigateTo;
 
-	
+	}
 
-    
+	public String gottodetailtodayevent() {
+		String navigateTo = "null";
+		this.setIdevent(todayevents.getId());
+		this.setCategory(todayevents.getCategory());
+		this.setTitle(todayevents.getTitle());
+		this.setType_event(todayevents.getType_event());
+		this.setDateevent(todayevents.getDate_event());
+		this.setDatefinreservation(todayevents.getDate_final_reservation());
+		this.setDescription(todayevents.getDescription());
+		this.setEntry_price(todayevents.getEntry_price());
+		this.setHeurestartstr(changetimetostirng(todayevents.getEvent_start_heure()));
+		this.setHeurefinstr(changetimetostirng(todayevents.getEvent_fin_heure()));
+		this.setNbr_places(todayevents.getNbr_places());
+		this.setPhoto((todayevents.getPhoto()));
+		this.setLocation_event(todayevents.getLocation_event());
+		navigateTo = "/pages/Jardin/Event/detaileventjardin.xhtml?faces-redirect=false";
+		return navigateTo;
+
+	}
+
+	public String gotohomeevents() {
+		String navigateTo = "null";
+		navigateTo = "/pages/Jardin/Event/WelcomeEvent.xhtml?faces-redirect=true";
+		return navigateTo;
+	}
 
 	public List<Event> getUpcomingevents() {
 		upcomingevents = ieventservice.upcomingeventsjsf();
@@ -573,193 +535,161 @@ public class ControllerEventKinderGartenImpl {
 	public void setUpcomingevents(List<Event> upcomingevents) {
 		this.upcomingevents = upcomingevents;
 	}
-		
-	public void removeEvent(Long eventid){
+
+	public void removeEvent(Long eventid) {
 		ieventservice.delete_eventjsf(eventid);
 	}
 
 	public int getNbrdusscussions() {
-		 nbrdusscussions = ieventservice.nbrdisscussion(idevent) ;
+		nbrdusscussions = ieventservice.nbrdisscussion(idevent);
 		return nbrdusscussions;
 	}
 
 	public void setNbrdusscussions(int nbrdusscussions) {
 		this.nbrdusscussions = nbrdusscussions;
 	}
-	
+
 	public String gottoreserveevent() {
-		String navigateTo ="null";
-      // this.ideventreserve = id ;
-	    navigateTo = "/pages/Jardin/Event/reserverevent.xhtml?faces-redirect=false";
-		return navigateTo;
- 
- }
-	
-  public String returntodetailevent(){
-	  
-	    String navigateTo = "/pages/Jardin/Event/detaileventjardin.xhtml?faces-redirect=false";
+		String navigateTo = "null";
+		// this.ideventreserve = id ;
+		navigateTo = "/pages/Jardin/Event/reserverevent.xhtml?faces-redirect=false";
 		return navigateTo;
 
-  }
+	}
 
-  public boolean verifierlistsearchreservation(){
-	  if (istockservice.liststockrecherchecat(categoriestocksearch).size()== 0)
-		  return true ;
-		  else 
-			  return false;
-  }
-  
-  public boolean verifierlistreservation(){
-	  
-	  if (istockservice.listreservationbyevent(idevent).size()== 0 )
-		  return true ;
-	  else 
-		  return false ;
-	  
-  }
-  
-  
-	  
-  
-  
-  
-public List<Stock_event> getListstockeventsearch() {
-	liststockeventsearch = istockservice.liststockrecherchecat(categoriestocksearch) ; 
-	
-	return liststockeventsearch;
-}
+	public String returntodetailevent() {
 
-public void setListstockeventsearch(List<Stock_event> liststockeventsearch) {
-	this.liststockeventsearch = liststockeventsearch;
-}
+		String navigateTo = "/pages/Jardin/Event/detaileventjardin.xhtml?faces-redirect=false";
+		return navigateTo;
 
-public int getQuantite() {
-	return quantite;
-}
+	}
 
-public void setQuantite(int quantite) {
-	this.quantite = quantite;
-}
+	public boolean verifierlistsearchreservation() {
+		if (istockservice.liststockrecherchecat(categoriestocksearch).size() == 0)
+			return true;
+		else
+			return false;
+	}
 
-public void reserverstockevent(Long idstock){
-	istockservice.Reserver_stock_event(idevent, idstock, quantite);
-}
+	public boolean verifierlistreservation() {
 
-public List<Reservation_stock_event> getListreservations() {
-	listreservations = istockservice.listreservationbyevent(idevent);
-	return listreservations;
-}
+		if (istockservice.listreservationbyevent(idevent).size() == 0)
+			return true;
+		else
+			return false;
 
-public void setListreservations(List<Reservation_stock_event> listreservations) {
-	this.listreservations = listreservations;
-}
+	}
 
+	public List<Stock_event> getListstockeventsearch() {
+		liststockeventsearch = istockservice.liststockrecherchecat(categoriestocksearch);
 
+		return liststockeventsearch;
+	}
 
-private  String languageString =
-"Java,C,C++,PHP,C#,Python,Visual Basic,Objective-C,Perl,Ruby,JavaScript,Delphi," +
-		"Lisp,SQL,Pascal,Ada,NXT-G,SAS,RPG,Lua,ABAP,Object Pascal,Go,Scheme,Fortran," +
-		"Squirrel,Verilog,VHDL,XBase,XSLT,Z shell,chaises,chaises luxe ,tables ";
+	public void setListstockeventsearch(List<Stock_event> liststockeventsearch) {
+		this.liststockeventsearch = liststockeventsearch;
+	}
 
+	public int getQuantite() {
+		return quantite;
+	}
 
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
 
-//private String stocksnameauto = istockservice.namesstockauto();
+	public void reserverstockevent(Long idstock) {
+		istockservice.Reserver_stock_event(idevent, idstock, quantite);
+	}
 
+	public List<Reservation_stock_event> getListreservations() {
+		listreservations = istockservice.listreservationbyevent(idevent);
+		return listreservations;
+	}
 
+	public void setListreservations(List<Reservation_stock_event> listreservations) {
+		this.listreservations = listreservations;
+	}
 
-//private  String[] languageArray = stocksnameauto.split(",");
+	private String languageString = "Java,C,C++,PHP,C#,Python,Visual Basic,Objective-C,Perl,Ruby,JavaScript,Delphi,"
+			+ "Lisp,SQL,Pascal,Ada,NXT-G,SAS,RPG,Lua,ABAP,Object Pascal,Go,Scheme,Fortran,"
+			+ "Squirrel,Verilog,VHDL,XBase,XSLT,Z shell,chaises,chaises luxe ,tables ";
 
-private String language;
-private List<String> languages;
+	// private String stocksnameauto = istockservice.namesstockauto();
 
-public String getLanguage() {
-	return language;
-}
+	// private String[] languageArray = stocksnameauto.split(",");
 
-public void setLanguage(String language) {
-	this.language = language;
-}
+	private String language;
+	private List<String> languages;
 
-public List<String> getLanguages() {
-	return languages;
-}
+	public String getLanguage() {
+		return language;
+	}
 
-public void setLanguages(List<String> languages) {
-	this.languages = languages;
-}
-public List<String> completeLanguage(String languagePrefix) {
-	List<String> matches = new ArrayList<String>();
-	for(String possibleLanguage: istockservice.namesstockauto().split(",")) {
-		if(possibleLanguage.toUpperCase().startsWith(languagePrefix.toUpperCase())) {
-			matches.add(possibleLanguage);
-		}}
-        return matches ;	
-}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
 
-public int getNbrreservation() {
-	nbrreservation = istockservice.getnbrreservationevent(idevent);
-	return nbrreservation;
-}
+	public List<String> getLanguages() {
+		return languages;
+	}
 
-public void setNbrreservation(int nbrreservation) {
-	this.nbrreservation = nbrreservation;
-}
+	public void setLanguages(List<String> languages) {
+		this.languages = languages;
+	}
 
+	public List<String> completeLanguage(String languagePrefix) {
+		List<String> matches = new ArrayList<String>();
+		for (String possibleLanguage : istockservice.namesstockauto().split(",")) {
+			if (possibleLanguage.toUpperCase().startsWith(languagePrefix.toUpperCase())) {
+				matches.add(possibleLanguage);
+			}
+		}
+		return matches;
+	}
 
-public void deletereservation (Long stockId){
-	
- istockservice.annuler_reservation_stock_event(idevent, stockId);
+	public int getNbrreservation() {
+		nbrreservation = istockservice.getnbrreservationevent(idevent);
+		return nbrreservation;
+	}
 
-	
-}
+	public void setNbrreservation(int nbrreservation) {
+		this.nbrreservation = nbrreservation;
+	}
 
-public void totalprixreservation(){
-	istockservice.totalpricereservation(idevent);
-}
+	public void deletereservation(Long stockId) {
 
-public double getPrixtotalereservation() {
-	prixtotalereservation = istockservice.totalpricereservation(idevent); 
-	return prixtotalereservation;
-}
+		istockservice.annuler_reservation_stock_event(idevent, stockId);
 
-public void setPrixtotalereservation(double prixtotalereservation) {
-	this.prixtotalereservation = prixtotalereservation;
-}
+	}
 
+	public void totalprixreservation() {
+		istockservice.totalpricereservation(idevent);
+	}
 
-public boolean verifieretatreservation(){
-	Date date = new Date();
-	if (ieventservice.geteventbyid(idevent).getDate_final_reservation().after(date))
-		return true ;
-	else return false ;
-	
-	
-}
+	public double getPrixtotalereservation() {
+		prixtotalereservation = istockservice.totalpricereservation(idevent);
+		return prixtotalereservation;
+	}
 
-public boolean verifeventdate(){
-	if (ieventservice.geteventbydate(dateeventsearch)== null)
-		return true ;
-		else return false;
-}
+	public void setPrixtotalereservation(double prixtotalereservation) {
+		this.prixtotalereservation = prixtotalereservation;
+	}
 
+	public boolean verifieretatreservation() {
+		Date date = new Date();
+		if (ieventservice.geteventbyid(idevent).getDate_final_reservation().after(date))
+			return true;
+		else
+			return false;
 
+	}
 
-
-
+	public boolean verifeventdate() {
+		if (ieventservice.geteventbydate(dateeventsearch) == null)
+			return true;
+		else
+			return false;
+	}
 
 }
-
-
-
-	
-	
-	
-	
-    
-
-	
-	
-	
-	
-	
-

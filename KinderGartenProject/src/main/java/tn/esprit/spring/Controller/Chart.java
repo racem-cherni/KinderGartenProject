@@ -78,7 +78,7 @@ public class Chart {
    
     private BarChartModel initBarModel() {
         BarChartModel model = new BarChartModel();
-          List <Child> ch =medrec.getallchildbykindergarten(1);
+          List <Child> ch =medrec.getallchildbykindergarten();
         ChartSeries boys = new ChartSeries();
         boys.setLabel("allergy gluten");
         
@@ -94,8 +94,8 @@ public class Chart {
     private void createPieModel1() {
         pieModel1 = new PieChartModel();
  
-        pieModel1.set("total child having gluten allergy ", medrec.calcnbrchildbyallergy(1, "gluten"));
-        pieModel1.set("total childs having skin infection", medrec.calcnbrinfct(1, "Skin infection"));
+        pieModel1.set("total child having gluten allergy ", medrec.calcnbrchildbyallergy( "gluten"));
+        pieModel1.set("total childs having skin infection", medrec.calcnbrinfct("Skin infection"));
 
  
         pieModel1.setTitle("stats medical problems");
@@ -105,15 +105,15 @@ public class Chart {
     private void createPieModel2() {
         pieModel2 = new PieChartModel();
  
-        pieModel2.set("total child having O+ ", medrec.calcnbrblood(1, "O+"));
-        pieModel2.set("total child having O- ", medrec.calcnbrblood(1, "O-"));
-        pieModel2.set("total child having A+ ", medrec.calcnbrblood(1, "A+"));
-        pieModel2.set("total child having A- ", medrec.calcnbrblood(1, "A-"));
-        pieModel2.set("total child having B+ ", medrec.calcnbrblood(1, "B+"));
-        pieModel2.set("total child having B- ", medrec.calcnbrblood(1, "B-"));
-        pieModel2.set("total child having AB+", medrec.calcnbrblood(1, "AB+"));
-        pieModel2.set("total child having AB-", medrec.calcnbrblood(1, "AB-"));
- System.out.println(medrec.calcnbrblood(1, "O+"));
+        pieModel2.set("total child having O+ ", medrec.calcnbrblood("O+"));
+        pieModel2.set("total child having O- ", medrec.calcnbrblood("O-"));
+        pieModel2.set("total child having A+ ", medrec.calcnbrblood("A+"));
+        pieModel2.set("total child having A- ", medrec.calcnbrblood("A-"));
+        pieModel2.set("total child having B+ ", medrec.calcnbrblood("B+"));
+        pieModel2.set("total child having B- ", medrec.calcnbrblood("B-"));
+        pieModel2.set("total child having AB+", medrec.calcnbrblood("AB+"));
+        pieModel2.set("total child having AB-", medrec.calcnbrblood("AB-"));
+ System.out.println(medrec.calcnbrblood("O+"));
         pieModel2.setTitle("nbre of childs having determined type of blood group");
         pieModel2.setLegendPosition("w");
         pieModel2.setShadow(false);
@@ -126,7 +126,7 @@ public class Chart {
         //getallbydate
         LineChartSeries series1 = new LineChartSeries();
         series1.setLabel("Series 1");
-        List<foodmedrecwithgramage> ch=medrec.getallbydate(1);
+        List<foodmedrecwithgramage> ch=medrec.getallbydate();
         
         for(foodmedrecwithgramage food:ch){
         	

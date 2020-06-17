@@ -25,18 +25,18 @@ public interface PanierProductRepository extends CrudRepository <PanierProduct, 
 	void deleteOfferFromPanier(@Param("panier") int panier_id, @Param("offer") int offer_id);
 	
 	@Query("SELECT o FROM PanierProduct o WHERE panier.id =:panier AND offer.id=:offer")
-	PanierProduct  getProductPanierByOfferAndPanier(@Param("offer") int offer, @Param("panier") int panier);
+	PanierProduct getProductPanierByOfferAndPanier(@Param("offer") int offer, @Param("panier") int panier);
 	
 	@Query("SELECT o FROM PanierProduct o WHERE panier.id =:panier")
 	List<PanierProduct> getAllProductsByPanier(@Param("panier") int panier_id);
 	
-	@Query(nativeQuery = true, value="SELECT Sum(p.qty) FROM `panierproduct` p JOIN offers o ON o.id = p.id_offer WHERE  p.state = 'DISPATCHED' AND o.kindergarten_user_id = :id")
+	@Query(nativeQuery = true, value="SELECT Sum(p.qty) FROM `panierproduct` p JOIN offers o ON o.id = p.id_offer WHERE  p.state = 'DISPATCHED' AND o.kindergarten_id = :id")
 	Integer getSalesCount(@Param("id") long id);
 	
-	@Query(nativeQuery = true, value="SELECT SUM(o.price * p.qty) FROM `panierproduct` p JOIN offers o ON o.id = p.id_offer WHERE  p.state = 'DISPATCHED' AND o.kindergarten_user_id = :id")
+	@Query(nativeQuery = true, value="SELECT SUM(o.price * p.qty) FROM `panierproduct` p JOIN offers o ON o.id = p.id_offer WHERE  p.state = 'DISPATCHED' AND o.kindergarten_id = :id")
 	Double getSalesTotalPrice(@Param("id") long id);
 	
-	@Query(nativeQuery = true, value="SELECT p.id_offer, p.id_panier FROM orders o JOIN panierproduct p ON p.id_panier = o.panier_id LEFT JOIN panier_session ps ON ps.panier_id = p.id_panier WHERE o.user_id = 1 AND ps.panier_id IS NULL ORDER BY o.order_date DESC")
+	@Query(nativeQuery = true, value="SELECT p.id_offer, p.id_panier FROM orders o JOIN panierproduct p ON p.id_panier = o.panier_id LEFT JOIN panier_session ps ON ps.panier_id = p.id_panier WHERE o.user_id = :user AND ps.panier_id IS NULL ORDER BY o.order_date DESC")
 	List<Object[]> getAllBoughtProductsByUser(@Param("user") Long user);
 	
 	@Query(nativeQuery = true, value="SELECT count(*) FROM panierproduct pp JOIN offers o ON o.id = pp.id_offer JOIN orders orr ON orr.panier_id = pp.id_panier WHERE o.product_id = :product and orr.user_id = :user AND pp.state = 'DISPATCHED'")

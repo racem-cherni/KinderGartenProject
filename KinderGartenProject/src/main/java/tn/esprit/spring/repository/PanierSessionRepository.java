@@ -10,5 +10,7 @@ public interface PanierSessionRepository extends CrudRepository <PanierSession, 
 	
 	@Query("SELECT o FROM PanierSession o WHERE o.user.id = :user")
 	PanierSession getPanierSessionByUser (@Param("user") Long user);
+	
+	
 
 }

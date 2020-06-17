@@ -75,130 +75,764 @@
 					<!-- PRODUCT PREVIEW -->
 
 
-					<ui:repeat value="#{productController.getBestSellers(6)}"
-						var="product">
 
-						<div class="product-preview">
-							<!-- PRODUCT PREVIEW IMAGE -->
-							<a href="marketplace-product.html"> <figure
-									class="product-preview-image liquid"
-									style="background: url(&quot;resources/marketplaceimgs/#{product.photo}&quot;) center center / cover no-repeat;">
-								<img src="resources/marketplaceimgs/#{product.photo}" alt="item-01"
-									style="display: none;" /> </figure>
-							</a>
-							<!-- /PRODUCT PREVIEW IMAGE -->
-							<!-- PRODUCT PREVIEW INFO -->
+					<!-- PRODUCT PREVIEW -->
 
-							<div class="product-preview-info">
-								<!-- TEXT STICKER -->
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/10.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/10.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
 
-								<p class="text-sticker" style="margin: 0px 40px 0px 0px">
-									<h:outputText
-										value="#{productController.getOffernumber(product.id)} Offers starting at"></h:outputText>
-									<span class="highlighted"><h:outputText
-											value=" #{productController.getPrice(product.id)} dt"></h:outputText></span>
-								</p>
-								<!-- /TEXT STICKER -->
-								<!-- PRODUCT PREVIEW TITLE -->
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
 
-								<p class="product-preview-title">
-									<h:link outcome="product">
-										<h:outputText value="#{product.name}"></h:outputText>
-										<f:param name="id" value="#{product.id}" />
-									</h:link>
-								</p>
-								<!-- /PRODUCT PREVIEW TITLE -->
-								<!-- PRODUCT PREVIEW CATEGORY -->
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								16 Offers starting at <span class="highlighted"> 3.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
 
-								<p class="product-preview-category digital">
-									<a href="marketplace-category.html"><h:outputText
-											value="#{product.ref}  "></h:outputText></a>
-								</p>
-								<!-- /PRODUCT PREVIEW CATEGORY -->
-								<!-- PRODUCT PREVIEW TEXT -->
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=10">Poster Nathen</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
 
-								<p class="product-preview-text">Awesome hexagon themed
-									stream pack, you can change all colors and...</p>
-								<!-- /PRODUCT PREVIEW TEXT -->
-							</div>
-							<!-- /PRODUCT PREVIEW INFO -->
-							<!-- PRODUCT PREVIEW META -->
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">69981 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
 
-							<div class="product-preview-meta">
-								<!-- PRODUCT PREVIEW AUTHOR -->
-
-								<div class="product-preview-author">
-									<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
-									<a
-										class="product-preview-author-image user-avatar micro no-border"
-										href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
-
-										<div class="user-avatar-content">
-											<!-- HEXAGON -->
-
-											<div class="hexagon-image-18-20"
-												data-src="resources/img/avatar/01.jpg"
-												style="width: 18px; height: 20px; position: relative;">
-												<canvas width="18" height="20"
-													style="position: absolute; top: 0px; left: 0px;" />
-											</div>
-											<!-- /HEXAGON -->
-										</div> <!-- /USER AVATAR CONTENT -->
-									</a>
-									<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
-									<!-- PRODUCT PREVIEW AUTHOR TITLE -->
-
-									<p class="product-preview-author-title">
-										<h:outputText value="This sold has been"></h:outputText>
-									</p>
-									<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
-									<!-- PRODUCT PREVIEW AUTHOR TEXT -->
-
-									<p class="product-preview-author-text">
-										<a href="profile-timeline.html"><h:outputText
-												value="#{productController.getSoldNumber(product.id)} Times !"></h:outputText></a>
-									</p>
-									<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
-								</div>
-								<!-- /PRODUCT PREVIEW AUTHOR -->
-								<!-- RATING LIST -->
-
-								<div class="rating-list">
-									<!-- RATING -->
-
-
-									<ui:repeat value="#{productController.fillStars(product.id)}"
-										var="i">
-										<div class="rating filled">
-											<!-- RATING ICON -->
-											<svg class="rating-icon icon-star"> <use
-												xlink:href="#svg-star" /> </svg>
-											<!-- /RATING ICON -->
-										</div>
-										<!-- /RATING -->
-									</ui:repeat>
-									<!-- RATING -->
-
-
-									<ui:repeat value="#{productController.unfillStars(product.id)}"
-										var="i">
-										<div class="rating">
-											<!-- RATING ICON -->
-											<svg class="rating-icon icon-star"> <use
-												xlink:href="#svg-star" /> </svg>
-											<!-- /RATING ICON -->
-										</div>
-									</ui:repeat>
-									<!-- /RATING -->
-
-								</div>
-								<!-- /RATING LIST -->
-							</div>
-							<!-- /PRODUCT PREVIEW META -->
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
 						</div>
-						<!-- /PRODUCT PREVIEW -->
-						<!-- PRODUCT PREVIEW -->
-					</ui:repeat>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">1536 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/03.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/03.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								13 Offers starting at <span class="highlighted"> 1.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=5">Poster Necromancer</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">02518 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">1388 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/06.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/06.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								14 Offers starting at <span class="highlighted"> 1.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=7">Red Controller PS4</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">71898-3511 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">1383 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/04.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/04.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								12 Offers starting at <span class="highlighted"> 2.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=6">Black Controller XBOX</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">58638-2620 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">1352 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/07.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/07.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								11 Offers starting at <span class="highlighted"> 2.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=8">Painting Frame</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">81144-0593 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">1186 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/12.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/12.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								11 Offers starting at <span class="highlighted"> 2.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=11">kids Mug</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">01258-2116 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">1181 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
 
 
 				</div>
@@ -231,130 +865,761 @@
 					<!-- PRODUCT PREVIEW -->
 
 
-					<ui:repeat value="#{productController.getRecmmandation()}"
-						var="product">
 
-						<div class="product-preview">
-							<!-- PRODUCT PREVIEW IMAGE -->
-							<a href="marketplace-product.html"> <figure
-									class="product-preview-image liquid"
-									style="background: url(&quot;resources/marketplaceimgs/#{product.photo}&quot;) center center / cover no-repeat;">
-								<img src="resources/marketplaceimgs/#{product.photo}" alt="item-01"
-									style="display: none;" /> </figure>
-							</a>
-							<!-- /PRODUCT PREVIEW IMAGE -->
-							<!-- PRODUCT PREVIEW INFO -->
+					<!-- PRODUCT PREVIEW -->
 
-							<div class="product-preview-info">
-								<!-- TEXT STICKER -->
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/06.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/06.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
 
-								<p class="text-sticker" style="margin: 0px 40px 0px 0px">
-									<h:outputText
-										value="#{productController.getOffernumber(product.id)} Offers starting at"></h:outputText>
-									<span class="highlighted"><h:outputText
-											value=" #{productController.getPrice(product.id)} dt"></h:outputText></span>
-								</p>
-								<!-- /TEXT STICKER -->
-								<!-- PRODUCT PREVIEW TITLE -->
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
 
-								<p class="product-preview-title">
-									<h:link outcome="product">
-										<h:outputText value="#{product.name}"></h:outputText>
-										<f:param name="id" value="#{product.id}" />
-									</h:link>
-								</p>
-								<!-- /PRODUCT PREVIEW TITLE -->
-								<!-- PRODUCT PREVIEW CATEGORY -->
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								14 Offers starting at <span class="highlighted"> 1.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
 
-								<p class="product-preview-category digital">
-									<a href="marketplace-category.html"><h:outputText
-											value="#{product.ref}  "></h:outputText></a>
-								</p>
-								<!-- /PRODUCT PREVIEW CATEGORY -->
-								<!-- PRODUCT PREVIEW TEXT -->
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=7">Red Controller PS4</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
 
-								<p class="product-preview-text">Awesome hexagon themed
-									stream pack, you can change all colors and...</p>
-								<!-- /PRODUCT PREVIEW TEXT -->
-							</div>
-							<!-- /PRODUCT PREVIEW INFO -->
-							<!-- PRODUCT PREVIEW META -->
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">71898-3511 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
 
-							<div class="product-preview-meta">
-								<!-- PRODUCT PREVIEW AUTHOR -->
-
-								<div class="product-preview-author">
-									<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
-									<a
-										class="product-preview-author-image user-avatar micro no-border"
-										href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
-
-										<div class="user-avatar-content">
-											<!-- HEXAGON -->
-
-											<div class="hexagon-image-18-20"
-												data-src="resources/img/avatar/01.jpg"
-												style="width: 18px; height: 20px; position: relative;">
-												<canvas width="18" height="20"
-													style="position: absolute; top: 0px; left: 0px;" />
-											</div>
-											<!-- /HEXAGON -->
-										</div> <!-- /USER AVATAR CONTENT -->
-									</a>
-									<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
-									<!-- PRODUCT PREVIEW AUTHOR TITLE -->
-
-									<p class="product-preview-author-title">
-										<h:outputText value="This sold has been"></h:outputText>
-									</p>
-									<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
-									<!-- PRODUCT PREVIEW AUTHOR TEXT -->
-
-									<p class="product-preview-author-text">
-										<a href="profile-timeline.html"><h:outputText
-												value="#{productController.getSoldNumber(product.id)} Times !"></h:outputText></a>
-									</p>
-									<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
-								</div>
-								<!-- /PRODUCT PREVIEW AUTHOR -->
-								<!-- RATING LIST -->
-
-								<div class="rating-list">
-									<!-- RATING -->
-
-
-									<ui:repeat value="#{productController.fillStars(product.id)}"
-										var="i">
-										<div class="rating filled">
-											<!-- RATING ICON -->
-											<svg class="rating-icon icon-star"> <use
-												xlink:href="#svg-star" /> </svg>
-											<!-- /RATING ICON -->
-										</div>
-										<!-- /RATING -->
-									</ui:repeat>
-									<!-- RATING -->
-
-
-									<ui:repeat value="#{productController.unfillStars(product.id)}"
-										var="i">
-										<div class="rating">
-											<!-- RATING ICON -->
-											<svg class="rating-icon icon-star"> <use
-												xlink:href="#svg-star" /> </svg>
-											<!-- /RATING ICON -->
-										</div>
-									</ui:repeat>
-									<!-- /RATING -->
-
-								</div>
-								<!-- /RATING LIST -->
-							</div>
-							<!-- /PRODUCT PREVIEW META -->
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
 						</div>
-						<!-- /PRODUCT PREVIEW -->
-						<!-- PRODUCT PREVIEW -->
-					</ui:repeat>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">1383 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/01.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/01.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								9 Offers starting at <span class="highlighted"> 1.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=3">Poster Stream Packs</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">06116-4805 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">923 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/03.png&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/03.png" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								10 Offers starting at <span class="highlighted"> 1.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=14">Poster Cartoon</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">17154 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">1166 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/12.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/12.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								11 Offers starting at <span class="highlighted"> 2.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=11">kids Mug</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">01258-2116 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">1181 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/01 - Copy.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/01 - Copy.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								1 Offers starting at <span class="highlighted"> 664.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=16">Poster Cartoon</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">51116 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">106 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
+					<div class="product-preview">
+						<!-- PRODUCT PREVIEW IMAGE -->
+						<a href="marketplace-product.html"> <figure
+								class="product-preview-image liquid"
+								style="background: url(&quot;resources/marketplaceimgs/27 - Copy.jpg&quot;) center center / cover no-repeat;">
+							<img src="resources/marketplaceimgs/27 - Copy.jpg" alt="item-01"
+								style="display: none;" /> </figure>
+						</a>
+						<!-- /PRODUCT PREVIEW IMAGE -->
+						<!-- PRODUCT PREVIEW INFO -->
+
+						<div class="product-preview-info">
+							<!-- TEXT STICKER -->
+
+							<p class="text-sticker" style="margin: 0px 40px 0px 0px;">
+								2 Offers starting at <span class="highlighted"> 242.0 dt</span>
+							</p>
+							<!-- /TEXT STICKER -->
+							<!-- PRODUCT PREVIEW TITLE -->
+
+							<p class="product-preview-title">
+								<a href="/SpringMVC/product?id=21">Poster Cartoon</a>
+							</p>
+							<!-- /PRODUCT PREVIEW TITLE -->
+							<!-- PRODUCT PREVIEW CATEGORY -->
+
+							<p class="product-preview-category digital">
+								<a href="marketplace-category.html">85057 </a>
+							</p>
+							<!-- /PRODUCT PREVIEW CATEGORY -->
+							<!-- PRODUCT PREVIEW TEXT -->
+
+							<p class="product-preview-text">Awesome hexagon themed stream
+								pack, you can change all colors and...</p>
+							<!-- /PRODUCT PREVIEW TEXT -->
+						</div>
+						<!-- /PRODUCT PREVIEW INFO -->
+						<!-- PRODUCT PREVIEW META -->
+
+						<div class="product-preview-meta">
+							<!-- PRODUCT PREVIEW AUTHOR -->
+
+							<div class="product-preview-author">
+								<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+								<a
+									class="product-preview-author-image user-avatar micro no-border"
+									href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+									<div class="user-avatar-content">
+										<!-- HEXAGON -->
+
+										<div class="hexagon-image-18-20"
+											data-src="resources/img/avatar/01.jpg"
+											style="width: 18px; height: 20px; position: relative;">
+											<canvas width="18" height="20"
+												style="position: absolute; top: 0px; left: 0px;" />
+										</div>
+										<!-- /HEXAGON -->
+									</div> <!-- /USER AVATAR CONTENT -->
+								</a>
+								<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+								<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+								<p class="product-preview-author-title">This sold has been</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+								<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+								<p class="product-preview-author-text">
+									<a href="profile-timeline.html">226 Times !</a>
+								</p>
+								<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+							</div>
+							<!-- /PRODUCT PREVIEW AUTHOR -->
+							<!-- RATING LIST -->
+
+							<div class="rating-list">
+								<!-- RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+
+								<div class="rating filled">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+								<!-- RATING -->
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+
+								<div class="rating">
+									<!-- RATING ICON -->
+									<svg class="rating-icon icon-star"> <use
+										xlink:href="#svg-star" /> </svg>
+									<!-- /RATING ICON -->
+								</div>
+								<!-- /RATING -->
+							</div>
+							<!-- /RATING LIST -->
+						</div>
+						<!-- /PRODUCT PREVIEW META -->
+					</div>
+					<!-- /PRODUCT PREVIEW -->
+					<!-- PRODUCT PREVIEW -->
+
 
 
 				</div>
@@ -377,7 +1642,8 @@
 
 					<div class="section-header-actions">
 						<!-- SECTION HEADER ACTION -->
-						<h:link outcome="browseproducts" styleClass="section-header-action">
+						<h:link outcome="/pages/parent/marketplace/browseproducts"
+							styleClass="section-header-action">
 							<h:outputText value="Browse All"></h:outputText>
 						</h:link>
 						<!-- /SECTION HEADER ACTION -->
@@ -394,8 +1660,8 @@
 							<a href="marketplace-product.html"> <figure
 									class="product-preview-image liquid"
 									style="background: url(&quot;resources/marketplaceimgs/#{product.photo}&quot;) center center / cover no-repeat;">
-								<img src="resources/marketplaceimgs/#{product.photo}" alt="item-01"
-									style="display: none;" /> </figure>
+								<img src="resources/marketplaceimgs/#{product.photo}"
+									alt="item-01" style="display: none;" /> </figure>
 							</a>
 							<!-- /PRODUCT PREVIEW IMAGE -->
 							<!-- PRODUCT PREVIEW INFO -->

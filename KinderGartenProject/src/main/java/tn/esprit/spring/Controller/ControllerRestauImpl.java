@@ -33,7 +33,7 @@ private List<foodsandtheircallories> fr;
 
 	public List<foodsandtheircallories> ajoutermeu() {
 		
-		return ser.fd(1);
+		return ser.fd();
 	}
 	
 	public void scrapfoods() throws IOException{
@@ -53,8 +53,8 @@ private List<foodsandtheircallories> fr;
 public List<foodmedrecwithgramage> listfoodbyidchild(long idchild){
 	return ser.byidchild(idchild);
 }
-	public List<foodmedrecwithgramage> listallfoodsbyidkinder(long idkinder){
-		return ser.listfoodsgrmmagebykinder(idkinder);
+	public List<foodmedrecwithgramage> listallfoodsbyidkinder(){
+		return ser.listfoodsgrmmagebykinder();
 	
 	}
 

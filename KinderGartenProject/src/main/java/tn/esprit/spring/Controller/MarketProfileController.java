@@ -15,6 +15,7 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import tn.esprit.spring.Service.OfferService;
 import tn.esprit.spring.Service.ProductService;
+import tn.esprit.spring.Service.UserServices;
 import tn.esprit.spring.entities.Offer;
 import tn.esprit.spring.entities.Product;
 import tn.esprit.spring.entities.SessionFake;
@@ -31,6 +32,9 @@ public class MarketProfileController {
 
 	@Autowired
 	private OfferService offerservice;
+	
+	@Autowired
+	private UserServices userServices;
 	
 	private int id;
 	
@@ -62,7 +66,7 @@ public class MarketProfileController {
 
 	public String getCount(){
 		
-		return ""+offerservice.getOfferCount(SessionFake.getId());
+		return ""+offerservice.getOfferCount(userServices.currentUserJsf().getId());
 	}
 	
 	public String getPrice() {
@@ -106,8 +110,8 @@ public class MarketProfileController {
 	}
 
 	public List<Offer> getOffers() {
-		if(SessionFake.getId() != null)
-			this.offers = offerservice.getOffersByKindergarten(SessionFake.getId());
+		if(userServices.currentUserJsf() != null)
+			this.offers = offerservice.getOffersByKindergarten(userServices.currentUserJsf().getId());
 		return offers;
 	}
 
@@ -117,7 +121,7 @@ public class MarketProfileController {
 
 	public List<Product> getProducts() {
 
-	    Long id = SessionFake.getId();
+	    Long id = userServices.currentUserJsf().getId();
 		
 		List<Offer> off = this.getOffers();
 		List<Product> pro = new ArrayList<Product>();
@@ -145,7 +149,7 @@ public class MarketProfileController {
 	public void setProduct(Product product) {
 
 		this.product = product;
-		offer = offerservice.getSelectedOffer(SessionFake.getId(), product.getId());
+		offer = offerservice.getSelectedOffer(userServices.currentUserJsf().getId(), product.getId());
 		rendered = true;
 	}
 	

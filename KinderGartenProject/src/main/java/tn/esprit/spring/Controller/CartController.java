@@ -21,6 +21,7 @@ import tn.esprit.spring.Service.OrderService;
 import tn.esprit.spring.Service.PanierProductService;
 import tn.esprit.spring.Service.PanierService;
 import tn.esprit.spring.Service.PointsHistoryService;
+import tn.esprit.spring.Service.UserServices;
 import tn.esprit.spring.entities.Offer;
 import tn.esprit.spring.entities.Order;
 import tn.esprit.spring.entities.PanierProduct;
@@ -41,7 +42,7 @@ public class CartController {
 
 	@Autowired
 	private OfferService offerservice;
-
+	
 	@Autowired
 	private OrderService orderservice;
 
@@ -50,6 +51,9 @@ public class CartController {
 
 	@Autowired
 	private PanierSessionRepository PanierSessionRepository;
+	
+	@Autowired
+	private UserServices userServices;
 
 	private List<Offer> offers;
 
@@ -255,10 +259,14 @@ public class CartController {
 
 		Order order = new Order();
 		int panier_id;
+		
+		Long id = userServices.currentUserJsf().getId();
+		
 
-		if (PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()) != null) 
-			panier_id = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()).getPanier().getId();
-		else return;
+			System.out.println("paniersession found, retrieving cart");
+			panier_id = PanierSessionRepository.getPanierSessionByUser(id).getPanier().getId();
+			System.out.println(panier_id);
+	
 		
 		for (Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()) {
 			PanierProduct panier_product = PanierProductService.getProductPanierByOfferAndPanier(offer.getKey(),
@@ -274,14 +282,14 @@ public class CartController {
 		else
 			order.setReducedprice(this.total_price);
 
-		orderservice.addOrder(order, panier_id, SessionFake.getId());
+		orderservice.addOrder(order, panier_id, id);
 		
 		this.cartEmpty = true;
 
 	}
 	
 	public String getTotalPoints(){
-		this.total_points = PointsHistoryService.getPointsUser(SessionFake.getId());
+		this.total_points = PointsHistoryService.getPointsUser(userServices.currentUserJsf().getId());
 		return ""+this.total_points;
 	}
 	
@@ -309,4 +317,6 @@ public class CartController {
 	public void updatePrice(){
 		this.reduced_price = ""+(this.total_price - Double.parseDouble(this.points)) ;
 	}
+	
+   
 }

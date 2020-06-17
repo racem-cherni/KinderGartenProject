@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "paniers")
 public class Panier implements Serializable {
 
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -27,7 +30,7 @@ public class Panier implements Serializable {
 
 	private Date date;
 
-	@OneToMany(mappedBy = "panier")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "panier", cascade = CascadeType.ALL)
 	private List<PanierProduct> orderedoffers;
 
 	public int getId() {
@@ -63,6 +66,8 @@ public class Panier implements Serializable {
 
 	public Panier() {
 		super();
+		this.date = new Date();
 	}
-
+	
+	
 }

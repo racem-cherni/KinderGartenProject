@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.Service.MedicalrecordService;
+import tn.esprit.spring.Service.UserServices;
 import tn.esprit.spring.entities.*;
 import tn.esprit.spring.repository.MedicalRecRepository;
 @Controller(value = "medreccontroller")
@@ -24,6 +25,8 @@ import tn.esprit.spring.repository.MedicalRecRepository;
 public class ControllerMedRecImpl {
 	@Autowired
     MedicalrecordService medrec;
+	@Autowired
+	UserServices sc;
 	MedicalRecRepository medrecrep;
 	private Child childentity;
 	private MedicalRec medrecentity;
@@ -38,18 +41,22 @@ public class ControllerMedRecImpl {
 	private float height;
     private List<Child> Child;
 	private List<MedicalRec> MedicalRec;
+	private long idkinder;
 	
 	public String addMedRec(long idchild) 
 	
-	{
-		
-		String navigateTo ="/pages/parent/ChildDeashboard.xhtml?faces-redirect=true";
+	{String navigateTo ="/pages/parent/ChildDeashboard.xhtml?faces-redirect=true";
+	
+	/*long idmedrec=medrec.ajouterMedicalrecord(new MedicalRec(Allergy, Medicalprob, Medicaltreat,
+			blood_groups, weight, height));*/
+	if(getmedrecbyidchild(idchild)==null){
 		long idmedrec=medrec.ajouterMedicalrecord(new MedicalRec(Allergy, Medicalprob, Medicaltreat,
-				blood_groups, weight, height));
-		
-		medrec.affecterMedtoChild(idchild, idmedrec);
-		
-		return navigateTo;
+			blood_groups, weight, height));
+		medrec.affecterMedtoChild(idchild, idmedrec);}
+	else{ long idmedrec=medrec.updatemederec(getmedrecbyidchild(idchild).getId(), Allergy, Medicalprob, Medicaltreat, blood_groups, weight, height);
+	medrec.affecterMedtoChild(idchild, idmedrec);
+	}
+	return navigateTo;
 	}
 	public void updateText(AjaxBehaviorEvent event)
              { 
@@ -61,6 +68,11 @@ public class ControllerMedRecImpl {
 		if (weight>=100)
 			return "do not troll";
 		return null;	
+	}
+public String navigatetopstats(long idKinder){
+		
+		this.idkinder=sc.currentUserJsf().getId();
+		return "/pages/kindergarten/version3.xhtml?faces-redirect=false";
 	}
 	public long ajouterMedicalrecord(MedicalRec medicalRec) {
 		medrec.ajouterMedicalrecord(medicalRec);
@@ -84,11 +96,12 @@ public class ControllerMedRecImpl {
 	}
 	public List<MedicalRec> medrecshowall() {
 		
-		return medrec.getAllMedrec1(1);	
+	//	sc.currentUserJsf().getId()
+		return medrec.getAllMedrec1();	
 	}
 	public List<Child> getall(){
-		long idparent=1;
-		return medrec.getallbyidparent(idparent);
+		
+		return medrec.getallbyidparent();
 
 	}
 	

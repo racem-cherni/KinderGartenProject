@@ -101,6 +101,6 @@ public class PanierProduct implements Serializable {
 	public void setState(PanierProductState state) {
 		this.state = state;
 	}
-
+	
 	
 }

@@ -28,17 +28,12 @@ private ChildRepository childRepository;
 		
 		UserApp user=userRepository.getOne(u.getId());
 		
-		if(user==null)
-			throw new RuntimeException("this user does not exist !!!"); 
-		
 		for(RoleApp r:u.getRoles())
 		{
 			if(r.getRoleName().equals("ROLE_PARENT"))
 				test=true;
 		}
-		if(test==false)
-			throw new RuntimeException("you are not a parent");
-			
+					
 		p.setUserApp(u);
 
 	if(vrifParentuser(u))

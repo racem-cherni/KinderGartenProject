@@ -7,15 +7,17 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entities.KinderGarten;
 import tn.esprit.spring.entities.Offer;
 import tn.esprit.spring.entities.Panier;
 import tn.esprit.spring.entities.PanierProduct;
 import tn.esprit.spring.entities.PanierProductPK;
 import tn.esprit.spring.entities.PanierProductState;
 import tn.esprit.spring.entities.PanierSession;
-import tn.esprit.spring.entities.SessionFake;
 import tn.esprit.spring.entities.UserApp;
 import tn.esprit.spring.repository.*;
 
@@ -39,6 +41,12 @@ public class PanierProductServiceImp implements PanierProductService {
 
 	@Autowired
 	private PanierService PanierService;
+	
+	@Autowired
+	private UserServices userServices;
+	
+	@Autowired
+	private KinderGartenRepository KindergartenRepository;
 
 	@Override
 	public PanierProduct addProductToPanier(Offer offer, int qty, Long refuser) {
@@ -46,9 +54,12 @@ public class PanierProductServiceImp implements PanierProductService {
 		UserApp user = new UserApp();
 		PanierSession session = new PanierSession();
 		Panier panier;
+		
+		if (offer.getKindergarten().getUserapp().getId() == userServices.currentUserJsf().getId())
+			return new PanierProduct();
 
 		user = UserRepository.findById(refuser).orElse(null);
-		session = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId());
+		session = PanierSessionRepository.getPanierSessionByUser(userServices.currentUserJsf().getId());
 
 		if (session == null)
 			panier = PanierService.addPanier(new Panier());
@@ -67,7 +78,7 @@ public class PanierProductServiceImp implements PanierProductService {
 		PanierSession session = new PanierSession();
 		Panier panier;
 
-		session = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId());
+		session = PanierSessionRepository.getPanierSessionByUser(userServices.currentUserJsf().getId());
 
 		if (session == null)
 			panier = PanierService.addPanier(new Panier());
@@ -80,7 +91,7 @@ public class PanierProductServiceImp implements PanierProductService {
 	@Override
 	public List<Offer> retrieveAlOffdersOfPanier() {
 
-		long user_id = SessionFake.getId();
+		long user_id = userServices.currentUserJsf().getId();
 		PanierSession panier_session = PanierSessionRepository.getPanierSessionByUser(user_id);
 
 		if (panier_session != null)
@@ -116,8 +127,10 @@ public class PanierProductServiceImp implements PanierProductService {
 	@Override
 	public int getSalesCount(long id) {
 		
+		KinderGarten k = KindergartenRepository.getKinder(userServices.currentUserJsf().getId());
+		
 		try {
-				return PanierProductRepository.getSalesCount(id);
+				return PanierProductRepository.getSalesCount(k.getId());
 			}
 			catch(Exception e) {
 			 	return 0;
@@ -128,8 +141,11 @@ public class PanierProductServiceImp implements PanierProductService {
 	@Override
 	public double getSalesTotalPrice(long id) {
 		
+		
+		KinderGarten k = KindergartenRepository.getKinder(userServices.currentUserJsf().getId());
+		
 		try {
-			return PanierProductRepository.getSalesTotalPrice(id);
+			return PanierProductRepository.getSalesTotalPrice(k.getId());
 			}
 			catch(Exception e) {
 			  return 0.0;

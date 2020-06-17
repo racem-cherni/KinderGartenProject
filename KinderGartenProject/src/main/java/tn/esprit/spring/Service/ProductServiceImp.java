@@ -93,28 +93,34 @@ public class ProductServiceImp implements ProductService {
 
 	@Override
 	public Double retrieveMinPrice(int id) {
-
-		return ProductRepository.getMinPrice(id);
+		try {
+			return ProductRepository.getMinPrice(id);
+		} catch (Exception e) {
+			return 0.0 ;
+		}
+		
 	}
 
 	@Override
 	public List<Product> getRandomProducts() {
 
-		List<Product> p = ProductRepository.getProductsOnSale();
+		
+		//List<Product> p = ProductRepository.getProductsOnSale();
+		List<Product> p = (List<Product>) ProductRepository.findAll();
 		List<Product> randomp = new ArrayList<Product>();
 		
 		Set<Integer> ids = new HashSet<Integer>();
 		
 		Random r = new Random();
 
-		for (int i = 0; i<3 ; i++) {
-			int index = r.nextInt(((p.size()-1) - 0) + 1) + 0;
-			Product pp = p.get(index);
-			p.remove(index);
-			randomp.add(pp);
+		if (p.size()>1){
+			for (int i = 0; i<3 ; i++) {
+				int index = r.nextInt(((p.size()-1) - 0) + 1) + 0;
+				Product pp = p.get(index);
+				p.remove(index);
+				randomp.add(pp);
+			}
 		}
-
-
 
 		return randomp;
 	}
@@ -199,8 +205,12 @@ public class ProductServiceImp implements ProductService {
 		}
 	@Override
 	public int getProductRating(int id) {
+		try {
+			return (int) Math.ceil(ProductRepository.getProductRating(id));
+		} catch (Exception e) {
+			return 0;
+		}
 		
-		return (int) Math.ceil(ProductRepository.getProductRating(id));
 	}
 
 	@Override
@@ -223,8 +233,14 @@ public class ProductServiceImp implements ProductService {
 
 	@Override
 	public int getSoldNumber(int id) {
+		try {
+			return ProductRepository.getSoldNumber(id);
+		} catch (Exception e) {
+			return 0;
+		}
 		
-		return ProductRepository.getSoldNumber(id);
+	
+		
 	}
 
 	@Override

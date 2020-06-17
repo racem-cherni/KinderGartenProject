@@ -18,9 +18,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.Service.PointsHistoryService;
+import tn.esprit.spring.Service.UserServices;
 import tn.esprit.spring.Service.PanierProductService;
 import tn.esprit.spring.entities.PanierProduct;
-import tn.esprit.spring.entities.SessionFake;
+
 
 
 @Scope(value = "session")
@@ -34,6 +35,9 @@ public class StoreAccountController {
 	
 	@Autowired
 	PanierProductService PanierProductService;
+	
+	@Autowired
+	private UserServices userServices;
 
 	private int total_points;
 	
@@ -44,7 +48,7 @@ public class StoreAccountController {
 	private List<PanierProduct> products;
 	
 	public String getTotal_points() {
-		this.total_points = PointsHistoryService.getPointsUser(SessionFake.getId());
+		this.total_points = PointsHistoryService.getPointsUser(userServices.currentUserJsf().getId());
 		return "" + this.total_points;
 	}
 
@@ -54,7 +58,7 @@ public class StoreAccountController {
 
 	public int getTotal_sales_count() {
 		try {
-			this.total_sales_count = PanierProductService.getSalesCount(SessionFake.getId());
+			this.total_sales_count = PanierProductService.getSalesCount(userServices.currentUserJsf().getId());
 		} catch (Exception e) {
 			return 0;
 		}
@@ -69,7 +73,7 @@ public class StoreAccountController {
 
 	public double getTotal_sales() {
 		try {
-			this.total_sales = PanierProductService.getSalesTotalPrice(SessionFake.getId());
+			this.total_sales = PanierProductService.getSalesTotalPrice(userServices.currentUserJsf().getId());
 		} catch (Exception e){
 			return 0.0;
 		}
@@ -82,7 +86,7 @@ public class StoreAccountController {
 	}
 
 	public List<PanierProduct> getProducts() {
-		this.products = PanierProductService.getAllBoughtProductsByUser(SessionFake.getId());
+		this.products = PanierProductService.getAllBoughtProductsByUser(userServices.currentUserJsf().getId());
 		return products;
 	}
 

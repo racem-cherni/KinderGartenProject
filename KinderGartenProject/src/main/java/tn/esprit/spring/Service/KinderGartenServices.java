@@ -28,8 +28,7 @@ public class KinderGartenServices {
 		if(r.getRoleName().equals("ROLE_KINDERGARTEN"))
 			test=true;
 	}
-if(test==false)
-	throw new RuntimeException("you are not a KINDERGARTEN");
+
 			
 		k.setUserapp(u);
 		System.err.println(k.getKinderGartenName());

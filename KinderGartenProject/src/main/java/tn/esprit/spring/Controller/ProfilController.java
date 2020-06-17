@@ -50,6 +50,7 @@ import tn.esprit.spring.repository.UserRepository;
 
 @Controller(value = "ProfilController")
 @ELBeanName(value = "ProfilController")
+@Join(path = "/parentprofil", to = "/pages/parent/parentprofil.jsf")
 public class ProfilController  {
 	@Autowired
 	UserRepository userRepository;

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import tn.esprit.spring.Service.OfferService;
+import tn.esprit.spring.Service.UserServices;
 import tn.esprit.spring.entities.Offer;
 
 
@@ -18,6 +19,9 @@ public class OfferController {
 
 	@Autowired
 	private OfferService offerservice;
+	
+	@Autowired
+	private UserServices userServices;
 	
 	private String id;
 	

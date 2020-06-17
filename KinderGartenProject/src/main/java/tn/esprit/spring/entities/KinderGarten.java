@@ -77,7 +77,7 @@ public class KinderGarten implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy="kinderGarten",fetch=FetchType.LAZY)
 	private Collection<foodsandtheircallories> foodsandtheircallories = new ArrayList<>();
 
-     
+
 	public Long getId() {
 		return id;
 	}

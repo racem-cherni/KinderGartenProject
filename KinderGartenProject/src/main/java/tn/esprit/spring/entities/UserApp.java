@@ -45,7 +45,7 @@ public class UserApp implements Serializable {
 	@Column(name="password")
 	
 	private String password;
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany
 	private Collection<RoleApp> roles= new ArrayList<>();
 	private boolean actived;
 	private int score;

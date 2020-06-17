@@ -24,10 +24,10 @@ public class ControllercatandcalcalculImpl {
 
 	public String settallmedrecandtheircategories()
 	{
-	long idkinder=1;
-		medrec.medicalCategory(idkinder);
-		medrec.setcalloriesbychildrenofkindergarten(idkinder);
-		medrec.setmedicalrecordbycaloriesandcategory(idkinder);
+	
+		medrec.medicalCategory();
+		medrec.setcalloriesbychildrenofkindergarten();
+		medrec.setmedicalrecordbycaloriesandcategory();
 		return "?faces-redirect=false";
 	}
 public String medinstruction(){
