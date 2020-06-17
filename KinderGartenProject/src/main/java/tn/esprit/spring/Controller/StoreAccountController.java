@@ -26,7 +26,7 @@ import tn.esprit.spring.entities.SessionFake;
 @Scope(value = "session")
 @Controller(value = "storeaccountController")
 @ELBeanName(value = "storeaccountController")
-@Join(path = "/storeaccount", to = "/pages/parent/marketplace/store_account.jsf")
+@Join(path = "/storeaccount", to = "/pages/parent/marketplace/storeaccount.jsf")
 public class StoreAccountController {
 	
 	@Autowired
@@ -53,8 +53,14 @@ public class StoreAccountController {
 	}
 
 	public int getTotal_sales_count() {
-		this.total_sales_count = PanierProductService.getSalesCount(SessionFake.getId());
+		try {
+			this.total_sales_count = PanierProductService.getSalesCount(SessionFake.getId());
+		} catch (Exception e) {
+			return 0;
+		}
+		
 		return this.total_sales_count;
+		
 	}
 
 	public void setTotal_sales_count(int total_sales_count) {
@@ -62,8 +68,13 @@ public class StoreAccountController {
 	}
 
 	public double getTotal_sales() {
-		this.total_sales = PanierProductService.getSalesTotalPrice(SessionFake.getId());
+		try {
+			this.total_sales = PanierProductService.getSalesTotalPrice(SessionFake.getId());
+		} catch (Exception e){
+			return 0.0;
+		}
 		return this.total_sales;
+		
 	}
 
 	public void setTotal_sales(double total_sales) {

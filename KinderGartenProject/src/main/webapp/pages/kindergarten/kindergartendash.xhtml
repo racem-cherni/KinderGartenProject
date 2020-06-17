@@ -1,0 +1,485 @@
+
+
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/templatedash.xhtml"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui"
+
+	>
+
+	<ui:define name="content">
+ <f:view transient="true">
+
+ 
+		<div class="content-body">
+			<div class="container">
+				<div class="row page-titles">
+					<div class="col p-0">
+						<h4>
+							Teacher, <span>Welcome here</span>
+							
+						</h4>
+						
+					
+					</div>
+				</div>
+	<h:form>
+			<div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Add Teacher</h4>
+                               
+                                <div class="basic-form">
+                                
+                                        <div class="form-group">
+                                          <p:inputText id="nom" placeholder="teacher Firstname" value="#{KinderGartenDashController.nom}" required="true"  class="form-control input-default" requiredMessage="Please put teacher Firstname.">
+                                           <f:ajax  execute="nom" render="msgfirstl"></f:ajax>
+                                          </p:inputText>
+                                          
+                                          
+                                        </div>
+                                        
+                                         <h:message id="msgfirstl" for="nom" style="Color:red"></h:message>
+                                        <div class="form-group">
+                                          <p:inputText id="prenom" placeholder="teacher lastName" value="#{KinderGartenDashController.prenom}" required="true" class="form-control input-default" requiredMessage="Please put teacher lastname." >
+                                           <f:ajax  execute="prenom" render="lastName"></f:ajax>
+                                          </p:inputText>
+                                          
+                                        </div>
+                                         <h:message id="lastName" for="prenom" style="Color:red"></h:message>
+                                         <div class="form-group">
+                                          <p:inputText id="age" placeholder="age "  value="#{KinderGartenDashController.age}" required="true" validatorMessage="this age is not accepted" class="form-control input-default" requiredMessage="Please put teacher age" >
+                                           <f:ajax  execute="age" render="msgage"></f:ajax>
+                                          <f:validateLongRange minimum="18" maximum="70" />
+                                          </p:inputText>
+                                           
+                                        </div>
+                                        <h:message id="msgage" for="age" style="Color:red"></h:message>
+                                         <div class="form-group">
+                                          <p:inputText id="number" placeholder="telephone number"  value="#{KinderGartenDashController.numtel}" required="true" validatorMessage="this number is not accepted"  class="form-control input-default" requiredMessage="Please put teacher numtel">
+                                          <f:validateLongRange minimum="20000000" maximum="99000000" />
+                                           <f:ajax  execute="number" render="msgnumber"></f:ajax>
+                                          </p:inputText>
+                                          
+                                        </div>
+                                         <h:message id="msgnumber" for="number" style="Color:red"></h:message>
+                                          <div class="form-group">
+                                          <p:inputText id="email" placeholder="Email" value="#{KinderGartenDashController.emailt}" required="true" validatorMessage="this email not formed"  class="form-control input-default"  requiredMessage="Please put teacher email">
+                                           <f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+		 <f:ajax  execute="email" render="msgemail"></f:ajax>
+                                          </p:inputText>
+                                          
+                                        </div>
+                                         <h:message id="msgemail" for="email" style="Color:red"></h:message>
+                               
+                   
+                        
+           <br/>
+           
+  <h:link outcome="/pages/kindergarten/statistiquekinder" value="statistiquekinder"/>
+  <h:link outcome="/pages/kindergarten/Competence" value="compes"/>
+    <br/>   
+  <h:link outcome="/pages/kindergarten/chart" value="show statistique"></h:link>
+  <br/>              
+                        
+                            
+                                        <div class="form-group">
+                                        <h:commandLink action="#{KinderGartenDashController.addTeacher()}" class="btn btn-outline-success" value="add teacher">
+            </h:commandLink>
+                                 </div>      
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				
+				
+		
+			
+			
+			
+			<div class="col-lg-12 col-xl-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="active-member">
+						<h:link outcome="/pages/kindergarten/statistiquekinder" value="statistique"/>
+  <br/>
+						
+						  <h:commandLink action="#{KinderGartenDashController.addTeacher()}"  value="addd">
+            </h:commandLink>
+						<h4 class="card-title">teacher :</h4>
+							<div class="table-responsive">
+								
+									<h:panelGroup id="rep" columns="2">
+			
+				<h:dataTable class="table table-xs" value="#{KinderGartenDashController.teachers}" var="teacher"
+					border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="nom " />
+						</f:facet>
+						<h:outputText value="#{teacher.nom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="age" />
+						</f:facet>
+						<h:outputText value="#{teacher.age}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value=" tele number" />
+						</f:facet>
+						<h:outputText value="#{teacher.numtel}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="email" />
+						</f:facet>
+						<h:outputText value="#{teacher.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="classe" />
+						</f:facet>
+						<h:outputText value="#{teacher.classe == null ? 'no class' : teacher.classe.nom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+							</f:facet>
+							
+							<h:commandButton
+								action="#{KinderGartenDashController.deleteTeacher(teacher)}"
+								value="delete" >
+								<f:ajax execute="@form" render="@form" ></f:ajax>
+								</h:commandButton>
+								
+								
+								<br/>
+							<h:commandButton
+								action="#{KinderGartenDashController.displayTeacher(teacher)}"
+								value="show" >
+								
+								<f:ajax execute="@form" render="@form" ></f:ajax>
+								</h:commandButton>
+								<br/>
+								
+								
+							<h:commandButton
+								action="#{KinderGartenDashController.showteacherCom(teacher)}"
+								value="comptences" >
+								
+								
+								</h:commandButton>	
+								
+				
+</h:column>
+
+				</h:dataTable>
+			
+							</h:panelGroup>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+</div>
+	
+	</h:form>
+	
+	
+	<h:form>
+	<div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"> Classe :</h4>
+                               
+                                <div class="basic-form">
+                                 
+                                        <div class="form-group">
+                                          <p:inputText id="name" placeholder="Classe name :" value="#{KinderGartenDashController.nomc}" required="true"  requiredMessage="Classe name" class="form-control input-default" >
+                                          
+                                           <f:ajax execute="name"  render="msgname"></f:ajax>  
+                                          </p:inputText>
+                                           <h:message id="msgname" for="name" style="Color:red"></h:message>
+                                        </div>
+                                        <div class="form-group">
+                                          <p:inputText id="capacity" placeholder="capacity of kids :" validatorMessage="capacity shoud be les than 24 and more than 4  "  requiredMessage="Classe capacity" required="true"  value="#{KinderGartenDashController.capacitiec}"  class="form-control input-default" >
+                                           <f:ajax execute="capacity"  render="msgcap"></f:ajax>  
+                                                                                    <f:validateLongRange minimum="5" maximum="24" />
+                                          
+                                          </p:inputText>
+                                           <h:message id="msgcap" for="capacity" style="Color:red"></h:message>
+                                        </div>
+                                         <div class="form-group">
+                                          <p:inputText id="ageC" placeholder="classe age " validatorMessage="age shoud be les than 0 and more than 6." required="true"  value="#{KinderGartenDashController.agec}"  class="form-control input-default" >
+                                          
+                                          <f:validateLongRange minimum="0" maximum="6" />
+                                           <f:ajax execute="ageC"  render="msgage"></f:ajax>  
+                                          
+                                          </p:inputText>
+                                           <h:message id="msgage" for="ageC" style="Color:red"></h:message>
+                                        </div>
+                                        
+                                        
+                       
+        
+  <br/>              
+                         
+                             
+                            
+                                        <div class="form-group">
+                                        <h:commandLink action="#{KinderGartenDashController.addClasse()}" class="btn btn-outline-success" value="add Classe">
+                                        								<f:ajax execute="@form" render="@form" ></f:ajax>
+                                        
+            </h:commandLink>
+             <h:commandLink action="#{KinderGartenDashController.updateClasse()}" class="btn btn-outline-danger" value="update Classe">
+             								<f:ajax execute="@form" render="@form" ></f:ajax>
+             
+            </h:commandLink>
+                                 </div>      
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				
+	
+	
+	
+	
+	
+	
+<div class="col-lg-12 col-xl-12">
+				<div class="card">
+					<div class="card-body">
+					<h4 class="card-title">Classe :</h4>
+					<div class="table-responsive">
+                               
+									<h:panelGroup columns="2">
+			
+				<h:dataTable class="table table-xs" value="#{KinderGartenDashController.classes}" var="classe"
+					border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="nom " />
+						</f:facet>
+						<h:outputText value="#{classe.nom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="age" />
+						</f:facet>
+						<h:outputText value="#{classe.age}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value=" capacite" />
+						</f:facet>
+						<h:outputText value="#{classe.capacitie}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="teacher" />
+						</f:facet>
+						<h:outputText value="#{classe.teacher == null ? 'No teacher' : classe.teacher.nom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+							</f:facet>
+							  <h:commandLink action="#{KinderGartenDashController.displayClasse(classe)}"  value="show details">
+							  								
+							  
+            </h:commandLink>
+				 <h:commandLink action="#{KinderGartenDashController.displayClasse(classe)}"  value="display">
+				 							
+				 
+            </h:commandLink>			
+					
+				
+		
+</h:column>
+
+				</h:dataTable>
+			
+							</h:panelGroup>
+							
+                                </div>
+					
+					
+					</div></div></div>
+
+
+
+
+</h:form>
+
+
+
+
+
+
+
+
+<h:form>
+
+
+
+
+
+
+
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">Search</h4>
+
+							<div class="basic-form">
+								
+									<div class="form-group">
+										<p:inputText placeholder="child name" id="imputS"
+											value="#{KinderGartenDashController.search}"
+											class="form-control input-default" >
+											
+											<f:ajax event="keyup" execute="imputS"   render="table" ></f:ajax>
+											
+											</p:inputText>
+									</div>
+								
+							</div>
+						</div>
+					</div></div>
+					
+
+
+
+
+
+
+
+
+
+					<div class="col-lg-12 col-xl-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">kids :</h4>
+								<div class="table-responsive">
+
+									<h:panelGroup columns="2">
+											<h:dataTable id="table" class="table table-xs"
+												value="#{KinderGartenDashController.kids}" var="kid"
+												border="1">
+
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="name " />
+													</f:facet>
+													<h:outputText value="#{kid.childName}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="date of birth" />
+													</f:facet>
+													<h:outputText value="#{kid.dateNaissance}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value=" health" />
+													</f:facet>
+													<h:outputText value="#{kid.health}" />
+												</h:column>
+
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="classe" />
+													</f:facet>
+													<h:outputText
+														value="#{kid.classe == null ? 'No classe' : kid.classe.nom}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Parent Number" />
+													</f:facet>
+													<h:outputText
+														value="#{kid.parents == null ? 'No tel number' : kid.parents.tel}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Action" />
+													</f:facet>
+<h:commandButton id="supp" value="supprimer" action="#{KinderGartenDashController.supprimerchild(kid)}">
+														<f:ajax execute="supp" render="table"
+															 />
+													</h:commandButton>
+
+													<br />
+													<h:commandButton id="show" value="recomended" action="#{KinderGartenDashController.getHellomessageajax(kid)}">
+														<f:ajax execute="show" render="input"
+															 />
+													</h:commandButton>
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="show" />
+													</f:facet>
+													<h:outputText id="input"
+														value="#{KinderGartenDashController.hellomessage}" />
+												</h:column>
+
+											</h:dataTable>
+										
+									</h:panelGroup>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+
+
+
+</h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+			</div>
+			</f:view>
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+
+

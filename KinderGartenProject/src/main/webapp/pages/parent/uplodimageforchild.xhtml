@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:svg="http://www.w3.org/2000/svg"
+xmlns:p="http://primefaces.org/ui"
+xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+>
+<h:head>
+
+	
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+  
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<h:outputStylesheet library="css" name="bootstrap.min.css" />
+<h:outputStylesheet library="css" name="styles.min.css" />
+<h:outputStylesheet library="css" name="tiny-slider.css" />
+<h:outputStylesheet library="css" name="simplebar.css" />
+ <!-- Compiled and minified CSS -->
+     <style>
+.avatar-wrapper {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	/* 	margin: 50px auto; */
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 1px 1px 15px -5px black;
+	transition: all 0.3s ease;
+}
+.imageChild{
+
+
+}
+.avatar-wrapper:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+}
+
+.avatar-wrapper:hover .profile-pic {
+	opacity: 0.5;
+}
+
+.avatar-wrapper .profile-pic {
+	height: 100%;
+	width: 100%;
+	transition: all 0.3s ease;
+}
+
+.avatar-wrapper .profile-pic:after {
+	font-family: FontAwesome;
+	content: "\f007";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	font-size: 190px;
+	background: #ecf0f1;
+	color: #34495e;
+	text-align: center;
+}
+
+.avatar-wrapper .upload-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.avatar-wrapper .upload-button .fa-arrow-circle-up {
+	position: absolute;
+	font-size: 234px;
+	top: -17px;
+	left: 0;
+	text-align: center;
+	opacity: 0;
+	transition: all 0.3s ease;
+	color: #34495e;
+}
+
+.avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+	opacity: 0.9;
+}
+</style>
+		
+
+  <!-- bootstrap 4.3.1 -->
+ 
+  <!-- favicon -->
+  <link rel="icon" href="http://odindesign-themes.com/vikinger/img/favicon.ico" />
+   <style>               
+        .Bimage{background-image:url("#{request.contextPath}/resources/images/landing/landing-background.jpg"); }  
+        .red-square {
+  width: 550px;
+  height: 550px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}      
+        </style>   
+<title>add child </title></h:head>
+<h:body styleClass="Bimage">
+
+		
+	
+								
+  <!-- LANDING -->
+<div class="widget-box red-square">
+            <!-- WIDGET BOX TITLE -->
+            
+<p class="widget-box-title">About Your Profile</p>
+            <!-- /WIDGET BOX TITLE -->
+        
+            <!-- WIDGET BOX CONTENT -->
+            
+<div class="widget-box-content">
+              <!-- FORM -->
+              <div style="display: none;">
+               <h:form >
+
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small active">
+
+ <label for="profile-tagline">child name </label>
+<h:inputText id="profile-tagline" value="#{ProfilController.childName}" required="true" requiredMessage="User required" />
+                
+                      
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small active">
+                     
+                      <label for="profile-public-email">health </label>
+<h:selectOneMenu id="profile-public-email" value="#{ProfilController.health}">
+								<f:selectItem itemLabel="#{ProfilController.health == null ? 'choisir health' : ProfilController.health}" itemValue="#{null}" />
+								<f:selectItems value="#{ProfilController.healths}" />
+							</h:selectOneMenu>
+                    </div>
+                    <!-- /FORM INPUT -->
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small">
+                      <label for="profile-public-website">dateNaissanceChild : </label>
+                      <BR />
+                      <p:calendar id="profile-public-website" value="#{ProfilController.dateNaissanceChild}" showOn="button" pattern="yyyy-MM-dd"/>
+                      <BR />
+                      
+   <!--p:calendar id="profile-public-website" value="#{ProfilController.dateNaissanceChild}">
+                </p:calendar-->
+                      
+                    </div>
+                    <!-- /FORM INPUT -->
+                                        
+                    
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                <div class="form-item">
+                 <h:outputLabel value="#{ProfilController.dateNaissanceChild}"></h:outputLabel>
+</div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                <div class="form-item">
+  <h:commandLink action="#{ProfilController.updateChild()}" > 
+              
+              <button id="b1" class="button medium primary">update Now!</button></h:commandLink>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                </div>
+
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+
+                
+                <!-- /FORM ROW -->
+             
+              
+              
+              </h:form>
+              </div>
+       <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+ 
+<FORM method="post" action="/SpringMVC/servlet/uploadChild/#{ProfilController.idChildToupdate}" enctype="multipart/form-data">
+	<c:if test="#{ ProfilController.imageChild != null }">
+
+								<div class="avatar-wrapper">
+
+
+									<img class="profile-pic"
+										src="http://localhost:8082/SpringMVC/resources/uploads/userProfileImage/#{ProfilController.imageChild}" />
+									<div class="upload-button">
+										<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+									</div>
+									<input class="file-upload" type="file" accept="image/*"
+										name="file" id="image-file" />
+
+
+
+								</div>
+
+							</c:if>
+<c:if test="#{ ProfilController.imageChild == null }">
+								<div class="avatar-wrapper">
+
+
+									<img class="profile-pic"
+										src="http://localhost:8082/SpringMVC/resources/uploads/userProfileImage/unknown.png" />
+									<div class="upload-button">
+										<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+									</div>
+									<input class="file-upload" type="file" accept="image/*"
+										name="file" id="image-file" />
+
+
+
+								</div>
+
+						</c:if>
+
+							
+							<br /> <br /> <input type="submit" value="Upload" id="b2"
+								class="btn btn-danger" style="margin-left: 56px; " />
+							
+
+
+
+
+
+   </FORM>
+
+
+							<!-- 						<h:commandButton value="Update"   id="upp" style="border: 1px solid;  border-color: #ccc #ccc #bbb;   border-radius: 3px; background: #df0101;color: rgba(255, 242, 242, 0.8);line-height: 1;width: 26%;" -->
+							<!-- 							class="btn btn-primaire ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" /> -->
+					
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+
+                  <!-- /FORM ITEM -->
+                </div>       
+              
+              
+              
+              
+           
+              
+             
+              <h:form>
+            
+              </h:form>
+              <!-- /FORM -->
+            </div>
+            <!-- WIDGET BOX CONTENT -->
+          </div>
+				
+		
+				
+			
+				
+		
+    <script src="http://localhost:8082/SpringMVC/resources/js/app.bundle.min.js"></script>
+		   
+		   
+		   		   <script>
+
+$(document).ready(function() {
+	
+    var readURL = function(input) {
+        if (input.files &amp;&amp; input.files[0]) {
+      
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+        
+    
+    }
+   
+    $(".file-upload").on('change', function(){
+        readURL(this);
+      
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+ 
+    $("#b1").on('click', function() {
+        $("#b2").click();
+     });
+    
+});
+
+
+
+
+
+
+
+
+</script>
+		   </h:body></html>

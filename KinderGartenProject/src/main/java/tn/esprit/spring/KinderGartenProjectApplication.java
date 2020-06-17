@@ -116,7 +116,7 @@ public class KinderGartenProjectApplication implements CommandLineRunner {
     	
      
     }
-   // @Scheduled(cron="0 * * ? * *")
+   @Scheduled(cron="0 */4 * ? * *")
     public void teacher() {
     	List<KinderGarten> lk=kinderGartenRepository.findAll();
     	List<Classe> lc=new ArrayList<>();
@@ -144,7 +144,7 @@ public class KinderGartenProjectApplication implements CommandLineRunner {
     
     
     
-  //  @Scheduled(cron="0 * * ? * *")
+   @Scheduled(cron="0 */3 * ? * *")
     public void Scheduledevrysecond() {
 System.err.println("*********************************schedual");
     	classeServices.affectationGlobale();

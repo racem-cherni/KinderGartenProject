@@ -11,8 +11,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import tn.esprit.spring.Service.UserServices;
 import tn.esprit.spring.entities.Child;
+import tn.esprit.spring.entities.KinderGarten;
 import tn.esprit.spring.entities.Parent;
 import tn.esprit.spring.repository.ChildRepository;
+import tn.esprit.spring.repository.KinderGartenRepository;
 import tn.esprit.spring.repository.ParentRepository;
 import tn.esprit.spring.repository.UserRepository;
 
@@ -21,6 +23,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Optional;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UploadController {
@@ -33,6 +43,8 @@ public class UploadController {
 	UserServices userServices;
 	@Autowired
 	ChildRepository childRepository;
+	@Autowired
+	KinderGartenRepository kinderGartenRepository;
 //	File dir = new File( "ads" + File.separator + type);
 	
     //Save the uploaded file to this folder
@@ -131,9 +143,77 @@ public class UploadController {
 
       //  return "redirect:/uploadStatus";
     }
+    
+    @PostMapping("/logoutJsf") 
+    public String LOGOUT() throws IOException {
+		//
+		// HttpServletRequest response =response. ;
+		//
+		// response.logout();
+		//
+		ExternalContext ex = FacesContext.getCurrentInstance().getExternalContext();
+		HttpServletRequest request = (HttpServletRequest) ex.getRequest();
+
+		HttpServletResponse response = (HttpServletResponse) ex.getResponse();
+
+		Cookie[] cookies = request.getCookies();
+		if (cookies == null)
+			System.err.println("true");
+		Optional<Cookie> token = Arrays.stream(cookies).filter(cookie -> cookie.getName().equals("token")).findFirst();
+
+		token.get().setValue(null);
+
+		response.addCookie(token.get());
+
+		// response.sendRedirect("http://localhost:8081/login");
+
+		return "/login/NewFile.xhtml?faces-redirect=true";
+	}  
     @GetMapping("/uploadStatus")
     public void uploadStatus() {
       //  return "uploadStatus";
     }
+    @PostMapping("/uploadK") // //new annotation since 4.3
+    public String singleFileUploadKinder(@RequestParam("file") MultipartFile file
+                                 ) {
 
+        if (file.isEmpty()) {
+        	System.out.println("ssssssssssssssssssssssssssssss");
+        	
+        	
+        
+        	
+           // redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+           // return "redirect:uploadStatus";
+        }
+
+        try {
+        	System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            // Get the file and save it somewhere
+        	File dir = new File( UPLOADED_FOLDER);
+			
+        	if (!dir.exists())
+				dir.mkdirs();
+            byte[] bytes = file.getBytes();
+      
+            Path path = Paths.get(UPLOADED_FOLDER +File.separator+ file.getOriginalFilename());
+            Files.write(path, bytes);
+
+//            redirectAttributes.addFlashAttribute("message",
+//                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
+      KinderGarten k=userServices.currentUserJsf().getKindergarten();
+      k.setImage(file.getOriginalFilename());
+      kinderGartenRepository.save(k);
+      
+           
+            return "redirect:/pages/kindergarten/showProfilKinder.jsf";
+
+        } catch (IOException e) {
+        	
+            e.printStackTrace();
+            return "redirect:/uploadStatus";
+        }
+
+      //  return "redirect:/uploadStatus";
+    }
 }

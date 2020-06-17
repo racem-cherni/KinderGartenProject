@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:svg="http://www.w3.org/2000/svg"
+
+>
+<h:head>
+
+	
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+  
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<h:outputStylesheet library="css" name="bootstrap.min.css" />
+<h:outputStylesheet library="css" name="styles.min.css" />
+<h:outputStylesheet library="css" name="tiny-slider.css" />
+<h:outputStylesheet library="css" name="simplebar.css" />
+<style>               
+        .Bimage{background-image:url("#{request.contextPath}/resources/images/landing/landing-background.jpg"); }  
+        .red-square {
+  width: 550px;
+  height: 750px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}      
+        </style>
+  <!-- bootstrap 4.3.1 -->
+ 
+  <!-- favicon -->
+  <link rel="icon" href="http://odindesign-themes.com/vikinger/img/favicon.ico" />
+  
+<title>Vikinger | Home</title></h:head>
+<h:body styleClass="Bimage">
+
+		
+	
+								
+  <!-- LANDING -->
+<div class="widget-box red-square">
+            <!-- WIDGET BOX TITLE -->
+            
+<p class="widget-box-title">Register KinderGarten</p>
+            <!-- /WIDGET BOX TITLE -->
+        
+            <!-- WIDGET BOX CONTENT -->
+            
+<div class="widget-box-content">
+              <!-- FORM -->
+              <h:form class="form">
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small active">
+
+ <label for="profile-tagline">Your email</label>
+<h:inputText id="profile-tagline" value="#{AuthController.email}" required="true" requiredMessage="Please enter your email address."
+		validatorMessage="Invalid email format" >
+		 <f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                
+        <f:ajax execute="profile-tagline"  render="msgEmail"></f:ajax>   </h:inputText>           
+		
+	
+                
+                      
+                    </div>
+                     <h:message id="msgEmail" for="profile-tagline" style="Color:red"></h:message>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small active">
+                     
+                      <label for="profile-public-email">kinderGartenName </label>
+<h:inputText id="profile-public-email" value="#{AuthController.kinderGartenName}" required="true" requiredMessage="kinderGartenName required" >
+
+
+  <f:ajax execute="profile-public-email"  render="msgfirst"></f:ajax>  
+
+
+</h:inputText>
+                    </div>
+                    <!-- /FORM INPUT -->
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small">
+                      <label for="profile-public-website">adresse </label>
+<h:inputText id="profile-public-website" value="#{AuthController.adresse}" required="true" requiredMessage="adresse required" >
+  <f:ajax execute="profile-public-email"  render="msgadresse"></f:ajax>  
+
+
+</h:inputText>
+                      
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  
+                   <h:message id="msgfirst" for="profile-public-email" style="Color:red"></h:message>
+                   <h:message id="msgadresse" for="profile-public-website" style="Color:red"></h:message>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM SELECT -->
+                    
+
+                    <!-- /FORM SELECT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM SELECT -->
+                    
+
+                    <!-- /FORM SELECT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT DECORATED -->
+                    
+<div class="form-input-decorated">
+                      <!-- FORM INPUT -->
+                      
+<div class="form-input small active">
+                        <label for="profile-birthday">tel number</label>
+<h:inputText id="profile-birthday" value="#{AuthController.tel}" required="true" requiredMessage="tel required" >
+<f:ajax execute="profile-birthday"  render="msgadtel"></f:ajax>  
+
+</h:inputText>
+                      </div>
+                      <!-- /FORM INPUT -->
+           <h:message id="msgadtel" for="profile-birthday" style="Color:red"></h:message>
+                      <!-- FORM INPUT ICON -->
+                     
+                      <!-- /FORM INPUT ICON -->
+                    </div>
+                    <!-- /FORM INPUT DECORATED -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small active">
+                      <label for="prix">prix</label>
+<h:inputText id="prix" value="#{AuthController.prix}" required="true" requiredMessage="prix required" >
+
+<f:ajax execute="prix"  render="msgadprix"></f:ajax>  
+
+
+</h:inputText>
+                    </div>
+                    <!-- /FORM INPUT -->
+                               <h:message id="msgadprix" for="prix" style="Color:red"></h:message>
+                    
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM SELECT -->
+                    <div class="form-input small active">
+                      <label for="maxRdv">maxRdv number</label>
+<h:inputText id="maxRdv" value="#{AuthController.maxRdv}" required="true" requiredMessage="maxrdv required" >
+<f:ajax execute="maxRdv"  render="msgadmaxRdv"></f:ajax>  
+
+
+</h:inputText>
+                    </div>
+   <h:message id="msgadmaxRdv" for="maxRdv" style="Color:red"></h:message>
+                    <!-- /FORM SELECT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+                  
+
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+ 
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+
+                  <!-- /FORM ITEM -->
+                </div>
+                <h:commandLink action="#{AuthController.registerkinder()}" >
+              
+              <button class="button medium primary">Register Now!</button></h:commandLink>
+                
+                <!-- /FORM ROW -->
+              </h:form>
+              <!-- /FORM -->
+            </div>
+            <!-- WIDGET BOX CONTENT -->
+          </div>
+				
+		
+				
+			
+				
+		
+    <script src="http://localhost:8082/SpringMVC/resources/js/app.bundle.min.js"></script>
+		   
+		   
+		   
+		   </h:body></html>

@@ -5,12 +5,15 @@ import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 
 import org.eclipse.jdt.internal.compiler.SourceElementNotifier;
@@ -28,6 +31,7 @@ import com.fasterxml.jackson.databind.ser.std.UUIDSerializer;
 
 import lombok.Data;
 import tn.esprit.spring.TokenProvider;
+import tn.esprit.spring.Service.AnalysticServices;
 import tn.esprit.spring.Service.KinderGartenServices;
 import tn.esprit.spring.Service.ParentServices;
 import tn.esprit.spring.Service.RechercheKinderServices;
@@ -77,13 +81,12 @@ public class ProfilController  {
 	List<Parent> lpO=new ArrayList<>();
 	
 	private int testO;
-	
+	private String imgT;
+	private String nameT;
 	
 	
 	private UploadedFile file;
 
-	
-	
 	private Long idChildToupdate;
 	private String searchString="";
 	private String searchFriend="";
@@ -108,6 +111,8 @@ private AdvertissementRepository advertissementRepository;
 	ChildRepository childRepository;
 	@Autowired
 	RechercheKinderServices rechercheKinderServices;
+	@Autowired
+	AnalysticServices  analysticServices;
 	@PostConstruct
 	public void init(){
 	this.parents=	 rechercheKinderServices.findallPARENTS();
@@ -123,6 +128,7 @@ private AdvertissementRepository advertissementRepository;
 		this.lastNameO=p.getLastName();
 		this.imageO=p.getImage();
 		this.lpO=relationServices.Myfriend(p.getUserApp()).stream().map(e->e.getParent()).collect(Collectors.toList());
+		this.lpO=relationServices.parentDuplex(this.lpO,p );
 		this.numf=this.lpO.size();
 		this.pO=p;
 		this.testO=relationServices.testfriend(userServices.currentUserJsf(), p.getUserApp());
@@ -130,14 +136,19 @@ private AdvertissementRepository advertissementRepository;
 	return "/pages/parent/showProfileToOther.xhtml?faces-redirect=true";	
 	}
 	
-	public String ajouter(){
+	
+	public void ajouter(){
 		relationServices.AjoutFriend(userServices.currentUserJsf(), this.pO.getUserApp());
-		return null;
+		this.testO=2;
+		
 	}
 	
-	public String retirer(){
+	
+	public void retirer(){
 		relationServices.retireFriend(userServices.currentUserJsf(), this.pO.getUserApp());
-		return null;
+		this.testO=0;
+		System.out.println(this.pO.getUserApp().getUsername());
+
 	}
 	
 	public String verif(){
@@ -171,17 +182,35 @@ private AdvertissementRepository advertissementRepository;
 	
 	public String AddChild(){
 		
+	
+		Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(new Date() );
+//      cal2.setTime(dateNaissanceChild);
+//
+//if(cal1.before(cal2)){
+//			
+//			FacesMessage facesMessage =
+//					new FacesMessage("in valid date.");
+//
+//			
+//			
+//					FacesContext.getCurrentInstance().addMessage("form1:profile-public-website",facesMessage);
+//					return null;
+//		}
+		
+		
 				UserApp user=userServices.currentUserJsf();
 		Parent p=user.getParent();
 		Child c=new Child();
 		c.setChildName(childName);
 		this.childName="";
 		c.setDateNaissance(dateNaissanceChild);
-		this.dateNaissanceChild=null;
+	
 		c.setImage("unknown.png");
 		this.imageChild="";
 		c.setHealth(health);
-		this.health="";
+		
 		c.setParents(p);
 		childRepository.save(c);
 		//this.idChild=childRepository.findchildByParentName(p,childName).getId();
@@ -189,7 +218,7 @@ private AdvertissementRepository advertissementRepository;
 		
 		
 		
-		return "/pages/parent/uplodimageforchild.xhtml?faces-redirect=true";	
+		return "/pages/parent/parentprofil.xhtml?faces-redirect=true";	
 	}
 	public int testFriend(Parent p){
 	//System.out.println(p.getFirstName());
@@ -266,31 +295,27 @@ return user.getParent().getImage();
 		
 		
 	}
-	public String retireFriend(Parent p){
+	public void retireFriend(Parent p){
 		
 		
 				UserApp uS=userServices.currentUserJsf();
 		UserApp uT=userRepository.findUserByParent(p);
 		
 		 relationServices.retireFriend(uS, uT) ;
-		 
-		return "/pages/parent/showInvi.xhtml?faces-redirect=true"; 
+		 this.inv.remove(p);
+		
 	}
 	
 	public String accepteInvi(Parent p){
 		
 				UserApp uS=userServices.currentUserJsf();
 		UserApp uT=userRepository.findUserByParent(p);
-		if(advertissementRepository.findtargetAd(uT, uS)==null)
-			throw new RuntimeException("this invitation is not registred   ");
-		Advertissement av=userServices.getUserAdvertissement(uT,uS);
+		System.err.println( "*************************************************"+uT.getUsername());
+		Advertissement av=userServices.getUserAdvertissement(p.getUserApp(),uS);
 		
-		return"/pages/parent/showInvi.xhtml?faces-redirect=true";
+		return "/pages/parent/showInvi.xhtml?faces-redirect=true";
 		
 	}
-	
-	
-	
 	
 	
 	
@@ -349,9 +374,7 @@ return user.getParent().getImage();
 		this.userRepository = userRepository;
 	}
 
-	
-
-	
+		
 
 	
 
@@ -486,7 +509,6 @@ return user.getParent().getImage();
 	public void setParentServices(ParentServices parentServices) {
 		this.parentServices = parentServices;
 	}
-
 	public ChildRepository getChildRepository() {
 		return childRepository;
 	}
@@ -517,6 +539,7 @@ return user.getParent().getImage();
 		this.recomendedFriend = recomendedFriend;
 	}
 	public List<String> getHealths() {
+		this.healths.clear();
 		this.healths.add("MEDICALECARE");
 		this.healths.add("AUTISME");
 		this.healths.add("GOOD");
@@ -540,8 +563,8 @@ return user.getParent().getImage();
 		this.relationServices = relationServices;
 	}
 	public List<Parent> getInv() {
-		
-		List<UserApp> l=advertissementRepository.findInvit(userServices.currentUserJsf() ,Relation.FRIEND);
+		inv.clear();
+		List<UserApp> l=advertissementRepository.findInvit(userServices.currentUserJsf().getId() ,Relation.FRIEND);
 		inv=l.stream().map(e->e.getParent()).
 				collect(Collectors.toList());	
 		return inv;
@@ -676,10 +699,25 @@ return user.getParent().getImage();
 		this.testO = testO;
 	}
 
+	public void ShowRecomendidKinder(int i){
+		recomendidKinder.clear();
+		if(i==1)
+			recomendidKinder=rechercheKinderServices.recomendedKinderGarten(userServices.currentUserJsf());
+		if(i==2)
+			recomendidKinder=analysticServices.topKinder();
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	public List<KinderGarten> getRecomendidKinder() {
 		
-		recomendidKinder=rechercheKinderServices.recomendedKinderGarten(userServices.currentUserJsf());
+		//recomendidKinder=rechercheKinderServices.recomendedKinderGarten(userServices.currentUserJsf());
 		return recomendidKinder;
 	}
 
@@ -717,6 +755,39 @@ return user.getParent().getImage();
 
 	public void setSearchAbonner(String searchAbonner) {
 		this.searchAbonner = searchAbonner;
+	}
+
+	public String getImgT() {
+		UserApp ur=userServices.currentUserJsf();
+		if(ur.getParent()==null)
+			if(ur.getKindergarten().getImage()==null)
+				imgT="unknown.png";
+			else
+				imgT=ur.getKindergarten().getImage();
+		else
+			if(ur.getParent().getImage()==null)
+				imgT="unknown.png";
+			else
+				imgT=ur.getParent().getImage();
+		return imgT;
+	}
+
+	public void setImgT(String imgT) {
+		this.imgT = imgT;
+	}
+
+	public String getNameT() {
+		UserApp ur=userServices.currentUserJsf();
+		if(ur.getParent()!=null)
+			nameT=ur.getParent().getFirstName()+" "+ur.getParent().getLastName();
+		else
+		nameT=ur.getKindergarten().getKinderGartenName();
+		return nameT;
+	}
+
+	public void setNameT(String nameT) {
+		
+		this.nameT = nameT;
 	}
 	
 	

@@ -35,7 +35,7 @@ public class CartController {
 
 	@Autowired
 	PanierProductService PanierProductService;
-
+	
 	@Autowired
 	PointsHistoryService PointsHistoryService;
 
@@ -60,17 +60,17 @@ public class CartController {
 	private Map<Integer, Double> offer_price = new HashMap<Integer, Double>();
 
 	private String qty;
-
-	private int total_points;
-
+	
+	private int total_points ;
+	
 	private String points;
-
-	private String points2;
-
+	
+	private String points2 ;
+	
 	private String reduced_price;
-
+	
 	private boolean cartEmpty;
-
+	
 	public boolean isCartEmpty() {
 		return cartEmpty;
 	}
@@ -148,12 +148,12 @@ public class CartController {
 			this.total_price -= (old_qty - qty) * price;
 
 		this.offer_qty.replace(offer_id, qty);
+		
+		this.reduced_price = ""+(this.total_price - Double.parseDouble(this.points)) ;
+		
+}
 
-		this.reduced_price = "" + (this.total_price - Double.parseDouble(this.points));
-
-	}
-
-public void onload(){
+	public void onload(){
 		
 		this.offers = Collections.emptyList();
 		this.offer_qty = new HashMap<Integer,Integer>();
@@ -256,11 +256,10 @@ public void onload(){
 		Order order = new Order();
 		int panier_id;
 
-		if (PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()) != null)
+		if (PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()) != null) 
 			panier_id = PanierSessionRepository.getPanierSessionByUser(SessionFake.getId()).getPanier().getId();
-		else
-			return;
-
+		else return;
+		
 		for (Map.Entry<Integer, Integer> offer : this.offer_qty.entrySet()) {
 			PanierProduct panier_product = PanierProductService.getProductPanierByOfferAndPanier(offer.getKey(),
 					panier_id);
@@ -268,45 +267,46 @@ public void onload(){
 			PanierProductService.updateProduct(panier_product);
 		}
 
-		order.setPointspent(Double.parseDouble(this.points) * 50);
-
-		if (Double.parseDouble(this.points) > 0)
+		order.setPointspent(Double.parseDouble(this.points)*50);
+		
+		if (Double.parseDouble(this.points)>0)
 			order.setReducedprice(Double.parseDouble(this.reduced_price));
 		else
 			order.setReducedprice(this.total_price);
 
 		orderservice.addOrder(order, panier_id, SessionFake.getId());
-
+		
 		this.cartEmpty = true;
 
 	}
-
-	public String getTotalPoints() {
+	
+	public String getTotalPoints(){
 		this.total_points = PointsHistoryService.getPointsUser(SessionFake.getId());
-		return "" + this.total_points;
+		return ""+this.total_points;
 	}
-
-	public String getEquivalentPrice() {
-		return "" + ((double) this.total_points / 50);
+	
+	public String getEquivalentPrice(){
+		return ""+((double) this.total_points/50);
 	}
-
-	public void manipulatePoints() {
-
-		if (((double) this.total_points / 50) > this.total_price) {
+	
+	public void manipulatePoints(){
+		
+		if (((double)this.total_points/50) > this.total_price){
 			if (Double.parseDouble(this.points) > this.total_price)
-				this.points = "" + this.total_price;
-
+				this.points = ""+this.total_price;
+			
 		} else {
-			if (Double.parseDouble(this.points) > ((double) this.total_points / 50)) {
-				this.points = "" + (double) this.total_points / 50;
+			if (Double.parseDouble(this.points) > ((double)this.total_points/50)){
+				this.points = ""+(double) this.total_points/50;
 			}
 		}
+		
+		this.points2 = ""+(int) Math.ceil(Double.parseDouble(this.points) * 0.04999 * 1000);
 
-		this.points2 = "" + (int) Math.ceil(Double.parseDouble(this.points) * 0.05 * 1000);
-
+		
 	}
-
-	public void updatePrice() {
-		this.reduced_price = "" + (this.total_price - Double.parseDouble(this.points));
+	
+	public void updatePrice(){
+		this.reduced_price = ""+(this.total_price - Double.parseDouble(this.points)) ;
 	}
 }

@@ -1,0 +1,392 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui"
+	 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+	<ui:define name="content">
+		<f:view transient="true">
+			<div class="content-grid"
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+				<h:form>
+				
+				<section class="section">   
+					<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="http://localhost:8082/SpringMVC/resources/images/banner/groups-icon.png" alt="groups-icon"/>
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Recommended KinderGarten</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Browse all the groups of the community!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+	<nav class="section-navigation">
+      <!-- SECTION MENU -->
+      <div class="tns-outer" id="section-navigation-slider-ow"><div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">1 to 7</span>  of 11</div><div id="section-navigation-slider-mw" class="tns-ovh"><div class="tns-inner" id="section-navigation-slider-iw"><div id="section-navigation-slider" class="section-menu  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" style="transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/parentprofil" class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item0">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-profile">
+            <use xlink:href="#svg-profile"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">About</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+        </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/recherchKinder" class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item1">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-timeline">
+            <use xlink:href="#svg-timeline"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">SearchKinder</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+       </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/friends" class="section-menu-item active tns-item tns-slide-active" href="profile-friends.html" id="section-navigation-slider-item2">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-friend">
+            <use xlink:href="#svg-friend"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">MyFriends</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+   </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/showfriend" class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item3">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-group">
+            <use xlink:href="#svg-group"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">search Friend</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+     </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/showAbonner" class="section-menu-item tns-item tns-slide-active" id="section-navigation-slider-item4">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-photos">
+            <use xlink:href="#svg-photos"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">MyAbonner</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+       </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/showInvi"  class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item5">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-videos">
+            <use xlink:href="#svg-videos"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">show Invitaion</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+       </h:link>
+        <!-- /SECTION MENU ITEM -->
+  <h:link outcome="/pages/parent/recomendedKinder" class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item6">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-badges">
+            <use xlink:href="#svg-badges"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">recommended kinder</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+      </h:link>
+        <!-- SECTION MENU ITEM -->
+      
+        <!-- /SECTION MENU ITEM -->
+  
+      
+      </div></div></div></div>
+      <!-- /SECTION MENU -->
+  
+      <!-- SLIDER CONTROLS -->
+      <div id="section-navigation-slider-controls" class="slider-controls" aria-label="Carousel Navigation" tabindex="0">
+        <!-- SLIDER CONTROL -->
+        <div class="slider-control left" aria-controls="section-navigation-slider" tabindex="-1" data-controls="prev" aria-disabled="true">
+          <!-- SLIDER CONTROL ICON -->
+          <svg class="slider-control-icon icon-small-arrow">
+            <use xlink:href="#svg-small-arrow"></use>
+          </svg>
+          <!-- /SLIDER CONTROL ICON -->
+        </div>
+        <!-- /SLIDER CONTROL -->
+  
+        <!-- SLIDER CONTROL -->
+        <div class="slider-control right" aria-controls="section-navigation-slider" tabindex="-1" data-controls="next">
+          <!-- SLIDER CONTROL ICON -->
+          <svg class="slider-control-icon icon-small-arrow">
+            <use xlink:href="#svg-small-arrow"></use>
+          </svg>
+          <!-- /SLIDER CONTROL ICON -->
+        </div>
+        <!-- /SLIDER CONTROL -->
+      </div>
+      <!-- /SLIDER CONTROLS -->
+    </nav>
+  
+  
+  
+  	 	
+  
+  
+				
+				 <h2>Recommended KinderGarten   </h2>
+	<div class="section-filters-bar v1">
+        <!-- SECTION FILTERS BAR ACTIONS -->
+        <div class="section-filters-bar-actions">
+          <!-- FORM -->
+         
+            <!-- FORM INPUT -->
+          
+            <!-- /FORM INPUT -->
+          
+<div class="filter-tabs">
+            <!-- FILTER TAB -->
+            
+<div class="filter-tab">
+
+
+
+
+
+
+</div>
+
+
+
+<div class="filter-tab">
+
+  <h:commandLink action="#{ProfilController.ShowRecomendidKinder(1)}" >
+            
+                <!-- ICON MAGNIFYING GLASS -->
+               recomended Kinder
+                <!-- /ICON MAGNIFYING GLASS -->
+           
+              
+              <f:ajax execute="@form" render="rep"  ></f:ajax>
+              
+              </h:commandLink>
+
+
+
+
+</div>
+
+
+<div class="filter-tab">
+
+<h:commandLink action="#{ProfilController.ShowRecomendidKinder(2)}" >
+             
+                <!-- ICON MAGNIFYING GLASS -->
+               top three Kinder 
+                <!-- /ICON MAGNIFYING GLASS -->
+              
+              
+              <f:ajax execute="@form" render="rep"  ></f:ajax>
+              
+              </h:commandLink>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+            <!-- /FORM SELECT ICON -->
+        
+            <!-- FORM SELECT -->
+
+            <!-- /FORM SELECT -->
+         
+          <!-- /FORM -->
+    
+          <!-- FILTER TABS -->
+          
+          <!-- /FILTER TABS -->
+        </div>
+        <!-- /SECTION FILTERS BAR ACTIONS -->
+    
+        <!-- SECTION FILTERS BAR ACTIONS -->
+       
+        <!-- /SECTION FILTERS BAR ACTIONS -->
+      </div>
+			
+<h:panelGroup id="rep">
+<div class="grid grid-4-4-4 centered">
+        <!-- USER PREVIEW -->
+        
+         <ui:repeat var="kinder" value="#{ProfilController.recomendidKinder}">
+        <div class="user-preview">
+          <!-- USER PREVIEW COVER -->
+          <figure class="user-preview-cover liquid" style="background: url(&quot;http://localhost:8082/SpringMVC/resources/images/cover/04.jpg&quot;) center center / cover no-repeat;">
+            <img src="http://localhost:8082/SpringMVC/resources/images/cover/04.jpg" alt="cover-04" style="display: none;"/>
+          </figure>
+          <!-- /USER PREVIEW COVER -->
+      
+          <!-- USER PREVIEW INFO -->
+          <div class="user-preview-info">
+            <!-- USER SHORT DESCRIPTION -->
+            <div class="user-short-description">
+              <!-- USER SHORT DESCRIPTION AVATAR -->
+            
+              <!-- /USER SHORT DESCRIPTION AVATAR -->
+        
+              <!-- USER SHORT DESCRIPTION TITLE -->
+              <p class="user-short-description-title"><h:outputText value="#{kinder.kinderGartenName}"/></p>
+              <!-- /USER SHORT DESCRIPTION TITLE -->
+        
+              <!-- USER SHORT DESCRIPTION TEXT -->
+              <p class="user-short-description-text"><h:outputText value="#{kinder.email}"/></p>
+              <!-- /USER SHORT DESCRIPTION TEXT -->
+            </div>
+            <!-- /USER SHORT DESCRIPTION -->
+        
+            <!-- BADGE LIST -->
+           
+            <!-- /BADGE LIST -->
+      
+            <!-- USER PREVIEW STATS SLIDES -->
+            <div class="tns-outer" id="user-preview-stats-slides-01-ow"><div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">1</span>  of 2</div><div id="user-preview-stats-slides-01-mw" class="tns-ovh"><div class="tns-inner" id="user-preview-stats-slides-01-iw"><div id="user-preview-stats-slides-01" class="user-preview-stats-slides  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" style="transition-duration: 0s; transform: translate3d(0%, 0px, 0px);">
+              <!-- USER PREVIEW STATS SLIDE -->
+              <div class="user-preview-stats-slide tns-item tns-slide-active" id="user-preview-stats-slides-01-item0">
+                <!-- USER STATS -->
+                <div class="user-stats">
+                  <!-- USER STAT -->
+                  <div class="user-stat">
+                    <!-- USER STAT TITLE -->
+                    <p class="user-stat-title"><h:outputText value="#{kinder.capacite}"/></p>
+                    <!-- /USER STAT TITLE -->
+            
+                    <!-- USER STAT TEXT -->
+                    <p class="user-stat-text">capacity</p>
+                    <!-- /USER STAT TEXT -->
+                  </div>
+                  <!-- /USER STAT -->
+            
+                  <!-- USER STAT -->
+                  <div class="user-stat">
+                    <!-- USER STAT TITLE -->
+                    <p class="user-stat-title"><h:outputText value="#{kinder.tel}"/></p>
+                    <!-- /USER STAT TITLE -->
+            
+                    <!-- USER STAT TEXT -->
+                    <p class="user-stat-text">tel</p>
+                    <!-- /USER STAT TEXT -->
+                  </div>
+                  <!-- /USER STAT -->
+            
+                  <!-- USER STAT -->
+                  <div class="user-stat">
+                    <!-- USER STAT TITLE -->
+                    <p class="user-stat-title"><h:outputText value="#{kinder.prix}"/></p>
+                    <!-- /USER STAT TITLE -->
+            
+                    <!-- USER STAT TEXT -->
+                    <p class="user-stat-text">prix</p>
+                    <!-- /USER STAT TEXT -->
+                  </div>
+                  <!-- /USER STAT -->
+                </div>
+                <!-- /USER STATS -->
+              </div>
+              <!-- /USER PREVIEW STATS SLIDE -->
+        
+              <!-- USER PREVIEW STATS SLIDE -->
+              
+              <!-- /USER PREVIEW STATS SLIDE -->
+            </div></div></div></div>
+            <!-- /USER PREVIEW STATS SLIDES -->
+      
+            <!-- USER PREVIEW STATS ROSTER -->
+            <div id="user-preview-stats-roster-01" class="user-preview-stats-roster slider-roster" aria-label="Carousel Pagination">
+              <!-- SLIDER ROSTER ITEM -->
+              <div class="slider-roster-item tns-nav-active" data-nav="0" aria-label="Carousel Page 1 (Current Slide)" aria-controls="user-preview-stats-slides-01"></div>
+              <!-- /SLIDER ROSTER ITEM -->
+      
+              <!-- SLIDER ROSTER ITEM -->
+              <div class="slider-roster-item" data-nav="1" tabindex="-1" aria-label="Carousel Page 2" aria-controls="user-preview-stats-slides-01"></div>
+              <!-- /SLIDER ROSTER ITEM -->
+            </div>
+            <!-- /USER PREVIEW STATS ROSTER -->
+      
+          
+            <!-- /SOCIAL LINKS -->
+      
+            <!-- USER PREVIEW ACTIONS -->
+            <div class="user-preview-actions">
+              <!-- BUTTON -->
+             
+              
+              <!-- /BUTTON -->
+   
+              <!-- BUTTON -->
+               <h:commandLink class="button primary" value="show Profile+" action="#{RecherchController.showVisitor(kinder)}">
+              
+              <!-- /BUTTON -->
+      </h:commandLink>
+             
+              <!-- /BUTTON -->
+            </div>
+            <!-- /USER PREVIEW ACTIONS -->
+          </div>
+          <!-- /USER PREVIEW INFO -->
+        </div>
+        <!-- /USER PREVIEW -->
+</ui:repeat>
+				
+				
+       
+        
+        
+        </div>
+				
+				
+		</h:panelGroup> 		
+				
+				
+				
+				
+				</section>
+				
+				</h:form></div></f:view></ui:define></ui:composition>

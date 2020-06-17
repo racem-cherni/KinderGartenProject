@@ -26,10 +26,15 @@ public class PointsHistoryServiceImp implements PointsHistoryService {
 	@Override
 	public int getPointsUser(Long id) {
 
-		if (PointsHistoryRepository.getPointsUser(id) != null)
-			return PointsHistoryRepository.getPointsUser(id);
-		else
-			return 0;
+		int points;
+		
+		try {
+			points = PointsHistoryRepository.getPointsUser(id);
+		} catch (Exception e) {
+			points = 0 ;			
+		}
+		
+		return points;
 	}
 
 }

@@ -23,9 +23,6 @@ private static final long serialVersionUID = 1L;
 	@Column(name="Facture_id")
 	private Long id;
 	
-	@Column(name="charge_stocks")
-	private double montant_stocks;
-	
 	
 	@Column(name="charge_totale")
 	private double montant_totale;
@@ -53,13 +50,7 @@ private static final long serialVersionUID = 1L;
 
 
 
-	public double getMontant_stocks() {
-		return montant_stocks;
-	}
-
-	public void setMontant_stocks(double montant_stocks) {
-		this.montant_stocks = montant_stocks;
-	}
+	
 
 	public double getMontant_totale() {
 		return montant_totale;

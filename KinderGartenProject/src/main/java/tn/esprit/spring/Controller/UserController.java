@@ -302,7 +302,7 @@ public List<UserApp> listinvitation(HttpServletRequest request){
 if(user==null)
 		throw new RuntimeException("user doesn t exist .");
 
-	List<UserApp> l=advertissementRepository.findInvit(user ,Relation.FRIEND);
+	List<UserApp> l=advertissementRepository.findInvit(user.getId(), Relation.FRIEND);
 	
 	
 

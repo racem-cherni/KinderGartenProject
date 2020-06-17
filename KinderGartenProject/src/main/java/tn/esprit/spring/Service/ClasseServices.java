@@ -27,7 +27,8 @@ public class ClasseServices {
 	private ChildRepository  childRepository;
 	@Autowired
 	private KinderGartenRepository kinderGartenRepository;
-	
+	@Autowired
+	UserServices userServices;
 public Classe saveClasse(Classe cl,KinderGarten kinder){
 	System.err.println("*******************************************"+kinder.getId());
 	cl.setKinderGarten(kinder);
@@ -176,6 +177,30 @@ public Classe retirerKid(Child c,Classe cl)
 	return classeRepository.save(cl);
 	
 }
+
+
+public Classe retirerKidk(Child c)
+{
+	Classe clas=c.getClasse();
+	clas.getKid().remove(c);
+	int cp=clas.getCapacitie();
+	
+	clas.setCapacitie(cp+1);
+	c.setClasse(null);
+	c.setKindergarten(null);
+	userServices.currentUserJsf().getKindergarten().getKid().remove(c);
+	kinderGartenRepository.save(userServices.currentUserJsf().getKindergarten());
+	childRepository.save(c);
+	
+	return classeRepository.save(clas);
+	
+}
+
+
+
+
+
+
 
 public List<Classe> getClasseBykinder(KinderGarten k){
 	return classeRepository.findclasseByKinder(k);

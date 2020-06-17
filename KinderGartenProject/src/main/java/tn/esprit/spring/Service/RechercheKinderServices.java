@@ -144,8 +144,9 @@ public class RechercheKinderServices {
 		int childscore=0;
 		int adresseScore=0;
 		int prixScore=0;
-		
-		for(Child c:p.getChilds()){
+		List<Child> lc=childRepository.findchildByparent(p);
+		if(p.getChilds()!=null)
+		for(Child c:lc){
 			childscore++;
 			if(c.getKindergarten()!=null)
 			prixScore++;
@@ -180,8 +181,9 @@ public class RechercheKinderServices {
 		List<Classe> classeList=new ArrayList<>();
 		int age=0;
 		
-		
-		for (Child c : p.getChilds()) {
+		List<Child> lc=childRepository.findchildByparent(p);
+
+		for (Child c : lc) {
 			l=today.getTime()-c.getDateNaissance().getTime();
 			 total=(long) (1000*60*60*24);
 				diff=l/total;

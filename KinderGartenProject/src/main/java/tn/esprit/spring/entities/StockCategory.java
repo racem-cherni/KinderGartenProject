@@ -2,6 +2,8 @@ package tn.esprit.spring.entities;
 
 public enum StockCategory {
 	
-	patessieure , chemise , immobiliere
+	patessieure , chairs
+ , tables,glasses
+,cakes,juice
 
 }

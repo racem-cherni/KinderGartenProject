@@ -30,5 +30,18 @@ public interface IInvitation_EventService {
 	
 	public void interesser_parentjsf(Long id_event);
 	public void inviter_tousparent_eventjsf(Event e);
+	public void annuler_participation_eventjsf (Long id_event); 
+	public void annuler_interesser_eventjsf (Long id_event);
+	public List<Event> listinteressteevents () ;
+	
+	public List<Event> listparticipatedevents () ;
+	
+	public Invitation_Event invitationparent(Long id);
+
+    public List<Parent> listparentparticipes(Long idevent);
+    
+    public List<Parent> listparentinteressess(Long idevent);
+    
+
 	
 }

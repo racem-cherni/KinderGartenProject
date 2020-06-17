@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+
+
+
+<h:head>
+
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<!-- bootstrap 4.3.1 -->
+	<h:outputStylesheet library = "css" name = "vendor/bootstrap.min.css" /> 
+	<h:outputStylesheet library = "css" name = "styles.min.css"  /> 
+	<h:outputStylesheet library = "css" name = "vendor/simplebar.css" /> 
+	<h:outputStylesheet library = "css" name = "vendor/tiny-slider.css"/> 
+	<link rel="stylesheet" href="resources/css/styles.min.css" />
+	<!-- favicon -->
+	<link rel="icon" href="resources/img/favicon.ico" />
+
+</h:head>
+
+<h:body>
+
+
+	<ui:insert name="header">
+		<ui:include src="/template/header.xhtml" />
+	</ui:insert>
+
+	<ui:insert name="menu">
+		<ui:include src="/template/menu.xhtml" />
+	</ui:insert>
+
+	<ui:insert name="connected">
+		<ui:include src="/template/connected.xhtml" />
+	</ui:insert>
+
+	<ui:insert name="content">
+	</ui:insert>
+
+	<script src="app.bundle.min.js"></script>
+
+</h:body>
+
+</html>

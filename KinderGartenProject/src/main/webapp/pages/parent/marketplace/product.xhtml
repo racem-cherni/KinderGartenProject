@@ -47,12 +47,20 @@
 					<div class="section-header-info">
 						<!-- SECTION PRETITLE -->
 
-						<p class="section-pretitle">HTML Templates</p>
+						<p class="section-pretitle">Currently at:</p>
 						<!-- /SECTION PRETITLE -->
 
 						<!-- SECTION TITLE -->
 
-						<h2 class="section-title">#{productController.getProductbyId(productController.id).name}</h2>
+						<h2 class="section-title">
+							<span class="highlighted">#{productController.getProductbyId(productController.id).name}</span>'s
+							Offers
+						</h2>
+
+						<h:link outcome="browseproducts"
+							styleClass="section-header-action">
+							<h:outputText styleClass="section-pretitle" value="Browse All"></h:outputText>
+						</h:link>
 						<!-- /SECTION TITLE -->
 					</div>
 					<!-- /SECTION HEADER INFO -->
@@ -78,183 +86,10 @@
 					<div class="marketplace-content grid-column">
 						<!-- SLIDER PANEL -->
 
-						<div class="slider-panel">
-							<!-- SLIDER PANEL SLIDES -->
-
-							<div class="tns-outer" id="product-box-slider-items-ow">
-								<div class="tns-liveregion tns-visually-hidden"
-									aria-live="polite" aria-atomic="true">
-									slide <span class="current">2</span> of 7
-								</div>
-								<div class="tns-inner" id="product-box-slider-items-iw">
-									<div id="product-box-slider-items"
-										class="slider-panel-slides tns-slider tns-gallery tns-subpixel tns-calc tns-horizontal">
-										<!-- SLIDER PANEL SLIDE -->
-
-										<div class="slider-panel-slide tns-item tns-normal"
-											id="product-box-slider-items-item0" aria-hidden="true"
-											tabindex="-1">
-											<!-- SLIDER PANEL SLIDE IMAGE -->
-											<figure class="slider-panel-slide-image liquid"
-												style="background: url(&quot;img/marketplace/items/10.jpg&quot;) center center / cover no-repeat;">
-											<img src="resources/img/marketplace/items/10.jpg"
-												alt="item-10" style="display: none;" /> </figure>
-											<!-- /SLIDER PANEL SLIDE IMAGE -->
-										</div>
-										<!-- /SLIDER PANEL SLIDE -->
-										<!-- SLIDER PANEL SLIDE -->
-
-										<div
-											class="slider-panel-slide tns-item tns-slide-active tns-fadeIn"
-											id="product-box-slider-items-item1" style="left: 0%;">
-											<!-- SLIDER PANEL SLIDE IMAGE -->
-											<figure class="slider-panel-slide-image liquid"
-												style="background: url(&quot;img/marketplace/items/15.jpg&quot;) center center / cover no-repeat;">
-											<img src="resources/img/marketplace/items/15.jpg"
-												alt="item-15" style="display: none;" /> </figure>
-											<!-- /SLIDER PANEL SLIDE IMAGE -->
-										</div>
-										<!-- /SLIDER PANEL SLIDE -->
-										<!-- SLIDER PANEL SLIDE -->
-
-										<div class="slider-panel-slide tns-item tns-normal"
-											id="product-box-slider-items-item2" aria-hidden="true"
-											tabindex="-1">
-											<!-- SLIDER PANEL SLIDE IMAGE -->
-											<figure class="slider-panel-slide-image liquid"
-												style="background: url(&quot;img/marketplace/items/16.jpg&quot;) center center / cover no-repeat;">
-											<img src="resources/img/marketplace/items/16.jpg"
-												alt="item-16" style="display: none;" /> </figure>
-											<!-- /SLIDER PANEL SLIDE IMAGE -->
-										</div>
-										<!-- /SLIDER PANEL SLIDE -->
-										<!-- SLIDER PANEL SLIDE -->
-
-										<div class="slider-panel-slide tns-item tns-normal"
-											id="product-box-slider-items-item3" aria-hidden="true"
-											tabindex="-1">
-											<!-- SLIDER PANEL SLIDE IMAGE -->
-											<figure class="slider-panel-slide-image liquid"
-												style="background: url(&quot;img/marketplace/items/17.jpg&quot;) center center / cover no-repeat;">
-											<img src="resources/img/marketplace/items/17.jpg"
-												alt="item-17" style="display: none;" /> </figure>
-											<!-- /SLIDER PANEL SLIDE IMAGE -->
-										</div>
-										<!-- /SLIDER PANEL SLIDE -->
-										<!-- SLIDER PANEL SLIDE -->
-
-										<div class="slider-panel-slide tns-item tns-normal"
-											id="product-box-slider-items-item4" aria-hidden="true"
-											tabindex="-1">
-											<!-- SLIDER PANEL SLIDE IMAGE -->
-											<figure class="slider-panel-slide-image liquid"
-												style="background: url(&quot;img/marketplace/items/18.jpg&quot;) center center / cover no-repeat;">
-											<img src="resources/img/marketplace/items/18.jpg"
-												alt="item-18" style="display: none;" /> </figure>
-											<!-- /SLIDER PANEL SLIDE IMAGE -->
-										</div>
-										<!-- /SLIDER PANEL SLIDE -->
-										<!-- SLIDER PANEL SLIDE -->
-
-										<div class="slider-panel-slide tns-item tns-normal"
-											id="product-box-slider-items-item5" aria-hidden="true"
-											tabindex="-1">
-											<!-- SLIDER PANEL SLIDE IMAGE -->
-											<figure class="slider-panel-slide-image liquid"
-												style="background: url(&quot;img/marketplace/items/19.jpg&quot;) center center / cover no-repeat;">
-											<img src="resources/img/marketplace/items/19.jpg"
-												alt="item-19" style="display: none;" /> </figure>
-											<!-- /SLIDER PANEL SLIDE IMAGE -->
-										</div>
-										<!-- /SLIDER PANEL SLIDE -->
-										<!-- SLIDER PANEL SLIDE -->
-
-										<div class="slider-panel-slide tns-item tns-normal"
-											id="product-box-slider-items-item6" aria-hidden="true"
-											tabindex="-1">
-											<!-- SLIDER PANEL SLIDE IMAGE -->
-											<figure class="slider-panel-slide-image liquid"
-												style="background: url(&quot;img/marketplace/items/20.jpg&quot;) center center / cover no-repeat;">
-											<img src="resources/img/marketplace/items/20.jpg"
-												alt="item-20" style="display: none;" /> </figure>
-											<!-- /SLIDER PANEL SLIDE IMAGE -->
-										</div>
-										<!-- /SLIDER PANEL SLIDE -->
-
-										<div class="slider-panel-slide tns-item tns-normal"
-											aria-hidden="true" tabindex="-1">
-											<!-- SLIDER PANEL SLIDE IMAGE -->
-											<figure class="slider-panel-slide-image liquid"
-												style="background: url(&quot;img/marketplace/items/10.jpg&quot;) center center / cover no-repeat;">
-											<img src="resources/img/marketplace/items/10.jpg"
-												alt="item-10" style="display: none;" /> </figure>
-											<!-- /SLIDER PANEL SLIDE IMAGE -->
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- /SLIDER PANEL -->
 						<!-- TAB BOX -->
 
-						<div class="tab-box">
-							<!-- TAB BOX OPTIONS -->
 
-							<div class="tab-box-options">
-								<!-- TAB BOX OPTION -->
 
-								<div class="tab-box-option active">
-									<!-- TAB BOX OPTION TITLE -->
-
-									<p class="tab-box-option-title">Description</p>
-									<!-- /TAB BOX OPTION TITLE -->
-								</div>
-								<!-- /TAB BOX OPTION -->
-
-							</div>
-							<!-- /TAB BOX OPTIONS -->
-
-							<!-- TAB BOX ITEMS -->
-
-							<div class="tab-box-items">
-								<!-- TAB BOX ITEM -->
-
-								<div class="tab-box-item"
-									style="display: block; transition: none 0s ease 0s;">
-									<!-- TAB BOX ITEM CONTENT -->
-
-									<div class="tab-box-item-content">
-										<!-- TAB BOX ITEM TITLE -->
-
-										<p class="tab-box-item-paragraph">#{productController.getProductbyId(productController.id).description}</p>
-										<!-- /TAB BOX ITEM PARAGRAPH -->
-
-										<!-- /TAB BOX ITEM PARAGRAPH -->
-									</div>
-									<!-- /TAB BOX ITEM CONTENT -->
-								</div>
-
-							</div>
-							<!-- /TAB BOX ITEMS -->
-						</div>
-
-						<div class="section-header">
-							<!-- SECTION HEADER INFO -->
-
-							<div class="section-header-info">
-								<!-- SECTION PRETITLE -->
-
-								<p class="section-pretitle">Browse</p>
-								<!-- /SECTION PRETITLE -->
-								<!-- SECTION TITLE -->
-
-								<h2 class="section-title">
-									Offers <span class="highlighted"></span>
-								</h2>
-								<!-- /SECTION TITLE -->
-							</div>
-							<!-- /SECTION HEADER INFO -->
-						</div>
 
 						<div class="table-wrap" data-simplebar="init">
 							<div class="simplebar-wrapper" style="margin: 0px;">
@@ -318,7 +153,6 @@
 
 									<ui:repeat value="#{productController.getOffers()}" var="offer">
 										<div class="table-body same-color-rows">
-
 
 											<!-- TABLE ROW -->
 
@@ -447,25 +281,33 @@
 												<div class="table-column padded-left">
 													<!-- TABLE ACTIONS -->
 
-													<div class="table-actions">
-														<!-- BUTTON -->
-														<h:form>
-															<h:commandButton styleClass="button secondary"
-																value="Add to Cart"
-																action="#{cartController.addToCart(offer)}">
-															</h:commandButton>
-														</h:form>
-														<!-- /BUTTON -->
-
-														<!-- BUTTON -->
-
-														<!-- /BUTTON -->
-													</div>
+													<h:panelGroup
+														rendered="#{!productController.inCart(offer.id)}">
+														<div class="table-actions">
+															<!-- BUTTON -->
+															<h:form>
+																<h:commandButton styleClass="button secondary"
+																	value="Add to Cart"
+																	action="#{cartController.addToCart(offer)}">
+																</h:commandButton>
+															</h:form>
+															<!-- /BUTTON -->
+														</div>
+													</h:panelGroup>
+													<h:panelGroup
+														rendered="#{productController.inCart(offer.id)}">
+														<div class="table-actions">
+															<!-- BUTTON -->
+															<h:form>
+																<h:outputText value="You have already added this." />
+															</h:form>
+															<!-- /BUTTON -->
+														</div>
+													</h:panelGroup>
 													<!-- /TABLE ACTIONS -->
 												</div>
 												<!-- /TABLE COLUMN -->
 											</div>
-
 										</div>
 									</ui:repeat>
 
@@ -484,102 +326,43 @@
 								<div class="marketplace-sidebar">
 
 									<!-- MARKETPLACE CONTENT -->
-									<div class="sidebar-box">
+									<div class="sidebar-box" style="margin-top: 65px">
 										<!-- SIDEBAR BOX ITEMS -->
 
 										<div class="sidebar-box-items">
 											<!-- PRICE TITLE -->
 
-											<p class="price-title big">
-
-												<h:outputText
-													value=" #{productController.getPrice(productController.id)} "></h:outputText>
-												<span class="currency">DT</span>
-											</p>
 											<!-- /PRICE TITLE -->
+											<div class="row d-flex justify-content-center">
+												<div class="col-6">
 
-											<!-- FORM -->
-											<form class="form">
-												<!-- CHECKBOX WRAP -->
+													<img class="badge-item-stat-image"
+														src="resources/img/badge/rulerm-b.png"
+														alt="badge-rulerm-b" />
+													<!-- /BADGE ITEM STAT IMAGE -->
 
-												<div class="checkbox-wrap selected">
-													<input type="radio" id="license-regular"
-														name="license_type" value="license-regular"
-														checked="checked" />
-													<!-- CHECKBOX BOX -->
+													<!-- BADGE ITEM STAT TITLE -->
 
-													<div class="checkbox-box">
-														<!-- ICON CROSS -->
-														<svg class="icon-cross"> <use
-															xlink:href="#svg-cross"></use> </svg>
-														<!-- /ICON CROSS -->
-													</div>
-													<!-- /CHECKBOX BOX -->
-													<label class="accordion-trigger-linked"
-														for="license-regular">Regular License</label>
+													<!-- /BADGE ITEM STAT TEXT -->
 
-													<!-- CHECKBOX INFO -->
+													<!-- PROGRESS STAT -->
 
-													<!-- /CHECKBOX INFO -->
-
-													<div
-														style="overflow: hidden; height: 32px; transition: all 0.3s ease-in-out 0s;">
-														<div
-															class="checkbox-info accordion-content-linked accordion-open">
-															<!-- CHECKBOX INFO TEXT -->
-
-															<p class="checkbox-info-text">
-																For use, by you or one client, in a single end product
-																which end users are not charged for. <a href="#">View
-																	Details</a>
-															</p>
-															<!-- /CHECKBOX INFO TEXT -->
-														</div>
-													</div>
+													<!-- /PROGRESS STAT -->
 												</div>
-												<!-- /CHECKBOX WRAP -->
 
-												<!-- CHECKBOX WRAP -->
+												<h3 class="badge-item-stat-title" style="margin-top: 10px">Recommanded
+													Offer</h3>
+												<!-- /BADGE ITEM STAT TITLE -->
 
-												<div class="checkbox-wrap">
-													<input type="radio" id="license-extended"
-														name="license_type" value="license-extended" />
-													<!-- CHECKBOX BOX -->
+												<!-- BADGE ITEM STAT TEXT -->
+												<br />
+												<p class="price-title big">
 
-													<div class="checkbox-box">
-														<!-- ICON CROSS -->
-														<svg class="icon-cross"> <use
-															xlink:href="#svg-cross"></use> </svg>
-														<!-- /ICON CROSS -->
-													</div>
-													<!-- /CHECKBOX BOX -->
-													<label class="accordion-trigger-linked"
-														for="license-extended">Extended License</label>
-
-													<!-- CHECKBOX INFO -->
-
-													<!-- /CHECKBOX INFO -->
-
-													<div
-														style="overflow: hidden; height: 0px; transition: all 0.3s ease-in-out 0s;">
-														<div class="checkbox-info accordion-content-linked">
-															<!-- CHECKBOX INFO TEXT -->
-
-															<p class="checkbox-info-text">
-																For use, by you or one client, in a single end product
-																which end users can be charged for. <a href="#">View
-																	Details</a>
-															</p>
-															<!-- /CHECKBOX INFO TEXT -->
-														</div>
-													</div>
-												</div>
-												<!-- /CHECKBOX WRAP -->
-											</form>
-											<!-- /FORM -->
-
-											<!-- BUTTON -->
-
+													<h:outputText
+														value=" #{productController.getPrice(productController.id)} "></h:outputText>
+													<span class="currency">DT</span>
+												</p>
+											</div>
 											<p class="button primary">Add to Your Cart!</p>
 
 
@@ -621,52 +404,32 @@
 													<div class="rating-list">
 														<!-- RATING -->
 
-														<div class="rating filled">
-															<!-- RATING ICON -->
-															<svg class="rating-icon medium icon-star"> <use
-																xlink:href="#svg-star" /> </svg>
-															<!-- /RATING ICON -->
-														</div>
-														<!-- /RATING -->
-
+														<ui:repeat
+															value="#{productController.fillStars(productController.id)}"
+															var="i">
+															<div class="rating filled">
+																<!-- RATING ICON -->
+																<svg class="rating-icon icon-star"> <use
+																	xlink:href="#svg-star" /> </svg>
+																<!-- /RATING ICON -->
+															</div>
+															<!-- /RATING -->
+														</ui:repeat>
 														<!-- RATING -->
 
-														<div class="rating filled">
-															<!-- RATING ICON -->
-															<svg class="rating-icon medium icon-star"> <use
-																xlink:href="#svg-star" /> </svg>
-															<!-- /RATING ICON -->
-														</div>
+
+														<ui:repeat
+															value="#{productController.unfillStars(productController.id)}"
+															var="i">
+															<div class="rating">
+																<!-- RATING ICON -->
+																<svg class="rating-icon icon-star"> <use
+																	xlink:href="#svg-star" /> </svg>
+																<!-- /RATING ICON -->
+															</div>
+														</ui:repeat>
 														<!-- /RATING -->
 
-														<!-- RATING -->
-
-														<div class="rating filled">
-															<!-- RATING ICON -->
-															<svg class="rating-icon medium icon-star"> <use
-																xlink:href="#svg-star" /> </svg>
-															<!-- /RATING ICON -->
-														</div>
-														<!-- /RATING -->
-
-														<!-- RATING -->
-
-														<div class="rating filled">
-															<!-- RATING ICON -->
-															<svg class="rating-icon medium icon-star"> <use
-																xlink:href="#svg-star" /> </svg>
-															<!-- /RATING ICON -->
-														</div>
-														<!-- /RATING -->
-
-														<!-- RATING -->
-
-														<div class="rating">
-															<!-- RATING ICON -->
-															<svg class="rating-icon medium icon-star"> <use
-																xlink:href="#svg-star" /> </svg>
-															<!-- /RATING ICON -->
-														</div>
 														<!-- /RATING -->
 													</div>
 													<!-- /RATING LIST -->
@@ -705,6 +468,177 @@
 										<!-- SIDEBAR BOX TITLE -->
 
 									</div>
+									<h:panelGroup rendered="#{productController.ifBought()}">
+										<div class="sidebar-box" style="margin-top: 65px">
+											<!-- SIDEBAR BOX ITEMS -->
+
+											<div class="sidebar-box-items">
+
+
+												<p class="checkbox-info-text">It looks like you already
+													have bought this product</p>
+												<br />
+												<p class="checkbox-info-text">Would you please rate this
+													product ?</p>
+
+												<form class="form" style="margin-top: 50px">
+													<!-- FORM ROW -->
+
+													<div class="form-row">
+														<!-- FORM ITEM -->
+
+														<div class="form-item">
+															<!-- FORM RATING WRAP -->
+
+															<div class="form-rating-wrap">
+																<label>Select Stars Rating:</label>
+																<!-- RATING LIST -->
+
+																<div class="rating-list form-rating" data-rating="4">
+																	<!-- RATING -->
+
+																	<div class="rating medium filled">
+																		<!-- RATING ICON -->
+																		<h:form>
+																			<h:commandLink
+																				action="#{productController.setRate(1)}">
+																				<svg class="rating-icon medium icon-star"> <use
+																					xlink:href="#svg-star" /> </svg>
+																				<f:ajax execute="@form" render="@form" />
+																			</h:commandLink>
+																		</h:form>
+																		<!-- /RATING ICON -->
+																	</div>
+																	<!-- /RATING -->
+
+																	<!-- RATING -->
+
+																	<div class="rating medium filled">
+																		<!-- RATING ICON -->
+																		<h:form>
+																			<h:commandLink
+																				action="#{productController.setRate(2)}">
+																				<svg class="rating-icon medium icon-star"> <use
+																					xlink:href="#svg-star" /> </svg>
+																				<f:ajax execute="@form" render="@form" />
+																			</h:commandLink>
+																		</h:form>
+																		<!-- /RATING ICON -->
+																	</div>
+																	<!-- /RATING -->
+
+																	<!-- RATING -->
+
+																	<div class="rating medium filled">
+																		<!-- RATING ICON -->
+																		<h:form>
+																			<h:commandLink
+																				action="#{productController.setRate(3)}">
+																				<svg class="rating-icon medium icon-star"> <use
+																					xlink:href="#svg-star" /> </svg>
+																				<f:ajax execute="@form" render="@form" />
+																			</h:commandLink>
+																		</h:form>
+																		<!-- /RATING ICON -->
+																	</div>
+																	<!-- /RATING -->
+
+																	<!-- RATING -->
+
+																	<div class="rating medium filled">
+																		<!-- RATING ICON -->
+																		<h:form>
+																			<h:commandLink
+																				action="#{productController.setRate(4)}">
+																				<svg class="rating-icon medium icon-star"> <use
+																					xlink:href="#svg-star" /> </svg>
+																				<f:ajax execute="@form" render="@form" />
+																			</h:commandLink>
+																		</h:form>
+																		<!-- /RATING ICON -->
+																	</div>
+																	<!-- /RATING -->
+
+																	<!-- RATING -->
+
+																	<div class="rating medium">
+																		<!-- RATING ICON -->
+																		<h:form>
+																			<h:commandLink
+																				action="#{productController.setRate(5)}">
+																				<svg class="rating-icon medium icon-star"> <use
+																					xlink:href="#svg-star" /> </svg>
+																				<f:ajax execute="@form" render="@form" />
+																			</h:commandLink>
+																		</h:form>
+																		<!-- /RATING ICON -->
+																	</div>
+																	<!-- /RATING -->
+																</div>
+																<!-- /RATING LIST -->
+															</div>
+															<!-- /FORM RATING WRAP -->
+														</div>
+														<!-- /FORM ITEM -->
+													</div>
+													<!-- /FORM ROW -->
+													<!-- FORM ROW -->
+
+
+													<!-- /FORM ROW -->
+													<!-- FORM ROW -->
+<h:form>
+													<div class="form-row" style="margin-top: 20px">
+														<!-- FORM ITEM -->
+
+														<div class="form-item">
+															<!-- FORM INPUT -->
+
+															<div class="form-input">
+																<label for="rating-description">Rating
+																	Description</label>
+																
+																	<h:inputTextarea id="rating-description"
+																		name="rating_description"
+																		value="#{productController.review}">
+														
+																	</h:inputTextarea>
+																
+															</div>
+															<!-- /FORM INPUT -->
+														</div>
+														<!-- /FORM ITEM -->
+													</div>
+													<!-- /FORM ROW -->
+													<!-- POPUP BOX ACTIONS -->
+
+													<div class="popup-box-actions full void">
+														<!-- POPUP BOX ACTION -->
+													
+															<h:commandButton styleClass="full button secondary"
+																value="Save	Review!"
+																action="#{productController.doReview()}">
+															</h:commandButton>
+														
+														<!-- /POPUP BOX ACTION -->
+														<!-- POPUP BOX ACTION TEXT -->
+
+														<p class="popup-box-action-text" style="margin-top: 20px">Your
+															review and reason will be publicly visible to help other
+															people when choosing their items!</p>
+														<!-- /POPUP BOX ACTION TEXT -->
+													</div>
+</h:form>
+
+												</form>
+												<!-- /POPUP BOX ACTIONS -->
+											</div>
+
+											<!-- /SIDEBAR BOX ITEMS -->
+											<!-- SIDEBAR BOX TITLE -->
+
+										</div>
+									</h:panelGroup>
 								</div>
 							</h:panelGroup>
 						</div>

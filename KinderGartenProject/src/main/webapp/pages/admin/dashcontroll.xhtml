@@ -1,0 +1,472 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/templatedash.xhtml"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui"
+xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	>
+
+	<ui:define name="content">
+	
+		<style>
+			.black_overlay {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
+}
+.white_content {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 10%;
+  height: 10%;
+  padding: 5px;
+  border: 2px solid ;
+  background-color: white;
+  z-index: 1002;
+  overflow: auto;
+}
+			
+			
+			
+			</style>
+	
+	
+	
+ <f:view transient="true">
+
+ 
+		<div class="content-body">
+			<div class="container">
+				<div class="row page-titles">
+					<div class="col p-0">
+						<h4>
+							Welcome Admin , <span>Welcome here</span>
+						</h4>
+					</div>
+				</div>
+				
+				<div class="row">
+						<ui:repeat
+							value="#{AdminController.map.keySet().toArray()}"
+							var="key">
+
+							<div class="col-lg-4 no-card-border">
+								<div class="card">
+									<div class="card-body">
+										<h5 class="pull-left">Info</h5>
+										<div class="dropdown custom-dropdown pull-right">
+											<div data-toggle="dropdown">
+												<i class="ti-more-alt rotate-90 d-inline-block c-pointer"></i>
+											</div>
+											<div class="dropdown-menu dropdown-menu-right">
+												<a href="#" class="dropdown-item f-s-12">Details</a> <a
+													href="#" class="dropdown-item f-s-12">Add New</a> <a
+													href="#" class="dropdown-item f-s-12">Refresh</a>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<div class="m-t-15 text-center">
+											<h:outputText class="f-s-50 text-primary"
+												value="#{AdminController.map[key]}"
+												style="font-size:24px;" />
+											<br />
+											<h:outputText class="f-s-14" value="#{key}"
+												style="font-size:24px;" />
+
+										</div>
+									</div>
+									<div class="card-footer">
+										<h6 class="m-t-10 text-muted">
+											<span class="pull-right"></span>
+										</h6>
+									</div>
+									<div class="progress h-3px">
+										<div role="progressbar"
+											class="progress-bar bg-primary wow animated progress-animated w-50pc h-3px"></div>
+									</div>
+								</div>
+							</div>
+
+
+
+						</ui:repeat>
+
+
+					</div>
+				
+				<h:form>
+
+
+
+
+
+
+
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">Search </h4>
+
+							<div class="basic-form">
+								
+									<div class="form-group">
+										<p:inputText placeholder="kinderGarten Name" id="imputS"
+											value="#{AdminController.searchkinder}"
+											class="form-control input-default" >
+											
+											<f:ajax event="keyup" execute="imputS" listener="#{AdminController.searchKinder()}"  render="table" ></f:ajax>
+											
+											</p:inputText>
+									</div>
+								
+							</div>
+						</div>
+					</div></div>
+					
+
+
+
+
+
+
+
+
+
+					<div class="col-lg-12 col-xl-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">KinderGarten :</h4>
+								<div class="table-responsive">
+
+									<h:panelGroup columns="2">
+											<h:dataTable id="table" class="table table-xs"
+												value="#{AdminController.listKinder}" var="kinder"
+												border="1">
+
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="id" />
+													</f:facet>
+													<h:outputText value="#{kinder.id}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="kinderGarten Name" />
+													</f:facet>
+													<h:outputText value="#{kinder.kinderGartenName}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="username" />
+													</f:facet>
+													<h:outputText
+														value="#{kinder.userapp.username}" />
+												</h:column>
+												
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value=" adresse" />
+													</f:facet>
+													<h:outputText value="#{kinder.adresse}" />
+												</h:column>
+
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="nbre child" />
+													</f:facet>
+													<h:outputText
+														value="#{AdminController.NbrechildParkinder(kinder)}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="child without Classe" />
+													</f:facet>
+													<h:outputText
+														value="#{AdminController.NbrechildNoAffecter(kinder)}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Action" />
+													</f:facet>
+
+
+
+<br />
+													<h:commandButton id="bloque" value="bloque" >
+													<f:ajax execute="bloque" render="@form"
+															listener="#{AdminController.deleteKinder(kinder)}" />
+													
+													</h:commandButton>
+
+													<h:commandButton value="Afficher" />
+
+
+													<br />
+													
+												</h:column>
+												
+
+											</h:dataTable>
+										
+									</h:panelGroup>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">Search </h4>
+
+							<div class="basic-form">
+								
+									<div class="form-group">
+										<p:inputText placeholder="kinderGarten Name" id="imputS"
+											value="#{AdminController.searchkinderNo}"
+											class="form-control input-default" >
+											
+											<f:ajax event="keyup" execute="imputS" listener="#{AdminController.searchKinderNoA()}"  render="table" ></f:ajax>
+											
+											</p:inputText>
+									</div>
+								
+							</div>
+						</div>
+					</div></div>
+					
+
+
+
+
+
+
+
+
+
+					<div class="col-lg-12 col-xl-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">KinderGarten :</h4>
+								<div class="table-responsive">
+
+									<h:panelGroup columns="2">
+											<h:dataTable id="table2" class="table table-xs"
+												value="#{AdminController.listKinderNoAC}" var="kinder"
+												border="1">
+
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="id" />
+													</f:facet>
+													<h:outputText value="#{kinder.id}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="kinderGarten Name" />
+													</f:facet>
+													<h:outputText value="#{kinder.kinderGartenName}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value=" adresse" />
+													</f:facet>
+													<h:outputText value="#{kinder.adresse}" />
+												</h:column>
+
+												
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Action" />
+													</f:facet>
+
+													<h:commandButton value="Supprimer" />
+
+													<h:commandButton value="Afficher" />
+
+
+													<br />
+													<h:commandButton id="show" value="activer">
+														<f:ajax execute="show" render="@form"
+															listener="#{AdminController.ActiverKinder(kinder)}" />
+													</h:commandButton>
+												</h:column>
+												
+
+											</h:dataTable>
+										
+									</h:panelGroup>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+
+
+
+</h:form>
+							
+				
+				
+				
+				
+				<h:form>
+
+
+
+
+
+
+
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">Search Parent</h4>
+
+							<div class="basic-form">
+								
+									<div class="form-group">
+										<p:inputText placeholder="kinderGarten Name" id="imputS"
+											value="#{AdminController.searchParent}"
+											class="form-control input-default" >
+											
+											<f:ajax event="keyup" execute="imputS" listener="#{AdminController.searchparent()}"  render="table" ></f:ajax>
+											
+											</p:inputText>
+									</div>
+								
+							</div>
+						</div>
+					</div></div>
+					
+
+
+
+
+
+
+
+
+
+					<div class="col-lg-12 col-xl-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">Parents :</h4>
+								<div class="table-responsive">
+
+									<h:panelGroup columns="2">
+											<h:dataTable id="table" class="table table-xs"
+												value="#{AdminController.listParent}" var="parent"
+												border="1">
+
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="id" />
+													</f:facet>
+													<h:outputText value="#{parent.id}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="first Name" />
+													</f:facet>
+													<h:outputText value="#{parent.firstName}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="last Name" />
+													</f:facet>
+													<h:outputText value="#{parent.lastName}" />
+												</h:column>
+<h:column>
+													<f:facet name="header">
+														<h:outputText value="tel" />
+													</f:facet>
+													<h:outputText value="#{parent.tel}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="username" />
+													</f:facet>
+													<h:outputText value="#{parent.userApp.username}" />
+												</h:column>
+												<h:column>
+													<f:facet name="header">
+														<h:outputText value="Action" />
+													</f:facet>
+
+													<h:commandButton value="Supprimer" />
+	<br />
+													<h:commandButton value="Afficher" />
+	<br />
+<h:commandButton value="Afficher Password" />
+													<br />
+													<h:commandButton id="show" value="delete">
+														<f:ajax execute="show" render="table"
+															listener="#{AdminController.deleteParent(parent)}" />
+													</h:commandButton>
+												</h:column>
+												
+
+											</h:dataTable>
+										
+									</h:panelGroup>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+
+
+
+</h:form>
+			
+		
+			
+			
+							
+	 <p>This is the main content. To display a lightbox click <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">here</a>
+  </p>
+  <div id="light" class="white_content">This is the lightbox content. <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+  </div>
+  <div id="fade" class="black_overlay"></div>	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				</div></div></f:view></ui:define></ui:composition>

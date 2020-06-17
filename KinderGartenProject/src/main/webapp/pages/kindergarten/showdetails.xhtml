@@ -1,0 +1,179 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/templatedash.xhtml"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+		xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	
+	
+	
+	>
+
+	<ui:define name="content">
+		<f:view transient="true">
+			<div class="content-body">
+				<div class="container">
+					<div class="row page-titles">
+						<div class="col p-0">
+							<h4>
+								Classe , <span>details :</span>
+							</h4>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+			<div class="col-lg-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img src="../../assets/images/users/2.jpg" class="rounded-circle m-t-15 w-75px" alt=""/>
+                                    <h4 class="m-t-15 m-b-2"><h:outputText  class="pull-right" value="#{KinderGartenDashController.nomc}" /></h4>
+                                    <p class="text-muted">classe for kids</p>
+                                    <ul class="list-inline m-t-15">
+                                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook-square f-s-20 text-muted"></i></a>
+                                        </li>
+                                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter f-s-20 text-muted"></i></a>
+                                        </li>
+                                        <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest f-s-20 text-muted"></i></a>
+                                        </li>
+                                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin f-s-20 text-muted"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">Name:</span> <h:outputText  class="pull-right" value="#{KinderGartenDashController.nomc}" />
+                                        </div>
+                                        <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">capacitie:</span><h:outputText  class="pull-right" value="#{KinderGartenDashController.capacitiec}" />
+                                        </div>
+                                        <div class="col-12 p-t-10 p-b-10"><span class="pull-left f-w-600">age:</span> <h:outputText  class="pull-right" value="#{KinderGartenDashController.agec}" />
+                                        </div>
+                                         <div class="col-12 p-t-10 p-b-10"><span class="pull-left f-w-600">teacher name:</span> <h:outputText  class="pull-right" value="#{KinderGartenDashController.teacher == null ? 'No teacher' : KinderGartenDashController.teacher.nom}" />
+                                        </div>
+                                         <div class="col-12 p-t-10 p-b-10"><span class="pull-left f-w-600">teacher phone number:</span> <h:outputText  class="pull-right" value="#{KinderGartenDashController.teacher == null ? 'No teacher' : KinderGartenDashController.teacher.numtel}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>	
+				
+				
+				
+				
+				<c:if test="#{KinderGartenDashController.map ne null}">
+				
+				<div class="row">
+						<div class="col-lg-12">
+							<div class="card">
+							<ui:repeat value="#{KinderGartenDashController.map.keySet().toArray()}"
+											var="key">
+								<div class="card-body">
+									<h4 class="card-title">teacher test Competence :    </h4>
+									<H4>  <h:outputText value="#{key}" />  </H4>
+									<div class="card-content">
+										<ui:repeat value="#{KinderGartenDashController.map[key]}"
+								var="var">
+											
+											<div class="alert alert-danger"><h:outputText
+													value="#{'this teacher don t  have : '.concat(var)}" /></div>
+
+
+                                        </ui:repeat>   
+	<c:if test="#{key ne 'No teacher' }">
+	<c:if test="#{KinderGartenDashController.map[key] == null }">
+	
+		
+											<div class="alert alert-success"><h:outputText
+													value="this teacher good " /></div>
+	
+	</c:if>
+	
+	</c:if>
+										
+									</div>
+								</div>
+								</ui:repeat>
+							</div>
+						</div>
+					</div>
+
+				
+			</c:if>	
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<h:form>
+
+				<div class="col-lg-12 col-xl-12">
+			<div class="container">
+						<div class="row page-titles"></div>
+
+<h:panelGroup id="rep" >
+						<div class="row">
+						
+							<ui:repeat id="rep" value="#{KinderGartenDashController.kidcl}"
+								var="child">
+								<div class="col-lg-4">
+									<div class="card">
+										<div class="card-body">
+										
+												<h4 class="card-title"> <h:outputText  class="pull-right" value="#{child.childName}" /></h4>
+											<div class="text-center">
+											 <div class="row">
+                                        <div class="col-12 border-bottom-1 p-t-20 p-b-10"><span class="pull-left f-w-600">Name:</span> <h:outputText  class="pull-right" value="#{child.childName}" />
+                                        </div>
+                                        <div class="col-12 border-bottom-1 p-t-10 p-b-10"><span class="pull-left f-w-600">born date:</span><h:outputText  class="pull-right" value="#{child.dateNaissance}" />
+                                        </div>
+                                        <div class="col-12 p-t-10 p-b-10"><span class="pull-left f-w-600">health:</span> <h:outputText  class="pull-right" value="#{child.health}" />
+                                        </div>
+                                         <div class="col-12 p-t-10 p-b-10"><span class="pull-left f-w-600">parent name:</span> <h:outputText  class="pull-right" value="#{child.parents == null ? 'No teacher' : child.parents.firstName.concat(' ').concat(child.parents.lastName)}" />
+                                        </div>
+                                         <div class="col-12 p-t-10 p-b-10"><span class="pull-left f-w-600">parent phone number:</span> <h:outputText  class="pull-right" value="#{child.parents == null ? 'No teacher' : child.parents.tel}" />
+                                        </div>
+                                    </div>
+									</div>		
+										
+										</div>
+										<div class="card-footer">
+										  <h:commandLink id="com" action="#{KinderGartenDashController.remouveChild(child)}" class="btn btn-primary btn-rounded d-inline-block f-s-12 p-l-20 p-r-20" value="get out">
+									<f:ajax execute="@form" render="rep"></f:ajax>	  
+            </h:commandLink>
+											
+											
+										</div>
+									</div>
+								</div>
+							</ui:repeat>
+						</div>
+
+</h:panelGroup>
+
+
+
+
+
+
+					</div>
+				</div></h:form>
+				</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

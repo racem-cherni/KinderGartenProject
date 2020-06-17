@@ -66,8 +66,7 @@
 									<h:form>
 										<h:commandButton action="#{createofferController.render()}"
 											styleClass="btn bg-success text-white" disabled="false"
-											value="Next"
-											style="padding : 0px 40px 0px 40px">
+											value="Next" style="padding : 0px 40px 0px 40px">
 											<f:ajax render="step" />
 										</h:commandButton>
 									</h:form>
@@ -79,8 +78,8 @@
 									<div class="streamer-box small">
 										<!-- STREAMER BOX COVER -->
 										<figure class="streamer-box-cover liquid"
-											style="background: url(&quot;resources/img/cover/04.jpg&quot;) center center / cover no-repeat;">
-										<img src="resources/img/cover/04.jpg" alt="cover-04"
+											style="background: url(&quot;resources/marketplaceimgs/#{product.photo}&quot;) center center / cover no-repeat;">
+										<img src="resources/marketplaceimgs/#{product.photo}" alt="cover-04"
 											style="display: none;" /> </figure>
 										<!-- /STREAMER BOX COVER -->
 										<!-- STREAMER BOX INFO -->
@@ -146,10 +145,12 @@
 
 									<!-- SECTION TITLE -->
 									<h2 class="section-title">Search a Product</h2>
-									<p>
-										<span class="highlighted">Can't find your Product ?
-											Click Here!</span>
-									</p>
+									<h:link outcome="requestproduct">
+										<p>
+											<span class="highlighted">Can't find your Product ?
+												Click Here!</span>
+										</p>
+									</h:link>
 
 									<!-- /SECTION TITLE -->
 								</div>
@@ -193,8 +194,8 @@
 										<div class="streamer-box small">
 											<!-- STREAMER BOX COVER -->
 											<figure class="streamer-box-cover liquid"
-												style="background: url(&quot;resources/img/cover/04.jpg&quot;) center center / cover no-repeat;">
-											<img src="resources/img/cover/04.jpg" alt="cover-04"
+												style="background: url(&quot;resources/marketplaceimgs/#{product.photo}&quot;) center center / cover no-repeat;">
+											<img src="resources/marketplaceimgs/#{product.photo}" alt="cover-04"
 												style="display: none;" /> </figure>
 											<!-- /STREAMER BOX COVER -->
 											<!-- STREAMER BOX INFO -->
@@ -215,7 +216,7 @@
 
 												<!-- STREAMER BOX STATUS -->
 
-												
+
 												<!-- /STREAMER BOX STATUS -->
 
 												<!-- BUTTON -->
@@ -267,7 +268,8 @@
 							<!-- /SECTION HEADER INFO -->
 							<h:form>
 								<h:commandButton action="#{createofferController.render()}"
-									styleClass="btn btn-block bg-danger text-white" style="padding : 0px 40px 0px 40px" disabled="false"
+									styleClass="btn btn-block bg-danger text-white"
+									style="padding : 0px 40px 0px 40px" disabled="false"
 									value="Back">
 									<f:ajax render="step" />
 								</h:commandButton>

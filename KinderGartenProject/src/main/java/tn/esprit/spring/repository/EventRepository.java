@@ -39,7 +39,7 @@ public interface EventRepository extends CrudRepository<Event,Long> {
 	///////////////////////jsf///////////////////////////////////
 	
 	@Query("SELECT e FROM Event e where e.kindereventmaker =:kindergarten and e.date_event = CURRENT_DATE()  ")
-    public List<Event> eventstodayjsf(@Param("kindergarten")KinderGarten kindergarten);
+    public Event eventstodayjsf(@Param("kindergarten")KinderGarten kindergarten);
 	
 	@Query("SELECT e FROM Event e where e.kindereventmaker =:kindergarten and e.date_event > CURRENT_DATE()  ")
     public List<Event> upcomingeventsjsf(@Param("kindergarten")KinderGarten kindergarten);
@@ -56,7 +56,24 @@ public interface EventRepository extends CrudRepository<Event,Long> {
 	@Query("Select e from Event e where e.kindereventmaker =:kindergarten and e.category=:category and e.id<>:idevent ORDER BY e.date_event desc  ")
 	public List<Event>  eventassociesjsf(@Param("kindergarten")KinderGarten kindergarten,@Param("category") Category_event categorie,@Param("idevent") Long id);
     
+	@Query("SELECT e.date_event FROM Event e where e.kindereventmaker =:kindergarten ")
+    public List<Date> listeventkindergarten(@Param("kindergarten")KinderGarten kindergarten);
 
+	 @Query("Select e FROM Event  e where e.date_event = CURRENT_DATE() ")
+	 public List<Event> eventtodayverifetat();
+	 
+	 @Query("Select e FROM Event  e where e.date_event > CURRENT_DATE() ")
+	 public List<Event> eventupcomingverifetat();
+	 
+	 @Query("Select e FROM Event  e where e.date_event < CURRENT_DATE() ")
 
+	 public List<Event> eventpassedverifetat();
+
+	 @Query("Select e FROM Event e where e.title=:nomevent and e.kindereventmaker =:kindergarten")
+	 public List<Event> listeventsearch(@Param("nomevent")String nomevent,@Param("kindergarten")KinderGarten kindergarten);
+	 
+	 @Query("Select e.title from Event e where e.kindereventmaker =:kindergarten ")
+	 public List<String> listeventnames(@Param("kindergarten")KinderGarten kindergarten);
+	 
 
 }

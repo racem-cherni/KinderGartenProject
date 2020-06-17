@@ -136,8 +136,8 @@ public class RestaurationService {
 	
 	@Transactional
 	public void affectmedicalrectofood(long idkinder,long idfood) throws ParseException{
-		List<foodsandtheircallories> foods=food.foodbyidkinder(idkinder);
-		List<MedicalRec> medicals=child.getAllmedicalrecdbykindergartene(idkinder);
+		/*List<foodsandtheircallories> foods=food.foodbyidkinder(idkinder);
+		//List<MedicalRec> medicals=child.getAllmedicalrecdbykindergartene(idkinder);
 		foodsandtheircallories onefood=food.findById(idfood).get();
 
 			for(MedicalRec onemed:medicals)
@@ -246,7 +246,7 @@ public class RestaurationService {
 			        	foodgrammage.save(fb);	   
 		           } 
 	           }      
-		}	
+		}	*/
 	}
 	
 	public List<foodsandtheircallories> fd(long idkinder){

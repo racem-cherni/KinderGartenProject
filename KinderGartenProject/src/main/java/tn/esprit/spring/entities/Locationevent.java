@@ -1,7 +1,8 @@
 package tn.esprit.spring.entities;
 
 public enum Locationevent {
-	terrainsport,salleevent1,salleevent2,sallevent3,sallevent4,salletheatre
+	sports_ground,event_class1,event_class2,event_class3,event_class4,theater_room
+
 //
 }
  

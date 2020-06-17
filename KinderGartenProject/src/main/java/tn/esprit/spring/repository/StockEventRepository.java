@@ -7,12 +7,20 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
+import tn.esprit.spring.entities.Category_event;
+import tn.esprit.spring.entities.StockCategory;
 import tn.esprit.spring.entities.Stock_event;
 
 @Repository
 public interface StockEventRepository extends CrudRepository<Stock_event,Long> {
 	@Query("Select s from Stock_event s where s.name=:stockname ORDER BY s.prix_stock ")
 	List<Stock_event> liststockrecherche (@Param("stockname")String stockname);
+	@Query("Select Distinct s.stockcategory from Stock_event s ")
+	public List<String> liststockcategory ();
+	@Query("Select s from Stock_event s where s.stockcategory=:stockname ORDER BY s.prix_stock ")
+	List<Stock_event> liststockrecherchecat (@Param("stockname")StockCategory categorie);
+	
+	
+	
 
 }

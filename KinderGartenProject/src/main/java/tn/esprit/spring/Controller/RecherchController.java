@@ -128,26 +128,23 @@ public String showVisitor(KinderGarten kinder){
 		
 	}
 
-public String Abonner(){
+public void Abonner(){
 	
 System.err.println("*************************************"+ ki.getUserapp().getUsername());
 	relationServices.abonnerAKinderGarten(userServices.currentUserJsf(), ki.getUserapp());
+	this.testE=true;
 	
-	
-return null;	
+
 }
 
-public String DesAbonner(){
+public void DesAbonner(){
 	
 System.err.println("*************************************"+ ki.getUserapp().getUsername());
 	relationServices.DesabonnerAKinderGarten(userServices.currentUserJsf(), ki.getUserapp());
 	
-	
-return null;	
+	this.testE=false;
+
 }
-	
-	
-	
 	
 	
 	

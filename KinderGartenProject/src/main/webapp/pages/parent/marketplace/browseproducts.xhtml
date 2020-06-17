@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		<ui:define name="content">
+
+			<div class="content-grid"
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+				<!-- SECTION BANNER -->
+
+				<div class="section-banner">
+					<!-- SECTION BANNER ICON -->
+					<img class="section-banner-icon"
+						src="resources/img/banner/marketplace-icon.png"
+						alt="marketplace-icon" />
+					<!-- /SECTION BANNER ICON -->
+
+					<!-- SECTION BANNER TITLE -->
+
+					<p class="section-banner-title">Marketplace</p>
+					<!-- /SECTION BANNER TITLE -->
+
+					<!-- SECTION BANNER TEXT -->
+
+					<p class="section-banner-text">The best place for the community
+						to buy and sell!</p>
+					<!-- /SECTION BANNER TEXT -->
+				</div>
+				<!-- /SECTION BANNER -->
+				<!-- SECTION HEADER -->
+
+				<div class="section-header">
+					<!-- SECTION HEADER INFO -->
+
+					<div class="section-header-info">
+						<!-- SECTION PRETITLE -->
+
+						<p class="section-pretitle">Browse Products</p>
+						<!-- /SECTION PRETITLE -->
+
+						<!-- SECTION TITLE -->
+
+						<h2 class="section-title">Digital Items</h2>
+						<!-- /SECTION TITLE -->
+					</div>
+					<!-- /SECTION HEADER INFO -->
+					<!-- SECTION HEADER ACTIONS -->
+
+					<div class="section-header-actions">
+						<!-- SECTION HEADER SUBSECTION -->
+						<a class="section-header-subsection" href="marketplace.html">Marketplace</a>
+						<!-- /SECTION HEADER SUBSECTION -->
+
+						<!-- SECTION HEADER SUBSECTION -->
+
+						<p class="section-header-subsection">Digital Items</p>
+						<!-- /SECTION HEADER SUBSECTION -->
+					</div>
+					<!-- /SECTION HEADER ACTIONS -->
+				</div>
+				<!-- /SECTION HEADER -->
+				<!-- SECTION FILTERS BAR -->
+
+				<div class="section-filters-bar v4">
+					<!-- SECTION FILTERS BAR ACTIONS -->
+
+					<div class="section-filters-bar-actions">
+						<!-- FORM -->
+						<form class="form">
+							<!-- FORM ITEM -->
+
+							<div class="form-item split">
+								<!-- FORM INPUT -->
+
+								<div class="form-input small">
+									<h:form>
+										<h:inputText id="input"
+											value="#{browseproductsController.msg}">
+											<f:ajax event="keyup" execute="input" render="products"></f:ajax>
+										</h:inputText>
+									</h:form>
+								</div>
+								<!-- /FORM INPUT -->
+
+							</div>
+							<!-- /FORM ITEM -->
+						</form>
+						<!-- /FORM -->
+					</div>
+					<!-- /SECTION FILTERS BAR ACTIONS -->
+
+					<!-- SECTION FILTERS BAR ACTIONS -->
+
+					<!-- /SECTION FILTERS BAR ACTIONS -->
+				</div>
+				<!-- /SECTION FILTERS BAR -->
+				<!-- GRID -->
+
+				<div class="grid grid-3-9 small-space">
+					<!-- MARKETPLACE SIDEBAR -->
+
+					<div class="marketplace-sidebar">
+						<!-- SIDEBAR BOX -->
+
+						<div class="sidebar-box">
+							<!-- SIDEBAR BOX TITLE -->
+
+							<!-- /SIDEBAR BOX TITLE -->
+
+							<!-- SIDEBAR BOX TITLE -->
+
+							<p class="sidebar-box-title">Price Range</p>
+							<!-- /SIDEBAR BOX TITLE -->
+
+							<!-- SIDEBAR BOX ITEMS -->
+
+							<div class="sidebar-box-items small-space">
+								<!-- FORM ITEM -->
+
+								<div class="form-item split">
+									<!-- FORM INPUT -->
+
+									<div class="form-input small active always-active">
+										<label for="price-from">From</label> <input type="text"
+											id="price-from" name="price_from" />
+									</div>
+									<!-- /FORM INPUT -->
+
+									<!-- FORM INPUT -->
+
+									<div class="form-input small active always-active">
+										<label for="price-to">To</label> <input type="text"
+											id="price-to" name="price_to" />
+									</div>
+									<!-- /FORM INPUT -->
+								</div>
+								<!-- /FORM ITEM -->
+							</div>
+							<!-- /SIDEBAR BOX ITEMS -->
+
+							<!-- BUTTON -->
+
+							<p class="button small primary">Apply Price Filter!</p>
+							<!-- /BUTTON -->
+
+							<!-- SIDEBAR BOX TITLE -->
+
+							<p class="sidebar-box-title">Reviews</p>
+							<!-- /SIDEBAR BOX TITLE -->
+
+							<!-- SIDEBAR BOX ITEMS -->
+
+							<div class="sidebar-box-items">
+								<!-- CHECKBOX LINE -->
+
+								<div class="checkbox-line">
+									<!-- CHECKBOX WRAP -->
+
+
+									<div class="checkbox-wrap">
+										<f:selectItem>
+											<input type="radio" id="reviews-all" name="reviews-rating"
+												value="reviews-all" />
+										</f:selectItem>
+										<!-- CHECKBOX BOX -->
+
+										<div class="checkbox-box round" />
+										<!-- /CHECKBOX BOX -->
+										<label for="reviews-all">All Reviews</label>
+									</div>
+									<!-- /CHECKBOX WRAP -->
+
+									<!-- CHECKBOX LINE TEXT -->
+
+									<p class="checkbox-line-text">1207</p>
+									<!-- /CHECKBOX LINE TEXT -->
+								</div>
+								<!-- /CHECKBOX LINE -->
+
+								<!-- CHECKBOX LINE -->
+
+								<div class="checkbox-line">
+									<!-- CHECKBOX WRAP -->
+
+									<div class="checkbox-wrap checkbox-rating">
+										<input type="radio" id="reviews-4-up" name="reviews-rating"
+											value="reviews-4-up" checked="checked" />
+
+										<!-- CHECKBOX BOX -->
+
+										<div class="checkbox-box round" />
+										<!-- /CHECKBOX BOX -->
+
+										<!-- RATING LIST -->
+
+										<div class="rating-list">
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+										</div>
+										<!-- /RATING LIST -->
+
+										<label for="reviews-4-up">4 +</label>
+									</div>
+									<!-- /CHECKBOX WRAP -->
+
+									<!-- CHECKBOX LINE TEXT -->
+
+									<p class="checkbox-line-text">964</p>
+									<!-- /CHECKBOX LINE TEXT -->
+								</div>
+								<!-- /CHECKBOX LINE -->
+
+								<!-- CHECKBOX LINE -->
+
+								<div class="checkbox-line">
+									<!-- CHECKBOX WRAP -->
+
+									<div class="checkbox-wrap checkbox-rating">
+										<input type="radio" id="reviews-3-up" name="reviews-rating5"
+											value="reviews-3-up" />
+										<!-- CHECKBOX BOX -->
+
+										<div class="checkbox-box round" />
+										<!-- /CHECKBOX BOX -->
+
+										<!-- RATING LIST -->
+
+										<div class="rating-list">
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+										</div>
+										<!-- /RATING LIST -->
+
+										<label for="reviews-3-up">3 +</label>
+									</div>
+									<!-- /CHECKBOX WRAP -->
+
+									<!-- CHECKBOX LINE TEXT -->
+
+									<p class="checkbox-line-text">214</p>
+									<!-- /CHECKBOX LINE TEXT -->
+								</div>
+								<!-- /CHECKBOX LINE -->
+
+								<!-- CHECKBOX LINE -->
+
+								<div class="checkbox-line">
+									<!-- CHECKBOX WRAP -->
+
+									<div class="checkbox-wrap checkbox-rating">
+										<input type="radio" id="reviews-2-up" name="reviews-rating"
+											value="reviews-2-up" />
+										<!-- CHECKBOX BOX -->
+
+										<div class="checkbox-box round" />
+										<!-- /CHECKBOX BOX -->
+
+										<!-- RATING LIST -->
+
+										<div class="rating-list">
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+										</div>
+										<!-- /RATING LIST -->
+
+										<label for="reviews-2-up">2 +</label>
+									</div>
+									<!-- /CHECKBOX WRAP -->
+
+									<!-- CHECKBOX LINE TEXT -->
+
+									<p class="checkbox-line-text">102</p>
+									<!-- /CHECKBOX LINE TEXT -->
+								</div>
+								<!-- /CHECKBOX LINE -->
+
+								<!-- CHECKBOX LINE -->
+
+								<div class="checkbox-line">
+									<!-- CHECKBOX WRAP -->
+
+									<div class="checkbox-wrap checkbox-rating">
+										<input type="radio" id="reviews-1-up" name="reviews-rating"
+											value="reviews-1-up" />
+										<!-- CHECKBOX BOX -->
+
+										<div class="checkbox-box round" />
+										<!-- /CHECKBOX BOX -->
+
+										<!-- RATING LIST -->
+
+										<div class="rating-list">
+											<!-- RATING -->
+
+											<div class="rating filled">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+
+											<!-- RATING -->
+
+											<div class="rating">
+												<!-- RATING ICON -->
+												<svg class="rating-icon icon-star"> <use
+													xlink:href="#svg-star" /> </svg>
+												<!-- /RATING ICON -->
+											</div>
+											<!-- /RATING -->
+										</div>
+										<!-- /RATING LIST -->
+
+										<label for="reviews-1-up">1 +</label>
+									</div>
+									<!-- /CHECKBOX WRAP -->
+
+									<!-- CHECKBOX LINE TEXT -->
+
+									<p class="checkbox-line-text">76</p>
+									<!-- /CHECKBOX LINE TEXT -->
+								</div>
+								<!-- /CHECKBOX LINE -->
+							</div>
+
+							<!-- /SIDEBAR BOX ITEMS -->
+						</div>
+						<!-- /SIDEBAR BOX -->
+					</div>
+					<!-- /MARKETPLACE SIDEBAR -->
+					<h:panelGroup id="products">
+						<div class="marketplace-content">
+
+							<div class="grid grid-3-3-3 centered">
+
+								<ui:repeat value="#{browseproductsController.getAllProducts()}"
+									var="product">
+
+									<div class="product-preview">
+										<!-- PRODUCT PREVIEW IMAGE -->
+										<a href="marketplace-product.html"> <figure
+												class="product-preview-image liquid"
+												style="background: url(&quot;resources/marketplaceimgs/#{product.photo}&quot;) center center / cover no-repeat;">
+											<img src="resources/marketplaceimgs/#{product.photo}"
+												alt="item-01" style="display: none;" /> </figure>
+										</a>
+										<!-- /PRODUCT PREVIEW IMAGE -->
+										<!-- PRODUCT PREVIEW INFO -->
+
+										<div class="product-preview-info">
+											<!-- TEXT STICKER -->
+
+											<p class="text-sticker" style="margin: 0px 40px 0px 0px">
+												<h:outputText
+													value="#{productController.getOffernumber(product.id)} Offers starting at"></h:outputText>
+												<span class="highlighted"><h:outputText
+														value=" #{productController.getPrice(product.id)} dt"></h:outputText></span>
+											</p>
+											<!-- /TEXT STICKER -->
+											<!-- PRODUCT PREVIEW TITLE -->
+
+											<p class="product-preview-title">
+												<h:link outcome="product">
+													<h:outputText value="#{product.name}"></h:outputText>
+													<f:param name="id" value="#{product.id}" />
+												</h:link>
+											</p>
+											<!-- /PRODUCT PREVIEW TITLE -->
+											<!-- PRODUCT PREVIEW CATEGORY -->
+
+											<p class="product-preview-category digital">
+												<a href="marketplace-category.html"><h:outputText
+														value="#{product.ref}  "></h:outputText></a>
+											</p>
+											<!-- /PRODUCT PREVIEW CATEGORY -->
+											<!-- PRODUCT PREVIEW TEXT -->
+
+											<p class="product-preview-text">Awesome hexagon themed
+												stream pack, you can change all colors and...</p>
+											<!-- /PRODUCT PREVIEW TEXT -->
+										</div>
+										<!-- /PRODUCT PREVIEW INFO -->
+										<!-- PRODUCT PREVIEW META -->
+
+										<div class="product-preview-meta">
+											<!-- PRODUCT PREVIEW AUTHOR -->
+
+											<div class="product-preview-author">
+												<!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+												<a
+													class="product-preview-author-image user-avatar micro no-border"
+													href="profile-timeline.html"> <!-- USER AVATAR CONTENT -->
+
+													<div class="user-avatar-content">
+														<!-- HEXAGON -->
+
+														<div class="hexagon-image-18-20"
+															data-src="resources/img/avatar/01.jpg"
+															style="width: 18px; height: 20px; position: relative;">
+															<canvas width="18" height="20"
+																style="position: absolute; top: 0px; left: 0px;" />
+														</div>
+														<!-- /HEXAGON -->
+													</div> <!-- /USER AVATAR CONTENT -->
+												</a>
+												<!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+												<!-- PRODUCT PREVIEW AUTHOR TITLE -->
+
+												<p class="product-preview-author-title">
+													<h:outputText value="This sold has been"></h:outputText>
+												</p>
+												<!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+												<!-- PRODUCT PREVIEW AUTHOR TEXT -->
+
+												<p class="product-preview-author-text">
+													<a href="profile-timeline.html"><h:outputText
+															value="#{productController.getSoldNumber(product.id)} Times !"></h:outputText></a>
+												</p>
+												<!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+											</div>
+											<!-- /PRODUCT PREVIEW AUTHOR -->
+											<!-- RATING LIST -->
+
+											<div class="rating-list">
+												<!-- RATING -->
+
+
+												<ui:repeat
+													value="#{productController.fillStars(product.id)}" var="i">
+													<div class="rating filled">
+														<!-- RATING ICON -->
+														<svg class="rating-icon icon-star"> <use
+															xlink:href="#svg-star" /> </svg>
+														<!-- /RATING ICON -->
+													</div>
+													<!-- /RATING -->
+												</ui:repeat>
+												<!-- RATING -->
+
+
+												<ui:repeat
+													value="#{productController.unfillStars(product.id)}"
+													var="i">
+													<div class="rating">
+														<!-- RATING ICON -->
+														<svg class="rating-icon icon-star"> <use
+															xlink:href="#svg-star" /> </svg>
+														<!-- /RATING ICON -->
+													</div>
+												</ui:repeat>
+												<!-- /RATING -->
+
+											</div>
+											<!-- /RATING LIST -->
+										</div>
+										<!-- /PRODUCT PREVIEW META -->
+									</div>
+									<!-- /PRODUCT PREVIEW -->
+									<!-- PRODUCT PREVIEW -->
+								</ui:repeat>
+							</div>
+
+						</div>
+					</h:panelGroup>
+
+				</div>
+
+
+				<!-- /GRID -->
+			</div>
+		</ui:define>
+
+
+	</ui:composition>
+
+
+	<script src="app.bundle.min.js"></script>
+
+</body>
+
+</html>

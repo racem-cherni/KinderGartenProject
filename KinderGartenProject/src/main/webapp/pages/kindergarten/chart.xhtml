@@ -1,0 +1,41 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+	
+	<h:head> <title>Graphe Prime Faces </title>
+    <style>
+style type="text/css">
+    .left {
+        text-align: left;
+    }
+    
+    .right div {
+        float: right;
+    }
+</style></h:head>
+	
+								<h:body>
+								<h:form>
+								
+								
+								<p:chart type="bar" model="#{StatistiqueKinderDash.barModel}" style="height:300px"/>
+								
+								
+								<p:chart type="bar" model="#{StatistiqueKinderDash.barModel1}" style="height:300px"/>
+								
+								
+								</h:form>
+								
+								
+							</h:body>	
+						
+
+</ui:composition>

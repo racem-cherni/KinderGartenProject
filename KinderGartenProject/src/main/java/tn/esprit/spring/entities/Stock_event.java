@@ -1,7 +1,9 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,7 +11,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="Stock_event")
@@ -36,6 +44,13 @@ public class Stock_event implements Serializable {
 	@Column(name="Prix_stock")
 	private Double prix_stock;
 	
+	private String photo ;
+	
+	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="stockevent")
+	private  List<Reservation_stock_event> reservation_stock_event;
+	
 	
 	
 
@@ -57,7 +72,7 @@ public class Stock_event implements Serializable {
 	}
 
 	public void setName(String name) {
-		name = name;
+		this.name = name;
 	}
 
 	public String getDescription() {
@@ -90,6 +105,22 @@ public class Stock_event implements Serializable {
 
 	public void setPrix_stock(Double prix_stock) {
 		this.prix_stock = prix_stock;
+	}
+
+	public List<Reservation_stock_event> getReservation_stock_event() {
+		return reservation_stock_event;
+	}
+
+	public void setReservation_stock_event(List<Reservation_stock_event> reservation_stock_event) {
+		this.reservation_stock_event = reservation_stock_event;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	
 	

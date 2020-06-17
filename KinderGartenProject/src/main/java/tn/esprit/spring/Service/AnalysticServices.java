@@ -18,6 +18,7 @@ import tn.esprit.spring.entities.Child;
 import tn.esprit.spring.entities.Classe;
 import tn.esprit.spring.entities.Competence;
 import tn.esprit.spring.entities.KinderGarten;
+import tn.esprit.spring.entities.Parent;
 import tn.esprit.spring.entities.Relation;
 import tn.esprit.spring.entities.Teacher;
 import tn.esprit.spring.repository.AdvertissementRepository;
@@ -36,7 +37,8 @@ public class AnalysticServices implements IanalysticServices {
 	private UserRepository userRepository;
 	@Autowired
 	private  ParentRepository parentRepository;
-	
+	@Autowired
+	RelationServices  relationServices;
 	@Autowired
 	private  TeacherRepository teacherRepository ;
 	
@@ -292,7 +294,6 @@ return  classeServices.getKidByKinder(k).size();
 		
 		return map;
 	}
-	
 	public Map<String, Boolean> ClasseCompetence(Classe c) {
 		Map<String, Boolean> map=new HashMap<>();
 		List<Child> lt=childRepository.findchildByClasse(c);
@@ -531,23 +532,9 @@ public Long NbrechildNoAffecter(KinderGarten k){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public List<KinderGarten> topKinder(){
 	List<KinderGarten> lk=kinderGartenRepository.findAll().stream().sorted((e1 , e2)->
-		verif(e1)-verif(e2)).collect(Collectors.toList());
+		verif(e1)-verif(e2)).limit(3).collect(Collectors.toList());
 	
 	return lk  ;
 }
@@ -569,7 +556,7 @@ public int verif(KinderGarten k)	{
 	if(NumbreClasseStable(k)>(nubreclasse*0.7))
 		note=note+5;
 	
-	return 0;
+	return note;
 }
 	
 public int NumbreClasseNocharger(KinderGarten k)	{
@@ -649,5 +636,120 @@ public int NumbreClasseStable(KinderGarten k)	{
 	
 return i;	
 }
+
+
+public Map<Long,List<Double>> CalculePereV(Parent p){
+	Map<Long,List<Double>> mp=new HashMap<>();
+	List<Double> lD=new ArrayList<>();
+	
+	
+	
+	
+	
+/*	lD.add((double) (NumbreClasseNocharger(k)/nubreclasse));
+	lD.add((double) (NumbreClasseNoPlein(k)/nubreclasse));
+	lD.add((double) (NumbreClasseStable(k)/nubreclasse));
+	if(numberDeClasseParAge(k))
+	      lD.add((double) (1));
+	else
+	lD.add((double) (0));
+	if(Numbredeteacher(k))
+		lD.add((double) (1));
+	else
+   lD.add((double) (0));
+	
+	lD.add((double) k.getPrix());
+	
+	lD.add((double) k.getUserapp().getScore());
+	lD.add((double) relationServices.myAbonne(k.getUserapp()).size());
+	
+	
+	*/
+	
+	return mp;
+	
+	
+	
+}
+
+
+
+
+public Map<Long,List<Double>> CalculeKinderV(KinderGarten k){
+	Map<Long,List<Double>> mp=new HashMap<>();
+	List<Classe> lc=classeServices.getClasseBykinder(k);
+	int nubreclasse=lc.size();
+	List<Double> lD=new ArrayList<>();
+	
+
+	lD.add((double) (NumbreClasseNocharger(k)/nubreclasse));
+	lD.add((double) (NumbreClasseNoPlein(k)/nubreclasse));
+	lD.add((double) (NumbreClasseStable(k)/nubreclasse));
+	if(numberDeClasseParAge(k))
+	      lD.add((double) (1));
+	else
+	lD.add((double) (0));
+	if(Numbredeteacher(k))
+		lD.add((double) (1));
+	else
+   lD.add((double) (0));
+	
+	lD.add((double) k.getPrix());
+	
+	lD.add((double) k.getUserapp().getScore());
+	lD.add((double) relationServices.myAbonne(k.getUserapp()).size());
+	
+	return mp;
+
+}
+public Double calcul1(Parent p){
+	return 0.0;
+}
+public Double calcul2(Parent p){
+	return 0.0;
+}
+
+public Double calcul3(Parent p){
+	return 0.0;
+}
+
+public Double calcul4(Parent p){
+	return 0.0;
+}
+
+
+public Double calcul5(Parent p){
+	return 0.0;
+}
+
+public Double calcul6(Parent p){
+	return 0.0;
+}
+public Double calcul7(Parent p){
+	return 0.0;
+}
+
+public Double calcul8(Parent p){
+	return 0.0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

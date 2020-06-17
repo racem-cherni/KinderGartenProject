@@ -3,12 +3,14 @@ package tn.esprit.spring.Controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
@@ -25,6 +27,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -72,6 +75,7 @@ public class AuthController {
 	private String lastNameR;
 	private String emailR;
 	private String adresseR;
+	private Date datenaissenceParent;
 	private int telR;
 	private String code;
 	private int a;
@@ -103,14 +107,13 @@ public class AuthController {
 	
 	
 
-	
 	@Autowired
 	ChildRepository childRepository;
 
 public	static  String token;
 	
 	public String LOGOUT() throws IOException {
-		//
+	//
 		// HttpServletRequest response =response. ;
 		//
 		// response.logout();
@@ -123,27 +126,65 @@ public	static  String token;
 		Cookie[] cookies = request.getCookies();
 		if (cookies == null)
 			System.err.println("true");
-		Optional<Cookie> token = Arrays.stream(cookies).filter(cookie -> cookie.getName().equals("token")).findFirst();
-
-		token.get().setValue(null);
-
-		response.addCookie(token.get());
+		//Optional<Cookie> token = Arrays.stream(cookies).filter(cookie -> cookie.getName().equals("token")).findFirst();
+		Cookie cookie = new Cookie("token", null);
+		cookie.setMaxAge(0);
+		cookie.setSecure(true);
+		cookie.setHttpOnly(true);
+		cookie.setPath("/");
+		//add cookie to response
+		response.addCookie(cookie);
+		//token.get().setValue(null);
+		//token.get().setMaxAge(0);
+		//response.addCookie(token.get());
 
 		// response.sendRedirect("http://localhost:8081/login");
 
-		return "/login/logindesign.xhtml?faces-redirect=true";
+		return "/login/NewFile.xhtml?faces-redirect=true";
+	}  
+public void testUsernam(){
+	UserApp usertest=userRepository.findByUsername(username);
+	if(usertest==null){
+		FacesMessage facesMessage =
+
+				new FacesMessage("this Username dont exist.");
+
+				FacesContext.getCurrentInstance().addMessage("form:usernameL",facesMessage);
 	}
+		
 	
-	
-	
-	
+}
 	
 	
 	
 	public String signin() throws IOException, ServletException {
 
 		System.err.println("token l gdim " + this.token);
+		
+		UserApp usertest=userRepository.findByUsername(username);
+		if(usertest==null){
+			FacesMessage facesMessage =
 
+					new FacesMessage("this Username does not exist.");
+
+					FacesContext.getCurrentInstance().addMessage("form:usernameL",facesMessage);
+					return null;
+		}
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();  
+		 
+if(!encoder.matches(password, usertest.getPassword())){
+	FacesMessage facesMessage =
+
+			new FacesMessage("this Password isn 't correct.");
+
+			FacesContext.getCurrentInstance().addMessage("form:passwordL",facesMessage);
+			return null;
+
+}
+		
+	
+		
+		
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -190,7 +231,7 @@ public	static  String token;
 		}
 		if (roles.contains("ROLE_KINDERGARTEN")){
 			if(!user.isActived())
-				url="/pages/kindergarten/wait.xhtml?faces-redirect=true";
+				return "/pages/kindergarten/wait.xhtml?faces-redirect=true";
 			
 		url = "/pages/kindergarten/redirect.xhtml?faces-redirect=true";
 			
@@ -200,7 +241,6 @@ public	static  String token;
 		if (roles.contains("ROLE_ADMIN")){
 			return"/pages/admin/dashcontroll.xhtml?faces-redirect=true";
 		}
-		
 		
 		
 		System.err.println(roles + " : roles");
@@ -214,6 +254,28 @@ public	static  String token;
 		return url;
 	}
 	public String register1() throws IOException, ServletException{
+		boolean test=true;
+		UserApp usertest=userRepository.findByUsername(usernamer);
+	if(usertest!=null){
+		 test=false;
+		FacesMessage facesMessage =
+
+			new FacesMessage("this Username is Used.");
+
+					FacesContext.getCurrentInstance().addMessage("form1:register-username",facesMessage);
+				
+	}
+		
+		if(!passwordr.equals(cfpassword)){
+			 test=false;
+			FacesMessage facesMessage =
+					new FacesMessage("this repeat_password is not the same.");
+
+					FacesContext.getCurrentInstance().addMessage("form1:register-password-repeat",facesMessage);
+				
+		}
+		if(test==true){
+		
 		RegisterUser ru=new RegisterUser();
 		System.err.println(cfpassword+" passw "+ passwordr+" username "+usernamer +"role"+role);
 		ru.setCfpassword(cfpassword);
@@ -221,7 +283,6 @@ public	static  String token;
 		ru.setUsername(usernamer);
 		
 		UserApp user=userServices.saveUserEtape1(ru, "ROLE_PARENT");
-		
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(usernamer, passwordr));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -234,14 +295,38 @@ public	static  String token;
 		System.err.println("token jdid " + jwt);
 
 		
-		
+
 			return "/login/registerparent.xhtml?faces-redirect=true";
 
+		}
 		
+		return null;
 		
 		
 	}
 	public String register2() throws IOException, ServletException{
+		boolean test=true;
+		UserApp usertest=userRepository.findByUsername(usernamer);
+		if(usertest!=null){
+			 test=false;
+			FacesMessage facesMessage =
+
+					new FacesMessage("this Username is Used.");
+
+					FacesContext.getCurrentInstance().addMessage("form1:register-username",facesMessage);
+				
+		}
+		
+		if(!passwordr.equals(cfpassword)){
+			 test=false;
+			FacesMessage facesMessage =
+					new FacesMessage("this repeat_password is not the same.");
+
+					FacesContext.getCurrentInstance().addMessage("form1:register-password-repeat",facesMessage);
+				
+		}
+		if(test==true){
+		
 		RegisterUser ru=new RegisterUser();
 		System.err.println(cfpassword+" passw "+ passwordr+" username "+usernamer +"role"+role);
 		ru.setCfpassword(cfpassword);
@@ -264,35 +349,52 @@ public	static  String token;
 		
 			return  "/login/registerkinder.xhtml?faces-redirect=true";
 		
-		
+		}
+		return null;
 		
 	}
 	
 	
+	
 	public String registerparent(){
-		if(this.usernamer==null || this.passwordr==null)
-			return "/login/NewFile.xhtml?faces-redirect=false";
+		Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(new Date() );
+        cal2.setTime(datenaissenceParent);
+
+if(cal1.before(cal2)){
+			
+			FacesMessage facesMessage =
+					new FacesMessage("in valid date.");
+
+			
+			
+					FacesContext.getCurrentInstance().addMessage("form1:profile-public-website",facesMessage);
+					return null;
+		}
 		Parent p=new Parent();
 		p.setFirstName(firstNameR);
 		p.setLastName(lastNameR);
 		p.setEmail(emailR);
 		p.setAdresse(adresseR);
+		p.setDateNaissance(datenaissenceParent);
 		UserApp user=userRepository.findByUsername(usernamer);
 		Parent app= parentServices.addParent(p, user);
-		String userName = null;
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	
+		
 
+		userServices.SendVerificationEmail(this.usernamer);
 		
+		this.username=this.usernamer;
 		
-		
-		
-		
-		return null ;
+		return "/login/sendEmail.xhtml?faces-redirect=true";
 	}
 	
+	
 	public String registerkinder(){
-		if(this.usernamer==null || this.passwordr==null)
+		if (this.usernamer==""||this.usernamer==null) {
 			return "/login/NewFile.xhtml?faces-redirect=false";
+		}
 		
 		System.err.println("i am her");
 		KinderGarten kin=new KinderGarten();
@@ -307,17 +409,16 @@ public	static  String token;
 
 		
 		KinderGarten k= kinderGartenServices.saveKinderGarten(kin,user );
-		String userName = null;
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
 
-		return "/pages/kindergarten/wait.xhtml?faces-redirect=true" ;
+		return "/login/NewFile.xhtml?faces-redirect=false" ;
 	}
 	
 	
 	
 	public void sendEmail(){
 		System.err.println("********************re send**********************");
-		userServices.SendVerificationEmailMdp(username);
+		userServices.SendVerificationEmail(username);
 		
 		
 	}
@@ -329,7 +430,7 @@ public	static  String token;
 		
 		
 		
-		return "/login/NewFile.xhtml?faces-redirect=false";
+		return "/login/NewFile.xhtml?faces-redirect=true";
 		
 		
 	}
@@ -920,6 +1021,12 @@ public	static  String token;
 
 	public void setForgetPasswordCode(String forgetPasswordCode) {
 		this.forgetPasswordCode = forgetPasswordCode;
+	}
+	public Date getDatenaissenceParent() {
+		return datenaissenceParent;
+	}
+	public void setDatenaissenceParent(Date datenaissenceParent) {
+		this.datenaissenceParent = datenaissenceParent;
 	}
 	
 	

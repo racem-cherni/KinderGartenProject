@@ -2,7 +2,9 @@ package tn.esprit.spring.Controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.Service.AnalysticServices;
 import tn.esprit.spring.Service.RechercheKinderServices;
 import tn.esprit.spring.entities.Adresse;
 import tn.esprit.spring.entities.Child;
@@ -40,7 +43,8 @@ private ParentRepository parentRepository;
 private ChildRepository childRepository;
 @Autowired
 private RechercheKinderServices rechercheKinderServices;
-
+@Autowired
+AnalysticServices analysticServices;
 
 @RequestMapping(value="/saveKinderGarten/{username}",method=RequestMethod.POST)
 public KinderGarten saveKinderGarten(@RequestBody KinderGarten k,@PathVariable String username){
@@ -164,13 +168,13 @@ public KinderGarten updateParent(@RequestBody KinderGarten k){
 	kin.setPrix(k.getPrix());
 	return kinderGartenRepository.save(kin);
 }
-@Secured(value={"ROLE_ADMIN"})
-@RequestMapping(value="/deleteKinderGarten",method=RequestMethod.DELETE)
-public void deleteKinderGarten(@RequestBody KinderGarten k){
-	KinderGarten kin=kinderGartenRepository.getOne(k.getId());
-	if(kin==null)
-		throw new RuntimeException("this parent don't existe .");
-	kinderGartenRepository.delete(k);
+
+@RequestMapping(value="/showStatiqtique/{id}",method=RequestMethod.POST)
+public Map<Long, String> deleteKinderGarten(@PathVariable Long id){
+	KinderGarten kin=kinderGartenRepository.findById(id).get();
+	Map<Long, String> mp=new HashMap<>();
+	mp=analysticServices.NbreClasseStable(kin);
+	return mp;
 }	
 	
 

@@ -1,0 +1,324 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/templatedash.xhtml"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+	<ui:define name="content" >
+	<h:head> <title>Graphe Prime Faces </title>
+    <style>
+style type="text/css">
+    .left {
+        text-align: left;
+    }
+    
+    .right div {
+        float: right;
+    }
+</style></h:head>
+		<f:view transient="true">
+			<div class="content-body">
+				<div class="container">
+					<div class="row page-titles">
+						<div class="col p-0">
+							<h4>
+								Statique, <span>details :</span>
+							</h4>
+							<h:form>
+							<h:link outcome="/pages/kindergarten/chart" value="show statistique"></h:link></h:form>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<ui:repeat
+							value="#{StatistiqueKinderDash.mapCla.keySet().toArray()}"
+							var="key">
+
+							<div class="col-lg-4 no-card-border">
+								<div class="card">
+									<div class="card-body">
+										<h5 class="pull-left">Info</h5>
+										<div class="dropdown custom-dropdown pull-right">
+											<div data-toggle="dropdown">
+												<i class="ti-more-alt rotate-90 d-inline-block c-pointer"></i>
+											</div>
+											<div class="dropdown-menu dropdown-menu-right">
+												<a href="#" class="dropdown-item f-s-12">Details</a> <a
+													href="#" class="dropdown-item f-s-12">Add New</a> <a
+													href="#" class="dropdown-item f-s-12">Refresh</a>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<div class="m-t-15 text-center">
+											<h:outputText class="f-s-50 text-primary"
+												value="#{StatistiqueKinderDash.mapCla[key]}"
+												style="font-size:24px;" />
+											<br />
+											<h:outputText class="f-s-14" value="#{key}"
+												style="font-size:24px;" />
+
+										</div>
+									</div>
+									<div class="card-footer">
+										<h6 class="m-t-10 text-muted">
+											<span class="pull-right"></span>
+										</h6>
+									</div>
+									<div class="progress h-3px">
+										<div role="progressbar"
+											class="progress-bar bg-primary wow animated progress-animated w-50pc h-3px"></div>
+									</div>
+								</div>
+							</div>
+
+
+
+						</ui:repeat>
+
+
+					</div>
+
+					<div class="row page-titles">
+						<div class="col p-0">
+							<h4>
+
+								Overload class <span>details :</span>
+							</h4>
+						</div>
+					</div>
+
+					<div class="row">
+						<ui:repeat
+							value="#{StatistiqueKinderDash.mapClasCap.keySet().toArray()}"
+							var="key">
+							<div class="col-lg-4">
+								<div class="card">
+									<div class="card-body bg-primary">
+										<div class="text-center">
+											<h2 class="m-t-15 text-white f-s-50">
+												<h:outputText class="f-s-50 text-primary"
+													value="#{StatistiqueKinderDash.mapClasCap[key]}"
+													style="font-size:24px;" />
+											</h2>
+											<span class="text-white m-t-10 f-s-20"><h:outputText
+													class="f-s-50 text-primary" value="#{key}"
+													style="font-size:24px;" /></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</ui:repeat>
+					</div>
+
+					<div class="row page-titles">
+						<div class="col p-0">
+							<h4>
+
+								Overload class <span>details :</span>
+							</h4>
+						</div>
+					</div>
+
+					<div class="row">
+						<ui:repeat
+							value="#{StatistiqueKinderDash.mapClasManT.keySet().toArray()}"
+							var="key">
+
+							<div class="col-lg-4">
+								<div class="card">
+									<div class="card-body">
+										<h5 class="text-uppercase f-w-700">
+											<h:outputText value="#{key}" />
+										</h5>
+										<span class="f-s-30 f-w-300 text-danger"> <h:outputText
+												value="#{StatistiqueKinderDash.mapClasManT[key]}" />
+
+										</span>
+										<p class="m-t-15">this informations is about all this
+											kinderGarten</p>
+									</div>
+								</div>
+							</div>
+
+
+
+						</ui:repeat>
+					</div>
+					<div class="row page-titles">
+						<div class="col p-0">
+							<h4>
+
+								teachers competences <span>details :</span>
+							</h4>
+						</div>
+					</div>
+
+					<div class="row">
+						<ui:repeat
+							value="#{StatistiqueKinderDash.mapteacherComM.keySet().toArray()}"
+							var="key">
+
+							<div class="col-lg-4">
+								<div class="card">
+									<div class="stat-widget-one">
+										<div class="stat-content">
+											<div class="stat-text">
+												<h:outputText value="#{key}" />
+											</div>
+											<div class="stat-text">number of teachers have this
+												competence :</div>
+										</div>
+										<div class="stat-content">
+											<div class="stat-digit">
+												<h:outputText
+													value="#{StatistiqueKinderDash.mapteacherComM[key]}" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+						</ui:repeat>
+					</div>
+					<div class="row page-titles">
+						<div class="col p-0">
+							<h4>
+
+								kids need care <span>details :</span>
+							</h4>
+						</div>
+					</div>
+
+					<div class="row">
+						<ui:repeat
+							value="#{StatistiqueKinderDash.mapNbreHealthKid.keySet().toArray()}"
+							var="key">
+
+							<div class="col-lg-4">
+								<div class="card">
+									<div class="stat-widget-one">
+										<div class="stat-content">
+											<div class="stat-text">
+												<h:outputText value="#{key}" />
+											</div>
+											<div class="stat-text">number of kids :</div>
+										</div>
+										<div class="stat-content">
+											<div class="stat-digit">
+												<h:outputText
+													value="#{StatistiqueKinderDash.mapNbreHealthKid[key]}" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+						</ui:repeat>
+					</div>
+					<div class="row page-titles">
+						<div class="col p-0">
+							<h4>
+
+								kids need care <span>details :</span>
+							</h4>
+						</div>
+					</div>
+
+					<div class="row">
+						<ui:repeat
+							value="#{StatistiqueKinderDash.mapNbreHealthKid.keySet().toArray()}"
+							var="key">
+
+							<div class="col-lg-4">
+								<div class="card">
+									<div class="stat-widget-one">
+										<div class="stat-content">
+											<div class="stat-text">
+												<h:outputText value="#{key}" />
+											</div>
+											<div class="stat-text">number of kids :</div>
+										</div>
+										<div class="stat-content">
+											<div class="stat-digit">
+												<h:outputText
+													value="#{StatistiqueKinderDash.mapNbreHealthKid[key]}" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+						</ui:repeat>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+					<div class="row page-titles">
+						<div class="col p-0">
+							<h4>
+
+								Class situation <span>details :</span>
+							</h4>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Alerts</h4>
+									<div class="card-content">
+										<ui:repeat
+											value="#{StatistiqueKinderDash.mapClasseStable.keySet().toArray()}"
+											var="key">
+											<c:if test="#{StatistiqueKinderDash.mapClasseStable[key] ne 'Stable'}">
+											<div class="alert alert-danger"><h:outputText
+													value="#{key.concat(' ').concat(StatistiqueKinderDash.mapClasseStable[key])}" /></div>
+</c:if>
+<c:if test="#{StatistiqueKinderDash.mapClasseStable[key] eq 'Stable'}">
+                                             <div class="alert alert-success"><h:outputText
+													value="#{key.concat(' ').concat(StatistiqueKinderDash.mapClasseStable[key])}" /></div>
+
+</c:if>
+
+										</ui:repeat>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

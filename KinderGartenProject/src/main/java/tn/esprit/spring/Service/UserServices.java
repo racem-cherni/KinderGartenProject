@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.management.relation.Relation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -46,8 +48,8 @@ public class UserServices implements AccountService{
 	@Autowired
 	private RoleRepository roleRepository;
 	@Autowired
-    private VerificationTokenRepository tokenRepository;
-
+    private VerificationTokenRepository tokenRepository; 
+	
 	@Autowired
 	private JavaMailSender mailSender;
 @Autowired
@@ -73,13 +75,14 @@ public UserApp saveUserEtape1( RegisterUser user, String role){
 		
 		UserApp u=new UserApp(user.getUsername(),user.getPassword(),roles,false,user.getScore(),3);
 		roles.add(r);
+		u.setPriority(1);
 		return saveUser(u);
 	}
 	else if(role.equals("ROLE_PARENT")){
 		
 		roles.add(r);
 		UserApp u=new UserApp(user.getUsername(),user.getPassword(),roles,false,user.getScore(),3);
-		
+		u.setPriority(100);
 		return saveUser(u);
 		}
 	else
@@ -227,7 +230,7 @@ public boolean cfVerification(String username,String code){
 
 public Advertissement getUserAdvertissement(UserApp target,UserApp source) {
 	
-Advertissement a =advertissementRepository.findtargetAd(target,source);
+Advertissement a =advertissementRepository.findtargetAdID(target.getId(),source.getId(),tn.esprit.spring.entities.Relation.FRIEND);
 a.setActive(true);
 
 return advertissementRepository.save(a);

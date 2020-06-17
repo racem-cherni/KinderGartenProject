@@ -13,6 +13,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -35,6 +36,9 @@ public class Invitation_Event implements Serializable {
 	private Date date_reponse ;
     
     private String reponse ;
+    
+    
+    
     
     @JsonIgnore
 	@ManyToOne

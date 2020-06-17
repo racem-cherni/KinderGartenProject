@@ -99,8 +99,9 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
       				||url.startsWith("http://localhost:8082/SpringMVC/resources/")
       				||url.startsWith("http://localhost:8082/SpringMVC/login/FsendEmail")
       				||url.startsWith("http://localhost:8082/SpringMVC/login/FchangePassword")
-      				 )
+      						||url.startsWith("http://localhost:8082/SpringMVC/login/NewFile"))
       				 
+      			
       			 return null;
 	    	
    	  String bearerToken = null ;

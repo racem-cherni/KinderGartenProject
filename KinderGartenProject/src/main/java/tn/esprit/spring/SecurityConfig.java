@@ -58,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.POST,"/saveUser/verif/*").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.POST,"/saveUser/cfverif/*/*").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.POST,"/saveUser/saveParent/*").permitAll();
+		//http.authorizeRequests().antMatchers(HttpMethod.POST,"/**").permitAll();
 		
 		http.authorizeRequests().antMatchers("/",
 	                        "/favicon.ico",

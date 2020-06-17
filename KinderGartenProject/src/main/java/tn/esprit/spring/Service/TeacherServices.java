@@ -160,24 +160,14 @@ lc.forEach(c->saveTeacherCompetence( c, idt));
 
 
 public Teacher saveTeacherCompetence(Competence c,Long idt){
-	Teacher t=teacherRepository.getOne(idt);
+	Teacher t=teacherRepository.findById(idt).get();
 	System.out.println("scoreteacher :"+t.getNom());
-	boolean test=competenceRepository.existsById(c.getId());
-	if(!test){
-	c.setNote((float)1);
-	competenceRepository.save(c);
-	Competence cf=competenceRepository.findByNom(c.getCompetenceName());
-	if(t.getCompetences().contains(cf))
-		throw new RuntimeException("this competence is all ready exist");
 	
-	
-	t.getCompetences().add(cf);
-	return teacherRepository.save(t);
-	}
 	
 	Competence cm =competenceRepository.findById(c.getId()).get();
 	if(t.getCompetences().contains(cm))
-		throw new RuntimeException("this competence is all ready exist");
+		return null;
+	
 	t.getCompetences().add(cm);
 	return teacherRepository.save(t);
 	

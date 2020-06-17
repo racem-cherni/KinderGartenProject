@@ -54,6 +54,12 @@ return		kinderGartenRepository.getkinderforAdmin();
 		userRepository.save(u);
 	}
 	
+	public void updateKinder(KinderGarten  k ){
+		
+		
+		
+		kinderGartenRepository.save(k);
+	}
 	
 	
 	public KinderGarten activerKinder(KinderGarten  k){

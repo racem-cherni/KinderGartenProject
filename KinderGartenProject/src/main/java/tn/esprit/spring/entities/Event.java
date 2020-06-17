@@ -90,8 +90,7 @@ private static final long serialVersionUID = 1L;
 	@Column(name="Event_invites")
 	private int nbr_invites;
 	
-	@Column(name="Event_budget")
-	private Double event_budget;
+	
 	
 	@Column(name="Entry_price")
 	private Double entry_price;
@@ -120,26 +119,31 @@ private static final long serialVersionUID = 1L;
 	@OneToOne
 	private Facture_Event facture_event ;
 	
-//    @JsonIgnore
-//	@LazyCollection(LazyCollectionOption.FALSE)
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy="event")
-//	private  List<Reservation_Stock_interne> reservation_stock_interne;
+   
+	
+	@JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="event")
+	private  List<Reservation_stock_event> reservation_stock_event;
 	
 	@JsonIgnore
 	@LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy="event_invitation")
 	private  List<Invitation_Event> invitations;
 	
-//    @JsonIgnore
-//	@LazyCollection(LazyCollectionOption.FALSE)
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy="event_evaluation")
-//	private  List<Evaluation_Event> evaluations; 
+    @JsonIgnore
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="event_evaluation")
+	private  List<Evaluation_Event> evaluations; 
 	
 	
 	@JsonIgnore
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@LazyCollection(LazyCollectionOption.FALSE)  
     @OneToMany(cascade = CascadeType.ALL, mappedBy="event_discussion")
 	private  List<Discussion_Event> Discussions;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="events")
+	private List <Galerie_event> Galerieevents;
 
 	public Event() {
 		super();
@@ -276,15 +280,7 @@ private static final long serialVersionUID = 1L;
 
 
 
-	public Double getEvent_budget() {
-		return event_budget;
-	}
-
-
-
-	public void setEvent_budget(Double event_budget) {
-		this.event_budget = event_budget;
-	}
+	
 
 
 
@@ -332,13 +328,7 @@ private static final long serialVersionUID = 1L;
 		this.facture_event = facture_event;
 	}
 
-//	public List<Reservation_Stock_interne> getReservation_stock_interne() {
-//		return reservation_stock_interne;
-//	}
-//
-//	public void setReservation_stock_interne(List<Reservation_Stock_interne> reservation_stock_interne) {
-//		this.reservation_stock_interne = reservation_stock_interne;
-//	}
+	
 
 	
 
@@ -354,13 +344,13 @@ private static final long serialVersionUID = 1L;
 
 
 
-//	public List<Evaluation_Event> getEvaluations() {
-//		return evaluations;
-//	}
-//
-//	public void setEvaluations(List<Evaluation_Event> evaluations) {
-//		this.evaluations = evaluations;
-//	}
+	public List<Evaluation_Event> getEvaluations() {
+		return evaluations;
+	}
+
+	public void setEvaluations(List<Evaluation_Event> evaluations) {
+		this.evaluations = evaluations;
+	}
 
 
 	public Type_Event getType_event() {
@@ -430,6 +420,33 @@ private static final long serialVersionUID = 1L;
 		this.location_event = location_event;
 	}
 
+    
+
+	public List<Reservation_stock_event> getReservation_stock_event() {
+		return reservation_stock_event;
+	}
+
+
+
+	public void setReservation_stock_event(List<Reservation_stock_event> reservation_stock_event) {
+		this.reservation_stock_event = reservation_stock_event;
+	}
+
+
+	
+	
+	
+
+	public List<Galerie_event> getGalerieevents() {
+		return Galerieevents;
+	}
+
+
+
+	public void setGalerieevents(List<Galerie_event> galerieevents) {
+		Galerieevents = galerieevents;
+	}
+
 
 
 	@Override
@@ -439,18 +456,17 @@ private static final long serialVersionUID = 1L;
 				+ event_fin_heure + ", date_final_reservation=" + date_final_reservation + ", nbr_places=" + nbr_places
 				+ ", nbr_participants=" + nbr_participants + ", nbr_interssants=" + nbr_interssants
 				+ ", nbr_places_occupes=" + nbr_places_occupes + ", Nbr_ignorer=" + Nbr_ignorer + ", nbr_invites="
-				+ nbr_invites + ", event_budget=" + event_budget + ", entry_price=" + entry_price + ", category="
+				+ nbr_invites + ", entry_price=" + entry_price + ", category="
 				+ category + ", etat_event=" + etat_event + ", type_event=" + type_event + ", kindereventmaker="
 				+ kindereventmaker +  "]";
 	}
 
 
 
-	public Event(String title,String description, Date date_event, Date date_final_reservation,java.sql.Time event_start_heure,java.sql.Time event_fin_heure, int nbr_places,String photo, Double entry_price,
-			Category_event category, Type_Event type_event,Locationevent location_event) {
+	public Event(String title,String description, Date date_event, Date date_final_reservation,java.sql.Time event_start_heure,java.sql.Time event_fin_heure, int nbr_places, Double entry_price,
+			Category_event category, Type_Event type_event,Locationevent location_event,int nbr_invites) {
 		super();
 		this.title = title;
-		this.photo = photo;
 		this.description = description;
 		this.date_event = date_event;
 
@@ -462,8 +478,13 @@ private static final long serialVersionUID = 1L;
 		this.event_start_heure=event_start_heure;
 		this.event_fin_heure = event_fin_heure ;
 		this.location_event = location_event;
+		this.nbr_invites = nbr_invites;
 
 	}
+
+
+
+	
 
 
 

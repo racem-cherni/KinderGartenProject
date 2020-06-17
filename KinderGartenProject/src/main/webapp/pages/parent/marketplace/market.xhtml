@@ -114,9 +114,9 @@
 							<div class="user-preview">
 								<!-- USER PREVIEW COVER -->
 								<figure class="user-preview-cover liquid"
-									style="background: url(&quot;img/cover/48.jpg&quot;) center center / cover no-repeat;">
-								<img src="resources/img/cover/48.jpg" alt="cover-48"
-									style="display: none;" /> </figure>
+									style="background: url(&quot;resources/marketplaceimgs/#{offer.product.photo}&quot;) center center / cover no-repeat;">
+								<img src="resources/marketplaceimgs/#{offer.product.photo}"
+									alt="cover-48" style="display: none;" /> </figure>
 								<!-- /USER PREVIEW COVER -->
 
 								<!-- USER PREVIEW INFO -->
@@ -133,7 +133,12 @@
 										<!-- USER SHORT DESCRIPTION TITLE -->
 
 										<p class="user-short-description-title">
-											#{offer.product.name}</p>
+											<h:link outcome="product">
+												<h:outputText value="#{offer.product.name}"></h:outputText>
+												<f:param name="id" value="#{offer.product.id}" />
+											</h:link>
+											
+										</p>
 										<f:param name="id" value="#{offer.id}" />
 
 
@@ -183,14 +188,14 @@
 									<!-- /USER STATS -->
 
 									<!-- USER PREVIEW ACTIONS -->
-	
-										<div class="user-preview-actions">
-											<h:link styleClass="button secondary" outcome="offer"
-												value="Edit Offer">
-												<f:param name="id" value="#{offer.id}" />
-											</h:link>
-											<!-- /BUTTON -->
-										</div>
+
+									<div class="user-preview-actions">
+										<h:link styleClass="button secondary" outcome="offer"
+											value="Edit Offer">
+											<f:param name="id" value="#{offer.id}" />
+										</h:link>
+										<!-- /BUTTON -->
+									</div>
 
 									<!-- /USER PREVIEW ACTIONS -->
 								</div>

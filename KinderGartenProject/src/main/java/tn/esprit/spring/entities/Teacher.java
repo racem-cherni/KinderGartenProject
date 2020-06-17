@@ -46,7 +46,7 @@ private KinderGarten  kinderGarten;
 private Classe classe;
 
 
-@ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+@ManyToMany(fetch=FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 private Collection<Competence> competences= new ArrayList<>();
 
 

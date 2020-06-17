@@ -27,6 +27,7 @@ import org.springframework.stereotype.Controller;
 import tn.esprit.spring.Service.AnalysticServices;
 import tn.esprit.spring.Service.ClasseServices;
 import tn.esprit.spring.Service.TeacherServices;
+import tn.esprit.spring.Service.UserServices;
 import tn.esprit.spring.entities.Child;
 import tn.esprit.spring.entities.Classe;
 import tn.esprit.spring.entities.Competence;
@@ -51,8 +52,11 @@ public class KinderGartenDashController implements Serializable {
 	private Float prix;
 	private  int maxRdv;
 	private String hellomessage;
-	private String search;
+	private String search="";
 	private int remove1;
+	
+	private String kinderGartenNameSE;
+	private String imageSE;
 	public int getRemove1() {
 		return remove1;
 	}
@@ -73,17 +77,18 @@ private String prenom;
 	private int numtel;
 	private String emailt;
 	List<Competence> lcom=new ArrayList<>();
-	 private String[] selectedCompetens;
-	 List<String> listCompe=new ArrayList<>();
+	 List<Competence> listCompe=new ArrayList<>();
 	 
 	//--------------------classe
-	
+	@Autowired
+	UserServices userServices;
 	 private  Long id;
 		private String nomc;
 		private int capacitiec;
 		private int agec;
 		
 		private Teacher teacher;
+		private Teacher teacherC;
 	List<Child> kidcl=new ArrayList<Child>();
 	Map<String,List<String>> map=new HashMap<>();
 	
@@ -99,6 +104,29 @@ private String prenom;
 	TeacherServices teacherServices;
 	@Autowired
 	ClasseServices classeServices;
+	
+	@PostConstruct
+	public void init(){
+	Classe cl=classeServices.getClasseById(16L);
+		System.err.println("classe "+cl.getNom());
+		this.agec=cl.getAge();
+		this.id=cl.getId();
+		this.capacitiec=cl.getCapacitie();
+		this.nomc=cl.getNom();
+		
+		if(cl.getTeacher()!=null)
+		this.teacher=cl.getTeacher();
+		System.err.println("classe "+this.nomc);
+		this.map.clear();
+		this.map.putAll(analysticServices.MyteacherMonqueCompetence(cl));
+		this.kidcl.clear();
+		this.kidcl=classeServices.getKidByClasse(cl);
+		System.err.println("**********************************************");
+		
+	}
+	
+	
+	
 public String deleteTeacher(Teacher t){
 	teacherServices.delateTeacher(t);
 	
@@ -156,8 +184,7 @@ public String addTeacher(){
 		c.setNom(nomc);
 		
 		classeServices.saveClasse(c, user.getKindergarten());
-		
-		this.agec=0;
+				this.agec=0;
 		
 		this.capacitiec=0;
 		this.nomc="";
@@ -234,10 +261,12 @@ public String updateClasse()	{
 		
 		return this.classes=classeServices.getClasseBykinder(user.getKindergarten());
 	}
+
 	
 	public String displayClasse(Classe c){
-		System.err.println("classe "+c.getId());
-	Classe cl=classeServices.getClasseById(c.getId());
+		
+		//System.err.println("classe "+c.getId());
+	Classe cl=classeServices.getClasseById(16L);
 	System.err.println("classe "+cl.getNom());
 	this.agec=cl.getAge();
 	this.id=cl.getId();
@@ -250,11 +279,16 @@ public String updateClasse()	{
 	this.map.clear();
 	this.map.putAll(analysticServices.MyteacherMonqueCompetence(cl));
 	this.kidcl.clear();
-	this.kidcl=classeServices.getKidByClasse(c);
-	
+	this.kidcl=classeServices.getKidByClasse(cl);
+	System.err.println("**********************************************");
 		
 		return"/pages/kindergarten/showdetails.xhtml?faces-redirect=true";
 		
+	}
+	public void supprimerchild(Child c){
+		System.err.println("**********************************************");
+		classeServices.retirerKidk(c);
+		this.kids.remove(c);
 	}
 	
 	
@@ -265,8 +299,44 @@ public String updateClasse()	{
 		this.kidcl.remove(child);
 		
 	}
+	public String showteacherCom(Teacher t){
+		this.teacherC=t;
+		this.listCompe.clear();
+		this.lcom.clear();
+		boolean test=true;
+		List<Competence> lc =teacherServices.showCompetences();
+		List<Competence> lc1=(List<Competence>) this.teacherC.getCompetences();		
+		for (Competence competence : lc) {
+			test=true;
+		for (Competence competence1 : lc1) {
+			if(competence1.getId()==competence.getId())
+				test=false;
+			
+			
+		}
+		
+		if(test==true)
+			listCompe.add(competence);
+			
+		}
+		
+		
+		lcom.addAll(lc1);
+		return"/pages/kindergarten/Competence.xhtml?faces-redirect=true";
+	}
+	public void remplirComp(Competence c){
+		lcom.add(c);
+		this.listCompe.remove(c);
+	}
 	
 	
+	
+	
+	public String show(){
+		
+		teacherServices.saveTeacherCompetenceJsf(lcom, this.teacherC.getId());
+		return"/pages/kindergarten/kindergartendash.xhtml?faces-redirect=true";
+	}
 	public void setClasses(List<Classe> classes) {
 		this.classes = classes;
 	}
@@ -314,20 +384,16 @@ public String updateClasse()	{
 	}
 	public List<Child> getKids() {
 		
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String userName;
-
-				if (principal instanceof UserDetails) {
-					userName = ((UserDetails) principal).getUsername();
-				} else {
-					userName = principal.toString();
-				}
-				System.err.println(userName);
-				UserApp user=userRepository.findByUsername(userName);
+		
+				UserApp user=userServices.currentUserJsf();
 				this.kids.clear();
 		
-				if(search!=null){
-					return this.kids=classeServices.getKidByKinder(user.getKindergarten()).stream().filter(e->e.getChildName().contains(search)).collect(Collectors.toList());
+				if(search!=""){
+					
+					this.kids=classeServices.getKidByKinder(user.getKindergarten()).stream().filter(e->e.getChildName().contains(search)).collect(Collectors.toList());
+					search="";
+					return this.kids;
+							
 				}
 		
 		return this.kids=classeServices.getKidByKinder(user.getKindergarten());
@@ -411,24 +477,19 @@ public String updateClasse()	{
 		
 		
 		
-		return teacherServices.showCompetences();
+		return lcom;
 	}
 	public void setLcom(List<Competence> lcom) {
 		this.lcom = lcom;
 	}
-	public String[] getSelectedCompetens() {
-		return selectedCompetens;
-	}
-	public void setSelectedCompetens(String[] selectedCpmpetens) {
-		this.selectedCompetens = selectedCpmpetens;
-	}
-	public List<String> getListCompe() {
-		teacherServices.showCompetences().forEach(c->listCompe.add(c.getCompetenceName()));
+	
+	public List<Competence> getListCompe() {
 		
-		listCompe.forEach(c->System.err.println(c));
+		
+	
 		return listCompe;
 	}
-	public void setListCompe(List<String> listCompe) {
+	public void setListCompe(List<Competence> listCompe) {
 		this.listCompe = listCompe;
 	}
 	
@@ -456,54 +517,53 @@ public String updateClasse()	{
 	}
 
 	public String getHellomessageajax(Child c) {
-		System.err.println("***********************************************ajax1");
 		if(c==null){
 			hellomessage="";
 			return hellomessage;
 		}
-		if(c.getClasse()==null){
-			hellomessage="";
-			return hellomessage;
-		}
-		if(c.getClasse()==null){
-			hellomessage="";
-			return hellomessage;
-		}
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String userName;
-
-				if (principal instanceof UserDetails) {
-					userName = ((UserDetails) principal).getUsername();
-				} else {
-					userName = principal.toString();
-				}
-				System.err.println("***********************************************ajax2");
-				UserApp user=userRepository.findByUsername(userName);
+		
+		
+				UserApp user=userServices.currentUserJsf();
 		
 		Classe cl=classeServices.getClasseByKidAge(c,user.getKindergarten());
 		hellomessage=cl.getNom();
 		return hellomessage;
 	}
+	public Teacher getTeacherC() {
+		return teacherC;
+	}
+	public void setTeacherC(Teacher teacherC) {
+		this.teacherC = teacherC;
+	}
+	public String getKinderGartenNameSE() {
+		if(userServices.currentUserJsf().getKindergarten()==null )
+		return userServices.currentUserJsf().getUsername();
+			
+		return userServices.currentUserJsf().getKindergarten().getKinderGartenName();
+	}
+	public void setKinderGartenNameSE(String kinderGartenNameSE) {
+		this.kinderGartenNameSE = kinderGartenNameSE;
+	}
+	public String getImageSE() {
+		String im="";
+		if(userServices.currentUserJsf().getKindergarten()==null)
+		{
+			im="unknown.png";	
+			imageSE=im;
+			return imageSE;
+		}
+		if(userServices.currentUserJsf().getKindergarten().getImage()==null || userServices.currentUserJsf().getKindergarten().getImage()=="")
+			im="unknown.png";
+		else
+		 im=userServices.currentUserJsf().getKindergarten().getImage();
+		imageSE=im;
+		return imageSE;
+	}
+	public void setImageSE(String imageSE) {
+		this.imageSE = imageSE;
+	}
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

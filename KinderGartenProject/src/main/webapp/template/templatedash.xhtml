@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui"
+	
+	>
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<!-- bootstrap 4.3.1 -->
+<h:outputStylesheet library="css" name="bootstrap.min.css" />
+<h:outputStylesheet library="css" name="styles.min.css" />
+<h:outputStylesheet library="css" name="tiny-slider.css" />
+<h:outputStylesheet library="css" name="simplebar.css" />
+ 
+   <h:outputStylesheet library="css" name="style.css" />
+   
+
+
+   
+    <script src="http://localhost:8082/SpringMVC/resources/js/modernizr-3.6.0.min.js"></script>
+
+
+	<link rel="icon" href="/resources/images/favicon.ico" />
+</h:head>
+
+<h:body class="v-light vertical-nav fix-header fix-sidebar">
+
+
+
+	<ui:insert name="menu">
+		<ui:include src="/template/menudash.xhtml" />
+	</ui:insert>
+	
+	
+ <f:view transient="true">
+	<ui:insert name="content">
+	</ui:insert>
+	</f:view>
+ <script src="http://localhost:8082/SpringMVC/resources/js/modernizr-3.6.0.min.js"></script>
+     <script src="http://localhost:8082/SpringMVC/resources/js/common.min.js"></script>
+    <!-- Custom script -->
+    <script src="http://localhost:8082/SpringMVC/resources/js/custom.min.js"></script>
+
+</h:body>
+
+</html>

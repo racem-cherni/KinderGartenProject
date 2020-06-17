@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+
+
+
+
+<h:head>
+
+	<h:outputStylesheet library="css" name="CsstemplateLogin.css" />
+
+
+
+
+
+
+
+</h:head>
+<h:body>
+
+
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<form action="#">
+				<h1>Create Account</h1>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a> <a
+						href="#" class="social"><i class="fab fa-google-plus-g"></i></a> <a
+						href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span>or use your email for registration</span> <input type="text"
+					placeholder="Name"> </input> <input type="email"
+					placeholder="Email" /> <input type="password"
+					placeholder="Password" />
+				<button>Sign Up</button>
+			</form>
+		</div>
+		<div class="form-container sign-in-container">
+			<h:form >
+				<h1>Sign in</h1>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a> <a
+						href="#" class="social"><i class="fab fa-google-plus-g"></i></a> <a
+						href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span>or use your account</span>
+
+				<h:inputText id="username" value="#{AuthController.username}"
+					required="true" requiredMessage="User required" />
+				<h:outputLabel for="username" value="User" />
+				<h:inputText id="password" required="true"
+					value="#{AuthController.password}"
+					requiredMessage="Password required!" />
+				<h:outputLabel for="password" value="Password" />
+				<a href="#">Forgot your password?</a>
+				  <h:commandLink action="#{AuthController.signin()}" ><button>Sign In</button></h:commandLink>
+			</h:form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your personal
+						info</p>
+					<button class="ghost" id="signIn">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="ghost" id="signUp">Sign Up</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer> </footer>
+	<h:outputScript library="js" name="loginTempateJs.js" />
+</h:body>
+</html>

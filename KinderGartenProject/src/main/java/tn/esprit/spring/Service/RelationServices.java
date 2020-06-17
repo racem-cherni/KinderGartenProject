@@ -91,10 +91,6 @@ adv.setActive(true);
 	
 }
 public  void DesabonnerAKinderGarten(UserApp sourceUser,UserApp targetUser){
-	
-	
-
-
 	Advertissement adv=advertissementRepository.findAd(sourceUser, targetUser);
 
 		advertissementRepository.delete(adv);
@@ -118,8 +114,29 @@ public List<KinderGarten> myAbonne(UserApp user){
 	e.getSourceUser()
 	).collect(Collectors.toList()));
 
-
+	l=l.stream().filter(e->e.getKindergarten()!=null).collect(Collectors.toList());
 	return	l.stream().map(e->e.getKindergarten()).collect(Collectors.toList());
+	
+	}
+
+
+public List<Parent> myAbonneP(UserApp user){
+	
+	List<UserApp> l=advertissementRepository.findUserRelation(user).stream().filter( j ->
+	j.getRelation().equals(Relation.ABONNE) && j.isActive()==true && !j.getTargetUser().equals(user)
+	).map(e->
+	e.getTargetUser()
+	).collect(Collectors.toList());//.forEach(e->System.out.println("user : "+e.toString()));
+
+
+	l.addAll(advertissementRepository.findUserRelation(user).stream().filter( j ->
+	j.getRelation().equals(Relation.ABONNE) && j.isActive()==true && !j.getSourceUser().equals(user) 
+	).map(e->
+	e.getSourceUser()
+	).collect(Collectors.toList()));
+
+	l=l.stream().filter(e->e.getParent()!=null).collect(Collectors.toList());
+	return	l.stream().map(e->e.getParent()).collect(Collectors.toList());
 	
 	}
 public Boolean testAbonner(UserApp user,UserApp target){
@@ -164,7 +181,6 @@ public List<UserApp> Myfriend(UserApp user){
 	
 	}
 
-
 public int testfriend(UserApp user,UserApp target){
 	
 	List<Advertissement> l=advertissementRepository.findAll().stream().filter( j ->
@@ -194,8 +210,9 @@ return 0;
 public List<Parent> parentDuplex(List<Parent> lp,Parent p){
 	
 	Iterator<Parent> iterator2 = lp.iterator();
+
 	while (iterator2.hasNext()) {
-		
+	
 		if(iterator2.next().getId()==p.getId())
 		iterator2.remove(); // On supprime l'élément courant
 	}

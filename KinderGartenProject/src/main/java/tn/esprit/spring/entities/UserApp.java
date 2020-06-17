@@ -50,6 +50,8 @@ public class UserApp implements Serializable {
 	private boolean actived;
 	private int score;
 	private int point ;
+	
+	private int priority;
 @JsonIgnore
 	@OneToOne(mappedBy="userApp")
 	private Parent parent;
@@ -171,6 +173,12 @@ public void setMySearch(Collection<RechercheMenu> mySearch) {
 }
 public static long getSerialversionuid() {
 	return serialVersionUID;
+}
+public int getPriority() {
+	return priority;
+}
+public void setPriority(int priority) {
+	this.priority = priority;
 }
 
 }

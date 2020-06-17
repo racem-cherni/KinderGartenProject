@@ -1,0 +1,490 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui"
+	 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+	<ui:define name="content">
+
+		<f:view transient="true">
+			<div class="content-grid"
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+
+				<h:form>
+
+
+<div class="profile-header">
+      <!-- PROFILE HEADER COVER -->
+      <figure class="profile-header-cover liquid" style="background: url(&quot;http://localhost:8082/SpringMVC/resources/uploads/userProfileImage/#{ProfilController.imageO}&quot;) center center / cover no-repeat;">
+        <img src="http://localhost:8082/SpringMVC/resources/uploads/userProfileImage/#{ProfilController.imageO}" alt="cover-01" style="display: none;"/>
+      </figure>
+      <!-- /PROFILE HEADER COVER -->
+  
+      <!-- PROFILE HEADER INFO -->
+      <div class="profile-header-info">
+        <!-- USER SHORT DESCRIPTION -->
+        <div class="user-short-description big">
+          <!-- USER SHORT DESCRIPTION AVATAR -->
+          <a class="user-short-description-avatar user-avatar big" href="profile-timeline.html">
+            <!-- USER AVATAR BORDER -->
+            <div class="user-avatar-border">
+              <!-- HEXAGON -->
+              <div class="hexagon-148-164" style="width: 148px; height: 164px; position: relative;"><canvas width="148" height="164" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              <!-- /HEXAGON -->
+            </div>
+            <!-- /USER AVATAR BORDER -->
+        
+            <!-- USER AVATAR CONTENT -->
+           
+            <!-- /USER AVATAR CONTENT -->
+        
+            <!-- USER AVATAR PROGRESS -->
+            <div class="user-avatar-progress">
+              <!-- HEXAGON -->
+              <div class="hexagon-progress-124-136" style="width: 124px; height: 136px; position: relative;"><canvas width="124" height="136" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              <!-- /HEXAGON -->
+            </div>
+            <!-- /USER AVATAR PROGRESS -->
+        
+            <!-- USER AVATAR PROGRESS BORDER -->
+            <div class="user-avatar-progress-border">
+              <!-- HEXAGON -->
+              <div class="hexagon-border-124-136" style="width: 124px; height: 136px; position: relative;"><canvas width="124" height="136" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              <!-- /HEXAGON -->
+            </div>
+            <!-- /USER AVATAR PROGRESS BORDER -->
+        
+            <!-- USER AVATAR BADGE -->
+            <div class="user-avatar-badge">
+              <!-- USER AVATAR BADGE BORDER -->
+              <div class="user-avatar-badge-border">
+                <!-- HEXAGON -->
+                <div class="hexagon-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR BADGE BORDER -->
+        
+              <!-- USER AVATAR BADGE CONTENT -->
+              <div class="user-avatar-badge-content">
+                <!-- HEXAGON -->
+                <div class="hexagon-dark-32-34" style="width: 32px; height: 34px; position: relative;"><canvas width="32" height="34" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR BADGE CONTENT -->
+        
+              <!-- USER AVATAR BADGE TEXT -->
+              <p class="user-avatar-badge-text">24</p>
+              <!-- /USER AVATAR BADGE TEXT -->
+            </div>
+            <!-- /USER AVATAR BADGE -->
+          </a>
+          <!-- /USER SHORT DESCRIPTION AVATAR -->
+  
+          <!-- USER SHORT DESCRIPTION AVATAR -->
+          <a class="user-short-description-avatar user-short-description-avatar-mobile user-avatar medium" href="profile-timeline.html">
+            <!-- USER AVATAR BORDER -->
+            <div class="user-avatar-border">
+              <!-- HEXAGON -->
+              <div class="hexagon-120-132" style="width: 120px; height: 132px; position: relative;"><canvas width="120" height="132" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              <!-- /HEXAGON -->
+            </div>
+            <!-- /USER AVATAR BORDER -->
+        
+            <!-- USER AVATAR CONTENT -->
+           
+            <!-- /USER AVATAR CONTENT -->
+        
+            <!-- USER AVATAR PROGRESS -->
+            <div class="user-avatar-progress">
+              <!-- HEXAGON -->
+              <div class="hexagon-progress-100-110" style="width: 100px; height: 110px; position: relative;"><canvas width="100" height="110" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              <!-- /HEXAGON -->
+            </div>
+            <!-- /USER AVATAR PROGRESS -->
+        
+            <!-- USER AVATAR PROGRESS BORDER -->
+            <div class="user-avatar-progress-border">
+              <!-- HEXAGON -->
+              <div class="hexagon-border-100-110" style="width: 100px; height: 110px; position: relative;"><canvas width="100" height="110" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              <!-- /HEXAGON -->
+            </div>
+            <!-- /USER AVATAR PROGRESS BORDER -->
+        
+            <!-- USER AVATAR BADGE -->
+            <div class="user-avatar-badge">
+              <!-- USER AVATAR BADGE BORDER -->
+              <div class="user-avatar-badge-border">
+                <!-- HEXAGON -->
+                <div class="hexagon-32-36" style="width: 32px; height: 36px; position: relative;"><canvas width="32" height="36" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR BADGE BORDER -->
+        
+              <!-- USER AVATAR BADGE CONTENT -->
+              <div class="user-avatar-badge-content">
+                <!-- HEXAGON -->
+                <div class="hexagon-dark-26-28" style="width: 26px; height: 28px; position: relative;"><canvas width="26" height="28" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR BADGE CONTENT -->
+        
+              <!-- USER AVATAR BADGE TEXT -->
+              <p class="user-avatar-badge-text">24</p>
+              <!-- /USER AVATAR BADGE TEXT -->
+            </div>
+            <!-- /USER AVATAR BADGE -->
+          </a>
+          <!-- /USER SHORT DESCRIPTION AVATAR -->
+    
+          <!-- USER SHORT DESCRIPTION TITLE -->
+          <p class="user-short-description-title"><h:outputLabel  value="#{ProfilController.firstNameO.concat(' ').concat(ProfilController.lastNameO)}"/></p>
+          <!-- /USER SHORT DESCRIPTION TITLE -->
+    
+          <!-- USER SHORT DESCRIPTION TEXT -->
+          <p class="user-short-description-text"></p>
+          <!-- /USER SHORT DESCRIPTION TEXT -->
+        </div>
+        <!-- /USER SHORT DESCRIPTION -->
+  
+        <!-- PROFILE HEADER SOCIAL LINKS WRAP -->
+       
+        <!-- /PROFILE HEADER SOCIAL LINKS WRAP -->
+  
+        <!-- USER STATS -->
+        <div class="user-stats">
+          <!-- USER STAT -->
+          <div class="user-stat big">
+            <!-- USER STAT TITLE -->
+            <p class="user-stat-title">930</p>
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+            <p class="user-stat-text">posts</p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          <!-- /USER STAT -->
+    
+          <!-- USER STAT -->
+          <div class="user-stat big">
+            <!-- USER STAT TITLE -->
+            <p class="user-stat-title">82</p>
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+            <p class="user-stat-text">friends</p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          <!-- /USER STAT -->
+    
+          <!-- USER STAT -->
+          <div class="user-stat big">
+            <!-- USER STAT TITLE -->
+            <p class="user-stat-title">5.7k</p>
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+            <p class="user-stat-text">visits</p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          <!-- /USER STAT -->
+  
+          <!-- USER STAT -->
+          <div class="user-stat big">
+            <!-- USER STAT IMAGE -->
+            <img class="user-stat-image" src="img/flag/usa.png" alt="flag-usa"/>
+            <!-- /USER STAT IMAGE -->
+    
+            <!-- USER STAT TEXT -->
+            <p class="user-stat-text">usa</p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          <!-- /USER STAT -->
+        </div>
+        <!-- /USER STATS -->
+  
+        <!-- PROFILE HEADER INFO ACTIONS -->
+        <div class="profile-header-info-actions">
+          <!-- PROFILE HEADER INFO ACTION -->
+          <h:panelGroup rendered="#{ProfilController.testO == 0}">  <h:commandLink class="profile-header-info-action button secondary"  value="add friend " action="#{ProfilController.ajouter()}"></h:commandLink></h:panelGroup>
+          <h:panelGroup rendered="#{ProfilController.testO == 1}"> <h:commandLink class="profile-header-info-action button secondary"  value="retire invitation " action="#{ProfilController.retirer()}"></h:commandLink></h:panelGroup>
+          <h:panelGroup rendered="#{ProfilController.testO == 2}"> <h:commandLink class="profile-header-info-action button secondary"  value="retire invitation " action="#{ProfilController.retirer()}"></h:commandLink></h:panelGroup>
+           
+         
+          <!-- /PROFILE HEADER INFO ACTION -->
+        </div>
+        <!-- /PROFILE HEADER INFO ACTIONS -->
+      </div>
+      <!-- /PROFILE HEADER INFO -->
+    </div>
+
+<section class="section">
+
+
+<div class="grid grid-3-6-3 mobile-prefer-content">
+      <!-- GRID COLUMN -->
+      <div class="grid-column">
+        <!-- WIDGET BOX -->
+        
+        
+        
+        
+        <div class="widget-box">
+          <!-- WIDGET BOX SETTINGS -->
+          <div class="widget-box-settings">
+            <!-- POST SETTINGS WRAP -->
+            <div class="post-settings-wrap" style="position: relative;">
+              <!-- POST SETTINGS -->
+              <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                <!-- POST SETTINGS ICON -->
+                <svg class="post-settings-icon icon-more-dots">
+                  <use xlink:href="#svg-more-dots"></use>
+                </svg>
+                <!-- /POST SETTINGS ICON -->
+              </div>
+              <!-- /POST SETTINGS -->
+      
+              <!-- SIMPLE DROPDOWN -->
+             
+              <!-- /SIMPLE DROPDOWN -->
+            </div>
+            <!-- /POST SETTINGS WRAP -->
+          </div>
+          <!-- /WIDGET BOX SETTINGS -->
+      
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title">About Me</p>
+          <!-- /WIDGET BOX TITLE -->
+      
+          <!-- WIDGET BOX CONTENT -->
+          <div class="widget-box-content">
+            <!-- PARAGRAPH -->
+            <!-- /PARAGRAPH -->
+      
+            <!-- INFORMATION LINE LIST -->
+            <div class="information-line-list">
+              <!-- INFORMATION LINE -->
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title">First Name:</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                <p class="information-line-text"><h:outputLabel value="#{ProfilController.firstNameO}"/></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title">Last Name:</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                <p class="information-line-text"><h:outputLabel value="#{ProfilController.lastNameO}"/></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title">Adresse:</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                <p class="information-line-text"><h:outputLabel value="#{ProfilController.adresseO}"/></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title">Email:</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                <p class="information-line-text"><h:outputLabel value="#{ProfilController.emailO}"/></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+            
+              <!-- /INFORMATION LINE -->
+            </div>
+            <!-- /INFORMATION LINE LIST -->
+          </div>
+          <!-- /WIDGET BOX CONTENT -->
+        </div>
+        
+        
+        
+        
+        
+        
+        <div class="widget-box">
+          <!-- WIDGET BOX SETTINGS -->
+          <div class="widget-box-settings">
+            <!-- POST SETTINGS WRAP -->
+            <div class="post-settings-wrap" style="position: relative;">
+              <!-- POST SETTINGS -->
+              <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                <!-- POST SETTINGS ICON -->
+                <svg class="post-settings-icon icon-more-dots">
+                  <use xlink:href="#svg-more-dots"></use>
+                </svg>
+                <!-- /POST SETTINGS ICON -->
+              </div>
+              <!-- /POST SETTINGS -->
+      
+              <!-- SIMPLE DROPDOWN -->
+            
+              <!-- /SIMPLE DROPDOWN -->
+            </div>
+            <!-- /POST SETTINGS WRAP -->
+          </div>
+          <!-- /WIDGET BOX SETTINGS -->
+      
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title">Friends <h:outputLabel class="highlighted" value="#{ProfilController.numf}"/></p>
+          <!-- /WIDGET BOX TITLE -->
+      
+          <!-- WIDGET BOX CONTENT -->
+          <div class="widget-box-content">
+            <!-- USER STATUS LIST -->
+            <div class="user-status-list">
+            <ui:repeat var="friend" value="#{ProfilController.lpO}">
+              <div class="user-status request-small">
+                <!-- USER STATUS AVATAR -->
+                <a class="user-status-avatar" href="profile-timeline.html">
+                  <!-- USER AVATAR -->
+                  <div class="user-avatar small no-outline">
+                    <!-- USER AVATAR CONTENT -->
+                    
+                    <!-- /USER AVATAR CONTENT -->
+                
+                    <!-- USER AVATAR PROGRESS -->
+                    
+                    <!-- /USER AVATAR PROGRESS -->
+                
+                    <!-- USER AVATAR PROGRESS BORDER -->
+                  
+                    <!-- /USER AVATAR PROGRESS BORDER --> 
+                
+                    <!-- USER AVATAR BADGE -->
+                    <div class="user-avatar-badge">
+                      <!-- USER AVATAR BADGE BORDER -->
+                     <figure class="picture small round liquid" style="background: url(&quot;http://localhost:8082/SpringMVC/resources/uploads/userProfileImage/#{friend.image} &quot;) center center / cover no-repeat;">
+                    <img src="http://localhost:8082/SpringMVC/resources/uploads/userProfileImage/#{friend.image}" alt="cover-19" style="display: none;"/>
+                  </figure>
+                      <!-- /USER AVATAR BADGE BORDER -->
+                
+                      <!-- USER AVATAR BADGE CONTENT -->
+                   
+                      <!-- /USER AVATAR BADGE CONTENT -->
+                
+                      <!-- USER AVATAR BADGE TEXT -->
+                      
+                      <!-- /USER AVATAR BADGE TEXT -->
+                    </div>
+                    <!-- /USER AVATAR BADGE -->
+                  </div>
+                  <!-- /USER AVATAR -->
+                </a>
+                <!-- /USER STATUS AVATAR -->
+            
+                <!-- USER STATUS TITLE -->
+                <p class="user-status-title"><h:outputLabel  value="#{friend.firstName.concat(' ').concat(friend.lastName)}"/></p>
+                <!-- /USER STATUS TITLE -->
+            
+                <!-- USER STATUS TEXT -->
+                <!-- /USER STATUS TEXT -->
+            
+                <!-- ACTION REQUEST LIST -->
+                <div class="action-request-list">
+                 <h:commandLink class="widget-box-button button small secondary" action="#{ProfilController.show(friend)}" >
+                
+                    
+
+
+
+
+
+                    <svg class="action-request-icon icon-add-friend">
+                      <use xlink:href="#svg-add-friend"></use>
+                    </svg>
+                    <!-- /ACTION REQUEST ICON -->
+                  </h:commandLink>
+                  <!-- /ACTION REQUEST -->
+                </div>
+                <!-- ACTION REQUEST LIST -->
+              </div>
+              </ui:repeat>
+              <!-- /USER STATUS -->
+            </div>
+            <!-- /USER STATUS LIST -->
+          </div>
+          <!-- WIDGET BOX CONTENT -->
+    
+          <!-- WIDGET BOX BUTTON -->
+          <a class="widget-box-button button small secondary" href="profile-friends.html">See all Friends</a>
+          <!-- /WIDGET BOX BUTTON -->
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				</h:form>
+			</div>
+		</f:view>
+	</ui:define>
+</ui:composition>

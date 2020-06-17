@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:svg="http://www.w3.org/2000/svg"
+xmlns:p="http://primefaces.org/ui"
+
+>
+<h:head>
+
+	
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+  
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<h:outputStylesheet library="css" name="bootstrap.min.css" />
+<h:outputStylesheet library="css" name="styles.min.css" />
+<h:outputStylesheet library="css" name="tiny-slider.css" />
+<h:outputStylesheet library="css" name="simplebar.css" />
+<style>               
+        .Bimage{background-image:url("#{request.contextPath}/resources/images/landing/landing-background.jpg"); }  
+        .red-square {
+  width: 550px;
+  height: 750px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}      
+        </style>
+  <!-- bootstrap 4.3.1 -->
+ 
+  <!-- favicon -->
+  <link rel="icon" href="http://odindesign-themes.com/vikinger/img/favicon.ico" />
+  
+<title>Vikinger | Home</title></h:head>
+<h:body styleClass="Bimage">
+
+		
+	
+								
+  <!-- LANDING -->
+<div class="widget-box red-square">
+            <!-- WIDGET BOX TITLE -->
+            
+<p class="widget-box-title">registir Profil Parent</p>
+            <!-- /WIDGET BOX TITLE -->
+        
+            <!-- WIDGET BOX CONTENT -->
+            
+<div class="widget-box-content">
+              <!-- FORM -->
+              <h:form id="form1" class="form">
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small active">
+
+ <label for="profile-tagline">Your email</label>
+<h:inputText id="profile-tagline" value="#{AuthController.emailR}" required="true" requiredMessage="Please enter your email address."
+		validatorMessage="Invalid email format">
+               <f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                
+        <f:ajax execute="profile-tagline"  render="msgEmail"></f:ajax>   </h:inputText>           
+                    </div>
+                    
+                    <h:message id="msgEmail" for="profile-tagline" style="Color:red"></h:message>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small active">
+                     
+                      <label for="profile-public-email">firstname </label>
+<h:inputText id="profile-public-email" value="#{AuthController.firstNameR}" required="true" requiredMessage="firstname required" >
+
+        <f:ajax execute="profile-public-email"  render="msgfirst"></f:ajax>              
+
+</h:inputText>
+                    </div>
+                    <!-- /FORM INPUT -->
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small">
+                      <label for="profile-public-lastname">lastname </label>
+<h:inputText id="profile-public-lastname" value="#{AuthController.lastNameR}" required="true" requiredMessage="lastname required" >
+  <f:ajax execute="profile-public-lastname"  render="msglast"></f:ajax>              
+</h:inputText>
+                      
+                    </div>
+                    <!-- /FORM INPUT -->
+                     
+                    <h:message id="msgfirst" for="profile-public-email" style="Color:red"></h:message>
+                     
+                    <h:message id="msglast" for="profile-public-lastname" style="Color:red"></h:message>
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM SELECT -->
+               <div class="form-input small">
+                      <label for="profile-public-website">dateNaissanceChild </label>
+                      
+                      <p:calendar id="profile-public-website" value="#{AuthController.datenaissenceParent}" requiredMessage="date required" required="true" navigator="true" showOn="button" pattern="yyyy-MM-dd">
+                       <f:ajax execute="profile-public-website" render="date" ></f:ajax>
+                      </p:calendar>
+                     </div>
+                     <h:message id="date" for="profile-public-website"></h:message>
+                     
+   <!--p:calendar id="profile-public-website" value="#{ProfilController.dateNaissanceChild}">
+                </p:calendar-->
+                      
+                     
+
+                    <!-- /FORM SELECT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+                  
+
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT DECORATED -->
+                    
+<div class="form-input-decorated">
+                      <!-- FORM INPUT -->
+                      
+<div class="form-input small active">
+                        <label for="profile-birthday">adresse</label>
+<h:inputText id="profile-birthday" value="#{AuthController.adresseR}" required="true" requiredMessage="adresse required" >
+  <f:ajax execute="profile-birthday"  render="msgadresse"></f:ajax>              
+
+
+</h:inputText>
+                      </div>
+                      <!-- /FORM INPUT -->
+                              <h:message id="msgadresse" for="profile-birthday" style="Color:red"></h:message>
+          
+                      <!-- FORM INPUT ICON -->
+                     
+                      <!-- /FORM INPUT ICON -->
+                    </div>
+                    <!-- /FORM INPUT DECORATED -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+                    
+<div class="form-input small active">
+                      <label for="profile-occupation">tel number</label>
+<h:inputText id="profile-occupation" value="#{AuthController.telR}" required="true" requiredMessage="tel required" >
+  <f:ajax execute="profile-occupation"  render="msgtel"></f:ajax>              
+
+
+
+</h:inputText>
+                    </div>
+                    <!-- /FORM INPUT -->
+                                                  <h:message id="msgtel" for="profile-occupation" style="Color:red"></h:message>
+                    
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM SELECT -->
+                    
+
+                    <!-- /FORM SELECT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+                  
+
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                
+<div class="form-row split">
+                  <!-- FORM ITEM -->
+                  
+<div class="form-item">
+                    <!-- FORM INPUT -->
+ 
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                  <!-- FORM ITEM -->
+
+                  <!-- /FORM ITEM -->
+                </div>
+                <h:commandLink action="#{AuthController.registerparent()}" >
+              
+              <button class="button medium primary">Register Now!</button></h:commandLink>
+                
+                <!-- /FORM ROW -->
+              </h:form>
+              <!-- /FORM -->
+            </div>
+            <!-- WIDGET BOX CONTENT -->
+          </div>
+				
+		
+				
+			
+				
+		
+    <script src="http://localhost:8082/SpringMVC/resources/js/app.bundle.min.js"></script>
+		   
+		   
+		   
+		   </h:body></html>

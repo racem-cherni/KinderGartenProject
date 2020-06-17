@@ -1,0 +1,1029 @@
+
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	>
+
+		<ui:define name="content">
+				<style>
+.avatar-wrapper {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	/* 	margin: 50px auto; */
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 1px 1px 15px -5px black;
+	transition: all 0.3s ease;
+}
+.imageChild{
+
+
+}
+.avatar-wrapper:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+}
+
+.avatar-wrapper:hover .profile-pic {
+	opacity: 0.5;
+}
+
+.avatar-wrapper .profile-pic {
+	height: 100%;
+	width: 100%;
+	transition: all 0.3s ease;
+}
+
+.avatar-wrapper .profile-pic:after {
+	font-family: FontAwesome;
+	content: "\f007";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	font-size: 190px;
+	background: #ecf0f1;
+	color: #34495e;
+	text-align: center;
+}
+
+.avatar-wrapper .upload-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.avatar-wrapper .upload-button .fa-arrow-circle-up {
+	position: absolute;
+	font-size: 234px;
+	top: -17px;
+	left: 0;
+	text-align: center;
+	opacity: 0;
+	transition: all 0.3s ease;
+	color: #34495e;
+}
+
+.avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+	opacity: 0.9;
+}
+</style>
+		
+		
+		
+		
+		
+			<div class="content-grid"
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+				<!-- SECTION BANNER -->
+      
+
+      <!-- /PROFILE HEADER COVER -->
+  
+  
+  <div class="profile-header">
+      <!-- PROFILE HEADER COVER -->
+      <figure class="profile-header-cover liquid" style="background: url(&quot;http://localhost:8082/SpringMVC/resources/images/cover/01.jpg&quot;) center center / cover no-repeat;">
+        <img src="http://localhost:8082/SpringMVC/resources/images/cover/01.jpg" alt="cover-01" style="display: none;"/>
+      </figure>
+      <!-- /PROFILE HEADER COVER -->
+  
+      <!-- PROFILE HEADER INFO -->
+      <div class="profile-header-info">
+        <!-- USER SHORT DESCRIPTION -->
+        <div class="user-short-description big">
+          <!-- USER SHORT DESCRIPTION AVATAR -->
+          <a class="user-short-description-avatar user-avatar big">
+            <!-- USER AVATAR BORDER -->
+            <div class="user-avatar-border">
+              <!-- HEXAGON -->
+              <div class="hexagon-148-164" style="width: 148px; height: 164px; position: relative;"><canvas width="148" height="164" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              <!-- /HEXAGON -->
+            </div>
+            <!-- /USER AVATAR BORDER -->
+        
+            <!-- USER AVATAR CONTENT -->
+            <div class="user-avatar-content">
+              <!-- HEXAGON -->
+              <!-- /HEXAGON -->
+              
+              
+              
+              
+              
+              
+              
+              
+              <div
+					style="width: 100px; height: 110px; position: relative;"	class="col-md-offset-1 col-md-4 imglabel col-xs-offset-2 col-xs-10 hexagon-image-100-110">
+						<!-- 					<img class="imglabel" -->
+						<!-- 						src="../resources/images/profile.png" style="    max-width: 200px; -->
+
+						<!-- 						alt="Trophées de la Banque 2019" data-linktype="image" -->
+						<!-- 						data-scale="large" /><br /> -->
+						<!-- 					<br /> -->
+
+
+						<form method="post" action="/SpringMVC/servlet/upload" enctype="multipart/form-data">
+
+
+
+
+							<c:if test="#{    ProfilController.imageuser() }">
+
+								<div class="avatar-wrapper">
+
+
+									<img class="profile-pic"
+										src="http://localhost:8082/SpringMVC/resources/uploads/userProfileImage/#{ProfilController.imageUser()}" />
+									<div class="upload-button">
+										<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+									</div>
+									<input class="file-upload" type="file" accept="image/*"
+										name="file" id="image-file" />
+
+
+
+								</div>
+
+							</c:if>
+
+							<c:if test="#{ not ProfilController.imageuser() }">
+								<div class="avatar-wrapper">
+
+
+									<img class="profile-pic" src="" />
+									<div class="upload-button">
+										<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+									</div>
+									<input class="file-upload" type="file" accept="image/*"
+										name="file" id="image-file" />
+
+
+
+								</div>
+							</c:if>
+
+							<br /> <br /> <input type="submit" value="Upload"
+								class="btn btn-danger" style="margin-left: 56px;" />
+
+
+
+
+
+
+
+
+							<!-- 						<h:commandButton value="Update"   id="upp" style="border: 1px solid;  border-color: #ccc #ccc #bbb;   border-radius: 3px; background: #df0101;color: rgba(255, 242, 242, 0.8);line-height: 1;width: 26%;" -->
+							<!-- 							class="btn btn-primaire ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" /> -->
+						</form>
+
+						<!--  <button type="button" id="uploadBtn">Upload Example</button> -->
+
+					</div>
+
+
+
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+            </div>
+            <!-- /USER AVATAR CONTENT -->
+        
+            <!-- USER AVATAR PROGRESS -->
+            <div class="user-avatar-progress">
+              <!-- HEXAGON -->
+              <div class="hexagon-progress-124-136" style="width: 124px; height: 136px; position: relative;"><canvas width="124" height="136" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              <!-- /HEXAGON -->
+            </div>
+            <!-- /USER AVATAR PROGRESS -->
+        
+            <!-- USER AVATAR PROGRESS BORDER -->
+            <div class="user-avatar-progress-border">
+              <!-- HEXAGON -->
+              <div class="hexagon-border-124-136" style="width: 124px; height: 136px; position: relative;"><canvas width="124" height="136" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+              <!-- /HEXAGON -->
+            </div>
+            <!-- /USER AVATAR PROGRESS BORDER -->
+        
+            <!-- USER AVATAR BADGE -->
+            <div class="user-avatar-badge">
+              <!-- USER AVATAR BADGE BORDER -->
+              <div class="user-avatar-badge-border">
+                <!-- HEXAGON -->
+                <div class="hexagon-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR BADGE BORDER -->
+        
+              <!-- USER AVATAR BADGE CONTENT -->
+              <div class="user-avatar-badge-content">
+                <!-- HEXAGON -->
+                <div class="hexagon-dark-32-34" style="width: 32px; height: 34px; position: relative;"><canvas width="32" height="34" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR BADGE CONTENT -->
+        
+              <!-- USER AVATAR BADGE TEXT -->
+             
+              <!-- /USER AVATAR BADGE TEXT -->
+            </div>
+            <!-- /USER AVATAR BADGE -->
+          </a>
+          <!-- /USER SHORT DESCRIPTION AVATAR -->
+  
+          <!-- USER SHORT DESCRIPTION AVATAR -->
+         
+          <!-- /USER SHORT DESCRIPTION AVATAR -->
+    
+          <!-- USER SHORT DESCRIPTION TITLE -->
+          <p class="user-short-description-title"><a href="profile-timeline.html"> <h:outputLabel class="information-line-text" value="#{ProfilController.firstName.concat(' ').concat(ProfilController.lastName)}" required="true" label="text" />
+</a></p>
+          <!-- /USER SHORT DESCRIPTION TITLE -->
+    
+          <!-- USER SHORT DESCRIPTION TEXT -->
+        
+          <!-- /USER SHORT DESCRIPTION TEXT -->
+        </div>
+        <!-- /USER SHORT DESCRIPTION -->
+  
+        <!-- PROFILE HEADER SOCIAL LINKS WRAP -->
+        <div class="profile-header-social-links-wrap">
+          <!-- PROFILE HEADER SOCIAL LINKS -->
+          <div class="tns-outer" id="profile-header-social-links-slider-ow"><div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">1 to 7</span>  of 7</div><div id="profile-header-social-links-slider-mw" class="tns-ovh"><div class="tns-inner" id="profile-header-social-links-slider-iw"><div id="profile-header-social-links-slider" class="profile-header-social-links  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" style="transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+            <div class="profile-header-social-link tns-item tns-slide-active" id="profile-header-social-links-slider-item0">
+              <!-- SOCIAL LINK -->
+              <a class="social-link facebook" href="#">
+                <!-- ICON FACEBOOK -->
+                <svg class="icon-facebook">
+                  <use xlink:href="#svg-facebook"></use>
+                </svg>
+                <!-- /ICON FACEBOOK -->
+              </a>
+              <!-- /SOCIAL LINK -->
+            </div>
+      
+            <div class="profile-header-social-link tns-item tns-slide-active" id="profile-header-social-links-slider-item1">
+              <!-- SOCIAL LINK -->
+              <a class="social-link twitter" href="#">
+                <!-- ICON TWITTER -->
+                <svg class="icon-twitter">
+                  <use xlink:href="#svg-twitter"></use>
+                </svg>
+                <!-- /ICON TWITTER -->
+              </a>
+              <!-- /SOCIAL LINK -->
+            </div>
+  
+            <div class="profile-header-social-link tns-item tns-slide-active" id="profile-header-social-links-slider-item2">
+              <!-- SOCIAL LINK -->
+              <a class="social-link instagram" href="#">
+                <!-- ICON INSTAGRAM -->
+                <svg class="icon-instagram">
+                  <use xlink:href="#svg-instagram"></use>
+                </svg>
+                <!-- /ICON INSTAGRAM -->
+              </a>
+              <!-- /SOCIAL LINK -->
+            </div>
+      
+            <div class="profile-header-social-link tns-item tns-slide-active" id="profile-header-social-links-slider-item3">
+              <!-- SOCIAL LINK -->
+              <a class="social-link twitch" href="#">
+                <!-- ICON TWITCH -->
+                <svg class="icon-twitch">
+                  <use xlink:href="#svg-twitch"></use>
+                </svg>
+                <!-- /ICON TWITCH -->
+              </a>
+              <!-- /SOCIAL LINK -->
+            </div>
+      
+            <div class="profile-header-social-link tns-item tns-slide-active" id="profile-header-social-links-slider-item4">
+              <!-- SOCIAL LINK -->
+              <a class="social-link youtube" href="#">
+                <!-- ICON YOUTUBE -->
+                <svg class="icon-youtube">
+                  <use xlink:href="#svg-youtube"></use>
+                </svg>
+                <!-- /ICON YOUTUBE -->
+              </a>
+              <!-- /SOCIAL LINK -->
+            </div>
+  
+            <div class="profile-header-social-link tns-item tns-slide-active" id="profile-header-social-links-slider-item5">
+              <!-- SOCIAL LINK -->
+              <a class="social-link patreon" href="#">
+                <!-- ICON PATREON -->
+                <svg class="icon-patreon">
+                  <use xlink:href="#svg-patreon"></use>
+                </svg>
+                <!-- /ICON PATREON -->
+              </a>
+              <!-- /SOCIAL LINK -->
+            </div>
+  
+            <div class="profile-header-social-link tns-item tns-slide-active" id="profile-header-social-links-slider-item6">
+              <!-- SOCIAL LINK -->
+              <a class="social-link discord" href="#">
+                <!-- ICON DISCORD -->
+                <svg class="icon-discord">
+                  <use xlink:href="#svg-discord"></use>
+                </svg>
+                <!-- /ICON DISCORD -->
+              </a>
+              <!-- /SOCIAL LINK -->
+            </div>
+          </div></div></div></div>
+          <!-- /PROFILE HEADER SOCIAL LINKS -->
+  
+          <!-- SLIDER CONTROLS -->
+          <div id="profile-header-social-links-slider-controls" class="slider-controls" aria-label="Carousel Navigation" tabindex="0" style="display: none;">
+            <!-- SLIDER CONTROL -->
+            <div class="slider-control left" aria-controls="profile-header-social-links-slider" tabindex="-1" data-controls="prev">
+              <!-- SLIDER CONTROL ICON -->
+              <svg class="slider-control-icon icon-small-arrow">
+                <use xlink:href="#svg-small-arrow"></use>
+              </svg>
+              <!-- /SLIDER CONTROL ICON -->
+            </div>
+            <!-- /SLIDER CONTROL -->
+  
+            <!-- SLIDER CONTROL -->
+            <div class="slider-control right" aria-controls="profile-header-social-links-slider" tabindex="-1" data-controls="next">
+              <!-- SLIDER CONTROL ICON -->
+              <svg class="slider-control-icon icon-small-arrow">
+                <use xlink:href="#svg-small-arrow"></use>
+              </svg>
+              <!-- /SLIDER CONTROL ICON -->
+            </div>
+            <!-- /SLIDER CONTROL -->
+          </div>
+          <!-- /SLIDER CONTROLS -->
+        </div>
+        <!-- /PROFILE HEADER SOCIAL LINKS WRAP -->
+  
+        <!-- USER STATS -->
+     
+        <!-- /USER STATS -->
+  
+        <!-- PROFILE HEADER INFO ACTIONS -->
+       
+        <!-- /PROFILE HEADER INFO ACTIONS -->
+      </div>
+      <!-- /PROFILE HEADER INFO -->
+    </div>
+  
+  
+      <!-- PROFILE HEADER INFO -->
+     
+        <!-- /WIDGET BOX -->
+      
+        <!-- WIDGET BOX -->
+        <section class="section">
+        
+  <h:form>   
+  
+  
+  
+  
+  
+			<nav class="section-navigation">
+      <!-- SECTION MENU -->
+      <div class="tns-outer" id="section-navigation-slider-ow"><div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">1 to 7</span>  of 11</div><div id="section-navigation-slider-mw" class="tns-ovh"><div class="tns-inner" id="section-navigation-slider-iw"><div id="section-navigation-slider" class="section-menu  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" style="transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/parentprofil" class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item0">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-profile">
+            <use xlink:href="#svg-profile"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">About</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+        </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/recherchKinder" class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item1">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-timeline">
+            <use xlink:href="#svg-timeline"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">SearchKinder</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+       </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/friends" class="section-menu-item active tns-item tns-slide-active" href="profile-friends.html" id="section-navigation-slider-item2">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-friend">
+            <use xlink:href="#svg-friend"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">MyFriends</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+   </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/showfriend" class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item3">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-group">
+            <use xlink:href="#svg-group"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">search Friend</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+     </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/showAbonner" class="section-menu-item tns-item tns-slide-active" id="section-navigation-slider-item4">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-photos">
+            <use xlink:href="#svg-photos"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">MyAbonner</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+       </h:link>
+        <!-- /SECTION MENU ITEM -->
+  
+        <!-- SECTION MENU ITEM -->
+        <h:link outcome="/pages/parent/showInvi"  class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item5">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-videos">
+            <use xlink:href="#svg-videos"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">show Invitaion</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+       </h:link>
+        <!-- /SECTION MENU ITEM -->
+  <h:link outcome="/pages/parent/recomendedKinder" class="section-menu-item tns-item tns-slide-active"  id="section-navigation-slider-item6">
+          <!-- SECTION MENU ITEM ICON -->
+          <svg class="section-menu-item-icon icon-badges">
+            <use xlink:href="#svg-badges"></use>
+          </svg>
+          <!-- /SECTION MENU ITEM ICON -->
+  
+          <!-- SECTION MENU ITEM TEXT -->
+          <p class="section-menu-item-text">recommended kinder</p>
+          <!-- /SECTION MENU ITEM TEXT -->
+      </h:link>
+        <!-- SECTION MENU ITEM -->
+      
+        <!-- /SECTION MENU ITEM -->
+  
+      
+      </div></div></div></div>
+      <!-- /SECTION MENU -->
+  
+      <!-- SLIDER CONTROLS -->
+      <div id="section-navigation-slider-controls" class="slider-controls" aria-label="Carousel Navigation" tabindex="0">
+        <!-- SLIDER CONTROL -->
+        <div class="slider-control left" aria-controls="section-navigation-slider" tabindex="-1" data-controls="prev" aria-disabled="true">
+          <!-- SLIDER CONTROL ICON -->
+          <svg class="slider-control-icon icon-small-arrow">
+            <use xlink:href="#svg-small-arrow"></use>
+          </svg>
+          <!-- /SLIDER CONTROL ICON -->
+        </div>
+        <!-- /SLIDER CONTROL -->
+  
+        <!-- SLIDER CONTROL -->
+        <div class="slider-control right" aria-controls="section-navigation-slider" tabindex="-1" data-controls="next">
+          <!-- SLIDER CONTROL ICON -->
+          <svg class="slider-control-icon icon-small-arrow">
+            <use xlink:href="#svg-small-arrow"></use>
+          </svg>
+          <!-- /SLIDER CONTROL ICON -->
+        </div>
+        <!-- /SLIDER CONTROL -->
+      </div>
+      <!-- /SLIDER CONTROLS -->
+    </nav>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
+  
+<div class="widget-box">
+          <!-- WIDGET BOX SETTINGS -->
+          
+<div class="widget-box-settings">
+            <!-- POST SETTINGS WRAP -->
+            
+<div class="post-settings-wrap">
+              <!-- POST SETTINGS -->
+              
+<div class="post-settings widget-box-post-settings-dropdown-trigger">
+                <!-- POST SETTINGS ICON -->
+                <svg class="post-settings-icon icon-more-dots">
+                  <use xlink:href="#svg-more-dots" />
+                </svg>
+                <!-- /POST SETTINGS ICON -->
+              </div>
+              <!-- /POST SETTINGS -->
+      
+              <!-- SIMPLE DROPDOWN -->
+              
+<div class="simple-dropdown widget-box-post-settings-dropdown">
+                <!-- SIMPLE DROPDOWN LINK -->
+                <h:commandButton  action="#{ProfilController.update()}" value="Update" />
+              
+                
+                
+                
+
+                <!-- /SIMPLE DROPDOWN LINK -->
+              </div>
+              <!-- /SIMPLE DROPDOWN -->
+            </div>
+            <!-- /POST SETTINGS WRAP -->
+          </div>
+          <!-- /WIDGET BOX SETTINGS -->
+      
+          <!-- WIDGET BOX TITLE -->
+          
+<p class="widget-box-title">Personal Info</p>
+          <!-- /WIDGET BOX TITLE -->
+      
+          <!-- WIDGET BOX CONTENT -->
+          
+<div class="widget-box-content">
+            <!-- INFORMATION LINE LIST -->
+            
+<div class="information-line-list">
+              <!-- INFORMATION LINE -->
+              
+<div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                
+<p class="information-line-title">first name :</p>
+                <!-- /INFORMATION LINE TITLE -->
+                <!-- INFORMATION LINE TEXT -->
+ <h:outputLabel class="information-line-text" value="#{ProfilController.firstName}" required="true" label="text" />
+
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              
+<div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                
+<p class="information-line-title">last Name :</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                
+ <h:outputLabel class="information-line-text" value="#{ProfilController.lastName}"  />
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              
+<div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                
+<p class="information-line-title">Email :</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                
+ <h:outputLabel class="information-line-text" value="#{ProfilController.email}"  />
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              
+<div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                
+<p class="information-line-title">adresse</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                
+ <h:outputLabel class="information-line-text" value="#{ProfilController.adresse}" />
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              
+<div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                
+<p class="information-line-title">tel :</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                
+ <h:outputLabel class="information-line-text" value="#{ProfilController.tel}"  />
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              
+<div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                
+<p class="information-line-title">dateNaissance</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                
+ <h:outputLabel class="information-line-text" value="#{ProfilController.dateNaissance}" />
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              
+
+              <!-- /INFORMATION LINE -->
+            </div>
+            <!-- /INFORMATION LINE LIST -->
+          </div>
+          <!-- /WIDGET BOX CONTENT -->
+        </div>
+        
+        <h:panelGrid  columns="1" cellpadding="5">
+        <p:commandButton value="Modal" onclick="PF('dlg').show();" type="button" />
+    </h:panelGrid>
+
+
+ <p:dialog id="dialog" header="Login" widgetVar="dlg" width="600" >
+ <h:panelGrid columns="3" cellpadding="5" id="someID">
+ 
+ <h:outputLabel for="firstName" value="firstName *" />
+                <p:inputText
+                    id="firstName" required="true" label="firstName" requiredMessage="Field required" value="#{ProfilController.firstName}" />
+                <p:message for="username"/>
+<h:outputLabel for="lastName" value="lastName : *" />
+                <p:inputText
+                    id="lastName" required="true" label="lastName" requiredMessage="Field required"  value="#{ProfilController.lastName}"/>
+                <p:message for="username"/>
+<h:outputLabel for="adresse" value="adresse : *" />
+                <p:inputText
+                    id="adresse" required="true" label="adresse" requiredMessage="Field required" value="#{ProfilController.adresse}" />
+                <p:message for="username"/>
+<h:outputLabel for="username" value="Username: *" />
+                <p:inputText
+                    id="username" required="true" label="username" requiredMessage="Field required" value="#{ProfilController.tel}" />
+                <p:message for="email"/>
+ 
+ 
+ <h:outputLabel for="email" value="email : *" />
+                <p:inputText
+                    id="email" required="true" label="email" requiredMessage="Field required" value="#{ProfilController.email}" />
+                <p:message for="email"/>
+                <h:outputLabel for="profile-public-website" value="Birth Date : *" />
+                 <p:calendar id="profile-public-website" value="#{ProfilController.dateNaissance}" showOn="button" pattern="yyyy-MM-dd"/>
+ 
+ <f:facet name="footer">
+ <h:commandLink  action="#{ProfilController.update()}" >
+ 
+                    <p:commandButton value="update"  onsuccess="PF('dlg').hide()" onerror="PF('dlg').show()" /></h:commandLink>
+                </f:facet>
+ 
+ 
+ 
+ </h:panelGrid>
+
+
+
+
+           
+        </p:dialog>
+        
+ 
+   
+ 
+  
+        
+       	<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="http://localhost:8082/SpringMVC/resources/images/banner/groups-icon.png" alt="groups-icon"/>
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">MY kids</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Browse all the groups of the community!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+			  
+ 
+       
+        
+        
+    </h:form>  
+  <h:form>
+  <h:link outcome="/pages/parent/addChild" value="add Child" styleClass="button primary">    </h:link>
+      <br/>
+      <br/>
+<div class="grid">
+        <!-- USER PREVIEW -->
+ <ui:repeat value="#{ProfilController.childs}" var="child">    
+ 
+     
+<div class="user-preview landscape">
+          <!-- USER PREVIEW COVER -->
+          <h:commandLink action="#{ProfilController.uplodechild(child)}">  
+         <figure class="picture small round liquid" style="background: url(&quot;http://localhost:8082/SpringMVC/resources/uploads/userProfileImage/#{child.image}&quot;) center center / cover no-repeat;">
+                    <img src="http://localhost:8082/SpringMVC/resources/uploads/userProfileImage/#{child.image}" alt="cover-19" style="display: none;"/>
+                  </figure></h:commandLink>
+          <!-- /USER PREVIEW COVER -->
+      
+          <!-- USER PREVIEW INFO -->
+          
+<div class="user-preview-info">
+            <!-- USER SHORT DESCRIPTION -->
+            
+<div class="user-short-description landscape tiny">
+              <!-- USER SHORT DESCRIPTION AVATAR -->
+             
+                <!-- USER AVATAR BORDER -->
+                
+<div class="user-avatar-border">
+                  <!-- HEXAGON -->
+                  
+<div class="hexagon-50-56" />
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BORDER -->
+            
+                <!-- USER AVATAR CONTENT -->
+
+                <!-- /USER AVATAR CONTENT -->
+            
+                <!-- USER AVATAR PROGRESS -->
+                
+<div class="user-avatar-progress">
+                  <!-- HEXAGON -->
+                  
+<div class="hexagon-progress-40-44" />
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR PROGRESS -->
+            
+                <!-- USER AVATAR PROGRESS BORDER -->
+                
+<div class="user-avatar-progress-border">
+                  <!-- HEXAGON -->
+                  
+<div class="hexagon-border-40-44" />
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR PROGRESS BORDER -->
+            
+                <!-- USER AVATAR BADGE -->
+                
+<div class="user-avatar-badge">
+                  <!-- USER AVATAR BADGE BORDER -->
+                  
+<div class="user-avatar-badge-border">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-22-24" />
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR BADGE BORDER -->
+            
+                  <!-- USER AVATAR BADGE CONTENT -->
+                  
+<div class="user-avatar-badge-content">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-dark-16-18" />
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR BADGE CONTENT -->
+            
+                  <!-- USER AVATAR BADGE TEXT -->
+                  
+<p class="user-avatar-badge-text">12</p>
+                  <!-- /USER AVATAR BADGE TEXT -->
+                </div>
+                <!-- /USER AVATAR BADGE -->
+              
+              <!-- /USER SHORT DESCRIPTION AVATAR -->
+        
+              <!-- USER SHORT DESCRIPTION TITLE -->
+              
+<p class="user-short-description-title"><h:outputLabel for="ajax" value="#{child.childName}" /></p>
+              <!-- /USER SHORT DESCRIPTION TITLE -->
+        
+              <!-- USER SHORT DESCRIPTION TEXT -->
+              
+<p class="user-short-description-text"><h:outputLabel for="ajax" value="#{child.health}" /></p>
+              <!-- /USER SHORT DESCRIPTION TEXT -->
+            </div>
+            <!-- /USER SHORT DESCRIPTION -->
+        
+            <!-- BADGE LIST -->
+            
+
+            <!-- /BADGE LIST -->
+      
+            <!-- USER STATS -->
+            
+<div class="user-stats">
+              <!-- USER STAT -->
+              
+<div class="user-stat">
+                <!-- USER STAT TITLE -->
+                
+<p class="user-stat-title"><h:outputLabel for="ajax" value="#{child.dateNaissance}" /></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+                
+<p class="user-stat-text">dateNaissance</p>
+                <!-- /USER STAT TEXT -->
+                
+                
+                
+              </div>
+              <!-- /USER STAT -->
+        
+              <!-- USER STAT -->
+              
+<div class="user-stat">
+                <!-- USER STAT TITLE -->
+                
+<p class="user-stat-title"></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+             <p class="user-stat-title"><h:outputLabel for="ajax" value="#{child.kindergarten.kinderGartenName}" /></p>   
+<p class="user-stat-text">KinderGartenName</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              <!-- /USER STAT -->
+        
+              <!-- USER STAT -->
+              
+<div class="user-stat">
+                <!-- USER STAT TITLE -->
+                
+<p class="user-stat-title"></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+          <p class="user-stat-title"><h:outputLabel for="ajax" value="#{child.classe.nom}" /></p>      
+<p class="user-stat-text">Classe</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              <!-- /USER STAT -->
+            </div>
+            <!-- /USER STATS -->
+            <!-- SOCIAL LINKS -->
+            
+
+            <!-- /SOCIAL LINKS -->
+      
+            <!-- USER PREVIEW ACTIONS -->
+            
+<div class="user-preview-actions">
+              <!-- BUTTON -->
+              
+<p class="button secondary">
+                <!-- BUTTON ICON -->
+                <h:commandLink
+						action="#{ProfilController.dispatchChild(child)}"
+						 >
+                <svg class="button-icon icon-add-friend">
+                  <use xlink:href="#svg-add-friend" />
+                </svg></h:commandLink>
+                <!-- /BUTTON ICON -->
+              </p>
+              <!-- /BUTTON -->
+      
+              <!-- BUTTON -->
+              
+<p class="button primary">
+                <!-- BUTTON ICON -->
+                  <h:commandLink id="supp"
+						action="#{ProfilController.supprimerChild(child)}"
+						 >
+						 <f:ajax execute="supp" render="@form"></f:ajax>
+                <svg class="button-icon icon-comment">
+                  <use xlink:href="#svg-comment" />
+                </svg></h:commandLink>
+                <!-- /BUTTON ICON -->
+              </p>
+              <!-- /BUTTON -->
+            </div>
+            <!-- /USER PREVIEW ACTIONS -->
+          </div>
+          <!-- /USER PREVIEW INFO -->
+        </div>
+        <!-- /USER PREVIEW -->
+    
+        <!-- USER PREVIEW -->
+       </ui:repeat> 
+</div>
+</h:form> 
+</section>
+</div>
+
+		<script>
+
+$(document).ready(function() {
+	
+    var readURL = function(input) {
+        if (input.files &amp;&amp; input.files[0]) {
+      
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+        
+    
+    }
+   
+    $(".file-upload").on('change', function(){
+        readURL(this);
+      
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+  
+    
+});
+
+
+
+
+
+
+
+
+
+</script>
+</ui:define></ui:composition>

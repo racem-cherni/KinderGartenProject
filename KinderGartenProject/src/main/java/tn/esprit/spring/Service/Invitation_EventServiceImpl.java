@@ -40,6 +40,9 @@ public class Invitation_EventServiceImpl implements IInvitation_EventService {
 	
 	private Session sessionservice ;
     
+	@Autowired
+	UserServices userservices ;
+    
     @Autowired
     
     Invitation_EventRepository invitationrepository ;
@@ -286,15 +289,17 @@ if (parent.getInvitations().contains(invitation)){
 			
 			if (invitation.getReponse().equals("en_attente")){
 				event.setNbr_invites(event.getNbr_invites()-1);
+				
 			}
 			
 			if (invitation.getReponse().equals("participe"))
 			{
 				
 					System.out.println("cet evenement  avec l'id " + id_event + " est deja participe ")	;
+
 			}
 				else {
-					if (event.getNbr_participants()<event.getNbr_places() && event.getDate_final_reservation().after(date))
+					if (event.getNbr_places_occupes()<event.getNbr_places() && event.getDate_final_reservation().after(date))
 					{
 						
 						if (invitation.getReponse().equals("intéressé"))
@@ -328,11 +333,15 @@ if (parent.getInvitations().contains(invitation)){
 								event.setNbr_places_occupes(event.getNbr_places_occupes() +parent.getChilds().size());
 								event.setNbr_participants(event.getNbr_participants() +1 );
 
-								}							eventrepository.save(event);
+								}
+							eventrepository.save(event);
+
 
 						}
 						
 					}
+					else 
+						System.out.println("la date finale de reservation est atteint");
 					
 				    }
 			invitationrepository.save(invitation);
@@ -340,6 +349,32 @@ if (parent.getInvitations().contains(invitation)){
 			}
 			
 		}
+	@Override
+	@Transactional
+	public void annuler_participation_eventjsf(Long id_event) {
+		Date date = new Date();
+		UserApp user = userrepository.findById(1L).get();
+		Parent parent = user.getParent() ;
+		Event event = eventrepository.findById(id_event).get();
+		Invitation_Event invitation = invitationrepository.getinvitation(parent, event);
+		if(event.getDate_event().after(date)){
+			if(event.getType_event().equals(Type_Event.Public)){
+		event.setNbr_places_occupes(event.getNbr_places_occupes() -1 - parent.getChilds().size());
+		event.setNbr_participants(event.getNbr_participants() -1 );
+                                                                }
+			if(event.getType_event().equals(Type_Event.Kids)){
+				event.setNbr_places_occupes(event.getNbr_places_occupes() -parent.getChilds().size());
+				event.setNbr_participants(event.getNbr_participants() -1 );
+                                                            }
+			eventrepository.save(event);
+			invitation.setDate_reponse(date);
+			invitation.setReponse("annulé");
+			invitationrepository.save(invitation);
+           }
+		else System.out.println("le event est deja en cours ");
+		
+		
+	}
 		
 		
 	@Override
@@ -372,6 +407,21 @@ if (parent.getInvitations().contains(invitation)){
 	}
 	}
 	@Override
+	public void annuler_interesser_eventjsf(Long id_event) {
+		Date date = new Date();
+		UserApp user = userrepository.findById(1L).get();
+		Parent parent = user.getParent() ;
+		Event event = eventrepository.findById(id_event).get();
+		Invitation_Event invitation = invitationrepository.getinvitation(parent, event);
+		invitation.setDate_reponse(date);
+		invitation.setReponse("annulé");
+		event.setNbr_interssants(event.getNbr_interssants()-1);
+		eventrepository.save(event);
+		invitationrepository.save(invitation);
+
+}
+	
+	@Override
 	public void inviter_tousparent_eventjsf(Event e) {
 
 Date date = new Date();
@@ -401,6 +451,48 @@ Date date = new Date();
 		
 		
 	}
+
+	
+	@Override
+	public List<Event> listinteressteevents() {
+		UserApp user = userrepository.findById(1L).get();
+		Parent parent = user.getParent() ;
+		return invitationrepository.listeventsinteresses(parent);
+	}
+
+	@Override
+	public List<Event> listparticipatedevents() {
+	
+		UserApp user = userrepository.findById(1L).get();
+		Parent parent = user.getParent() ;
+		return invitationrepository.listeventsparticipated(parent);
+	}
+	
+	@Override
+	public Invitation_Event invitationparent(Long id){
+		UserApp user = userservices.currentUserJsf();
+
+		Parent parent = user.getParent() ;
+		Event event = eventrepository.findById(id).get();
+
+		
+		return invitationrepository.getinvitation(parent, event);
+
+	}
+
+	@Override
+	public List<Parent> listparentparticipes(Long idevent) {
+		Event event = eventrepository.findById(idevent).get();
+		return invitationrepository.listparentparticipes(event);
+	}
+
+	@Override
+	public List<Parent> listparentinteressess(Long idevent) {
+		Event event = eventrepository.findById(idevent).get();
+		return invitationrepository.listparentinteresses(event);
+	}
+	
+	
 /////////////////////////////////////////////////////////jsf///////////////////////////////////////////////////////
 
 	

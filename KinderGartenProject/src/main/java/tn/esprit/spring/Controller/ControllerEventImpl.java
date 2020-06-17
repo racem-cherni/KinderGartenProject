@@ -1,12 +1,14 @@
 package tn.esprit.spring.Controller;
 
-import java.io.IOException;  
+import java.io.IOException;   
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import javax.websocket.server.PathParam;
 
@@ -25,7 +27,6 @@ import tn.esprit.spring.entities.Etat_Invitation_Event;
 import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.entities.Invitation_Event;
 import tn.esprit.spring.entities.Locationevent;
-//import tn.esprit.spring.entities.Salle_event;
 import tn.esprit.spring.entities.Type_Event;
 
 
@@ -33,7 +34,7 @@ import tn.esprit.spring.entities.Type_Event;
 @Scope(value = "session")
 @Controller(value = "eventkindergartenController")
 @ELBeanName(value = "eventkindergartenController")
-@Join(path = "/event", to = "/pages/Parent/Event/WelcomeEvent.jsf")
+@Join(path = "/events", to = "/pages/Parent/Event/WelcomeEvent.jsf")
 public class ControllerEventImpl {
 	
 	@Autowired
@@ -43,19 +44,33 @@ public class ControllerEventImpl {
     IInvitation_EventService iinvitationservice ;
 	
 	private Locationevent location_event ;
+	
+	private String nameeventsearch ;
+	
+	private List<Event> listeventsearch ;
 
 	private int nbrdusscussions;
+	
+	private Long id ;
+	
+	private int filtre ;
 	
 	private List<Discussion_Event> listdiscussions ;
 	
 	private List<Event> events ;
+	
+	private List<Event> passedevents ;
+	
+	private List<Event> interesstedevents ;
+	
+	private List<Event> partipatedevents ;
 	
 	private Double entry_price ;
 
 	private List<Event> eventsassocié;
 
 	
-	private List<Event> todayevents;
+	private Event todayevents;
 	
 	private List<Event> upcomingevents;
    
@@ -90,7 +105,6 @@ public class ControllerEventImpl {
 	
 	private Type_Event type_event;
 	
-//	private Salle_event salle_event;
 	
 	private Long idevent ;
 	
@@ -266,14 +280,7 @@ public class ControllerEventImpl {
 	}
 
 
-//	public Salle_event getSalle_event() {
-//		return salle_event;
-//	}
-//
-//
-//	public void setSalle_event(Salle_event salle_event) {
-//		this.salle_event = salle_event;
-//	}
+	
 
 
 	public Event Eventtpop(int eventid) {
@@ -305,19 +312,19 @@ public class ControllerEventImpl {
 	}
 
 
-	public List<Event> getTodayevents() {
-		todayevents = ieventservice.eventstodayjsf();
+	public Event getTodayevents() {
+		todayevents = ieventservice.eventstodayparentjsf();
 		return todayevents;
 	}
 
 
-	public void setTodayevents(List<Event> todayevents) {
+	public void setTodayevents(Event todayevents) {
 		this.todayevents = todayevents;
 	}
 
 
 	public List<Event> getUpcomingevents() {
-		upcomingevents = ieventservice.upcomingeventsjsf();
+		upcomingevents = ieventservice.upcomingeventsparentjsf();
 		// month = new SimpleDateFormat("MMMM").format(upcomingevents.get(i).getDate_event()) ;
 		
 		return upcomingevents;
@@ -329,7 +336,7 @@ public class ControllerEventImpl {
 	}
 
 
-	public String getMonth(Date d) {
+	public String getMonth(Date d)   {
 		month = new SimpleDateFormat("MMMM").format(d);	
 		return month;
 		}
@@ -363,8 +370,8 @@ public class ControllerEventImpl {
 	
 
 	}
-	    public String gottodetailevent(Event event) {
-		String navigateTo ="null";
+	    public void gottodetailevent(Event event) {
+		//String navigateTo ="null";
 		this.setIdevent(event.getId());
 		this.setTitle(event.getTitle());
 		this.setDescription(event.getDescription());
@@ -380,9 +387,9 @@ public class ControllerEventImpl {
 		this.setDatefinreservation(event.getDate_final_reservation());
 		this.setType_event(event.getType_event());
 		this.setLocation_event(event.getLocation_event());
-		navigateTo = "/pages/Parent/Event/detailevent.xhtml?faces-redirect=false";
+	//	navigateTo = "/pages/Parent/Event/detailevent.xhtml?faces-redirect=false";
 		
-	    return navigateTo;
+	 //   return navigateTo;
 	    
 	}
 	    
@@ -486,11 +493,151 @@ public class ControllerEventImpl {
 		this.eventsassocié = eventsassocié;
 	}
 
-   
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public List<Event> getInteresstedevents() {
+		interesstedevents = iinvitationservice.listinteressteevents();
+		return interesstedevents;
+	}
+
+
+	public void setInteresstedevents(List<Event> interesstedevents) {
+		this.interesstedevents = interesstedevents;
+	}
+	
+	
+
+	@Transactional
+	public void getinvitationresponse(Long id) {
+		if (iinvitationservice.getinvitationevent(id).getReponse().equals("participe")){
+			iinvitationservice.annuler_participation_eventjsf(id);	
+		}
+		else {
+			iinvitationservice.participer_parentjsf(id);
+		}
+			
+	}
+
+
+	public List<Event> getPartipatedevents() {
+		partipatedevents = iinvitationservice.listparticipatedevents();
+		return partipatedevents;
+	}
+
+
+	public void setPartipatedevents(List<Event> partipatedevents) {
+		this.partipatedevents = partipatedevents;
+	}
+	
+	public boolean verifierdatereservation (Long id) {
+		Date date = new Date();
+		if (ieventservice.geteventbyid(id).getDate_final_reservation().before(date))
+			return true ;
+		else 
+			return false ;
+	}
+
+	public Event geteventbyidd (Long id){
+		return  ieventservice.geteventbyid(id);
+		
+	}
+
+
+	public List<Event> getPassedevents() {
+		passedevents = ieventservice.listpassedevents();
+		return passedevents;
+	}
+
+
+	public void setPassedevents(List<Event> passedevents) {
+		this.passedevents = passedevents;
+	}
+	
+	public List<Event> getAlleventbycategorie()  {
+	    List<Event> r = ieventservice.upcomingeventsparentjsf();
+	        if (filtre==0){
+	      r = this.getUpcomingevents();
+	    } else
+	    if (filtre==1) {
+	      r = iinvitationservice.listinteressteevents();
+	    } else if (filtre==3){
+	      r = iinvitationservice.listparticipatedevents();
+	    }
+	     else if (filtre==2){
+	        r = ieventservice.listpassedevents();
+	      }
+	    
+	   
+	      return r;
+	  }
+
+
+	public int getFiltre() {
+		return filtre;
+	}
+
+
+	public void setFiltre(int filtre) {
+		this.filtre = filtre;
+	}
+	
+	public void setfiltervalue(int id){
+		this.setFiltre(id);
+	}
+
+
+	public String getNameeventsearch() {
+		return nameeventsearch;
+	}
+
+
+	public void setNameeventsearch(String nameeventsearch) {
+		this.nameeventsearch = nameeventsearch;
+	}
+
+
+	public List<Event> getListeventsearch() {
+		listeventsearch = ieventservice.listeventbyname(nameeventsearch);
+		return listeventsearch;
+	}
+
+
+	public void setListeventsearch(List<Event> listeventsearch) {
+		this.listeventsearch = listeventsearch;
+	}
+	
+	public List<String> completeLanguage(String languagePrefix) {
+		List<String> matches = new ArrayList<String>();
+		for(String possibleLanguage: ieventservice.nameeventauto().split(",")) {
+			if(possibleLanguage.toUpperCase().startsWith(languagePrefix.toUpperCase())) {
+				matches.add(possibleLanguage);
+			}}
+	        return matches ;	
+	}
+	
+	public boolean verifierlistsearchevent(){
+		  if (ieventservice.listeventbyname(nameeventsearch).size() == 0)
+			  return true ;
+			  else 
+				  return false;
+	  }
+	
+	public void listsearch(){
+		listeventsearch=null;
+	}
+	
+	}
+	
+	
 	
 
 
-
-	
-
-}
