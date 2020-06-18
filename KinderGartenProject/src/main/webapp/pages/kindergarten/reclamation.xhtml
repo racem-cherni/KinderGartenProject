@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		
+				<ui:define name="content">
+											<f:view transient="true">
+		
+		<div class="content-grid" style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+    <!-- SECTION BANNER -->
+    
+<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/forums-icon.png" alt="forums-icon" />
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title">claims</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      
+<p class="section-banner-text">List of claims</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+    <!-- SECTION HEADER -->
+    
+<div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      
+<div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        
+<p class="section-pretitle">Welcome to</p>
+        <!-- /SECTION PRETITLE -->
+  
+        <!-- SECTION TITLE -->
+        
+<h2 class="section-title">Claims area </h2>
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+    </div>
+    <!-- /SECTION HEADER -->
+    <!-- SECTION FILTERS BAR -->
+    
+<br/>
+    <!-- /SECTION FILTERS BAR -->
+    <!-- TABLE -->
+    
+<div class="table table-forum-category">
+      <!-- TABLE HEADER -->
+      
+<div class="table-header">
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">Category</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+  
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column centered padded-medium">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">Number</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+  
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column centered padded-medium">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">Percentage</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+  
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column padded-big-left">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">Recent claims</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+      </div>
+      <!-- /TABLE HEADER -->
+  
+      <!-- TABLE BODY -->
+      
+<div class="table-body">
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/forum/category/01.png" alt="category-01" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationController.goToreclamParCategory('MAITRE')}" value="Teacher">
+   </h:commandLink></h:form>
+                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">Claims about our team</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationController.getNombreParType('MAITRE')}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationController.getPourcentageParType('MAITRE')}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+<ui:repeat var="event" value="#{reclamationController.getListRParType('MAITRE')}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+  
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/houssem/activity.jpg" alt="category-02" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationController.goToreclamParCategory('ACTIVITE')}" value="Activities">
+   </h:commandLink></h:form>                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">Claims about our activities!</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputFormat
+value="#{reclamationController.getNombreParType('ACTIVITE')}" />  </p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationController.getPourcentageParType('ACTIVITE')}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+           <ui:repeat var="event" value="#{reclamationController.getListRParType('ACTIVITE')}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/houssem/hamburgerfood.jpg" alt="category-03" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationController.goToreclamParCategory('NOURRITURE')}" value="Food">
+   </h:commandLink></h:form>
+                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">Claims about our meals!</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationController.getNombreParType('NOURRITURE')}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationController.getPourcentageParType('NOURRITURE')}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+           <ui:repeat var="event" value="#{reclamationController.getListRParType('NOURRITURE')}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+  
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/forum/category/05.png" alt="category-05" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationController.goToreclamParCategory('SITEWEB')}" value="Website">
+   </h:commandLink></h:form>                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">Claims about our website!</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationController.getNombreParType('SITEWEB')}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationController.getPourcentageParType('SITEWEB')}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+            <ui:repeat var="event" value="#{reclamationController.getListRParType('SITEWEB')}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/houssem/interogation.png" alt="category-06" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationController.goToreclamParCategory('AUTRE')}" value="Other">
+   </h:commandLink></h:form>                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">Other claims!</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationController.getNombreParType('AUTRE')}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationController.getPourcentageParType('AUTRE')}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+          <ui:repeat var="event" value="#{reclamationController.getListRParType('AUTRE')}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+      </div>
+      <!-- /TABLE BODY -->
+    </div>
+    <!-- /TABLE -->
+  </div>
+  </f:view>
+  </ui:define>
+
+
+	</ui:composition>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		
+				<ui:define name="content">
+		
+		<div class="content-grid" style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+    <!-- SECTION BANNER -->
+    
+<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/forums-icon.png" alt="forums-icon" />
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title">Reclamations of <h:outputText value="#{reclamationpController.sujetattach}" /></p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      
+<p class="section-banner-text">Listes des reclmations</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+    <!-- SECTION HEADER -->
+    
+<div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      
+<div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        
+<p class="section-pretitle">Welcome to</p>
+        <!-- /SECTION PRETITLE -->
+  
+        <!-- SECTION TITLE -->
+        
+<h2 class="section-title"><h:outputText value="#{reclamationpController.sujetattach}" /> reclamations</h2>
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+    </div>
+    <!-- /SECTION HEADER -->
+    <!-- SECTION FILTERS BAR -->
+    
+<br/>
+    <!-- /SECTION FILTERS BAR -->
+    <!-- TABLE -->
+    
+<div class="table table-forum-category">
+      <!-- TABLE HEADER -->
+      
+<div class="table-header">
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">Parent</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+  
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column centered padded-medium">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">reclamation</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+  
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column centered padded-medium">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">reponse</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+  
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column padded-big-left">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">reclamation date</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+      </div>
+      <!-- /TABLE HEADER -->
+  
+      <!-- TABLE BODY -->
+      
+<div class="table-body">
+        <!-- TABLE ROW -->
+<ui:repeat var="re" value="#{reclamationpController.getReclamationparcategory()}" varStatus="status">      
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/houssem/rsz_reclami.png" alt="category-01" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<p class="forum-category-title"><h:outputText value="#{re.parent.firstName}" /><h:outputText value="&#160;" /><h:outputText value="#{re.parent.lastName}" /> </p>
+                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">Les reclamations concernant notre equipe</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{re.reclamation_description}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{re.reclam_reponse}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{re.reclamation_date}" /></a>
+          </div>
+          
+          <!-- /TABLE COLUMN -->
+        </div>
+                        </ui:repeat>
+       
+        <!-- /TABLE ROW -->
+      </div>
+      <!-- /TABLE BODY -->
+    </div>
+    <!-- /TABLE -->
+  </div>
+  
+  </ui:define>
+
+
+	</ui:composition>
+
+
+
+
+</body>
+
+</html>

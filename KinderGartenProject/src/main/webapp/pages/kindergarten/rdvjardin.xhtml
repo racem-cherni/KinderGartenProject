@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui">
+
+	
+<h:body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml"
+		xmlns:p="http://primefaces.org/ui">
+		
+						<ui:define name="content">
+						
+	<div id="big" class="content-grid" style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+
+<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/events-icon.png" alt="events-icon"/>
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title">Appointment</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      
+<p class="section-banner-text">Manage your appointments easily</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+						
+		
+      <h:panelGroup id="weekbox">  
+        
+    <div class="week-box">
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{rdvController.getDisponibiltyforJ(0).heuredm}">
+            <f:convertDateTime pattern="HH:mm"/>
+</h:outputText><br/>
+<h:outputText value="#{rdvController.getDisponibiltyforJ(0).heurefm}"><f:convertDateTime pattern="HH:mm"/></h:outputText>
+</p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Mondays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{rdvController.getDisponibiltyforJ(1).heuredm}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{rdvController.getDisponibiltyforJ(1).heurefm}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Tuesdays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{rdvController.getDisponibiltyforJ(2).heuredm}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{rdvController.getDisponibiltyforJ(2).heurefm}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Wednesdays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{rdvController.getDisponibiltyforJ(3).heuredm}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{rdvController.getDisponibiltyforJ(3).heurefm}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Thursdays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{rdvController.getDisponibiltyforJ(4).heuredm}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{rdvController.getDisponibiltyforJ(4).heurefm}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Fridays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{rdvController.getDisponibiltyforJ(5).heuredm}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{rdvController.getDisponibiltyforJ(5).heurefm}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Saturdays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{rdvController.getDisponibiltyforJ(6).heuredm}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{rdvController.getDisponibiltyforJ(6).heurefm}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Sundays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+            </div>
+            </h:panelGroup>
+            <br/>
+            
+            
+    
+    
+    
+    
+    
+    <div class="grid grid-3-3-3">
+
+
+<div class="achievement-box secondary" style="width:250px;height:75px">
+          <!-- ACHIEVEMENT BOX INFO WRAP -->
+          
+<div class="achievement-box-info-wrap">
+            <!-- ACHIEVEMENT BOX IMAGE -->
+            <img class="achievement-box-image" src="files/img/houssem/add.png" alt="quest-completedq-l" />
+            <!-- /ACHIEVEMENT BOX IMAGE -->
+      
+            <!-- ACHIEVEMENT BOX INFO -->
+            
+<div class="achievement-box-info">
+              <!-- ACHIEVEMENT BOX TITLE -->
+              
+              <h:form class="achievement-box-title"><p:commandLink onclick="PF('dlg1').show();" value="schedule an appointment">
+   </p:commandLink></h:form>
+   
+              <!-- /ACHIEVEMENT BOX TITLE -->
+      
+              <!-- ACHIEVEMENT BOX TEXT -->
+                            <!-- /ACHIEVEMENT BOX TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT BOX INFO -->
+          </div>
+          <!-- /ACHIEVEMENT BOX INFO WRAP -->
+      
+        </div>
+        
+        
+        <div class="achievement-box primary" style="width:250px;height:75px">
+          <!-- ACHIEVEMENT BOX INFO WRAP -->
+          
+<div class="achievement-box-info-wrap">
+            <!-- ACHIEVEMENT BOX IMAGE -->
+            <img class="achievement-box-image" src="files/img/houssem/reclam.png" alt="quest-completedq-l" />
+            <!-- /ACHIEVEMENT BOX IMAGE -->
+      
+            <!-- ACHIEVEMENT BOX INFO -->
+            
+<div class="achievement-box-info">
+              <!-- ACHIEVEMENT BOX TITLE -->
+              
+              <h:form class="achievement-box-title"><p:commandLink onclick="PF('dlg3').show();" value="Delay appointment">
+   </p:commandLink>
+    </h:form>
+   
+              <!-- /ACHIEVEMENT BOX TITLE -->
+      
+              <!-- ACHIEVEMENT BOX TEXT -->
+                            <!-- /ACHIEVEMENT BOX TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT BOX INFO -->
+          </div>
+          <!-- /ACHIEVEMENT BOX INFO WRAP -->
+      
+        </div>
+        
+        
+        
+        
+        
+        <div class="achievement-box secondary" style="width:250px;height:75px">
+          <!-- ACHIEVEMENT BOX INFO WRAP -->
+          
+<div class="achievement-box-info-wrap">
+            <!-- ACHIEVEMENT BOX IMAGE -->
+            <img class="achievement-box-image" src="files/img/houssem/add.png" alt="quest-completedq-l" />
+            <!-- /ACHIEVEMENT BOX IMAGE -->
+      
+            <!-- ACHIEVEMENT BOX INFO -->
+            
+<div class="achievement-box-info">
+              <!-- ACHIEVEMENT BOX TITLE -->
+              <h:form class="achievement-box-title">              
+<h:commandLink id="modfierhoraire" action="#{rdvController.setmodifhoraire()}" onclick="PF('dlg5').show();" value="Edit work Time" >
+<p:ajax update=":dialogue1"/>
+</h:commandLink>
+</h:form>
+
+             
+   
+              <!-- /ACHIEVEMENT BOX TITLE -->
+      
+              <!-- ACHIEVEMENT BOX TEXT -->
+                            <!-- /ACHIEVEMENT BOX TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT BOX INFO -->
+          </div>
+          <!-- /ACHIEVEMENT BOX INFO WRAP -->
+      
+        </div>
+        
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                <!-- BUTTON ICON -->
+                
+                <!-- /BUTTON ICON -->
+              <br/>
+              
+      <p:dialog header="Add appointment" widgetVar="dlg1" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+              
+             
+              <h:form>
+			
+		<h:outputText value="Title"/><br/>
+		<h:inputText id="rdv-title" name="rdv_title" required="true" requiredMessage="Titre Rdv Obligatoire"
+         value="#{rdvController.ajoutTitle}"  /><br/>
+		<h:outputText value="Date"/><br/>
+		<p:calendar id="profileee-public" value="#{rdvController.ajoutDate}" showOn="button" pattern="yyyy-MM-dd"/><br/><br/>
+		<h:outputText value="Start Time"/><br/>
+	    <p:calendar id="profile" value="#{rdvController.ajoutTime}" showOn="button" pattern="HH:mm"/><br/><br/>
+	   
+	
+                    
+		<h:outputText value="Details"/><br/>
+		<p:inputTextarea rows="10" cols="50" value="#{rdvController.ajoutDescription}" queryDelay="750" minQueryLength="4">
+    </p:inputTextarea><br/>
+    <h:outputText value="Select parent"/><br/>
+		<h:selectOneMenu value="#{rdvController.ajoutparentId}">
+    <f:selectItems value="#{rdvController.getParentOfkindergarten()}" var="p" itemLabel="#{p.firstName}" itemValue="#{p.id}" />
+</h:selectOneMenu><br/>
+
+		<p:commandButton id="Addappointment" value="Send" update=":div_affichage" class="btn btn-success" action="#{rdvController.ajouterRdv()}" >
+
+</p:commandButton>	
+		</h:form>	
+</p:dialog>
+
+<div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      
+<div class="section-header-info">
+      
+  
+        <!-- SECTION TITLE -->
+        
+<h2 class="section-title">List of appointments</h2>
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+    </div>
+<br/>
+
+
+
+
+<div class="section-filters-bar v6">
+      <!-- SECTION FILTERS BAR ACTIONS -->
+      
+<div class="section-filters-bar-actions">
+        <!-- FORM -->
+        <h:form class="form">
+          <!-- FORM ITEM -->
+          
+<div class="form-item split">
+            <!-- FORM INPUT -->
+            
+<div class="form-input small">
+              <label for="events-search">Search for a meeting</label>
+              <h:inputText id="events-search" value="#{rdvController.searchString}"  />
+            </div>
+            
+            <div class="form-select">
+              <label for="post-filter-order">Search By</label>
+              <h:selectOneMenu id="post-filter-order" value="#{rdvController.recherchefiltre}" name="post_filter_order">
+                
+<f:selectItem  itemValue="0" itemLabel="By Title" ></f:selectItem>
+                
+<f:selectItem  itemValue="1" itemLabel="By Parent"></f:selectItem>
+              </h:selectOneMenu>
+              <!-- FORM SELECT ICON -->
+              <svg class="form-select-icon icon-small-arrow">
+                <use xlink:href="#svg-small-arrow" />
+              </svg>
+              <!-- /FORM SELECT ICON -->
+            </div>
+            
+            <!-- /FORM INPUT -->
+  
+            <!-- BUTTON -->
+         
+           <p:commandButton id="sendsearch" value="Send"  update=":div_affichage" class="button primary" action="#{rdvController.setvaluessearch()}" >
+</p:commandButton>
+            <!-- /BUTTON -->
+          </div>
+          <!-- /FORM ITEM -->
+        </h:form>
+        <!-- /FORM -->
+      </div>
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+      <div class="section-filters-bar-actions">
+      
+        
+</div>
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+    </div>
+
+
+
+
+
+	<div class="section-filters-bar v1">
+        <!-- SECTION FILTERS BAR ACTIONS -->
+        
+<div class="section-filters-bar-actions">
+    
+    
+          <!-- FILTER TABS -->
+          
+<div class="filter-tabs">
+            <!-- FILTER TAB -->
+            
+<div class="filter-tab">
+              <!-- FILTER TAB TEXT -->
+              
+<h:form class="filter-tab-text">
+<h:commandLink action="#{rdvController.setfiltervalue(0)}" update=":div_affichage" value="All">
+<p:ajax update=":div_affichage"/>
+
+   </h:commandLink></h:form>
+              <!-- /FILTER TAB TEXT -->
+            </div>
+            <!-- /FILTER TAB -->
+    
+            <!-- FILTER TAB -->
+            <div class="filter-tab">
+              <!-- FILTER TAB TEXT -->
+              
+<h:form class="filter-tab-text">
+<h:commandLink action="#{rdvController.setfiltervalue(1)}" value="this week">
+<p:ajax update=":div_affichage"/>
+
+   </h:commandLink></h:form>
+              <!-- /FILTER TAB TEXT -->
+            </div>
+            
+            
+            <div class="filter-tab">
+              <!-- FILTER TAB TEXT -->
+              
+<h:form class="filter-tab-text">
+<h:commandLink action="#{rdvController.setfiltervalue(2)}" update=":div_affichage" value="less than a month">
+<p:ajax update=":div_affichage"/>
+
+   </h:commandLink></h:form>
+              <!-- /FILTER TAB TEXT -->
+            </div>
+            
+            
+            
+<div class="filter-tab">
+              <!-- FILTER TAB TEXT -->
+              
+<h:form class="filter-tab-text">
+<h:commandLink action="#{rdvController.setfiltervalue(3)}" update=":div_affichage" value="old">
+<p:ajax update=":div_affichage"/>
+
+   </h:commandLink></h:form>
+              <!-- /FILTER TAB TEXT -->
+            </div>
+            <!-- /FILTER TAB -->
+    
+            <!-- FILTER TAB -->
+            
+            <!-- /FILTER TAB -->
+          </div>
+          <!-- /FILTER TABS -->
+        </div>
+        <!-- /SECTION FILTERS BAR ACTIONS -->
+    
+        <!-- SECTION FILTERS BAR ACTIONS -->
+
+        <!-- /SECTION FILTERS BAR ACTIONS -->
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    			<div class=" grid"  >
+
+    			<h:panelGroup  id="div_affichage">
+    			 <ui:repeat var="re" value="#{rdvController.searchapp()}" varStatus="status">
+    			
+    						<div class=" user-preview landscape">
+          <!-- USER PREVIEW COVER -->
+          <figure class="user-preview-cover liquid" style="background: url(&quot;files/img/houssem/app.jpg&quot;) center center / cover no-repeat;">
+            <img src="files/img/houssem/app.jpg" alt="cover-29" style="display: none;" />
+          </figure>
+          <!-- /USER PREVIEW COVER -->
+          <!-- USER PREVIEW INFO -->
+          
+<div class="user-preview-info"  >
+            <!-- USER SHORT DESCRIPTION -->
+            
+<div class="user-short-description landscape tiny col-2">
+              <!-- USER SHORT DESCRIPTION AVATAR -->
+              <a class="user-short-description-avatar user-avatar small no-stats" href="group-timeline.html">
+                <!-- USER AVATAR BORDER -->
+                
+<div class="user-avatar-border">
+                  <!-- HEXAGON -->
+                  
+<div class="hexagon-50-56" style="width: 50px; height: 56px; position: relative;"><canvas width="50" height="56" style="position: absolute; top: 0px; left: 0px;" /></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BORDER -->
+            
+                <!-- USER AVATAR CONTENT -->
+                
+<div class="user-avatar-content" >
+                  <!-- HEXAGON -->
+                  
+<div class="hexagon-image-40-44" data-src="files/img/avatar/24.jpg" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;" /></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR CONTENT -->
+              </a>
+              <!-- /USER SHORT DESCRIPTION AVATAR -->
+        
+              <!-- USER SHORT DESCRIPTION TITLE -->
+              
+<h:form class="user-short-description-title"><p:commandLink action="#{rdvController.setdetailvalues(re.rdv_id)}"  update=":diagetail" onclick="PF('dlg6').show();" value="#{rdvController.getParentByRdvID(re.rdv_id).firstName}" />
+<h:outputText value=" " />
+<p:commandLink action="#{rdvController.setdetailvalues(re.rdv_id)}"  update=":diagetail" onclick="PF('dlg6').show();" value="#{rdvController.getParentByRdvID(re.rdv_id).lastName}" />
+</h:form>
+        
+              <!-- /USER SHORT DESCRIPTION TITLE -->
+        
+              <!-- USER SHORT DESCRIPTION TEXT -->
+<p class="user-short-description-text"><span> Title: </span><h:outputText value="#{re.rdv_title}" /></p>              
+
+              <!-- /USER SHORT DESCRIPTION TEXT -->
+            </div>
+            
+            <div class="user-stats offset-0">
+              <!-- USER STAT -->
+              
+<div class="user-stat">
+                <!-- USER STAT TITLE -->
+                
+<p class="user-stat-title"><h:outputText value="#{re.rdv_date}" /></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+                
+<p class="user-stat-text">Date</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              <!-- /USER STAT -->
+        
+              <!-- USER STAT -->
+              
+<div class="user-stat">
+                <!-- USER STAT TITLE -->
+                
+<p class="user-stat-title"><h:outputText value="#{rdvController.getEtatByRdv(re.rdv_id)}" /></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+                
+<p class="user-stat-text">State</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              
+<div class="user-stat">
+                <!-- USER STAT TITLE -->
+                
+<p class="user-stat-title"><h:outputText value="#{re.rdv_heure}" /></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+                
+<p class="user-stat-text">Time</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              <!-- /USER STAT -->
+       
+
+            </div>
+            <!-- /USER SHORT DESCRIPTION -->
+        
+            <!-- USER STATS -->
+            
+<div class="user-preview-actions">
+              <!-- TAG STICKER -->
+<h:form>              
+<h:commandButton id="modfier" action="#{rdvController.setmodifvalues(re.rdv_id)}"  onclick="PF('dlg2').show()" class="btn btn-info"  value="update" >
+<p:ajax update=":dialogue"/>
+</h:commandButton>
+</h:form>
+<h:form>       
+<h:commandButton id="envoyersss" action="#{rdvController.annulerRdvById(re.rdv_id)}" class="btn btn-danger" value="cancel">
+                  		         <p:ajax update=":div_affichage"/>
+         
+ </h:commandButton></h:form>
+
+  <h:form>             
+<h:commandButton id="rapporter" action="#{rdvController.setreportvalues(re.rdv_id)}" onclick="PF('dlg4').show()" class="btn btn-warning"  value="delay" >
+<p:ajax update=":div_affichage"/>
+</h:commandButton>
+</h:form>      
+              
+              
+              <!-- /BUTTON -->
+            </div>
+            <!-- /USER PREVIEW ACTIONS -->
+          </div>
+          <!-- /USER PREVIEW INFO -->
+        </div>	
+        <br/> <br/>		
+        
+      
+    			</ui:repeat>
+    			
+				<ui:repeat var="re" value="#{rdvController.getAllRdvByJardin()}" varStatus="status">	
+			<div class=" user-preview landscape">
+          <!-- USER PREVIEW COVER -->
+          <figure class="user-preview-cover liquid" style="background: url(&quot;files/img/houssem/app.jpg&quot;) center center / cover no-repeat;">
+            <img src="files/img/houssem/app.jpg" alt="cover-29" style="display: none;" />
+          </figure>
+          <!-- /USER PREVIEW COVER -->
+          <!-- USER PREVIEW INFO -->
+          
+<div class="user-preview-info"  >
+            <!-- USER SHORT DESCRIPTION -->
+            
+<div class="user-short-description landscape tiny col-2">
+              <!-- USER SHORT DESCRIPTION AVATAR -->
+              <a class="user-short-description-avatar user-avatar small no-stats" href="group-timeline.html">
+                <!-- USER AVATAR BORDER -->
+                
+<div class="user-avatar-border">
+                  <!-- HEXAGON -->
+                  
+<div class="hexagon-50-56" style="width: 50px; height: 56px; position: relative;"><canvas width="50" height="56" style="position: absolute; top: 0px; left: 0px;" /></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BORDER -->
+            
+                <!-- USER AVATAR CONTENT -->
+                
+<div class="user-avatar-content" >
+                  <!-- HEXAGON -->
+                  
+<div class="hexagon-image-40-44" data-src="files/img/avatar/24.jpg" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;" /></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR CONTENT -->
+              </a>
+              <!-- /USER SHORT DESCRIPTION AVATAR -->
+        
+              <!-- USER SHORT DESCRIPTION TITLE -->
+              
+<h:form class="user-short-description-title"><p:commandLink action="#{rdvController.setdetailvalues(re.rdv_id)}"  update=":diagetail" onclick="PF('dlg6').show();" value="#{rdvController.getParentByRdvID(re.rdv_id).firstName}" />
+<h:outputText value=" " />
+<p:commandLink action="#{rdvController.setdetailvalues(re.rdv_id)}"  update=":diagetail" onclick="PF('dlg6').show();" value="#{rdvController.getParentByRdvID(re.rdv_id).lastName}" />
+</h:form>
+        
+              <!-- /USER SHORT DESCRIPTION TITLE -->
+        
+              <!-- USER SHORT DESCRIPTION TEXT -->
+<p class="user-short-description-text"><span> Title: </span><h:outputText value="#{re.rdv_title}" /></p>              
+
+              <!-- /USER SHORT DESCRIPTION TEXT -->
+            </div>
+            
+            <div class="user-stats offset-0">
+              <!-- USER STAT -->
+              
+<div class="user-stat">
+                <!-- USER STAT TITLE -->
+                
+<p class="user-stat-title"><h:outputText value="#{re.rdv_date}" /></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+                
+<p class="user-stat-text">Date</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              <!-- /USER STAT -->
+        
+              <!-- USER STAT -->
+              
+<div class="user-stat">
+                <!-- USER STAT TITLE -->
+                
+<p class="user-stat-title"><h:outputText value="#{rdvController.getEtatByRdv(re.rdv_id)}" /></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+                
+<p class="user-stat-text">State</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              
+<div class="user-stat">
+                <!-- USER STAT TITLE -->
+                
+<p class="user-stat-title"><h:outputText value="#{re.rdv_heure}" /></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+                
+<p class="user-stat-text">Time</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              <!-- /USER STAT -->
+       
+
+            </div>
+            <!-- /USER SHORT DESCRIPTION -->
+        
+            <!-- USER STATS -->
+            
+<div class="user-preview-actions">
+              <!-- TAG STICKER -->
+<h:form>              
+<h:commandButton id="modfier" action="#{rdvController.setmodifvalues(re.rdv_id)}"  onclick="PF('dlg2').show()" class="btn btn-info"  value="update" >
+<p:ajax update=":dialogue"/>
+</h:commandButton>
+</h:form>
+<h:form>       
+<h:commandButton id="envoyersss" action="#{rdvController.annulerRdvById(re.rdv_id)}" class="btn btn-danger" value="cancel">
+                  		         <p:ajax update=":div_affichage"/>
+         
+ </h:commandButton></h:form>
+
+  <h:form>             
+<h:commandButton id="rapporter" action="#{rdvController.setreportvalues(re.rdv_id)}" onclick="PF('dlg4').show()" class="btn btn-warning"  value="delay" >
+<p:ajax update=":div_affichage"/>
+</h:commandButton>
+</h:form>      
+              
+              
+              <!-- /BUTTON -->
+            </div>
+            <!-- /USER PREVIEW ACTIONS -->
+          </div>
+          <!-- /USER PREVIEW INFO -->
+        </div>	
+        <br/> <br/>		
+        
+      
+        </ui:repeat>
+       
+        </h:panelGroup>	
+        
+        
+        
+               
+                
+        
+        <p:dialog header="Update appointment" widgetVar="dlg2" resizable="false" dynamic="true" height="250" width="456" appendToBody="true">
+              
+             <h:panelGroup id="dialogue">	
+              <h:form>
+			
+		<h:outputText value="Title"/><br/>
+		<h:inputText id="rdv-title" name="rdv_title" required="true" requiredMessage="Titre Rdv Obligatoire"
+         value="#{rdvController.modifTitle}"  /><br/>
+		<h:outputText value="Date"/><br/>
+		<p:calendar id="profileee-public" value="#{rdvController.modifDate}" showOn="button" pattern="yyyy-MM-dd"/><br/><br/>
+		<h:outputText value="Start Time"/><br/>
+	    <p:calendar id="profile" value="#{rdvController.modifTime}" showOn="button" pattern="HH:mm"/><br/><br/>
+	   
+	
+                    
+		<h:outputText value="Details"/><br/>
+		<p:inputTextarea rows="10" cols="50" value="#{rdvController.modifDescription}" queryDelay="750" minQueryLength="4">
+    </p:inputTextarea><br/>
+    
+
+		<p:commandButton id="Updateappointment" value="update" update=":div_affichage" class="btn btn-success" action="#{rdvController.modifierRdv()}" >
+
+</p:commandButton>	
+		</h:form>	
+		</h:panelGroup>
+</p:dialog>
+
+
+<p:dialog header="Delay appointment" widgetVar="dlg3" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+              
+             <h:form>
+               <h:outputText value="Delay Start Date"/>
+		<p:calendar id="profillle-public" value="#{rdvController.reportDateBegin}" showOn="button" pattern="yyyy-MM-dd"/>
+		<br/><br/>
+		 <h:outputText value="Return Date"/>
+		<p:calendar id="profile-public" value="#{rdvController.reportDateEnd}" showOn="button" pattern="yyyy-MM-dd"/><br/>
+		
+<p:commandButton value="Raporter Rdv" class="btn btn-success" update=":div_affichage" action="#{rdvController.reportRdvFromDateUntilDate()}" >
+   </p:commandButton>
+		</h:form>	
+</p:dialog>
+
+<p:dialog header="more details" widgetVar="dlg6" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+                           <h:panelGroup id="diagetail">	
+              
+      <h:outputText value="Rdv description :"/> <br/><h:outputText value="#{rdvController.rdvdescriptionDetail}"/><br/><br/>
+	  <h:outputText value="Reponse :"/> <br/><h:outputText value="#{rdvController.repdetails}"/><br/><br/>
+	  <h:outputText value="reponse detail :"/> <br/><h:outputText value="#{rdvController.reponseDescriptiondetail}"/><br/><br/>
+	</h:panelGroup>
+		
+
+</p:dialog>
+
+<p:dialog header="Delay appointment" widgetVar="dlg4" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+              
+             <h:form>
+              
+		 <h:outputText value="Delay To :"/>
+		<p:calendar id="profile-public" value="#{rdvController.reportDateEnd}" showOn="button" pattern="yyyy-MM-dd"/><br/>
+		
+<p:commandButton value="Send" class="btn btn-success" update=":div_affichage" action="#{rdvController.reportRdvToDate()}" >
+   </p:commandButton>
+		</h:form>	
+</p:dialog>
+
+
+<p:dialog header="Appointments availability" widgetVar="dlg5" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+             <h:panelGroup id="dialogue1">	
+             <h:form>
+              
+		 <h:outputText value="MONDAY"/><br/>
+	    <p:calendar id="profile1" value="#{rdvController.mofidheuredlun}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile2" value="#{rdvController.mofidheureflun}" showOn="button" pattern="HH:mm"/><br/><br/>
+	 
+	    <h:outputText value="TUESDAY"/><br/>
+	    <p:calendar id="profile3" value="#{rdvController.mofidheuredmar}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile4" value="#{rdvController.mofidheurefmar}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="THURSDAY"/><br/>
+	    <p:calendar id="profile5" value="#{rdvController.mofidheuredmer}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile6" value="#{rdvController.mofidheurefmer}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="WEDNESDAY"/><br/>
+	    <p:calendar id="profile7" value="#{rdvController.mofidheuredjeud}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile8" value="#{rdvController.mofidheurefjeud}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="FRIDAY"/><br/>
+	    <p:calendar id="profile9" value="#{rdvController.mofidheuredven}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile10" value="#{rdvController.mofidheurefven}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="SATURDAY"/><br/>
+	    <p:calendar id="profile11" value="#{rdvController.mofidheuredsam}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile12" value="#{rdvController.mofidheurefsam}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="SUNDAY"/><br/>
+	    <p:calendar id="profile13" value="#{rdvController.mofidheureddim}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile14" value="#{rdvController.mofidheurefdim}" showOn="button" pattern="HH:mm"/><br/><br/>
+		
+<p:commandButton value="send" class="btn btn-success" update=":div_affichage :weekbox" action="#{rdvController.updatehoraire()}" >
+   </p:commandButton>
+		</h:form>	
+		</h:panelGroup>
+</p:dialog>
+			</div>
+						
+		
+		
+              
+             
+         
+		
+		
+		
+		
+		
+		
+		
+						
+						</div>
+						
+						 </ui:define>
+
+
+	</ui:composition>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</h:body>
+
+ 
+</html>

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui">
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+
+		
+				<ui:define name="content">
+		
+		<div class="content-grid" style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+    <!-- SECTION BANNER -->
+    
+<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/forums-icon.png" alt="forums-icon" />
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title">Complaints</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      
+<p class="section-banner-text">Listes of complaints</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+    <!-- SECTION HEADER -->
+    
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="grid grid-3-3-3">
+
+
+<div class="achievement-box secondary" style="width:250px;height:75px">
+          <!-- ACHIEVEMENT BOX INFO WRAP -->
+          
+<div class="achievement-box-info-wrap">
+            <!-- ACHIEVEMENT BOX IMAGE -->
+            <img class="achievement-box-image" src="files/img/houssem/add.png" alt="quest-completedq-l" />
+            <!-- /ACHIEVEMENT BOX IMAGE -->
+      
+            <!-- ACHIEVEMENT BOX INFO -->
+            
+<div class="achievement-box-info">
+              <!-- ACHIEVEMENT BOX TITLE -->
+              
+              <h:form class="achievement-box-title"><p:commandLink onclick="PF('dlg1').show();" value="Claim">
+   </p:commandLink></h:form>
+   
+              <!-- /ACHIEVEMENT BOX TITLE -->
+      
+              <!-- ACHIEVEMENT BOX TEXT -->
+                            <!-- /ACHIEVEMENT BOX TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT BOX INFO -->
+          </div>
+          <!-- /ACHIEVEMENT BOX INFO WRAP -->
+      
+        </div>
+        
+        
+        <div class="achievement-box primary" style="width:250px;height:75px">
+          <!-- ACHIEVEMENT BOX INFO WRAP -->
+          
+<div class="achievement-box-info-wrap">
+            <!-- ACHIEVEMENT BOX IMAGE -->
+            <img class="achievement-box-image" src="files/img/houssem/reclam.png" alt="quest-completedq-l" />
+            <!-- /ACHIEVEMENT BOX IMAGE -->
+      
+            <!-- ACHIEVEMENT BOX INFO -->
+            
+<div class="achievement-box-info">
+              <!-- ACHIEVEMENT BOX TITLE -->
+              
+              <h:form class="achievement-box-title"><h:commandLink action="#{reclamationpController.goTomesreclam()}" value="My claims">
+   </h:commandLink></h:form>
+   
+              <!-- /ACHIEVEMENT BOX TITLE -->
+      
+              <!-- ACHIEVEMENT BOX TEXT -->
+                            <!-- /ACHIEVEMENT BOX TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT BOX INFO -->
+          </div>
+          <!-- /ACHIEVEMENT BOX INFO WRAP -->
+      
+        </div>
+        
+</div>
+
+
+
+
+
+
+
+
+<p:dialog header="Add a claim" widgetVar="dlg1" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+                           <h:panelGroup id="dialoguereclam">	
+              
+                           <h:form>
+			<h:outputText value="select kinderGarten"/><br/>
+		<h:selectOneMenu value="#{reclamationpController.ajoutjardinId}">
+    <f:selectItems value="#{reclamationpController.getJardinByParent()}" var="p" itemLabel="#{p.kinderGartenName}" itemValue="#{p.id}" />
+</h:selectOneMenu><br/>
+		
+<h:outputText value="Subject :"/><br/>
+		 <p:selectOneMenu id="console" value="#{reclamationpController.ajoutsujet}" style="width:125px">
+            <f:selectItem itemLabel="Select One" itemValue="" />
+            <f:selectItem itemLabel="NOURRITURE" itemValue="NOURRITURE" />
+            <f:selectItem itemLabel="MAITRE" itemValue="MAITRE" />
+                        <f:selectItem itemLabel="ACTIVITE" itemValue="ACTIVITE" />
+                        <f:selectItem itemLabel="SITEWEB" itemValue="SITEWEB" />
+                        <f:selectItem itemLabel="AUTRE" itemValue="AUTRE" />
+            
+             <f:facet name="footer">
+               <p:separator />
+               <h:outputText value="3 consoles" style="font-weight:bold;"/>
+            </f:facet>
+        </p:selectOneMenu><br/>
+		
+
+                 
+		<h:outputText value="Your claim details"/><br/>
+		<p:inputTextarea rows="10" cols="50" value="#{reclamationpController.detailreclam}" queryDelay="750" minQueryLength="4">
+    </p:inputTextarea><br/><br/>
+       
+		<p:commandButton id="réclamer" value="réclamer" update=":div_affichage" class="btn btn-success" action="#{reclamationpController.EnvoyerReclamation}" >
+
+</p:commandButton>	
+		</h:form>	
+	</h:panelGroup>
+</p:dialog>
+
+
+
+
+
+
+
+
+
+
+
+    
+<div class="section-filters-bar v7">
+      <!-- SECTION FILTERS BAR ACTIONS -->
+      
+<div class="section-filters-bar-actions">
+        <!-- SECTION FILTERS BAR INFO -->
+        
+<div class="section-filters-bar-info">
+          <!-- SECTION FILTERS BAR TITLE -->
+          
+<p class="section-filters-bar-title">Claim </p>
+          <!-- /SECTION FILTERS BAR TITLE -->
+  
+          <!-- SECTION FILTERS BAR TEXT -->
+          
+<p class="section-filters-bar-text">Last reclamation added by <a class="highlighted" href="forums-category.html"><h:outputText
+value="#{reclamationpController.getLastReclamAddedForJadin().parent.firstName}" /></a><a class="highlighted" href="forums-category.html"><h:outputText
+value="#{reclamationpController.getLastReclamAddedForJadin().parent.lastName}" /></a>  <h:outputText
+value="#{reclamationpController.getLastReclamAddedForJadin().reclamation_date}" /></p>
+          <!-- /SECTION FILTERS BAR TEXT -->
+        </div>
+        <!-- /SECTION FILTERS BAR INFO -->
+      </div>
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+  
+      <!-- SECTION FILTERS BAR ACTIONS -->
+
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+    </div>
+    <!-- /SECTION FILTERS BAR -->
+    <!-- TABLE -->
+    
+    
+    
+
+
+
+
+
+
+<h:panelGroup id="div_affichage"> 
+<br/>
+<ui:repeat var="j" value="#{reclamationpController.getJardinByParent()}" varStatus="status">
+<h2><h:outputText value="Reclamation of " /><h:outputText value="&#160;" /><h:outputText value="#{j.kinderGartenName}" /></h2>
+<br/>
+<div class="table table-forum-category" >
+
+      <!-- TABLE HEADER -->
+      
+<div class="table-header">
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">Category</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+  
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column centered padded-medium">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">Number</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+  
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column centered padded-medium">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">Percentage</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+  
+        <!-- TABLE HEADER COLUMN -->
+        
+<div class="table-header-column padded-big-left">
+          <!-- TABLE HEADER TITLE -->
+          
+<p class="table-header-title">Recents claims</p>
+          <!-- /TABLE HEADER TITLE -->
+        </div>
+        <!-- /TABLE HEADER COLUMN -->
+      </div>
+      <!-- /TABLE HEADER -->
+  
+      <!-- TABLE BODY -->
+      
+<div class="table-body">
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/forum/category/01.png" alt="category-01" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationpController.goToreclamParCategoryp('MAITRE',j.id)}" value="Teacher">
+   </h:commandLink></h:form>
+                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">Claims on our team</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationpController.getNombreParType('MAITRE',j.id)}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationpController.getPourcentageParType('MAITRE',j.id)}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+<ui:repeat var="event" value="#{reclamationpController.getListRParType('MAITRE',j.id)}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+  
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/houssem/activity.jpg" alt="category-02" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationpController.goToreclamParCategoryp('ACTIVITE',j.id)}" value="Activities">
+   </h:commandLink></h:form>                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">claims on our activities!</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputFormat
+value="#{reclamationpController.getNombreParType('ACTIVITE',j.id)}" />  </p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationpController.getPourcentageParType('ACTIVITE',j.id)}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+           <ui:repeat var="event" value="#{reclamationpController.getListRParType('ACTIVITE',j.id)}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/houssem/hamburgerfood.jpg" alt="category-03" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationpController.goToreclamParCategoryp('NOURRITURE',j.id)}" value="Food">
+   </h:commandLink></h:form>
+                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">Claims on our food!</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationpController.getNombreParType('NOURRITURE',j.id)}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationpController.getPourcentageParType('NOURRITURE',j.id)}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+           <ui:repeat var="event" value="#{reclamationpController.getListRParType('NOURRITURE',j.id)}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+  
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/forum/category/05.png" alt="category-05" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationpController.goToreclamParCategoryp('SITEWEB',j.id)}" value="Website!">
+   </h:commandLink></h:form>                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">claim about our website!</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationpController.getNombreParType('SITEWEB',j.id)}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationpController.getPourcentageParType('SITEWEB',j.id)}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+            <ui:repeat var="event" value="#{reclamationpController.getListRParType('SITEWEB',j.id)}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+        <!-- TABLE ROW -->
+        
+<div class="table-row big">
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column">
+            <!-- FORUM CATEGORY -->
+            
+<div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              <a href="forums-category.html">
+                <img class="forum-category-image" src="files/img/houssem/interogation.png" alt="category-06" />
+              </a>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              
+<div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                
+<h:form class="forum-category-title"><h:commandLink action="#{reclamationpController.goToreclamParCategoryp('AUTRE',j.id)}" value="Other">
+   </h:commandLink></h:form>                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                
+<p class="forum-category-text">Other claims!</p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            <!-- /FORUM CATEGORY -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationpController.getNombreParType('AUTRE',j.id)}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column centered padded-medium">
+            <!-- TABLE TITLE -->
+            
+<p class="table-title"><h:outputText
+value="#{reclamationpController.getPourcentageParType('AUTRE',j.id)}" /></p>
+            <!-- /TABLE TITLE -->
+          </div>
+          <!-- /TABLE COLUMN -->
+  
+          <!-- TABLE COLUMN -->
+          
+<div class="table-column padded-big-left">
+          <ui:repeat var="event" value="#{reclamationpController.getListRParType('AUTRE',j.id)}" varStatus="status">
+            <a class="table-link" href="forums-discussion.html"><h:outputText 
+            value="#{event.reclamation_description}" /></a>
+       </ui:repeat>
+          </div>
+          <!-- /TABLE COLUMN -->
+        </div>
+        <!-- /TABLE ROW -->
+      </div>
+      <!-- /TABLE BODY -->
+    </div>
+    <br/>
+    </ui:repeat>
+    <!-- /TABLE -->
+    </h:panelGroup>
+  </div>
+  
+  </ui:define>
+
+
+	</ui:composition>
+
+
+
+
+</body>
+
+</html>

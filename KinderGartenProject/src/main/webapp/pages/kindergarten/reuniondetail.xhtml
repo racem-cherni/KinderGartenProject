@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+		xmlns:p="http://primefaces.org/ui">
+	
+	
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+		
+						<ui:define name="content">
+													<f:view transient="true">
+						
+							<div class="content-grid" style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+						
+	
+	<div class="profile-header v2">
+      <!-- PROFILE HEADER COVER -->
+      <figure class="profile-header-cover liquid" style="background: url(&quot;files/img/houssem/meeting.jpg&quot;) center center / cover no-repeat;">
+        <img src="files/img/houssem/meeting.jpg" alt="cover-29" style="display: none;" />
+      </figure>
+      <!-- /PROFILE HEADER COVER -->
+      <!-- PROFILE HEADER INFO -->
+      
+<div class="profile-header-info ">
+        <!-- USER SHORT DESCRIPTION -->
+  <h:panelGroup id="div_title"> 
+  <br/>    
+  
+ 
+  
+          
+ <div class="offset-sm-1"    >
+<h2 class="profile-title align-self-center "><h:outputText value="#{reunionController.getReunionByReunID().reun_title}" /></h2>
+          <p class="profile-pretitle "><h:outputText value="#{reunionController.getReunionByReunID().reun_date}" /></p>
+
+        <p class="profile-pretitle"><span class="bold"><h:outputText value="#{reunionController.getReunionByReunID().reun_heureD}" />
+</span> - <span class="bold"><h:outputText value="#{reunionController.getReunionByReunID().reun_heureF}" /></span></p>
+          <!-- /USER SHORT DESCRIPTION TEXT -->
+          </div>
+        </h:panelGroup>
+        <!-- /USER SHORT DESCRIPTION -->
+        <!-- USER STATS -->
+        
+<div class="user-stats">
+          <!-- USER STAT -->
+                          <h:panelGroup id="div_type">           
+          
+<div class="user-stat big">
+            <!-- USER STAT ICON -->
+<div class="user-stat-icon">
+              <!-- ICON PUBLIC -->
+              <svg class="icon-public">
+                <use xlink:href="#svg-public" />
+              </svg>
+              <!-- /ICON PUBLIC -->
+            </div>
+            <!-- /USER STAT ICON -->
+    
+            <!-- USER STAT TEXT -->
+            
+<p class="user-stat-text"><h:outputText value="#{reunionController.getReunionByReunID().reun_type}" /></p>
+            <!-- /USER STAT TEXT -->
+          </div>
+                      </h:panelGroup>
+          
+          <!-- /USER STAT -->
+          <!-- USER STAT -->
+                 <h:panelGroup id="div_nbr">           
+          
+<div class="user-stat big" id="div_nbr">
+            <!-- USER STAT TITLE -->
+<p class="user-stat-title"><h:outputText value="#{reunionController.getReunionByReunID().reun_nbrparticipant}" /></p>
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+            
+<p class="user-stat-text">Participants</p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          
+          </h:panelGroup>
+          <!-- /USER STAT -->
+    
+          <!-- USER STAT -->
+          <h:panelGroup id="div_nbrp"> 
+<div class="user-stat big">
+            <!-- USER STAT TITLE -->
+            
+<p class="user-stat-title"><h:outputText value="#{reunionController.getReunionByReunID().reun_nbrplace}" /></p>
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+            
+<p class="user-stat-text">Nbr. of places</p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          </h:panelGroup>
+          <!-- /USER STAT -->
+    
+          <!-- USER STAT -->
+          
+
+          <!-- /USER STAT -->
+        </div>
+        <!-- /USER STATS -->
+        <!-- TAG STICKER -->
+        
+<div class="tag-sticker">
+          <!-- TAG STICKER ICON -->
+          <svg class="icon-public">
+            <use xlink:href="#svg-public" />
+          </svg>
+          <!-- /TAG STICKER ICON -->
+        </div>
+        <!-- /TAG STICKER -->
+        <!-- PROFILE HEADER INFO ACTIONS -->
+        <div class="profile-header-info-actions">
+          <!-- PROFILE HEADER INFO ACTION -->
+          
+<p class="button secondary big popup-event-creation-trigger">
+            <!-- ICON JOIN GROUP -->
+            <svg class="icon-join-group">
+              <use xlink:href="#svg-join-group" />
+            </svg>
+            <!-- /ICON JOIN GROUP -->
+          </p>
+          <!-- /PROFILE HEADER INFO ACTION -->
+          
+          <!-- PROFILE HEADER INFO ACTION -->
+       
+          <!-- /PROFILE HEADER INFO ACTION -->
+        </div>
+
+        <!-- /PROFILE HEADER INFO ACTIONS -->
+      </div>
+      <!-- /PROFILE HEADER INFO -->
+   
+    </div>
+
+          <br/>
+      
+      		<div class="grid grid-3-6-3">
+
+
+<div class="achievement-box primary" style="width:250px;height:75px">
+          <!-- ACHIEVEMENT BOX INFO WRAP -->
+          
+<div class="achievement-box-info-wrap">
+            <!-- ACHIEVEMENT BOX IMAGE -->
+            <img class="achievement-box-image" src="files/img/houssem/add.png" alt="quest-completedq-l" />
+            <!-- /ACHIEVEMENT BOX IMAGE -->
+      
+            <!-- ACHIEVEMENT BOX INFO -->
+            
+<div class="achievement-box-info">
+              <!-- ACHIEVEMENT BOX TITLE -->
+              
+              <h:form class="achievement-box-title">                         
+        <h:commandLink value="Edit meeting" action="#{reunionController.setupdatereunvalues()}" onclick="PF('dlg1').show();"   >
+               <p:ajax update=":div_modif"/>
+       
+        </h:commandLink>
+
+   </h:form>
+   
+              <!-- /ACHIEVEMENT BOX TITLE -->
+      
+              <!-- ACHIEVEMENT BOX TEXT -->
+                            <!-- /ACHIEVEMENT BOX TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT BOX INFO -->
+          </div>
+          <!-- /ACHIEVEMENT BOX INFO WRAP -->
+      
+        </div>
+        
+        
+                  <h:panelGroup id="div_about"> 
+        
+        <div class="widget-box">
+          <!-- WIDGET BOX SETTINGS -->
+          
+
+      
+          <!-- WIDGET BOX TITLE -->
+          
+<p class="widget-box-title">About The meeting</p>
+          <!-- /WIDGET BOX TITLE -->
+      
+          <!-- WIDGET BOX CONTENT -->
+          
+<div class="widget-box-content">
+            <!-- PARAGRAPH -->
+            
+<p class="paragraph"><h:outputText value="#{reunionController.getDescriptionByReun_id()}" /></p>
+
+          </div>
+          <!-- /WIDGET BOX CONTENT -->
+        </div>
+        </h:panelGroup>
+        
+        
+        
+        
+        
+        
+        </div>
+        <br/>	
+             <p:dialog header="Edit meeting" widgetVar="dlg1" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+              
+             <h:panelGroup id="div_modif">
+        
+        <h:form>
+				<h:outputText value="Type de Reunion"/><br/>
+		 <p:selectOneMenu id="console" value="#{reunionController.updateTypereun}" style="width:125px">
+            <f:selectItem itemLabel="Select One" itemValue="" />
+            <f:selectItem itemLabel="MENSUEL" itemValue="MENSUEL" />
+            <f:selectItem itemLabel="HEBDOMADAIRE" itemValue="HEBDOMADAIRE" />
+            <f:selectItem itemLabel="EXCEPTIONNEL" itemValue="EXCEPTIONNEL" />
+            <f:facet name="footer">
+               <p:separator />
+               <h:outputText value="3 consoles" style="font-weight:bold;"/>
+            </f:facet>
+        </p:selectOneMenu><br/>
+		<h:outputText value="Titre de Reunion"/><br/>
+		<h:inputText id="reun-title" name="reunion_title" required="true" requiredMessage="Titre Reunion Obligatoire"
+value="#{reunionController.updateTitle}"/><br/><br/>
+		<h:outputText value="Date de Reunion"/><br/>
+		<p:calendar id="profile-public" value="#{reunionController.updateDate}" showOn="button" pattern="yyyy-MM-dd"/><br/><br/>
+		<h:outputText value="heure debut"/><br/>
+	    <p:calendar id="profile" value="#{reunionController.updateStartTime}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="heure fin"/><br/>
+	    <p:calendar id="profiles" value="#{reunionController.updateEndTime}" showOn="button" pattern="HH:mm"/><br/><br/>
+		    <h:outputText value="Nombre de participants"/><br/>
+	
+	            <p:inputNumber id="input1" value="#{reunionController.updatenbrpers}"/><br/><br/>  
+                    
+		<h:outputText value="Detail Reunion"/><br/>
+		<p:inputTextarea rows="10" cols="50" value="#{reunionController.updateDescription}" queryDelay="750" minQueryLength="4">
+    </p:inputTextarea><br/><br/>
+		         
+	
+		
+		<p:commandButton id="envoyerrr" value="upadate" update=":div_title :div_about :div_nbrp :div_type :div_affichage :div_modif" class="btn btn-success" action="#{reunionController.modiferReunion()}" >
+
+</p:commandButton>
+		</h:form>
+		</h:panelGroup>
+              
+</p:dialog>
+    
+       <h:panelGroup  id="div_affichage">
+      
+      <div class="container"  >
+      <div class="row">
+                      
+        <div class="column col-6">
+        <h:panelGroup  id="div_dessafect">
+      <br/>
+        <h2 class="section-title">Affected Members</h2>
+        <br/>
+          <div class="container"  >
+      <div class="row">
+       <ui:repeat var="p" value="#{reunionController.getParentByReunID()}" varStatus="status">
+     
+<div class="product-preview fixed-height col-6">
+            <!-- PRODUCT PREVIEW IMAGE -->
+            <a href="marketplace-product.html">
+              <figure class="product-preview-image liquid" style="background: url(&quot;files/img/houssem/myfather.jpg&quot;) center center / cover no-repeat;">
+                <img src="files/img/houssem/myfather.jpg" alt="item-01" style="display: none;" />
+              </figure>
+            </a>
+            <!-- /PRODUCT PREVIEW IMAGE -->
+        
+            <!-- PRODUCT PREVIEW INFO -->
+            
+<div class="product-preview-info">
+              <!-- TEXT STICKER -->
+              
+              <!-- /TEXT STICKER -->
+        
+              <!-- PRODUCT PREVIEW TITLE -->
+              
+<p class="product-preview-title"><a href="marketplace-product.html"><h:outputText value="#{p.firstName}" /><h:outputText value=" " /> <h:outputText value="#{p.lastName}" /></a></p>
+              <!-- /PRODUCT PREVIEW TITLE -->
+        
+              <!-- PRODUCT PREVIEW CATEGORY -->
+              
+<p class="product-preview-category digital"><a href="marketplace-category.html"><h:outputText value="#{p.email}" /></a></p>
+              <!-- /PRODUCT PREVIEW CATEGORY -->
+         <h:form>
+ <h:commandButton value="Remove" class="button white white-tertiary" action="#{reunionController.desaffecterParentduReunion(p.id)}" >
+		<p:ajax update="div_nbr,div_affect,div_affichage"/>
+		</h:commandButton></h:form>
+              <!-- BUTTON -->
+              
+              <!-- /BUTTON -->
+            </div>
+            <!-- /PRODUCT PREVIEW INFO -->
+          </div>
+         
+          
+        </ui:repeat>
+         </div>
+          </div>
+                                </h:panelGroup>
+        
+        </div>
+       
+                  <div class="column col-6">
+                  
+           <br/>
+        <h2 class="section-title">Reunion feedback</h2>
+        <br/>
+          <div class="widget-box">
+                  <h2 class="section-title">feedbacks(Total:<h:outputText value="#{reunionController.getCountfbByRdv()}" />)
+                  </h2>
+          <br/>
+          
+
+<div class="widget-box-content">
+            <!-- STAT BLOCK LIST -->
+            
+<div class="stat-block-list">
+              <!-- STAT BLOCK -->
+<ui:repeat var="f" value="#{reunionController.getFbByRdv()}" varStatus="status">
+              
+<div class="stat-block">
+                <!-- STAT BLOCK DECORATION -->
+                
+<div class="stat-block-decoration">
+                  <!-- STAT BLOCK DECORATION ICON -->
+                  <svg class="stat-block-decoration-icon icon-friend">
+                    <use xlink:href="#svg-friend" />
+                  </svg>
+                  <!-- /STAT BLOCK DECORATION ICON -->
+                </div>
+                <!-- /STAT BLOCK DECORATION -->
+      
+                <!-- STAT BLOCK INFO -->
+                
+<div class="stat-block-info">
+                  <!-- STAT BLOCK TITLE -->
+                  
+<p class="stat-block-title"><h:outputText value="#{reunionController.getParentByFbID(f.reunfb_id).firstName}" />
+<h:outputText value=" " /><h:outputText value="#{reunionController.getParentByFbID(f.reunfb_id).lastName}" />
+</p>
+                  <!-- /STAT BLOCK TITLE -->
+      
+                  <!-- STAT BLOCK TEXT -->
+                  
+<p class="stat-block-text"><h:outputText value="#{f.reunfb_description}" /></p>
+<br/>
+                  <!-- /STAT BLOCK TEXT -->
+                </div>
+                <!-- /STAT BLOCK INFO -->
+              </div>
+              <!-- /STAT BLOCK -->
+      </ui:repeat>
+              <!-- /STAT BLOCK -->
+            </div>
+            <!-- /STAT BLOCK LIST -->
+          </div>
+          
+          <!-- /WIDGET BOX CONTENT -->
+        </div>
+        
+  </div>
+     
+      </div>
+      
+</div>
+	                                 </h:panelGroup>
+      
+      
+      
+      
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			  </div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+<div class="popup-box small popup-event-creation col" style="position: absolute; left: 50%; z-index: 100001; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 100px; margin-left: -192px;">
+    <!-- POPUP CLOSE BUTTON -->
+    
+<div class="popup-close-button popup-event-creation-trigger">
+      <!-- POPUP CLOSE BUTTON ICON -->
+      <svg class="popup-close-button-icon icon-cross">
+        <use xlink:href="#svg-cross"></use>
+      </svg>
+      <!-- /POPUP CLOSE BUTTON ICON -->
+    </div>
+    <!-- /POPUP CLOSE BUTTON -->
+    <!-- POPUP BOX TITLE -->
+    
+<p class="popup-box-title">Affecter Parent</p>
+<br/>
+          <h:panelGroup id="div_affect">
+
+<ui:repeat var="p" value="#{reunionController.getParentOfkindergarten()}" varStatus="status">
+<div class="container" >
+<div class="row">
+<div class="user-status col-sm-6">
+                <!-- USER STATUS ACTIVITY -->
+                
+<div class="user-status-activity activity-update ">
+                  <!-- USER STATUS ACTIVITY ICON -->
+                  <svg class="user-status-activity-icon icon-members">
+                    <use xlink:href="#svg-members" />
+                  </svg>
+                  <!-- /USER STATUS ACTIVITY ICON -->
+                </div>
+                <!-- /USER STATUS ACTIVITY -->
+            
+                <!-- USER STATUS TITLE -->
+                
+<p class="user-status-title"><h:outputText value="#{p.firstName}" /><h:outputText value="&#160;" /><h:outputText value="#{p.lastName}" /></p>
+                <!-- /USER STATUS TITLE -->
+            
+                <!-- USER STATUS TIMESTAMP -->
+                
+<p class="user-status-timestamp small-space"><h:outputText value="#{p.email}" /></p>
+                <!-- /USER STATUS TIMESTAMP -->
+                </div>
+                <div class="col-sm-6">
+               <h:form>       
+<h:commandButton id="envoyer" action="#{reunionController.affecterParentAReunion(p.id)}" class="btn btn-success" value="affecter">
+         		         <p:ajax update="div_nbr,div_affect,div_affichage"/>
+         
+ </h:commandButton></h:form>
+              </div>
+</div>
+</div>
+<br/>
+
+</ui:repeat>    
+
+        		</h:panelGroup>				
+    
+  </div>
+						
+						
+						
+						
+						
+						</f:view>
+						
+     </ui:define>
+
+
+	</ui:composition>
+
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</body>
+
+</html>

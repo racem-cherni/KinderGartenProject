@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+	
+<body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml">
+		
+				<ui:define name="content">
+				
+				
+				
+				<div class="content-grid" style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+    <!-- SECTION BANNER -->
+    
+<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/forums-icon.png" alt="forums-icon" />
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title"><h:outputText value="Maitre" />
+</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      
+<p class="section-banner-text">Talk about anything! Gaming, music, comics and more!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+    <!-- SECTION HEADER -->
+    
+<div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      
+<div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        
+<p class="section-pretitle">Forum Discussion</p>
+        <!-- /SECTION PRETITLE -->
+  
+        <!-- SECTION TITLE -->
+        
+<h2 class="section-title pinned">Let's discuss the current state of the Comics Cinematic Universe</h2>
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+    </div>
+    <!-- /SECTION HEADER -->
+    <!-- SECTION FILTERS BAR -->
+    
+<div class="section-filters-bar v7">
+      <!-- SECTION FILTERS BAR ACTIONS -->
+      
+<div class="section-filters-bar-actions">
+        <!-- SECTION FILTERS BAR INFO -->
+        
+<div class="section-filters-bar-info">
+          <!-- SECTION FILTERS BAR TITLE -->
+          
+<p class="section-filters-bar-title"><a href="forums.html">Forums</a><span class="separator" /><a href="forums-category.html">Animation Watchtower</a><span class="separator" /><a href="forums-category.html">Comics</a><span class="separator" /><a href="forums-discussion.html">Let's discuss the current state of the Comics Cinematic Universe</a></p>
+          <!-- /SECTION FILTERS BAR TITLE -->
+  
+          <!-- SECTION FILTERS BAR TEXT -->
+          
+<div class="section-filters-bar-text small-space">
+            Last post by
+            <!-- USER AVATAR -->
+            <a class="user-avatar micro no-stats" href="profile-timeline.html">
+              <!-- USER AVATAR BORDER -->
+              
+<div class="user-avatar-border">
+                <!-- HEXAGON -->
+                
+<div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;" /></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR BORDER -->
+          
+              <!-- USER AVATAR CONTENT -->
+              
+<div class="user-avatar-content">
+                <!-- HEXAGON -->
+                
+<div class="hexagon-image-18-20" data-src="files/img/avatar/05.jpg" style="width: 18px; height: 20px; position: relative;"><canvas width="18" height="20" style="position: absolute; top: 0px; left: 0px;" /></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR CONTENT -->
+            </a>
+            <!-- /USER AVATAR -->
+            <a class="bold" href="profile-timeline.html">Neko Bebop</a>
+            1 hour, 36 minutes ago
+          </div>
+          <!-- /SECTION FILTERS BAR TEXT -->
+        </div>
+        <!-- /SECTION FILTERS BAR INFO -->
+      </div>
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+    </div>
+    <!-- /SECTION FILTERS BAR -->
+    <!-- GRID -->
+    
+<div class="grid grid-9-3">
+      <!-- FORUM CONTENT -->
+      
+<div class="forum-content">
+        <!-- FORUM POST HEADER -->
+        
+<div class="forum-post-header">
+          <!-- FORUM POST HEADER TITLE -->
+          
+<p class="forum-post-header-title">Author</p>
+          <!-- /FORUM POST HEADER TITLE -->
+      
+          <!-- FORUM POST HEADER TITLE -->
+          
+<p class="forum-post-header-title">Post</p>
+          <!-- /FORUM POST HEADER TITLE -->
+        </div>
+        <!-- /FORUM POST HEADER -->
+  
+        <!-- FORUM POST LIST -->
+        
+<div class="forum-post-list">
+          <!-- FORUM POST -->
+<ui:repeat var="re" value="#{reclamationController.getReclamationparcategory()}" varStatus="status">      
+  
+<div class="forum-post">
+            <!-- FORUM POST META -->
+            
+<div class="forum-post-meta">
+              <!-- FORUM POST TIMESTAMP -->
+              
+<p class="forum-post-timestamp"><span class="bold"><h:outputText value="#{re.reclamation_date}" /></span></p>
+              <!-- /FORUM POST TIMESTAMP -->
+        
+              <!-- FORUM POST ACTIONS -->
+              
+<div class="forum-post-actions">
+                <!-- FORUM POST ACTION -->
+                
+<p class="forum-post-action light">Report</p>
+                <!-- /FORUM POST ACTION -->
+        
+                <!-- FORUM POST ACTION -->
+                
+<p class="forum-post-action">Reply</p>
+                <!-- /FORUM POST ACTION -->
+              </div>
+              <!-- /FORUM POST ACTIONS -->
+            </div>
+            <!-- /FORUM POST META -->
+        
+            <!-- FORUM POST CONTENT -->
+            
+<div class="forum-post-content">
+              <!-- FORUM POST USER -->
+              
+<div class="forum-post-user">
+                <!-- USER AVATAR -->
+                <a class="user-avatar no-outline" href="profile-timeline.html">
+                  <!-- USER AVATAR CONTENT -->
+                  
+<div class="user-avatar-content">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-image-68-74" data-src="files/img/avatar/07.jpg" style="width: 68px; height: 74px; position: relative;"><canvas width="68" height="74" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR CONTENT -->
+              
+                  <!-- USER AVATAR PROGRESS -->
+                  
+<div class="user-avatar-progress">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-progress-84-92" style="width: 84px; height: 92px; position: relative;"><canvas width="84" height="92" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR PROGRESS -->
+              
+                  <!-- USER AVATAR PROGRESS BORDER -->
+                  
+<div class="user-avatar-progress-border">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-border-84-92" style="width: 84px; height: 92px; position: relative;"><canvas width="84" height="92" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR PROGRESS BORDER -->
+              
+                  <!-- USER AVATAR BADGE -->
+                  
+<div class="user-avatar-badge">
+                    <!-- USER AVATAR BADGE BORDER -->
+                    
+<div class="user-avatar-badge-border">
+                      <!-- HEXAGON -->
+                      
+<div class="hexagon-28-32" style="width: 28px; height: 32px; position: relative;"><canvas width="28" height="32" style="position: absolute; top: 0px; left: 0px;" /></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR BADGE BORDER -->
+              
+                    <!-- USER AVATAR BADGE CONTENT -->
+                    
+<div class="user-avatar-badge-content">
+                      <!-- HEXAGON -->
+                      
+<div class="hexagon-dark-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;" /></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR BADGE CONTENT -->
+              
+                    <!-- USER AVATAR BADGE TEXT -->
+                    
+<p class="user-avatar-badge-text">26</p>
+                    <!-- /USER AVATAR BADGE TEXT -->
+                  </div>
+                  <!-- /USER AVATAR BADGE -->
+                </a>
+                <!-- /USER AVATAR -->
+        
+                <!-- USER AVATAR -->
+                <a class="user-avatar small no-outline" href="profile-timeline.html">
+                  <!-- USER AVATAR CONTENT -->
+                  
+<div class="user-avatar-content">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-image-30-32" data-src="files/img/avatar/07.jpg" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR CONTENT -->
+              
+                  <!-- USER AVATAR PROGRESS -->
+                  
+<div class="user-avatar-progress">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-progress-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR PROGRESS -->
+              
+                  <!-- USER AVATAR PROGRESS BORDER -->
+                  
+<div class="user-avatar-progress-border">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-border-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR PROGRESS BORDER -->
+              
+                  <!-- USER AVATAR BADGE -->
+                  
+<div class="user-avatar-badge">
+                    <!-- USER AVATAR BADGE BORDER -->
+                    
+<div class="user-avatar-badge-border">
+                      <!-- HEXAGON -->
+                      
+<div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;" /></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR BADGE BORDER -->
+              
+                    <!-- USER AVATAR BADGE CONTENT -->
+                    
+<div class="user-avatar-badge-content">
+                      <!-- HEXAGON -->
+                      
+<div class="hexagon-dark-16-18" style="width: 16px; height: 18px; position: relative;"><canvas width="16" height="18" style="position: absolute; top: 0px; left: 0px;" /></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR BADGE CONTENT -->
+              
+                    <!-- USER AVATAR BADGE TEXT -->
+                    
+<p class="user-avatar-badge-text">26</p>
+                    <!-- /USER AVATAR BADGE TEXT -->
+                  </div>
+                  <!-- /USER AVATAR BADGE -->
+                </a>
+                <!-- /USER AVATAR -->
+                
+                <!-- FORUM POST USER TITLE -->
+                
+<p class="forum-post-user-title"><a href="profile-timeline.html">Sarah Diamond</a></p>
+                <!-- /FORUM POST USER TITLE -->
+        
+                <!-- FORUM POST USER TITLE -->
+                
+<p class="forum-post-user-text"><a href="profile-timeline.html">@sarahdiamond</a></p>
+                <!-- /FORUM POST USER TITLE -->
+        
+                <!-- FORUM POST USER TAG -->
+                
+<p class="forum-post-user-tag organizer">Parent</p>
+                <!-- /FORUM POST USER TAG -->
+              </div>
+              <!-- /FORUM POST USER -->
+        
+              <!-- FORUM POST INFO -->
+              
+<div class="forum-post-info">
+                <!-- FORUM POST PARAGRAPH -->
+                
+<p class="forum-post-paragraph"><h:outputText value="#{re.reclamation_description}" /></p>
+                <!-- /FORUM POST PARAGRAPH -->
+        
+                <!-- FORUM POST IMAGE -->
+                <img class="forum-post-image" src="files/img/cover/01.jpg" alt="cover-01" />
+                <!-- /FORUM POST IMAGE -->
+        
+                <!-- FORUM POST PARAGRAPH -->
+                
+<p class="forum-post-paragraph">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                <!-- /FORUM POST PARAGRAPH -->
+              </div>
+              <!-- /FORUM POST INFO -->
+            </div>
+            <!-- /FORUM POST CONTENT -->
+          </div>
+          <!-- /FORUM POST -->
+          <!-- FORUM POST -->
+                        </ui:repeat>
+          
+        </div>
+        
+        
+        <!-- /FORUM POST LIST -->
+        <!-- SECTION PAGER BAR WRAP -->
+        
+<div class="section-pager-bar-wrap align-right">
+          <!-- SECTION PAGER BAR -->
+          
+<div class="section-pager-bar">
+            <!-- SECTION PAGER -->
+            
+<div class="section-pager">
+              <!-- SECTION PAGER ITEM -->
+              
+<div class="section-pager-item active">
+                <!-- SECTION PAGER ITEM TEXT -->
+                
+<p class="section-pager-item-text">01</p>
+                <!-- /SECTION PAGER ITEM TEXT -->
+              </div>
+              <!-- /SECTION PAGER ITEM -->
+        
+              <!-- SECTION PAGER ITEM -->
+              
+<div class="section-pager-item">
+                <!-- SECTION PAGER ITEM TEXT -->
+                
+<p class="section-pager-item-text">02</p>
+                <!-- /SECTION PAGER ITEM TEXT -->
+              </div>
+              <!-- /SECTION PAGER ITEM -->
+        
+              <!-- SECTION PAGER ITEM -->
+              
+<div class="section-pager-item">
+                <!-- SECTION PAGER ITEM TEXT -->
+                
+<p class="section-pager-item-text">03</p>
+                <!-- /SECTION PAGER ITEM TEXT -->
+              </div>
+              <!-- /SECTION PAGER ITEM -->
+        
+              <!-- SECTION PAGER ITEM -->
+              
+<div class="section-pager-item">
+                <!-- SECTION PAGER ITEM TEXT -->
+                
+<p class="section-pager-item-text">04</p>
+                <!-- /SECTION PAGER ITEM TEXT -->
+              </div>
+              <!-- /SECTION PAGER ITEM -->
+        
+              <!-- SECTION PAGER ITEM -->
+              
+<div class="section-pager-item">
+                <!-- SECTION PAGER ITEM TEXT -->
+                
+<p class="section-pager-item-text">05</p>
+                <!-- /SECTION PAGER ITEM TEXT -->
+              </div>
+              <!-- /SECTION PAGER ITEM -->
+        
+              <!-- SECTION PAGER ITEM -->
+              
+<div class="section-pager-item">
+                <!-- SECTION PAGER ITEM TEXT -->
+                
+<p class="section-pager-item-text">06</p>
+                <!-- /SECTION PAGER ITEM TEXT -->
+              </div>
+              <!-- /SECTION PAGER ITEM -->
+            </div>
+            <!-- /SECTION PAGER -->
+        
+            <!-- SECTION PAGER CONTROLS -->
+            
+<div class="section-pager-controls">
+              <!-- SLIDER CONTROL -->
+              
+<div class="slider-control left disabled">
+                <!-- SLIDER CONTROL ICON -->
+                <svg class="slider-control-icon icon-small-arrow">
+                  <use xlink:href="#svg-small-arrow" />
+                </svg>
+                <!-- /SLIDER CONTROL ICON -->
+              </div>
+              <!-- /SLIDER CONTROL -->
+        
+              <!-- SLIDER CONTROL -->
+              
+<div class="slider-control right">
+                <!-- SLIDER CONTROL ICON -->
+                <svg class="slider-control-icon icon-small-arrow">
+                  <use xlink:href="#svg-small-arrow" />
+                </svg>
+                <!-- /SLIDER CONTROL ICON -->
+              </div>
+              <!-- /SLIDER CONTROL -->
+            </div>
+            <!-- /SECTION PAGER CONTROLS -->
+          </div>
+          <!-- /SECTION PAGER BAR -->
+        </div>
+        <!-- /SECTION PAGER BAR WRAP -->
+        <!-- QUICK POST -->
+        
+<div class="quick-post medium">
+          <!-- QUICK POST HEADER -->
+          
+<div class="quick-post-header">
+            <!-- QUICK POST HEADER TITLE -->
+            
+<p class="quick-post-header-title">Leave a Reply</p>
+            <!-- /QUICK POST HEADER TITLE -->
+          </div>
+          <!-- /QUICK POST HEADER -->
+      
+          <!-- QUICK POST BODY -->
+          
+<div class="quick-post-body">
+            <!-- FORM -->
+            <form class="form">
+              <!-- FORM ROW -->
+              
+<div class="form-row">
+                <!-- FORM ITEM -->
+                
+<div class="form-item">
+                  <!-- FORM TEXTAREA -->
+                  
+<div class="form-textarea">
+                    <textarea id="forum-post-text" name="forum-post-text" placeholder="Hi Marina! Share your post here..."></textarea>
+                    <!-- FORM TEXTAREA LIMIT TEXT -->
+                    
+<p class="form-textarea-limit-text">998/1000</p>
+                    <!-- /FORM TEXTAREA LIMIT TEXT -->
+                  </div>
+                  <!-- /FORM TEXTAREA -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+            </form>
+            <!-- /FORM -->
+          </div>
+          <!-- /QUICK POST BODY -->
+      
+          <!-- QUICK POST FOOTER -->
+          
+<div class="quick-post-footer">
+            <!-- QUICK POST FOOTER ACTIONS -->
+            
+<div class="quick-post-footer-actions">
+              <!-- QUICK POST FOOTER ACTION -->
+              
+<div class="quick-post-footer-action text-tooltip-tft-medium" data-title="Insert Photo" style="position: relative;">
+                <!-- QUICK POST FOOTER ACTION ICON -->
+                <svg class="quick-post-footer-action-icon icon-camera">
+                  <use xlink:href="#svg-camera" />
+                </svg>
+                <!-- /QUICK POST FOOTER ACTION ICON -->
+              
+<div class="xm-tooltip" style="white-space: nowrap; position: absolute; z-index: 99999; top: -32px; left: 50%; margin-left: -42.5px; opacity: 0; visibility: hidden; transform: translate(0px, 10px); transition: all 0.3s ease-in-out 0s;">
+<p class="xm-tooltip-text">Insert Photo</p></div></div>
+              <!-- /QUICK POST FOOTER ACTION -->
+      
+              <!-- QUICK POST FOOTER ACTION -->
+              
+<div class="quick-post-footer-action text-tooltip-tft-medium" data-title="Insert GIF" style="position: relative;">
+                <!-- QUICK POST FOOTER ACTION ICON -->
+                <svg class="quick-post-footer-action-icon icon-gif">
+                  <use xlink:href="#svg-gif" />
+                </svg>
+                <!-- /QUICK POST FOOTER ACTION ICON -->
+              
+<div class="xm-tooltip" style="white-space: nowrap; position: absolute; z-index: 99999; top: -32px; left: 50%; margin-left: -35.5px; opacity: 0; visibility: hidden; transform: translate(0px, 10px); transition: all 0.3s ease-in-out 0s;">
+<p class="xm-tooltip-text">Insert GIF</p></div></div>
+              <!-- /QUICK POST FOOTER ACTION -->
+            </div>
+            <!-- /QUICK POST FOOTER ACTIONS -->
+      
+              <!-- QUICK POST FOOTER ACTIONS -->
+              
+<div class="quick-post-footer-actions">
+                <!-- BUTTON -->
+                
+<p class="button void">Discard</p>
+                <!-- /BUTTON -->
+      
+                <!-- BUTTON -->
+                
+<p class="button secondary">Post Reply</p>
+                <!-- /BUTTON -->
+              </div>
+              <!-- /QUICK POST FOOTER ACTIONS -->
+          </div>
+          <!-- /QUICK POST FOOTER -->
+        </div>
+        <!-- /QUICK POST -->
+      </div>
+      <!-- /FORUM CONTENT -->
+      <!-- FORUM SIDEBAR -->
+      
+<div class="forum-sidebar grid-column">
+        <!-- STATS DECORATION -->
+        
+<div class="stats-decoration secondary">
+          <!-- STATS DECORATION ICON WRAP -->
+          
+<div class="stats-decoration-icon-wrap">
+            <!-- STATS DECORATION ICON -->
+            <svg class="stats-decoration-icon icon-thumbs-up">
+              <use xlink:href="#svg-thumbs-up" />
+            </svg>
+            <!-- /STATS DECORATION ICON -->
+          </div>
+          <!-- /STATS DECORATION ICON WRAP -->
+          <!-- STATS DECORATION TITLE -->
+          
+<p class="stats-decoration-title">398</p>
+          <!-- /STATS DECORATION TITLE -->
+          <!-- STATS DECORATION TEXT -->
+          
+<p class="stats-decoration-text">Voices</p>
+          <!-- /STATS DECORATION TEXT -->
+        </div>
+        <!-- /STATS DECORATION -->
+        <!-- STATS DECORATION -->
+        
+<div class="stats-decoration primary">
+          <!-- STATS DECORATION ICON WRAP -->
+          
+<div class="stats-decoration-icon-wrap">
+            <!-- STATS DECORATION ICON -->
+            <svg class="stats-decoration-icon icon-members">
+              <use xlink:href="#svg-members" />
+            </svg>
+            <!-- /STATS DECORATION ICON -->
+          </div>
+          <!-- /STATS DECORATION ICON WRAP -->
+          <!-- STATS DECORATION TITLE -->
+          
+<p class="stats-decoration-title">941</p>
+          <!-- /STATS DECORATION TITLE -->
+          <!-- STATS DECORATION TEXT -->
+          
+<p class="stats-decoration-text">Replies</p>
+          <!-- /STATS DECORATION TEXT -->
+        </div>
+        <!-- /STATS DECORATION -->
+      </div>
+      <!-- /FORUM SIDEBAR -->
+    </div>
+    <!-- /GRID -->
+  </div>
+				
+				
+				
+				
+				 
+  </ui:define>
+
+
+	</ui:composition>
+
+
+
+
+</body>
+
+</html>

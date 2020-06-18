@@ -1,0 +1,1082 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
+
+	
+<h:body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml"
+		xmlns:p="http://primefaces.org/ui">
+		
+						<ui:define name="content">
+						
+		<div class="content-grid" style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+    <!-- SECTION BANNER -->
+    
+<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/events-icon.png" alt="events-icon" />
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title">Meeting</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      
+<p class="section-banner-text">Manage your meetings easily!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+    <!-- SECTION HEADER -->
+    
+    <!-- SECTION FILTERS BAR -->
+                  <h:panelGroup id="weekbox">  
+        
+    <div class="week-box">
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{reunionController.getDisponibiltyforJ(0).heured}">
+            <f:convertDateTime pattern="HH:mm"/>
+</h:outputText><br/>
+<h:outputText value="#{reunionController.getDisponibiltyforJ(0).heuref}"><f:convertDateTime pattern="HH:mm"/></h:outputText>
+</p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Mondays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{reunionController.getDisponibiltyforJ(1).heured}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{reunionController.getDisponibiltyforJ(1).heuref}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Tuesdays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{reunionController.getDisponibiltyforJ(2).heured}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{reunionController.getDisponibiltyforJ(2).heuref}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Wednesdays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{reunionController.getDisponibiltyforJ(3).heured}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{reunionController.getDisponibiltyforJ(3).heuref}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Thursdays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{reunionController.getDisponibiltyforJ(4).heured}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{reunionController.getDisponibiltyforJ(4).heuref}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Fridays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{reunionController.getDisponibiltyforJ(5).heured}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{reunionController.getDisponibiltyforJ(5).heuref}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Saturdays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+      
+              <!-- WEEK BOX ITEM -->
+              
+<div class="week-box-item">
+                <!-- WEEK BOX ITEM TITLE -->
+                
+<p class="week-box-item-title"><h:outputText value="#{reunionController.getDisponibiltyforJ(6).heured}"><f:convertDateTime pattern="HH:mm"/></h:outputText><br/>
+<h:outputText value="#{reunionController.getDisponibiltyforJ(6).heuref}"><f:convertDateTime pattern="HH:mm"/></h:outputText></p>
+                <!-- /WEEK BOX ITEM TITLE -->
+      
+                <!-- WEEK BOX ITEM TEXT -->
+                
+<p class="week-box-item-text">Sundays</p>
+                <!-- /WEEK BOX ITEM TEXT -->
+              </div>
+              <!-- /WEEK BOX ITEM -->
+            </div>
+            </h:panelGroup>
+            <br/>
+    
+    <div class="grid grid-3-3-3">
+
+
+<div class="achievement-box secondary" style="width:250px;height:75px">
+          <!-- ACHIEVEMENT BOX INFO WRAP -->
+          
+<div class="achievement-box-info-wrap">
+            <!-- ACHIEVEMENT BOX IMAGE -->
+            <img class="achievement-box-image" src="files/img/houssem/add.png" alt="quest-completedq-l" />
+            <!-- /ACHIEVEMENT BOX IMAGE -->
+      
+            <!-- ACHIEVEMENT BOX INFO -->
+            
+<div class="achievement-box-info">
+              <!-- ACHIEVEMENT BOX TITLE -->
+              
+              <h:form class="achievement-box-title"><p:commandLink onclick="PF('dlg1').show();" value="Schedule meeting">
+   </p:commandLink></h:form>
+   
+              <!-- /ACHIEVEMENT BOX TITLE -->
+      
+              <!-- ACHIEVEMENT BOX TEXT -->
+                            <!-- /ACHIEVEMENT BOX TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT BOX INFO -->
+          </div>
+          <!-- /ACHIEVEMENT BOX INFO WRAP -->
+      
+        </div>
+        
+        
+        <div class="achievement-box primary" style="width:250px;height:75px">
+          <!-- ACHIEVEMENT BOX INFO WRAP -->
+          
+<div class="achievement-box-info-wrap">
+            <!-- ACHIEVEMENT BOX IMAGE -->
+            <img class="achievement-box-image" src="files/img/houssem/reclam.png" alt="quest-completedq-l" />
+            <!-- /ACHIEVEMENT BOX IMAGE -->
+      
+            <!-- ACHIEVEMENT BOX INFO -->
+            
+<div class="achievement-box-info">
+              <!-- ACHIEVEMENT BOX TITLE -->
+              
+              <h:form class="achievement-box-title"><p:commandLink onclick="PF('dlg2').show();" value="Report meeting">
+   </p:commandLink></h:form>
+   
+              <!-- /ACHIEVEMENT BOX TITLE -->
+      
+              <!-- ACHIEVEMENT BOX TEXT -->
+                            <!-- /ACHIEVEMENT BOX TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT BOX INFO -->
+          </div>
+          <!-- /ACHIEVEMENT BOX INFO WRAP -->
+      
+        </div>
+        
+        <div class="achievement-box secondary" style="width:250px;height:75px">
+          <!-- ACHIEVEMENT BOX INFO WRAP -->
+          
+<div class="achievement-box-info-wrap">
+            <!-- ACHIEVEMENT BOX IMAGE -->
+            <img class="achievement-box-image" src="files/img/houssem/add.png" alt="quest-completedq-l" />
+            <!-- /ACHIEVEMENT BOX IMAGE -->
+      
+            <!-- ACHIEVEMENT BOX INFO -->
+            
+<div class="achievement-box-info">
+              <!-- ACHIEVEMENT BOX TITLE -->
+              <h:form class="achievement-box-title">              
+<h:commandLink id="modfierhoraire" action="#{reunionController.setmodifhoraire()}" onclick="PF('dlg5').show();" value="Edit work Time" >
+<p:ajax update=":dialogue1"/>
+</h:commandLink>
+</h:form>
+
+             
+            </div>
+          </div>
+        </div>
+</div>
+
+<p:dialog header="schedule meeting" widgetVar="dlg1" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+              
+             
+             <h:form enctype='multipart/form-data'>
+				<h:outputText value="Type de Reunion"/><br/>
+		 <p:selectOneMenu id="console" value="#{reunionController.ajoutTypereun}" style="width:125px">
+            <f:selectItem itemLabel="Select One" itemValue="" />
+            <f:selectItem itemLabel="MENSUEL" itemValue="MENSUEL" />
+            <f:selectItem itemLabel="HEBDOMADAIRE" itemValue="HEBDOMADAIRE" />
+            <f:selectItem itemLabel="EXCEPTIONNEL" itemValue="EXCEPTIONNEL" />
+            <f:facet name="footer">
+               <p:separator />
+               <h:outputText value="3 consoles" style="font-weight:bold;"/>
+            </f:facet>
+        </p:selectOneMenu><br/>
+		<h:outputText value="Title"/><br/>
+		<h:inputText id="reun-title" name="reunion_title" required="true" requiredMessage="Titre Reunion Obligatoire"
+value="#{reunionController.ajoutTitle}"/><br/><br/>
+		<h:outputText value="Date"/><br/>
+		<p:calendar id="profileee-public" value="#{reunionController.ajoutDate}" showOn="button" pattern="yyyy-MM-dd"/><br/><br/>
+		<h:outputText value="Start Time"/><br/>
+	    <p:calendar id="profile" value="#{reunionController.ajoutStartTime}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="End Time"/><br/>
+	    <p:calendar id="profiles" value="#{reunionController.ajoutEndTime}" showOn="button" pattern="HH:mm"/><br/><br/>
+		    <h:outputText value="Number of participants"/><br/>
+	
+	            <p:inputNumber id="input1" value="#{reunionController.ajoutnbrpers}"/><br/><br/>  
+                    
+		<h:outputText value="Detail of the meeting"/><br/>
+		<p:inputTextarea rows="10" cols="50" value="#{reunionController.ajoutDescription}" queryDelay="750" minQueryLength="4">
+    </p:inputTextarea><br/><br/>
+    		
+		<br/><br/>
+		
+<p:commandButton id="ajouterr" value="schedule meeting" update=":tabview-id" class="btn btn-success" action="#{reunionController.ajouterReunion()}" >
+
+</p:commandButton>		
+		</h:form>			
+</p:dialog>
+
+
+<p:dialog header="Delay meeting" widgetVar="dlg2" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+              
+             
+            <h:form>
+        <h:outputText value="Report Start Date"/>
+		<p:calendar id="profillle-public" value="#{reunionController.reportDateBegin}" showOn="button" pattern="yyyy-MM-dd"/>
+		<br/><br/>
+		 <h:outputText value="Return Date"/>
+		<p:calendar id="profile-public" value="#{reunionController.reportDateEnd}" showOn="button" pattern="yyyy-MM-dd"/><br/>
+
+   <p:commandButton id="RaporterReunion" value="apply" update=":tabview-id" class="btn btn-success" action="#{reunionController.reportReunionFromDateUntilDatenew()}" >
+
+</p:commandButton>	
+</h:form>
+</p:dialog>
+
+<p:dialog header="Appointments availability" widgetVar="dlg5" resizable="false" position="center center" height="250" width="456" appendToBody="true">
+             <h:panelGroup id="dialogue1">	
+             <h:form>
+              
+		 <h:outputText value="MONDAY"/><br/>
+	    <p:calendar id="profile1" value="#{reunionController.mofidheuredlun}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile2" value="#{reunionController.mofidheureflun}" showOn="button" pattern="HH:mm"/><br/><br/>
+	 
+	    <h:outputText value="TUESDAY"/><br/>
+	    <p:calendar id="profile3" value="#{reunionController.mofidheuredmar}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile4" value="#{reunionController.mofidheurefmar}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="THURSDAY"/><br/>
+	    <p:calendar id="profile5" value="#{reunionController.mofidheuredmer}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile6" value="#{reunionController.mofidheurefmer}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="WEDNESDAY"/><br/>
+	    <p:calendar id="profile7" value="#{reunionController.mofidheuredjeud}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile8" value="#{reunionController.mofidheurefjeud}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="FRIDAY"/><br/>
+	    <p:calendar id="profile9" value="#{reunionController.mofidheuredven}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile10" value="#{reunionController.mofidheurefven}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="SATURDAY"/><br/>
+	    <p:calendar id="profile11" value="#{reunionController.mofidheuredsam}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile12" value="#{reunionController.mofidheurefsam}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <h:outputText value="SUNDAY"/><br/>
+	    <p:calendar id="profile13" value="#{reunionController.mofidheureddim}" showOn="button" pattern="HH:mm"/><br/><br/>
+	    <p:calendar id="profile14" value="#{reunionController.mofidheurefdim}" showOn="button" pattern="HH:mm"/><br/><br/>
+		
+<p:commandButton value="send" class="btn btn-success" update=":tabview-id :weekbox" action="#{reunionController.updatehoraire()}" >
+   </p:commandButton>
+		</h:form>	
+		</h:panelGroup>
+</p:dialog>
+<br/>
+
+
+
+
+
+
+<div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      
+<div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        
+<p class="section-pretitle">your meetings are waiting!</p>
+        <!-- /SECTION PRETITLE -->
+  
+        <!-- SECTION TITLE -->
+        
+<h2 class="section-title">List of meetings</h2>
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+    </div>
+
+<div class="section-filters-bar v6">
+      <!-- SECTION FILTERS BAR ACTIONS -->
+      
+<div class="section-filters-bar-actions">
+        <!-- FORM -->
+        <h:form class="form">
+          <!-- FORM ITEM -->
+          
+<div class="form-item split">
+            <!-- FORM INPUT -->
+            
+<div class="form-input small">
+              <label for="events-search">Search for a meeting</label>
+              <h:inputText id="events-search" value="#{reunionController.searchString}"  />
+            </div>
+            
+            <div class="form-select">
+              <label for="post-filter-order">Search By</label>
+              <h:selectOneMenu id="post-filter-order" value="#{reunionController.recherchefiltre}" name="post_filter_order">
+                
+<f:selectItem  itemValue="0" itemLabel="By Title" ></f:selectItem>
+                
+<f:selectItem  itemValue="1" itemLabel="By Parent"></f:selectItem>
+              </h:selectOneMenu>
+              <!-- FORM SELECT ICON -->
+              <svg class="form-select-icon icon-small-arrow">
+                <use xlink:href="#svg-small-arrow" />
+              </svg>
+              <!-- /FORM SELECT ICON -->
+            </div>
+            
+            <!-- /FORM INPUT -->
+  
+            <!-- BUTTON -->
+         
+           <p:commandButton id="sendsearch" value="Send"  update=":tabview-id" class="button primary" action="#{reunionController.setvaluessearch()}" >
+</p:commandButton>
+            <!-- /BUTTON -->
+          </div>
+          <!-- /FORM ITEM -->
+        </h:form>
+        <!-- /FORM -->
+      </div>
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+      <div class="section-filters-bar-actions">
+      
+        
+</div>
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+    </div>
+
+
+
+<div class="section-filters-bar v6">
+      <!-- SECTION FILTERS BAR ACTIONS -->
+      
+<div class="section-filters-bar-actions">
+        <!-- FORM -->
+       
+        <div class="filter-tabs">
+            <!-- FILTER TAB -->
+            
+<div class="filter-tab">
+              <!-- FILTER TAB TEXT -->
+              
+<h:form class="filter-tab-text">
+<h:commandLink action="#{reunionController.setfiltervalue(0)}" update=":tabview-id" value="All">
+<p:ajax update=":tabview-id"/>
+
+   </h:commandLink></h:form>
+              <!-- /FILTER TAB TEXT -->
+            </div>
+            <!-- /FILTER TAB -->
+    
+            <!-- FILTER TAB -->
+            <div class="filter-tab">
+              <!-- FILTER TAB TEXT -->
+              
+<h:form class="filter-tab-text">
+<h:commandLink action="#{reunionController.setfiltervalue(1)}" value="this week">
+<p:ajax update=":tabview-id"/>
+
+   </h:commandLink></h:form>
+              <!-- /FILTER TAB TEXT -->
+            </div>
+            
+            
+            <div class="filter-tab">
+              <!-- FILTER TAB TEXT -->
+              
+<h:form class="filter-tab-text">
+<h:commandLink action="#{reunionController.setfiltervalue(2)}" update=":tabview-id" value="less than a month">
+<p:ajax update=":tabview-id"/>
+
+   </h:commandLink></h:form>
+              <!-- /FILTER TAB TEXT -->
+            </div>
+            
+            
+            
+<div class="filter-tab">
+              <!-- FILTER TAB TEXT -->
+              
+<h:form class="filter-tab-text">
+<h:commandLink action="#{reunionController.setfiltervalue(3)}" update=":tabview-id" value="old">
+<p:ajax update=":tabview-id"/>
+
+   </h:commandLink></h:form>
+              <!-- /FILTER TAB TEXT -->
+            </div>
+            <!-- /FILTER TAB -->
+    
+            <!-- FILTER TAB -->
+            
+            <!-- /FILTER TAB -->
+          </div>
+        
+        
+        
+      </div>
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+      <div class="section-filters-bar-actions">
+      
+        
+</div>
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+    </div>
+    <!-- /SECTION FILTERS BAR -->
+    <!-- CALENDAR WIDGET -->
+    
+
+    <!-- /CALENDAR WIDGET -->
+    <!-- SECTION HEADER -->
+    
+
+    <!-- /SECTION HEADER -->
+    <!-- GRID -->
+   
+          <h:panelGroup id="tabview-id">  
+          <div class="grid grid-3-3-3-3 centered">
+      <!-- EVENT PREVIEW -->
+ <ui:repeat var="re" value="#{reunionController.searchmeeting()}" varStatus="status">
+<div class="event-preview">
+        <!-- EVENT PREVIEW COVER -->
+        <figure class="event-preview-cover liquid" style="background: url(&quot;files/img/houssem/meeting.jpg&quot;) center center / cover no-repeat;">
+          <img src="files/img/houssem/meeting.jpg" alt="cover-47" style="display: none;" />
+        </figure>
+        <!-- /EVENT PREVIEW COVER -->
+    
+        <!-- EVENT PREVIEW INFO -->
+        
+<div class="event-preview-info">
+          <!-- EVENT PREVIEW INFO TOP -->
+          
+<div class="event-preview-info-top">
+            <!-- DATE STICKER -->
+            
+<div class="date-sticker">
+              <!-- DATE STICKER DAY -->
+              
+<p class="date-sticker-day"><h:outputText value="#{re.reun_date}" >
+            <f:convertDateTime pattern="dd"/>
+     </h:outputText></p>
+              <!-- /DATE STICKER DAY -->
+      
+              <!-- DATE STICKER MONTH -->
+              
+<p class="date-sticker-month"><h:outputText value="#{re.reun_date}" >
+            <f:convertDateTime pattern="MMMM"/>
+     </h:outputText></p>
+              <!-- /DATE STICKER MONTH -->
+            </div>
+            <!-- /DATE STICKER -->
+    
+            <!-- EVENT PREVIEW TITLE -->
+            
+
+<h:form class="event-preview-title popup-event-information-trigger">
+<h:commandLink action="#{reunionController.goToreuniondetails(re.reun_id)}" value="#{re.reun_title}">
+   </h:commandLink></h:form>
+            <!-- /EVENT PREVIEW TITLE -->
+    
+            <!-- EVENT PREVIEW TIMESTAMP -->
+            
+<p class="event-preview-timestamp"><span class="bold"><h:outputText value="#{re.reun_heureD}" />
+</span> - <span class="bold"><h:outputText value="#{re.reun_heureF}" /></span></p>
+            <!-- /EVENT PREVIEW TIMESTAMP -->
+    
+            <!-- EVENT PREVIEW TEXT -->
+            
+<p class="event-preview-text"><h:outputText value="#{re.reun_type}" /></p>
+            <!-- /EVENT PREVIEW TEXT -->
+          </div>
+          <!-- /EVENT PREVIEW INFO TOP -->
+    
+          <!-- EVENT PREVIEW INFO BOTTOM -->
+          
+<div class="event-preview-info-bottom">
+            <!-- DECORATED TEXT -->
+            
+<div class="decorated-text">
+              <!-- DECORATED TEXT ICON -->
+              <svg class="decorated-text-icon icon-pin">
+                <use xlink:href="#svg-pin" />
+              </svg>
+              <!-- /DECORATED TEXT ICON -->
+    
+              <!-- DECORATED TEXT CONTENT -->
+              
+<p class="decorated-text-content">Jardin</p>
+              <!-- /DECORATED TEXT CONTENT -->
+            </div>
+            <!-- /DECORATED TEXT -->
+    
+            <!-- META LINE -->
+            
+<div class="meta-line">
+              <!-- META LINE LIST -->
+              
+<div class="meta-line-list user-avatar-list">
+                <!-- USER AVATAR -->
+                
+<div class="user-avatar micro no-stats">
+                  <!-- USER AVATAR BORDER -->
+                  
+<div class="user-avatar-border">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR BORDER -->
+              
+                  <!-- USER AVATAR CONTENT -->
+                  
+<div class="user-avatar-content">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-image-18-20" data-src="files/img/avatar/05.jpg" style="width: 18px; height: 20px; position: relative;"><canvas width="18" height="20" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR CONTENT -->
+                </div>
+                <!-- /USER AVATAR -->
+    
+                <!-- USER AVATAR -->
+                
+<div class="user-avatar micro no-stats">
+                  <!-- USER AVATAR BORDER -->
+                  
+<div class="user-avatar-border">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR BORDER -->
+              
+                  <!-- USER AVATAR CONTENT -->
+                  
+<div class="user-avatar-content">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-image-18-20" data-src="files/img/avatar/01.jpg" style="width: 18px; height: 20px; position: relative;"><canvas width="18" height="20" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR CONTENT -->
+                </div>
+                <!-- /USER AVATAR -->
+              </div>
+              <!-- /META LINE LIST -->
+    
+              <!-- META LINE TEXT -->
+              
+              <!-- /META LINE TEXT -->
+            </div>
+            <!-- /META LINE -->
+    
+            <!-- BUTTON -->
+            <h:form>
+ <h:commandButton value="Cancel meeting" class="button white white-tertiary" action="#{reunionController.annulerReunionByIdnew(re.reun_id)}" >
+	<p:ajax update=":tabview-id"/>
+		</h:commandButton></h:form>
+		<h:form>
+<h:commandButton value="Delete meeting" class="button white white-tertiary" action="#{reunionController.deleteReunionById(re.reun_id)}" >
+		<p:ajax update=":tabview-id"/>
+		</h:commandButton></h:form>
+            <!-- /BUTTON -->
+          </div>
+          <!-- /EVENT PREVIEW INFO BOTTOM -->
+        </div>
+        <!-- /EVENT PREVIEW INFO -->
+      </div>
+      <!-- /EVENT PREVIEW -->
+      <!-- EVENT PREVIEW -->
+
+      <!-- /EVENT PREVIEW -->
+      </ui:repeat>
+    </div>
+    <br/><br/>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+<div class="grid grid-3-3-3-3 centered">
+      <!-- EVENT PREVIEW -->
+ <ui:repeat var="re" value="#{reunionController.getupcommingReunionByJardin()}" varStatus="status">
+<div class="event-preview">
+        <!-- EVENT PREVIEW COVER -->
+        <figure class="event-preview-cover liquid" style="background: url(&quot;files/img/houssem/meeting.jpg&quot;) center center / cover no-repeat;">
+          <img src="files/img/houssem/meeting.jpg" alt="cover-47" style="display: none;" />
+        </figure>
+        <!-- /EVENT PREVIEW COVER -->
+    
+        <!-- EVENT PREVIEW INFO -->
+        
+<div class="event-preview-info">
+          <!-- EVENT PREVIEW INFO TOP -->
+          
+<div class="event-preview-info-top">
+            <!-- DATE STICKER -->
+            
+<div class="date-sticker">
+              <!-- DATE STICKER DAY -->
+              
+<p class="date-sticker-day"><h:outputText value="#{re.reun_date}" >
+            <f:convertDateTime pattern="dd"/>
+     </h:outputText></p>
+              <!-- /DATE STICKER DAY -->
+      
+              <!-- DATE STICKER MONTH -->
+              
+<p class="date-sticker-month"><h:outputText value="#{re.reun_date}" >
+            <f:convertDateTime pattern="MMMM"/>
+     </h:outputText></p>
+              <!-- /DATE STICKER MONTH -->
+            </div>
+            <!-- /DATE STICKER -->
+    
+            <!-- EVENT PREVIEW TITLE -->
+            
+
+<h:form class="event-preview-title popup-event-information-trigger">
+<h:commandLink action="#{reunionController.goToreuniondetails(re.reun_id)}" value="#{re.reun_title}">
+   </h:commandLink></h:form>
+            <!-- /EVENT PREVIEW TITLE -->
+    
+            <!-- EVENT PREVIEW TIMESTAMP -->
+            
+<p class="event-preview-timestamp"><span class="bold"><h:outputText value="#{re.reun_heureD}" />
+</span> - <span class="bold"><h:outputText value="#{re.reun_heureF}" /></span></p>
+            <!-- /EVENT PREVIEW TIMESTAMP -->
+    
+            <!-- EVENT PREVIEW TEXT -->
+            
+<p class="event-preview-text"><h:outputText value="#{re.reun_type}" /></p>
+            <!-- /EVENT PREVIEW TEXT -->
+          </div>
+          <!-- /EVENT PREVIEW INFO TOP -->
+    
+          <!-- EVENT PREVIEW INFO BOTTOM -->
+          
+<div class="event-preview-info-bottom">
+            <!-- DECORATED TEXT -->
+            
+<div class="decorated-text">
+              <!-- DECORATED TEXT ICON -->
+              <svg class="decorated-text-icon icon-pin">
+                <use xlink:href="#svg-pin" />
+              </svg>
+              <!-- /DECORATED TEXT ICON -->
+    
+              <!-- DECORATED TEXT CONTENT -->
+              
+<p class="decorated-text-content">Jardin</p>
+              <!-- /DECORATED TEXT CONTENT -->
+            </div>
+            <!-- /DECORATED TEXT -->
+    
+            <!-- META LINE -->
+            
+<div class="meta-line">
+              <!-- META LINE LIST -->
+              
+<div class="meta-line-list user-avatar-list">
+                <!-- USER AVATAR -->
+                
+<div class="user-avatar micro no-stats">
+                  <!-- USER AVATAR BORDER -->
+                  
+<div class="user-avatar-border">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR BORDER -->
+              
+                  <!-- USER AVATAR CONTENT -->
+                  
+<div class="user-avatar-content">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-image-18-20" data-src="files/img/avatar/05.jpg" style="width: 18px; height: 20px; position: relative;"><canvas width="18" height="20" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR CONTENT -->
+                </div>
+                <!-- /USER AVATAR -->
+    
+                <!-- USER AVATAR -->
+                
+<div class="user-avatar micro no-stats">
+                  <!-- USER AVATAR BORDER -->
+                  
+<div class="user-avatar-border">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR BORDER -->
+              
+                  <!-- USER AVATAR CONTENT -->
+                  
+<div class="user-avatar-content">
+                    <!-- HEXAGON -->
+                    
+<div class="hexagon-image-18-20" data-src="files/img/avatar/01.jpg" style="width: 18px; height: 20px; position: relative;"><canvas width="18" height="20" style="position: absolute; top: 0px; left: 0px;" /></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR CONTENT -->
+                </div>
+                <!-- /USER AVATAR -->
+              </div>
+              <!-- /META LINE LIST -->
+    
+              <!-- META LINE TEXT -->
+              
+              <!-- /META LINE TEXT -->
+            </div>
+            <!-- /META LINE -->
+    
+            <!-- BUTTON -->
+            <h:form>
+ <h:commandButton value="Cancel meeting" class="button white white-tertiary" action="#{reunionController.annulerReunionByIdnew(re.reun_id)}" >
+	<p:ajax update=":tabview-id"/>
+		</h:commandButton></h:form>
+		<h:form>
+<h:commandButton value="Delete meeting" class="button white white-tertiary" action="#{reunionController.deleteReunionById(re.reun_id)}" >
+		<p:ajax update=":tabview-id"/>
+		</h:commandButton></h:form>
+            <!-- /BUTTON -->
+          </div>
+          <!-- /EVENT PREVIEW INFO BOTTOM -->
+        </div>
+        <!-- /EVENT PREVIEW INFO -->
+      </div>
+      <!-- /EVENT PREVIEW -->
+      <!-- EVENT PREVIEW -->
+
+      <!-- /EVENT PREVIEW -->
+      </ui:repeat>
+    </div>
+    </h:panelGroup>
+    <!-- /GRID -->
+   
+   
+  
+ 
+ 
+ 
+ 
+    
+  </div>
+			
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+				
+				
+				<div class="popup-box big popup-event-creation" style="position: absolute; left: 50%; z-index: 100001; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 196px; margin-left: -162px;">
+    <!-- POPUP CLOSE BUTTON -->
+    
+<div class="popup-close-button popup-event-creation-trigger">
+      <!-- POPUP CLOSE BUTTON ICON -->
+      <svg class="popup-close-button-icon icon-cross">
+        <use xlink:href="#svg-cross" />
+      </svg>
+      <!-- /POPUP CLOSE BUTTON ICON -->
+    </div>
+    <!-- /POPUP CLOSE BUTTON -->
+    <!-- POPUP BOX TITLE -->
+   
+<p class="popup-box-title">+ Ajouter Reunion</p>
+    <!-- /POPUP BOX TITLE -->
+    <!-- FORM -->
+    <h:form class="form">
+      <!-- FORM ROW -->
+       <p:calendar id="profile-public-website" value="#{reunionController.ajoutDate}" showOn="button" pattern="yyyy-MM-dd"/>
+      
+<div class="form-row">
+        <!-- FORM ITEM -->
+        
+<div class="form-item">
+          <!-- FORM SELECT -->
+          
+<div class="form-select">
+            <label for="event-category">Type</label>
+            <select id="event-category" name="event_category">
+              
+<option value="0">MENSUEL</option>
+              
+<option value="1">HEBDOMADAIRE</option>
+              
+<option value="2">EXCEPTIONNEL</option>
+              
+<option value="3">Cosplay Events</option>
+            </select>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow" />
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          <!-- /FORM SELECT -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+      <!-- FORM ROW -->
+      
+<div class="form-row">
+        <!-- FORM ITEM -->
+        
+<div class="form-item">
+          <!-- FORM INPUT -->
+          
+<div class="form-input small">
+            <label for="event-name">Title</label>
+            <h:inputText id="reun-title" name="reunion_title" required="true" requiredMessage="Titre Reunion Obligatoire"
+value="#{reunionController.ajoutTitle}"/>
+          </div>
+          <!-- /FORM INPUT -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+      <!-- FORM ROW -->
+      
+      <!-- FORM ROW -->
+      
+<div class="form-row">
+        <!-- FORM ITEM -->
+        
+
+          <!-- FORM INPUT -->
+          
+              <label for="event-date">Reunion Date</label>
+ 
+ 
+ 
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+      <!-- FORM ROW -->
+      
+<div class="form-row">
+        <!-- FORM ITEM -->
+        
+<div class="form-item split join-on-mobile medium">
+          <!-- FORM SELECT -->
+          <div>
+            <label for="event-time-start">Start Time</label>
+            <input type="time" value="#{reunionController.ajoutStartTime}"/>
+           </div>
+            <!-- FORM SELECT ICON -->
+            
+            <!-- /FORM SELECT ICON -->
+          <!-- /FORM SELECT -->
+          <!-- FORM SELECT -->
+                    <div>
+          
+            <label for="event-time-start">End Time</label>
+            <input type="time" value="#{reunionController.ajoutEndTime}"/>
+            
+            </div>
+            <!-- FORM SELECT ICON -->
+        
+            <!-- /FORM SELECT ICON -->
+          <!-- /FORM SELECT -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+      <!-- FORM ROW -->
+      
+<div class="form-row">
+        <!-- FORM ITEM -->
+        
+<div class="form-item">
+          <!-- FORM INPUT DECORATED -->
+          
+            <!-- FORM INPUT -->
+            
+<div class="form-input small">
+              <label for="event-date">Reunion participants number</label>
+              <input type="number" step="1" min="0" max="64" value="#{reunionController.ajoutnbrpers}" />
+            </div>
+            <!-- /FORM INPUT -->
+            <!-- FORM INPUT ICON -->
+           
+            <!-- /FORM INPUT ICON -->
+          <!-- /FORM INPUT DECORATED -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+      <!-- FORM ROW -->
+      
+<div class="form-row">
+        <!-- FORM ITEM -->
+        
+<div class="form-item">
+          <!-- FORM INPUT -->
+          
+<div class="form-input small">
+            <label for="event-description">Reunion Description</label>
+            <textarea id="event-description" name="event_description" value="#{reunionController.ajoutDescription}"></textarea>
+          </div>
+          <!-- /FORM INPUT -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+      <!-- FORM ROW -->
+      
+<div class="form-row">
+        <!-- FORM ITEM -->
+        
+<div class="form-item">
+          <!-- FORM INPUT DECORATED -->
+          
+<div class="form-input-decorated">
+            <!-- FORM INPUT -->
+            
+<div class="form-input small">
+              <label for="event-cover-photo">Reunion Cover Photo</label>
+              <input type="text" id="event-cover-photo" name="event_cover_photo"  />
+            </div>
+            <!-- /FORM INPUT -->
+            <!-- FORM INPUT ICON -->
+            <svg class="form-input-icon icon-photos">
+              <use xlink:href="#svg-photos" />
+            </svg>
+            <!-- /FORM INPUT ICON -->
+          </div>
+          <!-- /FORM INPUT DECORATED -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+      <!-- FORM ROW -->
+
+      <!-- /FORM ROW -->
+      <!-- POPUP BOX ACTIONS -->
+      
+<div class="popup-box-actions medium void">
+        <!-- POPUP BOX ACTION -->
+<h:commandButton value="créer reynion" action="#{reunionController.ajouterReunion()}" />
+        <!-- /POPUP BOX ACTION -->
+      </div>
+      <!-- /POPUP BOX ACTIONS -->
+    </h:form>
+    <!-- /FORM -->
+  </div>
+				
+				
+					 
+  </ui:define>
+
+
+	</ui:composition>
+
+
+
+  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+</h:body>
+
+ 
+</html>

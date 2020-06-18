@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:p="http://primefaces.org/ui">
+
+	
+<h:body>
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml"
+		xmlns:p="http://primefaces.org/ui">
+		
+						<ui:define name="content">
+													<f:view transient="true">
+						
+							<div id="big" class="content-grid" style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+						
+						
+						
+						
+						<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/quests-icon.png" alt="quests-icon" />
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title">Rates</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      
+<p class="section-banner-text">KinderGartens Rates help you choose the best kindergaten in the country!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    
+    
+   
+		<br/>
+						
+					
+				                             			<h:panelGroup id="div_affichage" >
+						
+			<div class="grid grid-3-9">
+			<div class="grid-column">
+						<br/><br/>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<div class="widget-box">
+
+      
+          <!-- WIDGET BOX TITLE -->
+          
+<p class="widget-box-title">Your Rate<span class="highlighted"><h:outputText value="#{ratingController.getnoteByJardinForj()}" /></span></p>
+          <!-- /WIDGET BOX TITLE -->
+      
+          <!-- WIDGET BOX CONTENT -->
+          
+<div class="widget-box-content">
+            <!-- POST PEEK LIST -->
+            
+<div class="post-peek-list">
+              <!-- POST PEEK -->
+              
+<div class="post-peek">
+
+<p class="post-peek-title"><h:outputText value="Food rate :" /><h:outputText value="#{ratingController.getnotetByJardinForj(1)}"/></p>
+
+                
+<div class="container">
+<div class="row">
+<p class="post-peek-text">
+
+<ui:repeat var="p" value="#{ratingController.getStarsNbrForjBytype(1)}" varStatus="status">                
+<div class="rating filled">
+   <svg class="rating-icon icon-star"><use xlink:href="#svg-star" /></svg>
+                </div>
+                </ui:repeat>
+                </p>
+                
+</div>
+</div>
+              </div>
+           
+  <div class="post-peek">
+
+<p class="post-peek-title"><h:outputText value="Teachers rate :" /><h:outputText value="#{ratingController.getnotetByJardinForj(2)}"/></p>
+
+                
+<div class="container">
+<div class="row">
+<p class="post-peek-text">
+
+<ui:repeat var="p" value="#{ratingController.getStarsNbrForjBytype(2)}" varStatus="status">                
+<div class="rating filled">
+   <svg class="rating-icon icon-star"><use xlink:href="#svg-star" /></svg>
+                </div>
+                </ui:repeat>
+                </p>
+                
+</div>
+</div>
+              </div>
+           
+           
+           
+           <div class="post-peek">
+
+<p class="post-peek-title"><h:outputText value="Activties rate :" /><h:outputText value="#{ratingController.getnotetByJardinForj(3)}"/></p>
+
+                
+<div class="container">
+<div class="row">
+<p class="post-peek-text">
+
+<ui:repeat var="p" value="#{ratingController.getStarsNbrForjBytype(3)}" varStatus="status">                
+<div class="rating filled">
+   <svg class="rating-icon icon-star"><use xlink:href="#svg-star" /></svg>
+                </div>
+                </ui:repeat>
+                </p>
+                
+</div>
+</div>
+              </div>
+              
+              
+           
+           
+           
+            </div>
+            <!-- /POST PEEK LIST -->
+          </div>
+          <!-- /WIDGET BOX CONTENT -->
+        </div>
+						
+						
+						
+						
+								<div class="widget-box">
+          
+<p class="widget-box-title">Your Lasts Evaluations</p>
+<div class="widget-box-content">
+            <!-- POST PEEK LIST -->
+            
+<div class="post-peek-list">
+              <!-- POST PEEK -->
+  		<ui:repeat var="p" value="#{ratingController.getEvaluatioByKinder()}" varStatus="status">
+              
+<div class="post-peek">
+
+<p class="post-peek-title"><h:outputText value="#{p.parent.firstName}"/><h:outputText value=" "/><h:outputText value="#{p.parent.lastName}"/></p>
+<p class="post-peek-text"><h:outputText value="Rate :" /><span class="highlighted"><h:outputText value="#{p.rating_note}"/></span>
+<br/><h:outputText value="#{p.rating_description}"/> </p>
+
+        </div>
+        <br/>				
+</ui:repeat>						
+		</div>
+		</div>				
+						
+						
+						
+						
+                            </div>
+                            			          			                                        </div>
+                            
+				<div class="grid-column">
+					<div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      
+      <div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        <p class="section-pretitle">Who is the best!</p>
+        <!-- /SECTION PRETITLE -->
+  
+        <!-- SECTION TITLE -->
+        <h2 class="section-title">KinderGarten's rates</h2>
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+    </div>
+   
+      
+      
+          <div class="grid grid-3-3-3 centered">
+		
+
+		<ui:repeat var="p" value="#{ratingController.getAllJardinTrierParNote()}" varStatus="status">
+						<div class="product-preview">
+            <!-- PRODUCT PREVIEW IMAGE -->
+            <a href="marketplace-product.html">
+              <figure class="product-preview-image liquid" style="background: url(&quot;files/img/houssem/kinder.jpg&quot;) center center / cover no-repeat;">
+                <img src="files/img/houssem/kinder.jpg" alt="item-01" style="display: none;" />
+              </figure>
+            </a>
+            <!-- /PRODUCT PREVIEW IMAGE -->
+        
+            <!-- PRODUCT PREVIEW INFO -->
+            
+<div class="product-preview-info">
+              <!-- TEXT STICKER -->
+              
+
+              <!-- /TEXT STICKER -->
+        
+              <!-- PRODUCT PREVIEW TITLE -->
+              
+<p class="product-preview-title"><a href="marketplace-product.html"><h:outputText value="#{p.kinderGartenName}" /></a></p>
+              <!-- /PRODUCT PREVIEW TITLE -->
+        
+              <!-- PRODUCT PREVIEW CATEGORY -->
+              
+<p class="product-preview-category digital"><a href="marketplace-category.html"><h:outputText value="#{p.adresse}" /></a></p>
+              <!-- /PRODUCT PREVIEW CATEGORY -->
+        
+              <!-- PRODUCT PREVIEW TEXT -->
+              
+<p class="product-preview-text">MOBILE : <h:outputText value="#{p.tel}" /></p>
+              <!-- /PRODUCT PREVIEW TEXT -->
+            </div>
+            <!-- /PRODUCT PREVIEW INFO -->
+        
+            <!-- PRODUCT PREVIEW META -->
+            
+<div class="product-preview-meta">
+              <!-- PRODUCT PREVIEW AUTHOR -->
+              
+<div class="product-preview-author">
+                <!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+                <a class="product-preview-author-image user-avatar micro no-border" href="profile-timeline.html">
+                  <!-- USER AVATAR CONTENT -->
+                  
+                  <!-- /USER AVATAR CONTENT -->
+                </a>
+                <!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+        
+                <!-- PRODUCT PREVIEW AUTHOR TITLE -->
+                
+<p class="product-preview-author-title">Rate of <h:outputText value="#{p.kinderGartenName}" /></p>
+                <!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+        
+                <!-- PRODUCT PREVIEW AUTHOR TEXT -->
+                <div class="product-preview-author-text">
+            <h:form>              
+   <p:commandButton id="notejardin" action="#{ratingController.setjardinattached(p.id)}" update=":dialoguereponse"  onclick="PF('dlg1').show();"  value="#{ratingController.getnoteByJardin(p.id)}">
+  
+   </p:commandButton>
+   </h:form>
+   </div>
+   
+            
+               
+                <!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+              </div>
+              <!-- /PRODUCT PREVIEW AUTHOR -->
+        
+              <!-- RATING LIST -->
+              
+<div class="rating-list">
+                <!-- RATING -->
+<ui:repeat var="p" value="#{ratingController.getStarsNbr(p.id)}" varStatus="status">                
+<div class="rating filled">
+                  <!-- RATING ICON -->
+                  <svg class="rating-icon icon-star">
+                    <use xlink:href="#svg-star" />
+                  </svg>
+                  <!-- /RATING ICON -->
+                </div>
+                </ui:repeat>
+                <!-- /RATING -->
+
+                <!-- /RATING -->
+              </div>
+              <!-- /RATING LIST -->
+            </div>
+            <!-- /PRODUCT PREVIEW META -->
+          </div>
+          
+          
+          
+          </ui:repeat>
+          </div>
+         
+
+			          			                              </div>
+			          			                                        
+			          			                              </div>
+									          			                              </h:panelGroup>
+						
+			          			                              
+	
+ <p:dialog header="Rate Detail" widgetVar="dlg1" resizable="false" dynamic="true" height="250" width="456"  appendToBody="true">
+                           <h:panelGroup id="dialoguereponse">	
+              
+            <h:form>
+		<h:outputText value="Food Rate :" /><h:outputText value="#{ratingController.getnotetByJardin(1)}"/>
+	
+		<br/><br/>
+		<h:outputText value="Teachers Rate:" /><h:outputText value="#{ratingController.getnotetByJardin(2)}"/>
+		
+		<br/><br/>
+		<h:outputText value="Activities Rates :" /><h:outputText value="#{ratingController.getnotetByJardin(3)}"/>
+		<br/>
+		</h:form>
+		
+		
+                </h:panelGroup>
+</p:dialog>		
+
+			
+          
+				
+			
+						
+						
+						
+						</div>
+												</f:view>
+						
+						</ui:define>
+
+
+	</ui:composition>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</h:body>
+
+ 
+</html>
