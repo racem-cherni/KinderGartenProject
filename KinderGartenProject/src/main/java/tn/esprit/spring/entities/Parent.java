@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -20,6 +21,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -121,7 +124,29 @@ public class Parent implements Serializable{
 		super();
 	}
 
+///////////////////////houssem
 	
+@JsonIgnore
+@OneToMany(mappedBy="parent")
+private List<Rating> ratingP;
+
+@JsonIgnore
+@OneToMany(mappedBy="parent")
+private List<Rdv> rdvP;
+
+@JsonIgnore
+@OneToMany(mappedBy="parent")
+private List<Reclamation> reclamationP;
+
+@JsonIgnore
+@OneToMany(mappedBy="parent")
+private List<Reunion_feedback> reunfbP;
+
+@JsonIgnore
+@ManyToMany
+@LazyCollection(LazyCollectionOption.FALSE)
+private List<Reunion> reunionsP;
+///////////////////////////
 	/////////////////////////////////////////////////////////////////////////
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="parent_invitation")
 	private  List<Invitation_Event> invitations;
@@ -161,6 +186,36 @@ public class Parent implements Serializable{
 
 	public void setDiscussions(List<Discussion_Event> discussions) {
 		this.discussions = discussions;
+	}
+	public List<Rating> getRatingP() {
+		return ratingP;
+	}
+	public void setRatingP(List<Rating> ratingP) {
+		this.ratingP = ratingP;
+	}
+	public List<Rdv> getRdvP() {
+		return rdvP;
+	}
+	public void setRdvP(List<Rdv> rdvP) {
+		this.rdvP = rdvP;
+	}
+	public List<Reclamation> getReclamationP() {
+		return reclamationP;
+	}
+	public void setReclamationP(List<Reclamation> reclamationP) {
+		this.reclamationP = reclamationP;
+	}
+	public List<Reunion_feedback> getReunfbP() {
+		return reunfbP;
+	}
+	public void setReunfbP(List<Reunion_feedback> reunfbP) {
+		this.reunfbP = reunfbP;
+	}
+	public List<Reunion> getReunionsP() {
+		return reunionsP;
+	}
+	public void setReunionsP(List<Reunion> reunionsP) {
+		this.reunionsP = reunionsP;
 	}
 
 	

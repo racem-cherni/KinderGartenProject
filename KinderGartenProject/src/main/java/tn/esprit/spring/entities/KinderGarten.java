@@ -77,6 +77,34 @@ public class KinderGarten implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy="kinderGarten",fetch=FetchType.LAZY)
 	private Collection<foodsandtheircallories> foodsandtheircallories = new ArrayList<>();
 
+///////////////////////houssem
+	
+	
+@JsonIgnore
+@OneToMany(mappedBy="jardin")
+private List<Rating> ratingJ;
+
+@JsonIgnore
+@OneToMany(mappedBy="jardin")
+private List<Rdv_dispo> rdvdispo;
+
+@JsonIgnore
+@OneToMany(mappedBy="jardin")
+private List<Reunion_dispo> reundispo;
+
+@JsonIgnore
+@OneToMany(mappedBy="jardin")
+private List<Rdv> rdvJ;
+
+@JsonIgnore
+@OneToMany(mappedBy="jardin")
+private List<Reclamation> reclamationJ;
+
+@JsonIgnore
+@OneToMany(mappedBy="jardin")
+private List<Reunion> reunionsJ;
+///////////////////
+
 
 	public Long getId() {
 		return id;
@@ -240,6 +268,66 @@ public class KinderGarten implements Serializable {
 
 	public void setFoodsandtheircallories(Collection<foodsandtheircallories> foodsandtheircallories) {
 		this.foodsandtheircallories = foodsandtheircallories;
+	}
+
+
+	public List<Rating> getRatingJ() {
+		return ratingJ;
+	}
+
+
+	public void setRatingJ(List<Rating> ratingJ) {
+		this.ratingJ = ratingJ;
+	}
+
+
+	public List<Rdv_dispo> getRdvdispo() {
+		return rdvdispo;
+	}
+
+
+	public void setRdvdispo(List<Rdv_dispo> rdvdispo) {
+		this.rdvdispo = rdvdispo;
+	}
+
+
+	public List<Reunion_dispo> getReundispo() {
+		return reundispo;
+	}
+
+
+	public void setReundispo(List<Reunion_dispo> reundispo) {
+		this.reundispo = reundispo;
+	}
+
+
+	public List<Rdv> getRdvJ() {
+		return rdvJ;
+	}
+
+
+	public void setRdvJ(List<Rdv> rdvJ) {
+		this.rdvJ = rdvJ;
+	}
+
+
+	public List<Reclamation> getReclamationJ() {
+		return reclamationJ;
+	}
+
+
+	public void setReclamationJ(List<Reclamation> reclamationJ) {
+		this.reclamationJ = reclamationJ;
+	}
+
+
+	public List<Reunion> getReunionsJ() {
+		return reunionsJ;
+	}
+
+
+	public void setReunionsJ(List<Reunion> reunionsJ) {
+		this.reunionsJ = reunionsJ;
 	}
 	
 	
