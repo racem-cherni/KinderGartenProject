@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+       <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		template="/template/template.xhtml"
+		xmlns:pe="http://primefaces.org/ui/extensions"
+		 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 xmlns:p="http://primefaces.org/ui"
+		 xmlns:d="http://xmlns.jcp.org/jsf/passthrough"
+		 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+		 
+		 
+        <ui:define name="content">
+        <h:head><title>KinderGarten | Event</title></h:head>
+        <h:body>
+        
+		<h:outputStylesheet
+		href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css"
+		rel="stylesheet" />
+
+
+	<h:link rel="stylesheet"
+		href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	<!-- hetha lezm nhabtou nbadlou fe css mta3ou-->
+	<h:link rel="stylesheet" href="/resources/demos/style.css" />
+	<link rel="stylesheet"
+		href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<!-- 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+
+<!-- - -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css"/>
+	    	<h:outputStylesheet library="css" name="jquery.ui.timepicker.css"  /> 
+	
+	
+
+ 
+
+			<div class="content-grid"
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+				
+				<!-- SECTION BANNER -->
+<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/events-icon.png" alt="events-icon" />
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title">Events</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Easily participate and follow  events or reminders!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+							<!-- /SECTION BANNER -->
+							
+				   <div class="section-filters-bar v2">
+      <!-- FORM -->
+      <h:form  id="filtera">
+        <!-- FORM ITEM -->
+        <div class="form-item split medium">
+          <!-- FORM SELECT -->
+          <div class="form-select">
+            <label for="quest-filter-show">state
+</label>
+            <h:selectOneMenu value="#{eventkinderController.etatsearch}">
+<f:selectItem itemLabel="Choose state" itemValue="#{null}" />
+<f:selectItems value="#{eventkinderController.etatsearchs}" />
+</h:selectOneMenu>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          <!-- /FORM SELECT -->
+
+          <!-- FORM SELECT -->
+          <div class="form-select">
+            <label for="quest-filter-criteria">category</label>
+           <h:selectOneMenu value="#{eventkinderController.categorysearch}">
+<f:selectItem itemLabel="Choose the category" itemValue="#{null}" />
+<f:selectItems value="#{eventkinderController.categoriesearchs}" />
+</h:selectOneMenu>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          <!-- /FORM SELECT -->
+
+          <!-- FORM SELECT -->
+          <div class="form-select">
+            <label for="quest-filter-order">Event type</label>
+             <h:selectOneMenu value="#{eventkinderController.typesearch}">
+<f:selectItem itemLabel="Choose the type" itemValue="#{null}" />
+<f:selectItems value="#{eventkinderController.typesearchs}" />
+</h:selectOneMenu>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          <!-- /FORM SELECT -->
+      
+          <!-- BUTTON -->
+          
+          <h:commandButton class="button secondary" action="#{eventkinderController.getListevents()}" value="Filter events" >
+                      <f:ajax render=":listeventsearch" execute="filtera" > </f:ajax>   
+                                 </h:commandButton>
+          <!-- /BUTTON -->
+        </div>
+        <!-- /FORM ITEM -->
+      </h:form>
+      <!-- /FORM -->
+    </div>
+							
+		  <h:panelGroup id="listeventsearch" >
+
+    <div class="grid grid-3-3-3-3 ">
+     
+ <ui:repeat var="upcomevent" value="#{eventkinderController.listevents}" varStatus="status">
+    
+      <!-- EVENT PREVIEW -->
+      <h:form >
+<div class="event-preview">
+        <!-- EVENT PREVIEW COVER -->
+        <figure class="event-preview-cover liquid" style="background: url(&quot;files/img/cover/47.jpg&quot;) center center / cover no-repeat;">
+               <h:graphicImage class="forum-category-image" library="eventdocs"  name ="#{upcomevent.photo}" />          
+        </figure>
+        <!-- /EVENT PREVIEW COVER -->
+    
+        <!-- EVENT PREVIEW INFO -->
+        
+<div class="event-preview-info">
+          <!-- EVENT PREVIEW INFO TOP -->
+          
+            <!-- DATE STICKER -->
+            
+<div class="date-sticker">
+              <!-- DATE STICKER DAY -->
+              
+<p class="date-sticker-day"><h:outputText value="#{upcomevent.date_event.date}" /></p>
+              <!-- /DATE STICKER DAY -->
+      
+              <!-- DATE STICKER MONTH -->
+              
+<p class="date-sticker-month"><h:outputText value="#{eventkindergartenController.getMonth(upcomevent.date_event)}" /></p>
+              <!-- /DATE STICKER MONTH -->
+            </div>
+            <!-- /DATE STICKER -->
+    
+            <!-- EVENT PREVIEW TITLE -->
+            
+<h:link  outcome="detaileventjardin" >
+<h:outputText class="event-preview-title" value="#{upcomevent.title}" ></h:outputText>
+<f:param name="id" value="#{upcomevent.id}"></f:param>
+</h:link>
+            <!-- /EVENT PREVIEW TITLE -->
+    
+            <!-- EVENT PREVIEW TIMESTAMP -->
+            
+<p class="event-preview-timestamp"><span class="bold"><h:outputText value="#{upcomevent.event_start_heure.hours -1}:#{upcomevent.event_start_heure.minutes}" /></span>  - <span class="bold">
+<h:outputText value="#{upcomevent.event_fin_heure.hours -1}:#{upcomevent.event_fin_heure.minutes}"  /></span> </p>    
+        <!-- /EVENT PREVIEW TIMESTAMP -->
+    
+            <!-- EVENT PREVIEW TEXT -->
+            
+<!-- <p class="event-preview-text"><h:outputText value="#{upcomevent.description}" /></p> -->
+            <!-- /EVENT PREVIEW TEXT -->
+          
+          <!-- /EVENT PREVIEW INFO TOP -->
+    
+          <!-- EVENT PREVIEW INFO BOTTOM -->
+          
+
+            <!-- DECORATED TEXT -->
+            
+<div class="decorated-text">
+              <!-- DECORATED TEXT ICON -->
+              <svg class="decorated-text-icon icon-pin">
+                <use xlink:href="#svg-pin" />
+              </svg>
+              <!-- /DECORATED TEXT ICON -->
+    
+              <!-- DECORATED TEXT CONTENT -->
+              
+<p class="decorated-text-content">kindergarten,<h:outputText value="#{upcomevent.location_event}" /></p>
+              <!-- /DECORATED TEXT CONTENT -->
+            </div>
+            <!-- /DECORATED TEXT -->
+    
+            <!-- META LINE -->
+            
+<div class="meta-line">
+              <!-- META LINE LIST -->
+              
+
+              <!-- /META LINE LIST -->
+    
+              <!-- META LINE TEXT -->
+              
+<p class="meta-line-text align-center"><h:outputText value="#{upcomevent.nbr_participants}" /> will assist - <h:outputText value="#{upcomevent.nbr_interssants}" /> interested</p>
+              <!-- /META LINE TEXT -->
+            </div>
+            <!-- /META LINE -->
+    
+            <!-- BUTTON -->
+
+<h:link  outcome="detaileventjardin" >
+<h:outputText class="button white white-tertiary" value="detail" ></h:outputText>
+<f:param name="id" value="#{upcomevent.id}"></f:param>
+</h:link>
+          <!-- /EVENT PREVIEW INFO BOTTOM -->
+        </div>
+        <!-- /EVENT PREVIEW INFO -->
+      </div>
+      </h:form>
+      <!-- /EVENT PREVIEW -->
+   </ui:repeat>
+  
+  
+    </div>
+  </h:panelGroup> 					
+         <div class="grid grid-8-4">
+         
+       <!--   <div class="marketplace-content grid-column">
+         <div class="widget-box no-padding">--> 
+         <c:choose>
+	<c:when test="#{eventkinderController.testevent()}" >
+	<div class="event-preview grid-column">
+	                 <h2>Today event</h2>
+	
+	<figure class="event-preview-cover liquid" style="background: url(&quot;files/img/cover/47.jpg&quot;) center center / cover no-repeat;">
+	          <img src="files/img/cover/47.jpg" alt="cover-47" style="display: none;" />
+    </figure>
+    <div class="event-preview-info">
+    <h:outputText> no event for today</h:outputText>
+    </div>
+    </div>
+	
+       </c:when>
+                  <c:otherwise>  
+                  <div class="grid-column">
+                  
+                  	                 <h2>Today event</h2>
+                  
+<div class="event-preview ">
+
+        <!-- EVENT PREVIEW COVER -->
+        <figure class="event-preview-cover liquid" style="background: url(&quot;files/img/cover/47.jpg&quot;) center center / cover no-repeat;">
+                <h:graphicImage class="bgSizeContain" library="eventdocs"  name ="#{eventkinderController.todayevents.photo}" />
+          
+        </figure>
+        
+        <!-- /EVENT PREVIEW COVER -->
+    
+        <!-- EVENT PREVIEW INFO -->
+<div class="event-preview-info">
+       <div class=" event-preview-info-top">
+
+          <!-- EVENT PREVIEW INFO TOP -->
+          
+            <!-- DATE STICKER -->
+            
+<div class="date-sticker">
+              <!-- DATE STICKER DAY -->
+              
+<p class="date-sticker-day"><h:outputText value="#{eventkinderController.todayevents.date_event.date}" /></p>
+              <!-- /DATE STICKER DAY -->
+      
+              <!-- DATE STICKER MONTH -->
+              
+<p class="date-sticker-month"><h:outputText value="#{eventkindergartenController.getMonth(eventkinderController.todayevents.date_event)}" /></p>
+              <!-- /DATE STICKER MONTH -->
+            </div>
+            <!-- /DATE STICKER -->
+    
+            <!-- EVENT PREVIEW TITLE -->
+            
+   <h:link  outcome="detaileventjardin" >
+<h:outputText class="event-preview-title" value="#{eventkinderController.todayevents.title}" ></h:outputText>
+<f:param name="id" value="#{eventkinderController.todayevents.id}"></f:param>
+</h:link>
+
+            <!-- /EVENT PREVIEW TITLE -->
+    
+            <!-- EVENT PREVIEW TIMESTAMP -->
+            
+<p class="event-preview-timestamp"><span class="bold"><h:outputText value="#{eventkinderController.todayevents.event_start_heure.hours -1 }:#{eventkinderController.todayevents.event_start_heure.minutes}" /></span> AM - <span class="bold">
+<h:outputText value="#{eventkinderController.todayevents.event_fin_heure.hours -1 }:#{eventkinderController.todayevents.event_fin_heure.minutes}"  /></span> PM</p>    
+        <!-- /EVENT PREVIEW TIMESTAMP -->
+    
+            <!-- EVENT PREVIEW TEXT -->
+            
+<p class="event-preview-text"><h:outputText value="#{eventkinderController.todayevents.description}" /></p> 
+            <!-- /EVENT PREVIEW TEXT -->
+          
+          <!-- /EVENT PREVIEW INFO TOP -->
+    
+          <!-- EVENT PREVIEW INFO BOTTOM -->
+          
+
+            <!-- DECORATED TEXT -->
+            </div>
+            
+            <div class="event-preview-info-bottom">
+<div class="decorated-text">
+              <!-- DECORATED TEXT ICON -->
+              <svg class="decorated-text-icon icon-pin">
+                <use xlink:href="#svg-pin" />
+              </svg>
+              <!-- /DECORATED TEXT ICON -->
+    
+              <!-- DECORATED TEXT CONTENT -->
+              
+<p class="decorated-text-content">kindergarten , <h:outputText value="#{eventkinderController.todayevents.location_event}" /></p>
+              <!-- /DECORATED TEXT CONTENT -->
+            </div>
+            <!-- /DECORATED TEXT -->
+    
+            <!-- META LINE -->
+            
+<div class="meta-line">
+              <!-- META LINE LIST -->
+              
+
+              <!-- /META LINE LIST -->
+    
+              <!-- META LINE TEXT -->
+              
+<p class="meta-line-text align-center"><h:outputText value="#{eventkinderController.todayevents.nbr_participants}" /> will assist - <h:outputText value="#{eventkinderController.todayevents.nbr_interssants}" /> interested</p>
+              <!-- /META LINE TEXT -->
+            </div>
+            <!-- /META LINE -->
+    
+            <!-- BUTTON -->
+            <br></br>
+            <br></br>
+      <div>      
+<h:link  outcome="detaileventjardin" >
+<h:outputText class="button white white-primary" value="detail event" ></h:outputText>
+<f:param name="id" value="#{eventkinderController.todayevents.id}"></f:param>
+</h:link>
+</div>
+            <!-- /BUTTON -->
+            <br></br>
+          </div>
+          <!-- /EVENT PREVIEW INFO BOTTOM -->
+        </div>
+        <!-- /EVENT PREVIEW INFO -->
+        
+      </div> 
+      </div>
+      </c:otherwise>
+      </c:choose>        
+         
+         
+          
+         
+         
+         <div class="marketplace-sidebar">
+         <div class="widget-box">
+         <div class="widget-box-content">
+         <div class="user-status-list">
+         <div class="user-status request-small">
+                <h:form id="searcheventdatepanel">
+       
+         <div class="user-status-avatar">       <!-- FORM -->
+          <!-- FORM ITEM -->
+            <!-- SECTION FILTERS BAR ACTIONS -->
+      <!-- SECTION FILTERS BAR ACTIONS -->
+        <!-- FORM -->
+          <!-- FORM ITEM -->
+            <!-- FORM INPUT -->
+            <h:inputText styleClass="datepicker"  value="#{eventkinderController.dateeventsearch}"
+           required="true" d:placeholder="search event" 
+          requiredMessage="Date naissance required">
+          <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+        </h:inputText></div>
+            <!-- /FORM INPUT -->
+  
+            <!-- BUTTON -->
+          <div class="offset-sm-10">  <h:commandButton class="button primary" action="#{eventkinderController.searcheventbydate()}" value="search" >
+                 <f:ajax execute="searcheventdatepanel" render=":formsearch" />  
+      
+                                 </h:commandButton></div>
+            <!-- /BUTTON -->
+          <!-- /FORM ITEM -->
+        </h:form></div></div> 
+                  
+        <h:panelGroup id="formsearch">
+        
+                
+                <c:choose>
+                
+                <c:when test="#{eventkinderController.verifeventdate()}" >
+                <br></br>
+                <br></br>
+                
+                <br></br>
+                <div class="loader-bars">
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+        </div>
+                </c:when>
+                <c:otherwise>
+        <br></br>
+       <div class="forum-category">
+              <!-- FORUM CATEGORY IMAGE -->
+              
+                  <figure class="picture small round liquid" style="background: url(&quot;files/img/cover/19.jpg&quot;) center center / cover no-repeat;">
+                    <h:graphicImage class="post-peek-image" library="eventdocs"  name ="#{eventkinderController.searchevent.photo}" />
+                  </figure>
+              <!-- /FORUM CATEGORY IMAGE -->
+  
+              <!-- FORUM CATEGORY INFO -->
+              <div class="forum-category-info">
+                <!-- FORUM CATEGORY TITLE -->
+                <p class="forum-category-title">
+
+ <h:link  outcome="detaileventjardin" >
+<h:outputText class="calendar-event-preview-title" value="#{eventkinderController.searchevent.title}" ></h:outputText>
+<f:param name="id" value="#{eventkinderController.searchevent.id}"></f:param>
+</h:link>
+</p>
+                <!-- /FORUM CATEGORY TITLE -->
+  
+                <!-- FORUM CATEGORY TEXT -->
+                <p class="forum-category-text">
+   <p><span class="bold"><h:outputText  value="#{eventkinderController.searchevent.event_start_heure.hours -1}:#{eventkinderController.searchevent.event_start_heure.minutes}"/></span>  - <span class="bold">
+<h:outputText value="#{eventkinderController.searchevent.event_fin_heure.hours -1}:#{eventkinderController.searchevent.event_fin_heure.minutes}" /></span> </p>
+<br></br>
+<div class="decorated-text">
+              <!-- DECORATED TEXT ICON -->
+              <svg class="decorated-text-icon icon-pin">
+                <use xlink:href="#svg-pin" />
+              </svg>
+              <!-- /DECORATED TEXT ICON -->
+    
+              <!-- DECORATED TEXT CONTENT -->
+              
+<p class="decorated-text-content">kindergarten ,<h:outputText value="#{eventkinderController.searchevent.location_event}" /></p>
+              <!-- /DECORATED TEXT CONTENT -->
+            </div>
+
+
+                </p>
+                <!-- /FORUM CATEGORY TEXT -->
+              </div>
+              <!-- /FORUM CATEGORY INFO -->
+            </div>
+            
+       </c:otherwise>
+                           </c:choose>
+       
+        </h:panelGroup>
+        </div></div>
+        <!-- /FORM -->
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+  <br></br>
+      <!-- SECTION FILTERS BAR ACTIONS -->
+   <div class="create-entity-box ">
+            <!-- CREATE ENTITY BOX COVER -->
+            <div class="create-entity-box-cover"></div>
+            <!-- /CREATE ENTITY BOX COVER -->
+        
+            <!-- CREATE ENTITY BOX AVATAR -->
+            <div class="create-entity-box-avatar primary">
+              <!-- CREATE ENTITY BOX AVATAR ICON -->
+              <svg class="create-entity-box-avatar-icon icon-events">
+                <use xlink:href="#svg-events"></use>
+              </svg>
+              <!-- /CREATE ENTITY BOX AVATAR ICON -->
+            </div>
+           
+            <div class="create-entity-box-info">
+            
+              <p class="button primary full popup-event-creation-trigger">Create New Event!</p>
+              <!-- /BUTTON -->
+            </div>
+          </div>
+         </div>
+         
+         
+         </div>
+         
+  	    
+ 
+
+
+   
+     
+        
+    
+
+
+
+<div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      <div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        <p class="section-pretitle">Gain EXP and level up!</p>
+        <!-- /SECTION PRETITLE -->
+  
+        <!-- SECTION TITLE -->
+        <h2 class="section-title">Upcoming events</h2>
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+    </div>
+    
+                          <h:panelGroup id="panelup">
+    
+      <div class="grid grid-3-3-3-3 ">
+           <ui:repeat var="upcomevent" value="#{eventkinderController.upcomingevents}" varStatus="status">
+      
+      <!-- EVENT PREVIEW -->
+      
+<div class="event-preview">
+        <!-- EVENT PREVIEW COVER -->
+        <figure class="event-preview-cover liquid" style="background: url(&quot;files/img/cover/47.jpg&quot;) center center / cover no-repeat;">
+                         <h:graphicImage class="forum-category-image" library="eventdocs"  name ="#{upcomevent.photo}" />          
+          
+        </figure>
+        <!-- /EVENT PREVIEW COVER -->
+    
+        <!-- EVENT PREVIEW INFO -->
+        
+<div class="event-preview-info">
+          <!-- EVENT PREVIEW INFO TOP -->
+          
+            <!-- DATE STICKER -->
+            
+<div class="date-sticker">
+              <!-- DATE STICKER DAY -->
+              
+<p class="date-sticker-day"><h:outputText value="#{upcomevent.date_event.date}" /></p>
+              <!-- /DATE STICKER DAY -->
+      
+              <!-- DATE STICKER MONTH -->
+              
+<p class="date-sticker-month"><h:outputText value="#{eventkindergartenController.getMonth(upcomevent.date_event)}" /></p>
+              <!-- /DATE STICKER MONTH -->
+            </div>
+            <!-- /DATE STICKER -->
+    
+            <!-- EVENT PREVIEW TITLE -->
+            
+  <h:link  outcome="detaileventjardin" >
+<h:outputText class="event-preview-title" value="#{upcomevent.title}" ></h:outputText>
+<f:param name="id" value="#{upcomevent.id}"></f:param>
+</h:link>
+            <!-- /EVENT PREVIEW TITLE -->
+    
+            <!-- EVENT PREVIEW TIMESTAMP -->
+            
+<p class="event-preview-timestamp"><span class="bold"><h:outputText value="#{upcomevent.event_start_heure.hours -1}:#{upcomevent.event_start_heure.minutes}" /></span>  - <span class="bold">
+<h:outputText value="#{upcomevent.event_fin_heure.hours -1}:#{upcomevent.event_fin_heure.minutes}"  /></span></p>    
+        <!-- /EVENT PREVIEW TIMESTAMP -->
+    
+            <!-- EVENT PREVIEW TEXT -->
+            
+<!-- <p class="event-preview-text"><h:outputText value="#{upcomevent.description}" /></p> -->
+            <!-- /EVENT PREVIEW TEXT -->
+          
+          <!-- /EVENT PREVIEW INFO TOP -->
+    
+          <!-- EVENT PREVIEW INFO BOTTOM -->
+          
+
+            <!-- DECORATED TEXT -->
+            
+<div class="decorated-text">
+              <!-- DECORATED TEXT ICON -->
+              <svg class="decorated-text-icon icon-pin">
+                <use xlink:href="#svg-pin" />
+              </svg>
+              <!-- /DECORATED TEXT ICON -->
+    
+              <!-- DECORATED TEXT CONTENT -->
+              
+<p class="decorated-text-content">kindergarten , <h:outputText value="#{upcomevent.location_event}" /></p>
+              <!-- /DECORATED TEXT CONTENT -->
+            </div>
+            <!-- /DECORATED TEXT -->
+    
+            <!-- META LINE -->
+            
+<div class="meta-line">
+              <!-- META LINE LIST -->
+              
+
+              <!-- /META LINE LIST -->
+    
+              <!-- META LINE TEXT -->
+              
+<p class="meta-line-text align-center"><h:outputText value="#{upcomevent.nbr_participants}" /> will assist - <h:outputText value="#{upcomevent.nbr_interssants}" /> interested</p>
+              <!-- /META LINE TEXT -->
+            </div>
+            <!-- /META LINE -->
+    
+            <!-- BUTTON -->
+            
+<h:form>
+<h:commandButton class="button white white-tertiary " value="delete event" action="#{eventkinderController.removeEvent(upcomevent.id)}">
+<f:ajax render=":panelup" ></f:ajax> </h:commandButton>
+</h:form>
+
+            <!-- /BUTTON -->
+          
+          <!-- /EVENT PREVIEW INFO BOTTOM -->
+        </div>
+        <!-- /EVENT PREVIEW INFO -->
+      </div>
+      <!-- /EVENT PREVIEW -->
+      
+   </ui:repeat>
+  
+              </div>
+    
+            </h:panelGroup>
+
+
+
+               	 
+</div>
+      
+      
+      
+
+    
+         
+          
+       
+      
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+    <div class="popup-event  popup-event-creation" style="position: absolute; left: 50%; z-index: 100001; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 100px; margin-left: -192px;">
+    <!-- POPUP CLOSE BUTTON -->        
+         
+     <div class="popup-close-button popup-event-creation-trigger">
+      <!-- POPUP CLOSE BUTTON ICON -->
+      <svg class="popup-close-button-icon icon-cross">
+        <use xlink:href="#svg-cross"></use>
+      </svg>
+      <!-- /POPUP CLOSE BUTTON ICON -->
+    </div>
+    <!-- /POPUP CLOSE BUTTON -->
+
+    <!-- POPUP BOX TITLE -->
+    <br></br>
+    <p class="popup-event-title offset-sm-1">+ Add New Event</p>
+<!--     <h:inputText type="text" id="spinner" name="text" class="demo"/> -->
+    
+    <!-- /POPUP BOX TITLE -->
+    <!-- FORM -->
+    
+    <div class="popup-event-info">
+    <h:form  id="ajoutform"  >
+        
+      <!-- FORM ROW -->
+      <div class="form-row">
+     <div class="form-item split join-on-mobile medium">
+      
+        <!-- FORM ITEM -->
+          <!-- FORM SELECT -->
+          <div class="form-select">
+            <label for="event-category">Category</label>
+            <h:selectOneMenu value="#{eventkinderController.category}">
+<f:selectItem itemLabel="Choisir la categorie" itemValue="#{null}" />
+<f:selectItems value="#{eventkinderController.categories}" />
+</h:selectOneMenu>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          
+          <div class="form-select">
+            <label for="event-category">Types</label>
+              <h:selectOneMenu value="#{eventkinderController.type_event}">
+<f:selectItem itemLabel="Choisir le type" itemValue="#{null}" />
+<f:selectItems value="#{eventkinderController.types}" />
+</h:selectOneMenu>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          <!-- /FORM SELECT -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+
+      <!-- FORM ROW -->
+      <div class="form-row">
+        <!-- FORM ITEM -->
+             <div class="form-item split join-on-mobile medium">
+        
+        <div class="form-item">
+          <!-- FORM INPUT -->
+          <div class="form-input small">
+            <label for="event-name">Event Name</label>
+                     <h:inputText id="text" value="#{eventkinderController.title}" required="true" autocomplete="off">
+                     </h:inputText>     
+          </div>
+          <!-- /FORM INPUT -->
+        </div>
+          <!-- FORM INPUT DECORATED -->
+            <!-- FORM INPUT -->
+          <div class="form-select">
+              <label for="event-category">Event Location</label>
+               <h:selectOneMenu value="#{eventkinderController.location_event}"  required="true">
+               <f:selectItem itemLabel="Choisir place" itemValue="#{null}" />
+               <f:selectItems value="#{eventkinderController.locationevents}" />
+               </h:selectOneMenu>           
+                <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+ </div>
+            <!-- /FORM INPUT -->
+
+            <!-- FORM INPUT ICON -->
+           
+            <!-- /FORM INPUT ICON -->
+          <!-- /FORM INPUT DECORATED -->
+        <!-- /FORM ITEM -->
+      </div>
+      </div>
+      <!-- /FORM ROW -->
+
+      <!-- FORM ROW -->
+    
+      <!-- /FORM ROW -->
+
+      <!-- FORM ROW -->
+      <div class="form-row">
+        <!-- FORM ITEM -->
+                     <div class="form-item split join-on-mobile medium">
+        
+        <div class="form-item">
+          <!-- FORM INPUT DECORATED -->
+          <div class="form-input-decorated">
+            <!-- FORM INPUT -->
+             <h:inputText styleClass="datepicker"  value="#{eventkinderController.dateevent}" 
+					d:placeholder="Date event" required="true"
+					requiredMessage="Date event required" autocomplete="off">
+					<f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+               <f:param name="id" value="#{eventkinderController.dateevent}"></f:param>
+					
+				</h:inputText>  
+            <!-- /FORM INPUT -->
+
+            <!-- FORM INPUT ICON -->
+            <svg class="form-input-icon icon-events">
+              <use xlink:href="#svg-events"></use>
+            </svg>
+            <!-- /FORM INPUT ICON -->
+          </div>
+
+          <!-- /FORM INPUT DECORATED -->
+        </div>
+         <div class="form-item">
+          <!-- FORM INPUT DECORATED -->
+          <div class="form-input-decorated">
+            <!-- FORM INPUT -->
+             <h:inputText styleClass="datepicker"  value="#{eventkinderController.datefinreservation}"
+					d:placeholder="Date limite reservation" required="true"
+					requiredMessage="Date limite reservation required" autocomplete="off">
+					<f:convertDateTime pattern="MM/dd/yyyy" type="date"  />
+					
+				</h:inputText>  
+            <!-- /FORM INPUT -->
+
+            <!-- FORM INPUT ICON -->
+            <svg class="form-input-icon icon-events">
+              <use xlink:href="#svg-events"></use>
+            </svg>
+            <!-- /FORM INPUT ICON -->
+          </div>
+          <!-- /FORM INPUT DECORATED -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      </div>
+      <!-- /FORM ROW -->
+
+      <!-- FORM ROW -->
+            <div class="form-row">
+                                 <div class="form-item split join-on-mobile medium">
+            
+                   <div class="form-item">
+          
+   <h:inputText styleClass="timepicker_start"  value="#{eventkinderController.heurestartstr}" 
+           required="true" d:placeholder="time start" 
+          requiredMessage="timestart required" autocomplete="off">
+          
+        </h:inputText>
+                  </div>
+         <div class="form-item">
+        <h:inputText styleClass="timepicker_end"  value="#{eventkinderController.heurefinstr}" 
+           required="true" d:placeholder="time end"
+          requiredMessage="timeend required" autocomplete="off">
+          
+        </h:inputText>
+        </div>
+            
+      
+      </div>
+      </div>
+     
+      <!-- /FORM ROW -->
+
+      <!-- FORM ROW -->
+     
+      <!-- /FORM ROW -->
+
+      <!-- FORM ROW -->
+      <div class="form-row">
+        <!-- FORM ITEM -->
+        <div class="form-item">
+          <!-- FORM INPUT -->
+          <div class="form-input small">
+            <label for="event-description">Event Description</label>
+            <h:inputTextarea value="#{eventkinderController.description}" required="true" autocomplete="off"></h:inputTextarea>
+            
+          </div>
+          <!-- /FORM INPUT -->
+        </div> 
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+  <div class="form-row">
+        <!-- FORM ITEM -->
+             <div class="form-item split join-on-mobile medium">
+        <div class="form-item  ">
+          <!-- FORM INPUT -->
+          
+                      <div class="form-input small">
+                        <label for="event-name">number place</label>
+            
+        <!--     <h:message for="validatenumber"></h:message>
+            <h:inputText id="validatenumber" value="#{eventkinderController.nbr_places}" required="true" requiredMessage="doit specifier le nombre"
+            validatorMessage="le nombre doit etre compris entre 1 et 20" autocomplete="off">
+            <f:validateDoubleRange minimum="1" maximum="20"></f:validateDoubleRange>
+            </h:inputText> -->
+            <p:spinner  size="12" value="#{eventkinderController.nbr_places}" min="1" required="true" placeholder="number place" validatorMessage="le nombre doit etre compris entre 1 et 20"
+             requiredMessage="doit specifier le nombre"   autocomplete="off"  >
+             
+            </p:spinner></div>
+          <!-- /FORM INPUT -->
+        </div>
+         <div class="form-item">
+          <!-- FORM INPUT DECORATED -->
+          <div class="form-input-decorated">
+            <!-- FORM INPUT -->
+            <div class="form-input small">
+              <label for="event-location">Entry price</label>
+            <h:inputText value="#{eventkinderController.entry_price}" required="true" autocomplete="off" requiredMessage="entrer un prix"></h:inputText>
+            </div>
+            <!-- /FORM INPUT -->
+
+            <!-- FORM INPUT ICON -->
+            <svg class="form-input-icon icon-ticket">
+            <use xlink:href="#svg-ticket"></use>
+          </svg>
+            <!-- /FORM INPUT ICON -->
+          </div>
+          <!-- /FORM INPUT DECORATED -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      </div>
+      <!-- FORM ROW -->
+      
+     
+          
+      
+      <!-- /FORM ROW -->
+
+      
+      <!-- /FORM ROW -->
+
+      <!-- POPUP BOX ACTIONS -->
+      <div class="popup-event-actions medium void">
+        <!-- POPUP BOX ACTION -->
+        <h:commandButton class="popup-box-action full button secondary" action="#{eventkinderController.addEvent()}" value="Create Event!"  >
+         </h:commandButton>
+         
+         
+        <!-- /POPUP BOX ACTION -->
+      </div>
+      <!-- /POPUP BOX ACTIONS -->
+    </h:form>
+    </div>
+    <!-- /FORM -->
+  </div>
+   
+   
+   
+   
+   
+   <!-- time -->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />                            
+                                   
+			<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+<!-- 	<h:outputScript library="js" name="jstemplate.js" /> -->
+	
+			<script>
+		$(".datepicker").datepicker({
+			inline : true,
+			showWeek : true,
+			firstDay : 1
+		});
+	</script>
+
+
+
+	<script>
+		$(document).on("ready", function() {
+			$('#login-page').css({
+				'height' : window.innerHeight + 'px'
+			});
+		});
+	</script>
+	
+	
+	
+	
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+          crossorigin="anonymous">
+     </script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	
+	<script src="jquery.ui.timepicker.js"></script>
+		<script src="timepickerstartend.js"></script>
+	
+    <script>
+	$('.timepicker').timepicker();
+	
+	</script>
+	</h:body>
+    </ui:define>
+   </ui:composition>
+   

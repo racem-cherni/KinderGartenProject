@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:util="http://java.sun.com/jsf/composite/component"
+		template="/template/template.xhtml"
+		xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+		xmlns:d="http://xmlns.jcp.org/jsf/passthrough"
+	    xmlns:p="http://primefaces.org/ui"
+	    		 xmlns:xlink="http://www.w3.org/1999/xlink"
+	    		 		xmlns:pe="http://primefaces.org/ui/extensions"
+	    		 
+	    
+		
+		>
+		
+		
+		        <ui:define name="content">
+		           <h:head>        <title>KinderGarten | event cart</title></h:head>
+
+
+		          <h:body>
+		        
+		         <div class="content-grid" 
+				style="transform: translate(104.5px, 0px); transition: transform 0.4s ease-in-out 0s;">
+		        <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+    <!--   <img class="section-banner-icon" src="resources/img/banner/marketplace-icon.png" alt="marketplace-icon"/> -->
+       <h:graphicImage class="section-banner-icon" library="img"  name ="banner/marketplace-icon.png" alt="marketplace-icon" />
+      
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Reserve for your event</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">The best place for finding what you need!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    
+      <!-- SECTION HEADER INFO -->
+     
+      <!-- /SECTION HEADER INFO -->
+
+      <!-- SECTION HEADER ACTIONS -->
+      
+      
+      <div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      <div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        <p class="section-pretitle">Browse Your</p>
+        <!-- /SECTION PRETITLE -->
+  
+        <!-- SECTION TITLE -->
+        <h2 class="section-title">Event Cart </h2>
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+      
+      
+      <div class="section-header-actions">
+        <!-- SECTION HEADER SUBSECTION -->
+<h:link class="section-header-subsection" outcome="/pages/Jardin/Event/WelcomeEvent" value="Home Event" >
+   </h:link>            
+   
+   
+   <h:link class="section-header-subsection" outcome="/pages/Jardin/Event/detaileventjardin" value="detail Event" >
+   </h:link> 
+   
+        
+        <!-- SECTION HEADER SUBSECTION -->
+        <p class="section-header-subsection" >event cart</p>
+        <!-- /SECTION HEADER SUBSECTION -->
+  </div>
+  
+       
+      </div>
+      <!-- /SECTION HEADER ACTIONS -->
+    
+    
+    <div class="section-filters-bar v7 ">
+      <!-- SECTION FILTERS BAR ACTIONS -->
+      
+      <div class="section-filters-bar-actions">
+        <!-- SECTION FILTERS BAR INFO -->
+        <div class="section-filters-bar-info">
+          <!-- SECTION FILTERS BAR TITLE -->
+          <p class="section-filters-bar-title"><h:outputText value="#{detaileventJardinController.geteventbyid().title}"></h:outputText></p>
+          <!-- /SECTION FILTERS BAR TITLE -->
+  
+          <!-- SECTION FILTERS BAR TEXT -->
+          <p class="section-filters-bar-text">number of places reserved
+  <a class="highlighted" ><h:outputText value="#{detaileventJardinController.geteventbyid().nbr_places_occupes}"></h:outputText></a></p>
+          <!-- /SECTION FILTERS BAR TEXT -->
+        </div>
+        <!-- /SECTION FILTERS BAR INFO -->
+      </div>
+      
+      
+      
+      <div class="section-filters-bar-actions">
+        <!-- FORM -->
+        <h:form class="form" id="formsearch">
+          <!-- FORM ITEM -->
+          <div class="form-item split">
+            <!-- FORM INPUT -->
+         <!--    <div class="form-input small "  >
+              <label for="events-search">Search stock</label>
+              <h:inputText type="text" id="events-search" name="events_search" value="#{eventkinderController.namestocksearch}" autocomplete="off" />
+            </div> -->
+            <!-- /FORM INPUT -->
+  
+            <div class="form-input small "  >
+            <p:autoComplete value="#{detaileventJardinController.categoriestocksearch}" completeMethod="#{detaileventJardinController.completeLanguage}" forceSelection="true" required="true" requiredMessage="chosse a stock" ></p:autoComplete>
+            </div>
+            <h:commandButton class="button primary " value="search" action="#{detaileventJardinController.getListstockeventsearch()}">
+              <!-- ICON MAGNIFYING GLASS -->
+              <f:ajax render=":searchpanel" execute="formsearch"></f:ajax>
+              <!-- /ICON MAGNIFYING GLASS -->
+            </h:commandButton>
+            <!-- /BUTTON -->
+          </div>
+          <!-- /FORM ITEM -->
+             
+          
+        </h:form>
+        
+        <!-- /FORM -->
+      </div>
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+  
+      <!-- SECTION FILTERS BAR ACTIONS -->
+      
+      <!-- /SECTION FILTERS BAR ACTIONS -->
+    </div>
+    
+    <div class="grid grid-8-4 small-space">
+    <div class="grid-column">
+    <h:panelGroup id="searchpanel">
+    <c:choose>
+	<c:when test="#{detaileventJardinController.verifierlistsearchreservation()}" >
+	<br></br>
+	<br></br>
+   <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+     <h6 class="poll-title offset-sm-4">search for the item that you want for your event</h6>
+	<div class="loader-bars">
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+        </div>
+  
+	
+	
+	
+	</c:when>
+	<c:otherwise>
+    <div class="table" >
+    <div class="table table-cart split-rows">
+    
+  
+    
+    
+    
+   <ui:repeat var="stock" value="#{detaileventJardinController.liststockeventsearch}" varStatus="status">
+    
+    <h:form id="cartform">
+    <div class="table-row medium">
+    <div class="table-column">
+    
+    <div class="product-preview tiny">
+    
+    <a >
+                      <figure class="product-preview-image liquid" style="background: url(&quot;resources/img/marketplace/items/01.jpg&quot;) center center / cover no-repeat;">
+                              <h:graphicImage class="bgSizeContain" library="stockeventdocs"  name ="#{stock.photo}" />
+                        
+                      </figure>
+                    </a>
+                    
+                    
+      <div class="product-preview-info">
+                      <!-- PRODUCT PREVIEW TITLE -->
+                      <p class="product-preview-title"><h:outputText value="#{stock.name}"></h:outputText></p>
+                      <!-- /PRODUCT PREVIEW TITLE -->
+        
+                      <!-- PRODUCT PREVIEW CATEGORY -->
+                      <p class="product-preview-category digital"><h:outputText value="#{stock.stockcategory}"></h:outputText></p>
+                      <!-- /PRODUCT PREVIEW CATEGORY -->
+        
+                      <!-- PRODUCT PREVIEW CREATOR -->
+                      <p class="product-preview-creator"><h:outputText value="#{stock.fournisseur}"></h:outputText></p>
+                      <!-- /PRODUCT PREVIEW CREATOR -->
+                    </div>              
+    </div>
+    </div>
+    
+    <div class="table-column padded-left">
+                  <!-- FORM COUNTER -->
+                    <!-- FORM COUNTER VALUE -->
+                    <!-- /FORM COUNTER VALUE -->
+        
+                    <!-- FORM COUNTER CONTROLS -->
+                    
+            <p:spinner  id="spnFontSize" value="#{detaileventJardinController.quantite}" min="0" class="col-sm-7">
+            </p:spinner>
+              
+                    
+                    
+                    <!-- /FORM COUNTER CONTROLS -->
+                  <!-- /FORM COUNTER -->
+                </div>
+                
+                
+     <div class="table-column centered padded-left">
+                  <!-- PRICE TITLE -->
+                  <p class="price-title"><h:outputText value="#{stock.prix_stock}"></h:outputText><span class="currency"> DT</span> </p>
+                  <!-- /PRICE TITLE -->
+                </div>
+                
+     <div class="table-column padded-big-left">
+                  <!-- TABLE ACTION -->
+                  <div class="table-action">
+                    <!-- ICON DELETE -->
+                 <h:commandLink  value="reserve" action="#{detaileventJardinController.reserverstockevent(stock.id)}"  >
+                 <f:ajax render=":cartpanel " execute="cartform" > </f:ajax>
+                 </h:commandLink> 
+                    <!-- /ICON DELETE -->  
+                  </div>
+                  <!-- /TABLE ACTION -->
+                </div>
+    
+    </div>
+    
+    </h:form>
+    </ui:repeat>
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    </div>
+    </c:otherwise>
+    </c:choose>
+                </h:panelGroup>
+    
+    </div>
+    
+    <div class="grid-column">
+    <h:panelGroup id="cartpanel"> 
+    <div class="sidebar-box margin-top">
+          <!-- SIDEBAR BOX TITLE -->
+          <p class="sidebar-box-title">Order Summary</p>
+          <!-- /SIDEBAR BOX TITLE -->
+      
+          <!-- SIDEBAR BOX ITEMS -->
+          <div class="sidebar-box-items">
+            <!-- TOTALS LINE LIST -->
+            <div class="totals-line-list separator-bottom">
+              <!-- TOTALS LINE -->
+            <ui:repeat var="reservation" value="#{detaileventJardinController.listreservations}" varStatus="status">
+             <div class="totals-line">
+                <!-- TOTALS LINE INFO -->
+                <div class="totals-line-info">
+                  <!-- TOTALS LINE TITLE -->
+                  <p class="totals-line-title"><span class="bold"><h:outputText value="#{reservation.stockevent.name}"></h:outputText></span></p>
+                  <!-- /TOTALS LINE TITLE -->
+      
+                  <!-- TOTALS LINE TEXT -->
+                  <p class="totals-line-text"><h:outputText value="#{reservation.stockevent.fournisseur}"></h:outputText></p>
+                  <!-- /TOTALS LINE TEXT -->
+                </div>
+                <!-- /TOTALS LINE INFO -->
+      
+                <!-- PRICE TITLE -->
+                <p class="price-title"><h:outputText value="#{reservation.stockevent.prix_stock}"></h:outputText> x <h:outputText value="#{reservation.quantite}"></h:outputText><span class="currency"> DT</span></p>
+                <!-- /PRICE TITLE -->
+                
+                
+                 <!--    <c:choose> 
+                   <c:when  test="#{detaileventJardinController.verifiereventfacture()}"> -->
+                   
+													 <h:form>
+														<h:commandLink class="myPopover " data-toggle="popover"
+   data-placement="right" title="annuler reservation"
+   data-content="Popover show on Right"
+															action="#{detaileventJardinController.deletereservation(reservation.stockevent.id)}">
+															<f:ajax render="cartpanel" />
+															<svg class="icon-delete"> <use
+																xlink:href="#svg-delete" /> </svg>
+														</h:commandLink>
+													</h:form> 
+											       
+												<!-- /TABLE ACTION -->
+                
+              </div>
+              </ui:repeat>
+              <!-- /TOTALS LINE -->
+      
+              <!-- TOTALS LINE -->
+              
+              <!-- /TOTALS LINE -->
+      
+              <!-- TOTALS LINE -->
+             
+              <!-- /TOTALS LINE -->
+            </div>
+            <!-- /TOTALS LINE LIST -->
+      
+            <!-- TOTALS LINE LIST -->
+            <div class="totals-line-list separator-bottom">
+              <!-- TOTALS LINE -->
+              <div class="totals-line">
+                <!-- TOTALS LINE TITLE -->
+                <p class="totals-line-title">Cart Total (<h:outputText value="#{detaileventJardinController.nbrreservation}"></h:outputText>)</p>
+                <!-- /TOTALS LINE TITLE -->
+      
+                <!-- PRICE TITLE -->
+                <p class="price-title"> <h:outputText value="#{detaileventJardinController.prixtotalereservation}"></h:outputText><span class="currency"> DT</span></p> 
+                <!-- /PRICE TITLE -->
+              </div>
+              <!-- /TOTALS LINE -->
+      
+              <!-- TOTALS LINE -->
+              
+              <!-- /TOTALS LINE -->
+      
+              <!-- TOTALS LINE -->
+             
+              <!-- /TOTALS LINE -->
+            </div>
+            <!-- /TOTALS LINE LIST -->
+      
+            <!-- PRICE TITLE -->
+            <p class="price-title big separator-bottom"><h:outputText value="#{detaileventJardinController.prixtotalereservation}"></h:outputText><span class="currency"> DT</span></p>
+           <h:form> <h:commandButton class=" button secondary" action="#{detaileventJardinController.facturereventcart()}"
+           data-toggle="popover" value="validate"
+   data-placement="right" title="validate"
+   data-content="Popover show on Right"  >
+           </h:commandButton></h:form>
+        <!--    <h:form> <h:commandButton class=" button secondary" disabled="true"
+           data-toggle="popover"
+   data-placement="right" title="cart est validé"
+   data-content="Popover show on Right"  >
+           </h:commandButton></h:form> -->
+           
+            <!-- /PRICE TITLE -->
+          </div>
+          <!-- /SIDEBAR BOX ITEMS -->
+      
+          <!-- SIDEBAR BOX TITLE -->
+          <!-- /SIDEBAR BOX TITLE -->
+      
+          <!-- SIDEBAR BOX ITEMS -->
+          
+          <!-- /SIDEBAR BOX ITEMS -->
+        </div>
+        </h:panelGroup>
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    
+
+		        
+		        
+		        
+		        <script src="/pages/Jardin/Event/app.bundle.min.js"></script>
+		        
+		        </h:body>
+		        </ui:define>
+		        </ui:composition>
+		        
+		        

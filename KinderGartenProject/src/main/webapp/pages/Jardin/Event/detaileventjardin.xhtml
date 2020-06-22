@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:util="http://java.sun.com/jsf/composite/component"
+		template="/template/template.xhtml"
+		xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+		xmlns:d="http://xmlns.jcp.org/jsf/passthrough"
+				xmlns:p="http://primefaces.org/ui"
+							xmlns:xlink="http://www.w3.org/1999/xlink">
+				
+		
+		>
+		  <f:metadata>
+		<f:viewParam name="id" value="#{detaileventJardinController.id}"></f:viewParam>
+		</f:metadata>
+		
+		        <ui:define name="content">
+		           <h:head>        <title>KinderGarten | detailevent</title>
+		           
+		<h:outputStylesheet
+		href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css"
+		rel="stylesheet" />
+
+
+	<h:link rel="stylesheet"
+		href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	<!-- hetha lezm nhabtou nbadlou fe css mta3ou-->
+	<h:link rel="stylesheet" href="/resources/demos/style.css" />
+	<link rel="stylesheet"
+		href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<!-- 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+
+<!-- - -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css"/>
+	<h:outputStylesheet  name="css/jquery.ui.timepicker.css"/>    
+
+ 
+</h:head>
+<h:body>
+		        <div class="content-grid" 
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+
+<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/events-icon.png" alt="events-icon" />
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title">Events</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Easily participate and follow  events or reminders!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    
+    <div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      <div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        <p class="section-pretitle">GET A QUICK LOOK!</p>
+        <!-- /SECTION PRETITLE -->
+  
+        <!-- SECTION TITLE -->
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+
+      <!-- SECTION HEADER ACTIONS -->
+      <div class="section-header-actions">
+        <!-- SECTION HEADER SUBSECTION -->
+           
+           <h:link class="section-header-subsection" outcome="/pages/Jardin/Event/WelcomeEvent" value="Home Event" >
+   </h:link>
+        
+
+        <!-- SECTION HEADER SUBSECTION -->
+        <p class="section-header-subsection" >detail event</p>
+        <!-- /SECTION HEADER SUBSECTION -->
+  
+       
+      </div>
+      <!-- /SECTION HEADER ACTIONS -->
+    </div>
+     <div class="grid grid-9-3">
+      <div class="marketplace-content grid-column">
+       <div class="profile-header ">
+      <!-- PROFILE HEADER COVER -->
+      <figure class="profile-header-cover liquid" style="background: url(&quot;files/img/cover/29.jpg&quot;) center center / cover no-repeat;">
+      <h:graphicImage class="bgSizeContain" library="eventdocs"  name ="#{detaileventJardinController.geteventbyid().photo}" />
+        
+      </figure>
+      <div class="profile-header-info"   >
+             <br></br>       
+        <h2 class="profile-title align-self-center offset-sm-1 "> <h:outputText value="#{detaileventJardinController.geteventbyid().title}"></h:outputText></h2>
+        <p class="profile-pretitle offset-sm-1 "> <h:outputText value="#{detaileventJardinController.geteventbyid().category}"></h:outputText></p>
+         <div class="profile-pretitle offset-sm-1">
+ 
+                   <p:rating  value="#{detaileventJardinController.ratt}" readonly="true">
+            
+        </p:rating>
+        </div>
+        
+         <div class="user-stats offset-sm-5 ">
+          <!-- USER STAT -->
+          <div class="user-stat big">
+            <!-- USER STAT ICON -->
+            <div class="user-stat-icon">
+              <!-- ICON PUBLIC -->
+              <svg class="icon-public">
+                <use xlink:href="#svg-public"></use>
+              </svg>
+              <!-- /ICON PUBLIC -->
+            </div>
+            <!-- /USER STAT ICON -->
+    
+            <!-- USER STAT TEXT -->
+            <p class="user-stat-text"><h:outputText value="#{detaileventJardinController.geteventbyid().type_event}"></h:outputText></p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          <!-- /USER STAT -->
+
+          <!-- USER STAT -->
+             <div class="user-stat big" >
+            <!-- USER STAT TITLE -->
+            
+            <p class="user-stat-title" ><h:outputText  value="#{detaileventJardinController.geteventbyid().nbr_invites}"></h:outputText></p>
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+            <p class="user-stat-text">invités</p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          
+                   <div class="user-stat big" >
+            <!-- USER STAT TITLE -->
+            
+            <p class="user-stat-title" ><h:outputText  value="#{detaileventJardinController.geteventbyid().nbr_participants}"></h:outputText></p>
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+        <!--      <p class="user-stat-text">participants</p>-->
+           <h:form>
+            <p:commandLink class="user-stat-text"  onclick="PF('dlg1').show();" value="participants">
+   </p:commandLink></h:form>
+            <!-- /USER STAT TEXT -->
+          </div>
+          
+          <!-- /USER STAT -->
+    
+          <!-- USER STAT -->
+          
+          
+          <div class="user-stat big" >
+            <!-- USER STAT TITLE -->
+            <p class="user-stat-title" ><h:outputText value="#{detaileventJardinController.geteventbyid().nbr_interssants}"/></p>
+            
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+      <!--       <p class="user-stat-text">intéressés</p> -->
+             <h:form  >
+            <p:commandLink  class="user-stat-text" onclick="PF('dlg2').show();" value="intéressés">
+   </p:commandLink></h:form>
+            <!-- /USER STAT TEXT -->
+          </div>
+          <!-- /USER STAT -->
+    
+          <!-- USER STAT -->
+          
+          <!-- /USER STAT -->
+        </div>
+         <div class="profile-header-info-actions ">
+          <!-- PROFILE HEADER INFO ACTION -->
+            <!-- ICON JOIN GROUP -->
+            
+      
+        </div>
+        </div>
+        
+       
+       
+       
+       
+       </div>
+        
+       <div class="widget-box no-padding">
+    <p class="widget-box-title highlighted" >
+     <span class="highlighted">Description</span>
+    </p>
+    
+    <div class="widget-box-status">
+    <div class="widget-box-content">
+     <div class="user-status-list">
+    <div class="user-status">
+    
+           <p class="user-status-text col-sm-11">
+       
+        <h:outputText value="#{detaileventJardinController.geteventbyid().description}" />
+           </p>
+        </div>
+         
+        </div>
+        
+        </div>
+        </div>
+        </div>
+ 
+ 
+       <div class="widget-box no-padding">
+          <!-- WIDGET BOX SETTINGS -->
+         <p class="widget-box-title highlighted">
+             <span class="highlighted">Galerie</span>
+            </p>
+        
+          <!-- WIDGET BOX STATUS -->
+          <div class="widget-box-status">
+            <!-- WIDGET BOX STATUS CONTENT -->
+            
+            
+            <div class="widget-box-status-content">
+              
+    <c:choose>
+	<c:when test="#{detaileventJardinController.verfierlistimage ()}" >
+	 <div class="post-comment">
+	                 <p class="post-comment-text offset-sm-3 ">aucune photo dans la galerie</p>
+	                 </div>
+	</c:when>
+	              
+              	<c:otherwise>
+              
+              <div class="picture-collage">
+                <!-- PICTURE COLLAGE ROW -->
+                
+                <!-- /PICTURE COLLAGE ROW -->
+      
+                <!-- PICTURE COLLAGE ROW -->
+                
+                <div class="picture-collage-row ">
+                  <!-- PICTURE COLLAGE ITEM -->
+                  
+                  <ui:repeat var="imagee" value="#{detaileventJardinController.listimagesevent}" varStatus="status">
+                  
+                  <div class="picture-collage-item popup-picture-trigger" id="imageevent">
+                    <!-- PHOTO PREVIEW -->
+                    <div class="photo-preview">
+                      <!-- PHOTO PREVIEW IMAGE -->
+                      <figure  class="photo-preview-image liquid" style="background: url(&quot;files/img/cover/16.jpg&quot;) center center ;">
+           <h:graphicImage   library="eventdocs" style="display: none;"   name ="#{imagee.image}" />
+                        
+                      </figure>
+                  
+                    </div>
+                    <!-- /PHOTO PREVIEW -->
+                                      </div>
+                    
+                                    </ui:repeat>
+                 </div>
+                <!-- /PICTURE COLLAGE ROW -->
+              </div>
+            </c:otherwise>
+	</c:choose>
+            </div>
+            
+            <!-- /WIDGET BOX STATUS CONTENT -->
+          </div>
+          <!-- /WIDGET BOX STATUS -->
+      <br></br>
+        </div>
+       
+        <div class="widget-box no-padding">
+    <p class="widget-box-title highlighted" >
+     <span class="highlighted">Discussions</span>
+    </p>
+       <div class="tab-box-item" style="display: block;">
+              <!-- POST COMMENT LIST -->
+              
+                <c:choose>
+	<c:when test="#{detaileventJardinController.verifierlistdiscussion()}" >
+	                <div class="post-comment">
+	                 <p class="post-comment-text offset-sm-3 ">aucun commentaire jusqu'a maintenant</p>
+	                 </div>
+	</c:when>
+	<c:otherwise>         
+	
+              <div class="post-comment-list no-border-top">
+              
+        <ui:repeat var="discuss" value="#{detaileventJardinController.listdiscussions}" varStatus="status">
+                <!-- POST COMMENT -->
+                <div class="post-comment">
+                  <!-- USER AVATAR -->
+                  <div class="user-avatar small no-outline" >
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                      <!-- HEXAGON -->
+                      <!-- /HEXAGON -->
+      <h:graphicImage class="hexagon-image-30-32" library="eventdocs" style="width: 30px; height: 32px; position: relative;"  name ="#{discuss.parent_discussion.image}" />
+                      
+                    </div>
+                    <!-- /USER AVATAR CONTENT -->
+                
+                    
+                    <!-- /USER AVATAR BADGE -->
+                  </div>
+                  <!-- /USER AVATAR -->
+              
+                  <!-- POST COMMENT TEXT -->
+                  <p class="post-comment-text "><a class="post-comment-text-author" ><h:outputText value="#{discuss.parent_discussion.firstName} #{discuss.parent_discussion.lastName}"></h:outputText></a></p>
+                  <!-- /POST COMMENT TEXT -->
+              
+                  <!-- POST COMMENT TEXT -->
+                  <p class="post-comment-text"><h:outputText value="#{discuss.commentaire}"></h:outputText></p>
+                  <!-- /POST COMMENT TEXT -->
+              
+                  <!-- CONTENT ACTIONS -->
+                  <div class="content-actions">
+                    <!-- CONTENT ACTION -->
+                    <div class="content-action">
+                      <!-- META LINE -->
+              
+                      <!-- /META LINE -->
+              
+              
+                      <!-- /META LINE -->
+              
+                      <!-- META LINE -->
+                      <div class="meta-line">
+                        <!-- META LINE LINK -->
+                        <p class="meta-line-link light">Reply</p>
+                        <!-- /META LINE LINK -->
+                      </div>
+                      <!-- /META LINE -->
+              
+                      <!-- META LINE -->
+                      <div class="meta-line">
+                        <!-- META LINE TIMESTAMP -->
+                        <p class="meta-line-timestamp"><h:outputText value="#{discuss.discussioneventpk.date_commentaire.date} #{eventkindergartenController.getMonth(discuss.discussioneventpk.date_commentaire)} à #{discuss.discussioneventpk.date_commentaire.hours -1}:#{discuss.discussioneventpk.date_commentaire.minutes}"></h:outputText></p>
+                        <!-- /META LINE TIMESTAMP -->
+                      </div>
+                      <!-- /META LINE -->
+              
+                      <!-- META LINE -->
+                      
+                      <!-- /META LINE -->
+                    </div>
+                    <!-- /CONTENT ACTION -->
+                  </div>
+                  <!-- /CONTENT ACTIONS -->
+                </div>
+                <!-- /POST COMMENT -->
+      
+      </ui:repeat>
+      
+      
+      
+      
+      
+                <!-- /POST COMMENT FORM -->
+              </div>
+              </c:otherwise>
+              </c:choose>
+              <!-- /POST COMMENT LIST -->
+              
+            </div>
+       </div>
+       
+   
+     <div class="widget-box no-padding">
+    <p class="widget-box-title highlighted" >
+     <span class="highlighted">Reviews</span>
+    </p>
+    
+    <h:panelGroup id="reviewpanel">
+        <c:choose>
+	<c:when test="#{detaileventJardinController.verifierlistevaluations()}" >
+	<br></br>
+	                <div class="post-comment">
+	                 <p class="post-comment-text offset-sm-3 ">aucun review jusqu'a maintenant </p>
+	                 
+	                 </div>
+	                 </c:when>
+                    <c:otherwise>
+    <div class="post-comment-list no-border-top">
+    <ui:repeat var="evaluation" value="#{detaileventJardinController.listevaluations}" varStatus="status">
+    <div class="post-comment">
+                  <!-- USER AVATAR -->
+                  <div class="user-avatar small no-outline">
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                      <!-- HEXAGON -->
+                      <!-- /HEXAGON -->
+       <h:graphicImage class="hexagon-image-30-32" library="eventdocs" style="width: 30px; height: 32px; position: relative;"  name ="#{evaluation.parent_evaluation.image}" />
+                      
+                    </div>
+                   
+                  </div>
+                  <!-- /USER AVATAR -->
+              
+                  <!-- POST COMMENT TEXT WRAP -->
+                  <div class="post-comment-text-wrap">
+                    <!-- RATING LIST -->
+                    <div class="rating-list medium">
+                    
+                 <p:rating value="#{evaluation.evaluation_value}" readonly="true" />
+                
+                     
+                     
+                            
+                    </div>
+                   
+                  </div>
+                  <!-- /POST COMMENT TEXT WRAP -->
+              
+                  <!-- POST COMMENT TEXT -->
+                  <p class="post-comment-text">
+                  
+                   <h:outputText value="#{evaluation.evaluation_description}"></h:outputText>
+                  
+                  
+                    </p>
+                  <!-- /POST COMMENT TEXT -->
+              
+                  <!-- CONTENT ACTIONS -->
+                  <div class="content-actions">
+                    <!-- CONTENT ACTION -->
+                    <div class="content-action">
+                      <!-- META LINE -->
+                      <div class="meta-line">
+                        <!-- META LINE TEXT -->
+                        <p class="meta-line-text"><h:outputText value="#{evaluation.parent_evaluation.firstName} #{evaluation.parent_evaluation.lastName}"></h:outputText></p>
+                        <!-- /META LINE TEXT -->
+                      </div>
+                      <!-- /META LINE -->
+              
+                      <!-- META LINE -->
+                      <div class="meta-line">
+                        <!-- META LINE TIMESTAMP -->
+                        <p class="meta-line-timestamp">
+                        
+          <h:outputText value="#{evaluation.evaluation_date.date} #{eventkindergartenController.getMonth(evaluation.evaluation_date)} à #{evaluation.evaluation_date.hours }:#{evaluation.evaluation_date.minutes}"></h:outputText>
+                        
+                        
+                        
+                        </p>
+                        <!-- /META LINE TIMESTAMP -->
+                      </div>
+                      <!-- /META LINE -->
+              
+                      <!-- META LINE -->
+                     
+                      <!-- /META LINE -->
+                    </div>
+                    <!-- /CONTENT ACTION -->
+                  </div>
+                  <!-- /CONTENT ACTIONS -->
+                </div>
+                </ui:repeat>
+    
+    
+    </div>
+    </c:otherwise>
+    </c:choose>
+    </h:panelGroup>
+    </div>
+   
+   
+   
+       
+       
+       </div>
+       
+       
+      <div class="marketplace-sidebar">
+      
+      
+        <div class="sidebar-box">
+        <div class="sidebar-box-items">
+            <!-- PRICE TITLE -->
+            <!-- /PRICE TITLE -->
+      
+            <!-- FORM -->
+            
+      
+            <!-- USER STATS -->
+            <div class="user-stats">
+              <!-- USER STAT -->
+              <div class="user-stat big">
+                <!-- USER STAT TITLE -->
+                <p class="user-stat-title"><h:outputText value="#{detaileventJardinController.nbrdusscussions}"></h:outputText></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+                <p class="user-stat-text">Comments</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              <!-- /USER STAT -->
+        
+             
+        
+               <div class="user-stat big">
+                <!-- USER STAT TITLE -->
+                <p class="user-stat-title"><h:outputText value="#{detaileventJardinController.ratt}"></h:outputText>/5</p>
+                <p class="user-stat-text">review event</p>
+                </div>
+               
+                
+            </div>
+            <!-- /USER STATS -->
+          
+            
+          </div>
+      
+        
+          <!-- SIDEBAR BOX ITEMS -->
+        <p class="sidebar-box-title highlighted">
+        <span class="highlighted">Event Details</span>
+        </p>
+        
+        <div class="sidebar-box-items">
+                <div class="decorated-feature ">
+          <!-- DECORATED FEATURE ICON -->
+          <svg class="decorated-feature-icon icon-pin">
+            <use xlink:href="#svg-pin"></use>
+          </svg>
+          <!-- /DECORATED FEATURE ICON -->
+
+          <!-- DECORATED FEATURE INFO -->
+          <div class="decorated-feature-info">
+            <!-- DECORATED FEATURE TITLE -->
+            <p class="decorated-feature-title"><h:outputText value="Jardin, #{detaileventJardinController.geteventbyid().location_event}" />
+            </p>
+            <!-- /DECORATED FEATURE TITLE -->
+
+            <!-- DECORATED FEATURE TEXT -->
+            <p class="decorated-feature-text">Espace réservé pour les events</p>
+            <!-- /DECORATED FEATURE TEXT -->
+          </div>
+          <!-- /DECORATED FEATURE INFO -->
+        </div>
+        <br></br>
+         <div class="decorated-feature ">
+          <!-- DECORATED FEATURE ICON -->
+          <svg class="decorated-feature-icon icon-events">
+            <use xlink:href="#svg-events"></use>
+          </svg>
+          <!-- /DECORATED FEATURE ICON -->
+
+          <!-- DECORATED FEATURE INFO -->
+          <div class="decorated-feature-info">
+            <!-- DECORATED FEATURE TITLE -->
+            <p class="decorated-feature-title"><h:outputText value="#{detaileventJardinController.geteventbyid().date_event.date} #{eventkindergartenController.getMonth(detaileventJardinController.geteventbyid().date_event)} -#{detaileventJardinController.geteventbyid().date_event.year +1900}" />
+ </p>
+            <!-- /DECORATED FEATURE TITLE -->
+
+            <!-- DECORATED FEATURE TEXT -->
+            <p class="decorated-feature-text">de<h:outputText  value="#{detaileventJardinController.geteventbyid().event_start_heure.hours - 1}:#{detaileventJardinController.geteventbyid().event_start_heure.minutes}"/> à
+            <h:outputText value="#{detaileventJardinController.geteventbyid().event_fin_heure.hours -1}:#{detaileventJardinController.geteventbyid().event_fin_heure.minutes}" />
+            </p>
+
+            <!-- /DECORATED FEATURE TEXT -->
+          </div>
+          <!-- /DECORATED FEATURE INFO -->
+        </div>
+        <br></br>
+         <div class="decorated-feature">
+          <!-- DECORATED FEATURE ICON -->
+          <svg class="decorated-feature-icon icon-ticket">
+            <use xlink:href="#svg-ticket"></use>
+          </svg>
+          <!-- /DECORATED FEATURE ICON -->
+
+          <!-- DECORATED FEATURE INFO -->
+          <div class="decorated-feature-info">
+            <!-- DECORATED FEATURE TITLE -->
+            <p class="decorated-feature-title"><h:outputText  value="#{detaileventJardinController.geteventbyid().entry_price}DT"/> </p>
+            <!-- /DECORATED FEATURE TITLE -->
+
+            <!-- DECORATED FEATURE TEXT -->
+            <p class="decorated-feature-text">Entry Price</p>
+            <!-- /DECORATED FEATURE TEXT -->
+          </div>
+          <!-- /DECORATED FEATURE INFO -->
+        </div>
+          
+          </div> 
+          
+          <!-- /SIDEBAR BOX TITLE -->
+      
+          <!-- SIDEBAR BOX ITEMS -->
+          
+          
+          
+    <div class="sidebar-box-items">
+            <!-- INFORMATION LINE LIST -->
+            <div class="information-line-list">
+              <!-- INFORMATION LINE -->
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title ">date limite registration</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                <p class="information-line-text"><span class="bold"><h:outputText value="#{eventkindergartenController.getMonth(detaileventJardinController.geteventbyid().date_final_reservation)} #{detaileventJardinController.geteventbyid().date_final_reservation.date} ,#{detaileventJardinController.geteventbyid().date_final_reservation.year+1900}" />
+ </span></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+             
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              <h:panelGroup id="formplace">
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title">Places Restantes</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->                                 
+                <p class="information-line-text"><span class="bold"><h:outputText value="#{detaileventJardinController.geteventbyid().nbr_places - detaileventJardinController.geteventbyid().nbr_places_occupes }" /></span></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              </h:panelGroup>
+              <br></br>
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title">Category</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                <p class="information-line-text"><a href="marketplace-category.html"><h:outputText value="#{detaileventJardinController.geteventbyid().category}" /></a></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- /INFORMATION LINE -->
+            </div>
+            <!-- /INFORMATION LINE LIST -->
+          </div>
+          <!-- /SIDEBAR BOX ITEMS -->
+      
+        </div>
+         <br></br>
+        <div class="widget-box ">
+          <!-- WIDGET BOX SETTINGS -->
+         
+          <!-- /WIDGET BOX SETTINGS -->
+
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title"> Ajouter dans la galerie </p>
+          <!-- /WIDGET BOX TITLE -->
+
+          <!-- WIDGET BOX CONTENT -->
+          <div class="widget-box-content">
+          
+            <h:form enctype='multipart/form-data'> 
+             <h:inputFile type="file" class=" col-sm-8 file-uploader pull-right"  
+                        value="#{detaileventJardinController.cinf}" required="true" >
+                      </h:inputFile> 
+                      <h:commandButton class=" button primary   " 
+                      value="upload" action="#{detaileventJardinController.addimagevent()}">
+                      <!--  <f:ajax render="panelimage" execute="imageform"> </f:ajax>  -->
+                       </h:commandButton></h:form></div>
+          
+             <br></br>
+                       <p class="widget-box-title"> Reserver pour l'evenement </p>
+             <br></br>
+              <c:choose>
+               <c:when test="#{detaileventJardinController.verifieretatreservation()}" >
+               <h:form class="form">
+                         <h:commandButton class="button primary myPopover offset-sm-2" value=" Reserver  " data-toggle="popover"
+                           data-placement="right" title="event en cours de registration" disabled="true"
+   data-content="Popover show on Right"  >
+                         
+                         </h:commandButton>
+             
+            </h:form>
+          </c:when>
+          <c:otherwise>
+           <h:form> <h:commandButton class="button primary myPopover offset-sm-1" value=" Reserver " data-toggle="popover"
+                           data-placement="right" title="reserver pour ce event" action="#{detaileventJardinController.gottoreserveevent()}"
+   data-content="Popover show on Right" >
+                         
+                         </h:commandButton></h:form>
+            </c:otherwise>
+            </c:choose>
+           </div>
+        
+      
+      </div>
+       </div>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       </div>
+       
+       
+       
+  <p:dialog header="Liste parents participés"  widgetVar="dlg1" modal="true"  minHeight="40" resizable="false" position="center center" height="250" width="456" appendToBody="true">   
+         
+         <c:choose>
+	<c:when test="#{detaileventJardinController.verifierparentparticipe()}" > 
+          <br></br>
+          <br></br>
+          <div class="offset-sm-3"><h6>aucun des parents a participer</h6></div>
+          </c:when>
+          <c:otherwise>
+         <ui:repeat var="participatedparents" value="#{detaileventJardinController.listparentsparticipes}" varStatus="status">
+         <br></br>
+         <p class="user-stat-text"><h6><h:outputText value="#{participatedparents.firstName} #{participatedparents.lastName}"/>  (<h:outputText value="#{participatedparents.childs.size()}" > </h:outputText>)  enfants</h6></p>
+         </ui:repeat>
+         </c:otherwise>
+         </c:choose>
+        </p:dialog>
+  
+   
+        
+       
+        
+    
+        <p:dialog header="Liste parents interessés"  widgetVar="dlg2" modal="true" resizable="false" position="center center" height="250" width="456" appendToBody="true">   
+         <c:choose>
+	<c:when test="#{detaileventJardinController.verifierparentinteresse()}" > 
+          <br></br>
+          <br></br>
+         <div class="offset-sm-3"><h6>aucun des parents est interesseé</h6></div>
+          </c:when>
+          <c:otherwise>
+        
+         <ui:repeat var="interestedparents" value="#{detaileventJardinController.listparentsinteresses}" varStatus="status">
+         <br></br>
+         <p class="user-stat-text"><h6><h:outputText value="#{interestedparents.firstName} #{interestedparents.lastName}"/></h6></p>
+         </ui:repeat>
+        </c:otherwise>
+        </c:choose>
+        </p:dialog>
+        
+        
+       
+       
+       
+       <!--  -->
+        
+	<div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 99998; background-color: rgba(21, 21, 31, 0.96); opacity: 0; visibility: hidden; transition: opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s;"></div>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />                            
+                                   
+			<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+<!-- 	<h:outputScript library="js" name="jstemplate.js" /> -->
+	
+			<script>
+		$(".datepicker").datepicker({
+			inline : true,
+			showWeek : true,
+			firstDay : 1
+		});
+	</script>
+
+
+
+	<script>
+		$(document).on("ready", function() {
+			$('#login-page').css({
+				'height' : window.innerHeight + 'px'
+			});
+		});
+	</script>
+	
+	
+	
+	
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+          crossorigin="anonymous">
+     </script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	
+	<script src="jquery.ui.timepicker.js"></script>
+		<script src="timepickerstartend.js"></script>
+	
+    
+
+</h:body>
+</ui:define>
+</ui:composition>
+
+
+
+
+		
