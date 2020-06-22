@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:util="http://java.sun.com/jsf/composite/component"
+		template="/template/template.xhtml"
+		xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+				xmlns:pe="http://primefaces.org/ui/extensions"
+		
+		xmlns:p="http://primefaces.org/ui"
+			xmlns:xlink="http://www.w3.org/1999/xlink">
+		
+
+        <f:metadata>
+		<f:viewParam name="id" value="#{detaileventController.id}"></f:viewParam>
+		</f:metadata>
+ 
+
+		<ui:define name="content" >
+				           <h:head>        <title>KinderGarten | detailevent</title></h:head>
+		
+		<div class="content-grid" 
+				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
+				
+				<!-- SECTION BANNER -->
+<div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="files/img/banner/events-icon.png" alt="events-icon" />
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      
+<p class="section-banner-title">Events</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Easily participate and follow  events or reminders!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    
+      
+    <!-- /detailpage -->
+    <div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      <div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        <p class="section-pretitle">GET A QUICK LOOK!</p>
+        <!-- /SECTION PRETITLE -->
+  
+        <!-- SECTION TITLE -->
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+
+      <!-- SECTION HEADER ACTIONS -->
+      <div class="section-header-actions">
+        <!-- SECTION HEADER SUBSECTION -->
+          <!--  <h:form class="section-header-subsection"><h:commandLink action="#{eventkindergartenController.gotohomeevents()}" value="Home Event">
+   </h:commandLink></h:form> -->
+        <h:link class="section-header-subsection"    outcome="/pages/Parent/Event/WelcomeEvent" value="Home Event" >
+        
+        </h:link>
+
+        <!-- SECTION HEADER SUBSECTION -->
+        <p class="section-header-subsection" >detail event</p>
+        <!-- /SECTION HEADER SUBSECTION -->
+  
+       
+      </div>
+      <!-- /SECTION HEADER ACTIONS -->
+    </div>
+    <div class="grid grid-9-3">
+    <div class="marketplace-content grid-column">
+       <div class="profile-header ">
+      <!-- PROFILE HEADER COVER -->
+      <figure class="profile-header-cover liquid" style="background: url(&quot;files/img/cover/29.jpg&quot;) center center / cover no-repeat;">
+      <h:graphicImage class="bgSizeContain" library="eventdocs"  name ="#{detaileventController.geteventbyid().photo}" />
+        
+      </figure>
+      <!-- /PROFILE HEADER COVER -->
+
+      <!-- PROFILE HEADER INFO -->               
+      
+                               <div class="profile-header-info"   >
+        <!-- USER SHORT DESCRIPTION -->
+        
+       <br></br>       
+       <br></br>
+        <!-- SECTION TITLE -->
+        <h2 class="profile-title align-self-center offset-sm-1"> <h:outputText value="#{detaileventController.geteventbyid().title}"></h:outputText></h2>
+        <p class="profile-pretitle offset-sm-1"> <h:outputText value="#{detaileventController.geteventbyid().category}"></h:outputText></p>
+        <!-- /SECTION PRETITLE -->
+        
+            <c:if test="#{detaileventController.veriftermineevent()}">  
+                   <br></br>
+           
+           <h:panelGroup id="allratepanel">
+        <h:form class="profile-pretitle offset-sm-1">
+ 
+                   <p:rating value="#{detaileventController.ratt}" readonly="true">
+            
+        </p:rating>
+        </h:form>
+        </h:panelGroup>
+        </c:if>
+        
+ 
+        
+        <!-- /USER SHORT DESCRIPTION -->
+
+        <!-- USER STATS -->       
+           <h:panelGroup id="formpart">
+           <div class="user-stats offset-sm-6 ">
+          <!-- USER STAT -->
+          <div class="user-stat big">
+            <!-- USER STAT ICON -->
+            <div class="user-stat-icon">
+              <!-- ICON PUBLIC -->
+              <svg class="icon-public">
+                <use xlink:href="#svg-public"></use>
+              </svg>
+              <!-- /ICON PUBLIC -->
+            </div>
+            <!-- /USER STAT ICON -->
+    
+            <!-- USER STAT TEXT -->
+            <p class="user-stat-text"><h:outputText value="#{detaileventController.geteventbyid().type_event}"></h:outputText></p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          <!-- /USER STAT -->
+
+          <!-- USER STAT -->
+             <div class="user-stat big" >
+            <!-- USER STAT TITLE -->
+            
+            <p class="user-stat-title" ><h:outputText  value="#{detaileventController.geteventbyid().nbr_participants}"></h:outputText></p>
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+            <p class="user-stat-text" > participants
+</p>
+           
+            <!-- /USER STAT TEXT -->
+          </div>
+          
+          <!-- /USER STAT -->
+    
+          <!-- USER STAT -->
+          
+          
+          <div class="user-stat big" >
+            <!-- USER STAT TITLE -->
+            <p class="user-stat-title" ><h:outputText value="#{detaileventController.geteventbyid().nbr_interssants}"/></p>
+            
+            <!-- /USER STAT TITLE -->
+    
+            <!-- USER STAT TEXT -->
+            <p class="user-stat-text">interested
+</p>
+            <!-- /USER STAT TEXT -->
+          </div>
+          <!-- /USER STAT -->
+    
+          <!-- USER STAT -->
+          
+          <!-- /USER STAT -->
+        </div>
+        </h:panelGroup>
+         
+        <!-- /USER STATS -->
+
+        <!-- TAG STICKER -->
+      
+        <!-- /TAG STICKER -->
+
+        <!-- PROFILE HEADER INFO ACTIONS -->
+        
+        <c:choose>
+              
+           <c:when test="#{ detaileventController.veriftermineevent()}" >
+           <h:panelGroup id="panelverif">
+           <c:choose>
+              
+            <c:when test="#{not detaileventController.verifierlistparentsevaluations()}" >
+                               <div class="profile-header-info-actions">
+             <h:commandButton class="profile-header-info-action button primary myPopover "
+            data-toggle="popover"
+   data-placement="right" title="you evaluated this event"
+   data-content="Popover show on Right" value="evaluate" disabled="true"
+             ></h:commandButton>
+             </div>
+           </c:when>
+                     <c:otherwise>
+            
+                   <div class="profile-header-info-actions">
+                   
+                      
+            <div class="profile-header-info-action button primary myPopover popup-review-trigger " data-toggle="popover"
+   data-placement="right" title="evaluate"
+   data-content="Popover show on Right"  >Evaluate
+            </div>
+            </div>
+            </c:otherwise>
+           </c:choose> 
+           </h:panelGroup>
+           </c:when>
+           
+        <c:otherwise>
+       <h:panelGroup id="fomrshow">
+        <div class="profile-header-info-actions">
+          <!-- PROFILE HEADER INFO ACTION -->
+            <!-- ICON JOIN GROUP -->
+            
+            <!-- /ICON JOIN GROUP -->
+          <!-- /PROFILE HEADER INFO ACTION -->
+          
+          <!-- PROFILE HEADER INFO ACTION -->
+     <c:choose>
+	<c:when test="#{detaileventController.verifieretatparticipation(detaileventController.geteventbyid().id)}" >
+	 <h:form> 
+            <h:commandButton class="profile-header-info-action button myPopover " data-toggle="popover"
+   data-placement="right" title="annuler participation"
+   data-content="Popover show on Right" value="cancel participation
+"    action="#{detaileventController.getinvitationresponse()}"> 
+            <f:ajax  render="formpart formplace fomrshow parentetatpanel" />
+            </h:commandButton>
+            </h:form>
+           </c:when>
+           <c:otherwise>
+           <c:choose>
+               <c:when test="#{detaileventController.verifieretatinteresser(detaileventController.geteventbyid().id)}" >
+           
+           <h:form>
+            <h:commandButton id="envoyer"  class="profile-header-info-action button myPopover " value="interested" data-toggle="popover"
+   data-placement="right" title="pas interessé"
+   data-content="Popover show on Right" action="#{detaileventController.getinvitationinteresser()}">
+             <f:ajax   render="formpart fomrshow parentetatpanel " /></h:commandButton></h:form>
+           </c:when>
+           <c:otherwise>
+           <h:form>
+            <h:commandButton id="envoyer"  class="profile-header-info-action button secondary myPopover" value="interested" data-toggle="popover"
+   data-placement="right" title="interesser"
+   data-content="Popover show on Right" action="#{detaileventController.getinvitationinteresser()}">
+             <f:ajax   render="formpart fomrshow parentetatpanel " /></h:commandButton></h:form>
+             </c:otherwise>
+             </c:choose>
+             <!-- verfier date reservation -->
+            <c:choose>
+           <c:when test="#{detaileventController.verifierdatereservation(detaileventController.geteventbyid().id)}" >
+            <h:commandButton class="profile-header-info-action btn btn-danger "  data-toggle="popover"
+   data-placement="right" title="Date limite reservation est atteint" 
+   data-content="Popover show on Right"  value="Participate" >
+            </h:commandButton>
+             </c:when>
+            <c:otherwise>  
+            <c:choose>
+        <c:when test="#{detaileventController.verifiernombresplacesdisponibles()}" >
+            
+             <h:commandButton class="profile-header-info-action btn btn-danger  " data-toggle="popover"
+   data-placement="right" title="tous places sont reservés"
+   data-content="Popover show on Right" value="Participate" > 
+            </h:commandButton>
+            </c:when>   
+            <c:otherwise>  
+                    
+           <h:form>
+            <h:commandButton class="profile-header-info-action button primary myPopover " data-toggle="popover"
+   data-placement="right" title="participer"
+   data-content="Popover show on Right" value="participate"   action="#{detaileventController.getinvitationresponse()}"> 
+            <f:ajax  render="formpart formplace fomrshow parentetatpanel " />
+            </h:commandButton>
+            </h:form>
+            </c:otherwise>
+            </c:choose>
+            </c:otherwise>
+            </c:choose>
+            <!-- /verfier date reservation -->
+           </c:otherwise>
+           </c:choose>
+            
+            <!-- /ICON MORE DOTS -->
+          <!-- /PROFILE HEADER INFO ACTION -->
+        </div>
+        </h:panelGroup>
+        </c:otherwise>
+        </c:choose>
+        <!-- /PROFILE HEADER INFO ACTIONS -->
+    </div>      <!-- /PROFILE HEADER INFO -->
+    
+    <br></br>
+    </div>
+    
+    
+    
+
+    
+    <div class="widget-box">
+    <p class="widget-box-title highlighted" >
+     <span class="highlighted">Description</span>
+    </p>
+    
+    <div class="widget-box-status">
+    <div class="widget-box-content">
+     <div class="user-status-list">
+    <div class="user-status">
+    
+           <p class="user-status-text col-sm-11">
+       
+        <h:outputText value="#{detaileventController.geteventbyid().description}" />
+           </p>
+        </div>
+           
+        </div>
+        
+        </div>
+        </div>
+        </div>
+           
+           <h:panelGroup id="parentetatpanel">       
+          <c:choose>
+           <c:when test="#{ detaileventController.verifieretatparentinvitation()}" >
+            <div class="widget-box no-padding">
+    <p class="widget-box-title highlighted" >
+     <span class="highlighted">Discussions</span>
+    </p>
+	                <div class="post-comment">
+	                 <p class="post-comment-text offset-sm-3 "><span class="highlighted"> interesser </span> ou <span class="highlighted"> participer </span>
+	                   pour participer a la discussion</p>
+	                   <div class="loader-bars">
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+          <div class="loader-bar"></div>
+        </div>
+	                 
+	                 </div></div>
+        </c:when>
+        <c:otherwise>        
+        
+           <c:choose>
+              
+           <c:when test="#{ not detaileventController.veriftermineevent()}" >
+       <div class="widget-box no-padding">
+    <p class="widget-box-title highlighted" >
+     <span class="highlighted">Discussions</span>
+    </p>
+         <h:panelGroup id="commentpanel">
+    
+      <c:choose>
+	<c:when test="#{detaileventController.verifierlistdiscussion()}" >
+	<br></br>
+	                <div class="post-comment">
+	                 <p class="post-comment-text offset-sm-3 ">aucun commentaire jusqu'a maintenant ,Sois<span class="highlighted"> le premier</span>
+	                   qui commente</p>
+	                 
+	                 </div>
+	                 <div class="post-comment-form with-title">
+                  <!-- POST COMMENT FORM TITLE -->
+                  <p class="post-comment-form-title">Leave a Comment</p>
+                  <!-- /POST COMMENT FORM TITLE -->
+              
+                  <!-- USER AVATAR -->
+                  <div class="user-avatar small no-outline">
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                      <!-- HEXAGON -->
+<h:form>  <h:graphicImage class="hexagon-image-30-32" library="eventdocs" style="width: 30px; height: 32px; position: relative;"  name ="#{detaileventController.parentdisscussion().image}" />
+                      </h:form>                      <!-- /HEXAGON -->
+                    </div>
+                   
+                  </div>
+                  <!-- /USER AVATAR -->
+              
+                  <!-- FORM -->
+                  <h:form class="form" id="formcomment">
+                    <!-- FORM ROW -->
+                    <div class="form-row">
+                      <!-- FORM ITEM -->
+                      <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small">
+                          <label for="post-reply-2">Your Comment</label>
+                          <h:inputTextarea id="panel" name="post_reply_2" value="#{detaileventController.commentaire}" ></h:inputTextarea>
+                        </div>
+                        <!-- /FORM INPUT -->
+                      </div>
+                      <!-- /FORM ITEM -->
+                    </div>
+                    <!-- /FORM ROW -->
+                    <div class="offset-sm-11 col-sm-6  ">
+                   
+                  <h:commandButton class="button secondary " value="share
+" action="#{detaileventController.addcommentaire()}" >
+              <f:ajax  render="commentpanel nbrcomments" execute="formcomment" />  
+                  </h:commandButton>
+                  </div>
+                 </h:form>
+                  <!-- /FORM -->
+                </div>
+	</c:when>
+	<c:otherwise>        
+    <div class="post-comment-list no-border-top">
+     <ui:repeat var="discuss" value="#{detaileventController.listdiscussions}" varStatus="status">
+    <div class="post-comment">
+                  <!-- USER AVATAR -->
+                  <div class="user-avatar small no-outline" >
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                      <!-- HEXAGON -->
+                      <!-- /HEXAGON -->
+                      <h:graphicImage class="hexagon-image-30-32" library="eventdocs" style="width: 30px; height: 32px; position: relative;"  name ="#{discuss.parent_discussion.image}" />
+                    </div>
+                    
+                  </div >
+                  <!-- /USER AVATAR -->
+              
+                  <!-- POST COMMENT TEXT -->
+                  <p class="post-comment-text"><a class="post-comment-text-author"><h:outputText value="#{discuss.parent_discussion.firstName} #{discuss.parent_discussion.lastName}"></h:outputText></a></p>
+                  <!-- /POST COMMENT TEXT -->
+              
+                  <!-- POST COMMENT TEXT -->
+                  <p class="post-comment-text"><h:outputText value="#{discuss.commentaire}"></h:outputText></p>
+                  <!-- /POST COMMENT TEXT -->
+              
+                  <!-- CONTENT ACTIONS -->
+                  <div class="content-actions">
+                    <!-- CONTENT ACTION -->
+                    <div class="content-action">
+                     
+                     
+                      <!-- /META LINE -->
+              
+                      <!-- META LINE -->
+                      <div class="meta-line">
+                        <!-- META LINE TIMESTAMP -->
+    <p class="meta-line-timestamp"><h:outputText value="#{discuss.discussioneventpk.date_commentaire.date} #{eventkindergartenController.getMonth(discuss.discussioneventpk.date_commentaire)} à #{discuss.discussioneventpk.date_commentaire.hours }:#{discuss.discussioneventpk.date_commentaire.minutes}"></h:outputText></p>
+                        
+                        <!-- /META LINE TIMESTAMP -->
+                      </div>
+                      <!-- /META LINE -->
+              
+                      <!-- META LINE -->
+                      
+                      <!-- /META LINE -->
+                    </div>
+                    <!-- /CONTENT ACTION -->
+                  </div>
+                  <!-- /CONTENT ACTIONS -->
+                </div>
+    </ui:repeat>
+    <div class="post-comment-form with-title">
+                  <!-- POST COMMENT FORM TITLE -->
+                  <p class="post-comment-form-title">Leave a Comment</p>
+                  <!-- /POST COMMENT FORM TITLE -->
+              
+                  <!-- USER AVATAR -->
+                  <div class="user-avatar small no-outline">
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                      
+                   <h:form>  <h:graphicImage class="hexagon-image-30-32" library="eventdocs" style="width: 30px; height: 32px; position: relative;"  name ="#{detaileventController.parentdisscussion().image}" />
+                      </h:form>
+                    </div>
+                   
+                  </div>
+                  <!-- /USER AVATAR -->
+              
+                  <!-- FORM -->
+                  <h:form class="form" id="formcomment">
+                    <!-- FORM ROW -->
+                    <div class="form-row">
+                      <!-- FORM ITEM -->
+                      <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small">
+                          <label for="post-reply-2">Your Reply</label>
+                          <h:inputTextarea id="panel" name="post_reply_2" value="#{detaileventController.commentaire}" ></h:inputTextarea>
+                        </div>
+                        <!-- /FORM INPUT -->
+                      </div>
+                      <!-- /FORM ITEM -->
+                    </div>
+                    <!-- /FORM ROW -->
+                    <div class="offset-sm-11 col-sm-6  ">
+                   
+                  <h:commandButton class="button secondary " value="Publier" action="#{detaileventController.addcommentaire()}" >
+                  <f:ajax execute="formcomment" render="commentpanel nbrcomments"   /> 
+                  </h:commandButton>
+                  </div>
+                 </h:form>
+                  <!-- /FORM -->
+                </div>
+    
+    
+    </div>
+        </c:otherwise>
+        </c:choose>
+        </h:panelGroup>
+         
+   
+   
+   
+   
+      
+      </div>
+      </c:when>
+      <c:otherwise>
+      <div class="widget-box no-padding">
+    <p class="widget-box-title highlighted" >
+     <span class="highlighted">Reviews</span>
+    </p>
+    
+    <h:panelGroup id="reviewpanel">
+        <c:choose>
+	<c:when test="#{detaileventController.verifierlistevaluations()}" >
+	<br></br>
+	                <div class="post-comment">
+	                 <p class="post-comment-text offset-sm-2 ">aucun review jusqu'a maintenant ,Sois<span class="highlighted"> le premier</span>
+	                   qui nous donne son review </p>
+	                 
+	                 </div>
+	                 </c:when>
+                    <c:otherwise>
+    <div class="post-comment-list no-border-top">
+    <ui:repeat var="evaluation" value="#{detaileventController.listevaluations}" varStatus="status">
+    <div class="post-comment">
+                  <!-- USER AVATAR -->
+                  <div class="user-avatar small no-outline">
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                      <!-- HEXAGON -->
+                      <!-- /HEXAGON -->
+       <h:graphicImage class="hexagon-image-30-32" library="eventdocs" style="width: 30px; height: 32px; position: relative;"  name ="#{evaluation.parent_evaluation.image}" />
+                      
+                    </div>
+                   
+                  </div>
+                  <!-- /USER AVATAR -->
+              
+                  <!-- POST COMMENT TEXT WRAP -->
+                  <div class="post-comment-text-wrap">
+                    <!-- RATING LIST -->
+                    <div class="rating-list medium">
+                    
+                 <p:rating value="#{evaluation.evaluation_value}" readonly="true" />
+                
+                     
+                     
+                            
+                    </div>
+                   
+                  </div>
+                  <!-- /POST COMMENT TEXT WRAP -->
+              
+                  <!-- POST COMMENT TEXT -->
+                  <p class="post-comment-text">
+                  
+                   <h:outputText value="#{evaluation.evaluation_description}"></h:outputText>
+                  
+                  
+                    </p>
+                  <!-- /POST COMMENT TEXT -->
+              
+                  <!-- CONTENT ACTIONS -->
+                  <div class="content-actions">
+                    <!-- CONTENT ACTION -->
+                    <div class="content-action">
+                      <!-- META LINE -->
+                      <div class="meta-line">
+                        <!-- META LINE TEXT -->
+                        <p class="meta-line-text"><h:outputText value="#{evaluation.parent_evaluation.firstName} #{evaluation.parent_evaluation.lastName}"></h:outputText></p>
+                        <!-- /META LINE TEXT -->
+                      </div>
+                      <!-- /META LINE -->
+              
+                      <!-- META LINE -->
+                      <div class="meta-line">
+                        <!-- META LINE TIMESTAMP -->
+                        <p class="meta-line-timestamp">
+                        
+          <h:outputText value="#{evaluation.evaluation_date.date} #{eventkindergartenController.getMonth(evaluation.evaluation_date)} à #{evaluation.evaluation_date.hours }:#{evaluation.evaluation_date.minutes}"></h:outputText>
+                        
+                        
+                        
+                        </p>
+                        <!-- /META LINE TIMESTAMP -->
+                      </div>
+                      <!-- /META LINE -->
+              
+                      <!-- META LINE -->
+                     
+                      <!-- /META LINE -->
+                    </div>
+                    <!-- /CONTENT ACTION -->
+                  </div>
+                  <!-- /CONTENT ACTIONS -->
+                </div>
+                </ui:repeat>
+    
+    
+    </div>
+    </c:otherwise>
+    </c:choose>
+    </h:panelGroup>
+    </div>
+    </c:otherwise>
+    </c:choose>
+    </c:otherwise>
+    </c:choose>
+    </h:panelGroup>
+    
+      
+      
+      </div>
+      
+      
+      <div class="marketplace-sidebar">
+        <!-- SIDEBAR BOX -->
+        <div class="sidebar-box">
+          
+                          <div class="user-stats">
+              <!-- USER STAT -->
+              <h:panelGroup id="nbrcomments">
+              <div class="user-stat big">
+                <!-- USER STAT TITLE -->
+                <p class="user-stat-title"><h:outputText value="#{detaileventController.nbrdusscussions}"></h:outputText></p>
+                <!-- /USER STAT TITLE -->
+        
+                <!-- USER STAT TEXT -->
+                <p class="user-stat-text">Comments</p>
+                <!-- /USER STAT TEXT -->
+              </div>
+              </h:panelGroup>
+              <!-- /USER STAT -->
+        
+              <!-- USER STAT -->
+              <h:panelGroup id="raitshow">
+              <div class="user-stat big">
+                <!-- USER STAT TITLE -->
+                <p class="user-stat-title"><h:outputText value="#{detaileventController.ratt}"></h:outputText>/5</p>
+                <p class="user-stat-text">review event</p>
+                </div>
+                </h:panelGroup>
+               </div>
+          
+                                   
+          
+          <p class="sidebar-box-title medium-space">Event Details</p>
+          <!-- /SIDEBAR BOX TITLE -->
+                  <div class="sidebar-box-items">
+                  
+        
+                  
+                  
+                  
+                <div class="decorated-feature ">
+          <!-- DECORATED FEATURE ICON -->
+          <svg class="decorated-feature-icon icon-pin">
+            <use xlink:href="#svg-pin"></use>
+          </svg>
+          <!-- /DECORATED FEATURE ICON -->
+
+          <!-- DECORATED FEATURE INFO -->
+          <div class="decorated-feature-info">
+            <!-- DECORATED FEATURE TITLE -->
+            <p class="decorated-feature-title"><h:outputText value="kindergarten, #{detaileventController.geteventbyid().location_event}" />
+            </p>
+            <!-- /DECORATED FEATURE TITLE -->
+
+            <!-- DECORATED FEATURE TEXT -->
+            <p class="decorated-feature-text">
+Space reserved for events</p>
+            <!-- /DECORATED FEATURE TEXT -->
+          </div>
+          <!-- /DECORATED FEATURE INFO -->
+        </div>
+        <br></br>
+           <div class="decorated-feature ">
+          <!-- DECORATED FEATURE ICON -->
+          <svg class="decorated-feature-icon icon-events">
+            <use xlink:href="#svg-events"></use>
+          </svg>
+          <!-- /DECORATED FEATURE ICON -->
+
+          <!-- DECORATED FEATURE INFO -->
+          <div class="decorated-feature-info">
+            <!-- DECORATED FEATURE TITLE -->
+            <p class="decorated-feature-title"><h:outputText value="#{detaileventController.geteventbyid().date_event.date} #{eventkindergartenController.getMonth(detaileventController.geteventbyid().date_event)} -#{detaileventController.geteventbyid().date_event.year +1900}" />
+ </p>
+            <!-- /DECORATED FEATURE TITLE -->
+
+            <!-- DECORATED FEATURE TEXT -->
+            <p class="decorated-feature-text">de<h:outputText  value=" #{detaileventController.geteventbyid().event_start_heure.hours - 1}:#{detaileventController.geteventbyid().event_start_heure.minutes}"/> à
+            <h:outputText value="#{detaileventController.geteventbyid().event_fin_heure.hours -1}:#{detaileventController.geteventbyid().event_fin_heure.minutes}" />
+            </p>
+
+            <!-- /DECORATED FEATURE TEXT -->
+          </div>
+          <!-- /DECORATED FEATURE INFO -->
+        </div>
+        <br></br>
+        
+        <div class="decorated-feature">
+          <!-- DECORATED FEATURE ICON -->
+          <svg class="decorated-feature-icon icon-ticket">
+            <use xlink:href="#svg-ticket"></use>
+          </svg>
+          <!-- /DECORATED FEATURE ICON -->
+
+          <!-- DECORATED FEATURE INFO -->
+          <div class="decorated-feature-info">
+            <!-- DECORATED FEATURE TITLE -->
+            <p class="decorated-feature-title"><h:outputText  value="#{detaileventController.geteventbyid().entry_price}DT"/> </p>
+            <!-- /DECORATED FEATURE TITLE -->
+
+            <!-- DECORATED FEATURE TEXT -->
+            <p class="decorated-feature-text">Entry Price</p>
+            <!-- /DECORATED FEATURE TEXT -->
+          </div>
+          <!-- /DECORATED FEATURE INFO -->
+        </div>
+        
+        
+        </div>
+          
+      
+      
+      
+          <!-- SIDEBAR BOX ITEMS -->
+          <div class="sidebar-box-items">
+            <!-- INFORMATION LINE LIST -->
+            <div class="information-line-list">
+              <!-- INFORMATION LINE -->
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title ">registration deadline
+</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                <p class="information-line-text"><span class="bold"><h:outputText value="#{eventkindergartenController.getMonth(detaileventController.geteventbyid().date_final_reservation)} #{detaileventController.geteventbyid().date_final_reservation.date} ,#{detaileventController.geteventbyid().date_final_reservation.year+1900}" />
+ </span></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+             
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+              <h:panelGroup id="formplace">
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title">Remaining places
+</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->                                 
+                <p class="information-line-text"><span class="bold"><h:outputText value="#{detaileventController.geteventbyid().nbr_places - detaileventController.geteventbyid().nbr_places_occupes }" /></span></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title">Reserved Places
+</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->                                 
+                <p class="information-line-text"><span class="bold"><h:outputText value="#{detaileventController.geteventbyid().nbr_places_occupes }" /></span></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              </h:panelGroup>
+              <br></br>
+              <div class="information-line">
+                <!-- INFORMATION LINE TITLE -->
+                <p class="information-line-title">Category</p>
+                <!-- /INFORMATION LINE TITLE -->
+      
+                <!-- INFORMATION LINE TEXT -->
+                <p class="information-line-text"><a ><h:outputText value="#{detaileventController.geteventbyid().category}" /></a></p>
+                <!-- /INFORMATION LINE TEXT -->
+              </div>
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+             
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+             
+              <!-- /INFORMATION LINE -->
+      
+              <!-- INFORMATION LINE -->
+             
+              <!-- /INFORMATION LINE -->
+            </div>
+            <!-- /INFORMATION LINE LIST -->
+          </div>
+          <!-- /SIDEBAR BOX ITEMS -->
+      
+          <!-- SIDEBAR BOX TITLE -->
+          <!-- /SIDEBAR BOX TITLE -->
+      
+          <!-- SIDEBAR BOX ITEMS -->
+          
+          <!-- /SIDEBAR BOX ITEMS -->
+        </div>
+       
+        <!-- /SIDEBAR BOX -->
+        <br></br>
+        <div class="widget-box ">
+          <!-- WIDGET BOX SETTINGS -->
+         
+          <!-- /WIDGET BOX SETTINGS -->
+
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title"> Associated events
+ </p>
+          <!-- /WIDGET BOX TITLE -->
+
+          <!-- WIDGET BOX CONTENT -->
+          <div class="widget-box-content">
+            <!-- EVENT PREVIEW LIST -->
+            
+             <c:choose>
+	<c:when test="#{detaileventController.verifierlisteventassocies()}" >
+	              <div class="event-preview small">
+	                <div class="event-preview-info align-self-center">
+no other event in this category	                </div>
+	                </div>
+	
+	</c:when>
+	<c:otherwise>
+            <div class="event-preview-list">
+              <!-- EVENT PREVIEW -->
+<ui:repeat var="eventassocie" value="#{detaileventController.eventsassocié}" varStatus="status">
+              <div class="event-preview small">
+                <!-- EVENT PREVIEW COVER -->
+                <figure class="event-preview-cover liquid" style="background: url(&quot;files/img/cover/33.jpg&quot;) center center / cover no-repeat;">
+      <h:graphicImage class="bgSizeContain" library="eventdocs"  name ="#{eventassocie.photo}" />
+                </figure>
+                <!-- /EVENT PREVIEW COVER -->
+
+                <!-- EVENT PREVIEW INFO -->
+                <div class="event-preview-info">
+                  <!-- DATE STICKER -->
+                  <div class="date-sticker">
+                    <!-- DATE STICKER DAY -->
+                    <p class="date-sticker-day"><h:outputText value="#{eventassocie.date_event.date}" /></p>
+                    <!-- /DATE STICKER DAY -->
+            
+                    <!-- DATE STICKER MONTH -->
+                    <p class="date-sticker-month"><h:outputText value="#{eventkindergartenController.getMonth(eventassocie.date_event)}" /></p>
+                    <!-- /DATE STICKER MONTH -->
+                  </div>
+                  <!-- /DATE STICKER -->
+
+                  <!-- EVENT PREVIEW TITLE -->
+         <!--          <h:form>
+        <h:commandLink class="event-preview-title" action="#{eventkindergartenController.gottodetailevent(eventassocie)}" value="#{eventassocie.title}">
+   </h:commandLink></h:form> -->
+   <h:link  outcome="descripevent">
+<h:outputText   class="event-preview-title" value="#{eventassocie.title}" ></h:outputText>
+<f:param name="id" value="#{eventassocie.id}"></f:param>
+</h:link>
+                  
+                  <!-- /EVENT PREVIEW TITLE -->
+
+                  <!-- EVENT PREVIEW TIMESTAMP -->
+                  <p class="event-preview-timestamp">
+                  
+                  <span class="bold"><h:outputText value="#{eventassocie.event_start_heure.hours}:#{eventassocie.event_start_heure.minutes}" /></span> AM - <span class="bold">
+<h:outputText value="#{eventassocie.event_fin_heure.hours}:#{eventassocie.event_fin_heure.minutes}"  /></span> PM
+                  
+                  
+                  
+                  </p>
+                  <!-- /EVENT PREVIEW TIMESTAMP -->
+
+                  <!-- EVENT PREVIEW TEXT -->
+               <!--    <p class="event-preview-text"><h:outputText value="#{eventassocie.description}" /></p> -->
+                  <!-- /EVENT PREVIEW TEXT -->
+
+                  <!-- META LINE -->
+                  <div class="meta-line">
+                    <!-- META LINE LIST -->
+                   <p class="meta-line-text"><h:outputText value="#{eventassocie.nbr_participants}" /> will assist</p>
+                 </div>
+               </div>
+             </div>
+                  </ui:repeat>    
+                    
+              <!-- /EVENT PREVIEW -->
+
+
+              <!-- /EVENT PREVIEW -->
+            </div>
+            </c:otherwise>
+            </c:choose>
+            <!-- /EVENT PREVIEW LIST -->
+          </div>
+          <!-- WIDGET BOX CONTENT -->
+        </div>
+        
+        
+      </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    </div>
+            <c:if test="#{detaileventController.veriftermineevent()}">  
+   <div class="popup-box small popup-review" style="position: absolute; left: 50%; z-index: 100001; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 211px; margin-left: -192px;">
+    <!-- POPUP CLOSE BUTTON -->
+    <div class="popup-close-button popup-review-trigger">
+      <!-- POPUP CLOSE BUTTON ICON -->
+      <svg class="popup-close-button-icon icon-cross">
+        <use xlink:href="#svg-cross"></use>
+      </svg>
+      <!-- /POPUP CLOSE BUTTON ICON -->
+    </div>
+    <!-- /POPUP CLOSE BUTTON -->
+
+    <!-- POPUP BOX TITLE -->
+    <p class="popup-box-title">Review Event</p>
+    <!-- /POPUP BOX TITLE -->
+<br></br>
+    <!-- POPUP BOX SUBTITLE -->
+    <p class="popup-box-subtitle"><h:outputText value="#{detaileventController.geteventbyid().title}"></h:outputText> </p>
+    <p class="popup-box-subtitle"><span class="light"><h:outputText value="#{detaileventController.geteventbyid().category}"></h:outputText></span></p>
+    <!-- /POPUP BOX SUBTITLE -->
+
+    <!-- FORM -->
+    <h:form class="form" id="reviewform">
+      <!-- FORM ROW -->
+      <div class="form-row">
+        <!-- FORM ITEM -->
+        <div class="form-item">
+          <!-- FORM RATING WRAP -->
+          <div class="form-rating-wrap">
+            <label>Select Stars Rating:</label>
+
+            <!-- RATING LIST -->
+ 
+                   <p:rating value="#{detaileventController.rating3}" required="true" requiredMessage="give rating" >
+            
+        </p:rating>
+ 
+
+
+            <!-- /RATING LIST -->
+          </div>
+          <!-- /FORM RATING WRAP -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+
+      <!-- FORM ROW -->
+     
+      <!-- /FORM ROW -->
+
+      <!-- FORM ROW -->
+      <br></br>
+      <div class="form-row">
+        <!-- FORM ITEM -->
+        <div class="form-item">
+          <!-- FORM INPUT -->
+          <div class="form-input small">
+            <label for="rating-description">Rating Description</label>
+                
+            <h:inputTextarea id="rating-description" name="rating_description" value="#{detaileventController.evaluationdescription}"
+            required="true" requiredMessage="donne  description de votre raiting"     >
+            </h:inputTextarea>      
+            
+          </div>
+          <!-- /FORM INPUT -->
+        </div>
+        <!-- /FORM ITEM -->
+      </div>
+      <!-- /FORM ROW -->
+
+      <!-- POPUP BOX ACTIONS -->
+      <div class="popup-box-actions full void">
+        <!-- POPUP BOX ACTION -->
+        <h:commandButton class="popup-box-action full button secondary popup-review-trigger" value="Save Review!"
+        action="#{detaileventController.addevaluation()}">
+        <f:ajax render="reviewpanel allratepanel raitshow panelverif " execute="reviewform"></f:ajax>
+        </h:commandButton>
+        <!-- /POPUP BOX ACTION -->
+
+        <!-- POPUP BOX ACTION TEXT -->
+        <p class="popup-box-action-text">Your review will help us to improve our  next events!</p>
+        <!-- /POPUP BOX ACTION TEXT -->
+      </div>
+      <!-- /POPUP BOX ACTIONS -->
+    </h:form>
+    <!-- /FORM -->
+  </div> 
+    </c:if>
+    
+	<div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 99998; background-color: rgba(21, 21, 31, 0.96); opacity: 0; visibility: hidden; transition: opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s;"></div>
+		
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+ 
+</ui:define>
+	</ui:composition>
+	
+
+
+
