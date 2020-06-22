@@ -2,73 +2,75 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-				xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-		
-		template="/template/template.xhtml"
-				xmlns:p="http://primefaces.org/ui"
-		
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui"
 	xmlns:xlink="http://www.w3.org/1999/xlink">
 
-		<ui:define name="content">
+	<ui:define name="content">
 		<f:view transient="true">
-		
-		
-        <h:head><title>KinderGarten | Event</title></h:head>
+
+
+			<h:head>
+				<title>KinderGarten | Event</title>
+			</h:head>
 			<div class="content-grid"
 				style="transform: translate(0px, 0px); transition: transform 0.4s ease-in-out 0s;">
-				
-				<!-- SECTION BANNER -->
-<div class="section-banner">
-      <!-- SECTION BANNER ICON -->
-      <img class="section-banner-icon" src="files/img/banner/events-icon.png" alt="events-icon" />
-      <!-- /SECTION BANNER ICON -->
-  
-      <!-- SECTION BANNER TITLE -->
-      
-<p class="section-banner-title">Events</p>
-      <!-- /SECTION BANNER TITLE -->
-  
-      <!-- SECTION BANNER TEXT -->
-      <p class="section-banner-text">Easily participate and follow  events or reminders!</p>
-      <!-- /SECTION BANNER TEXT -->
-    </div>
-							<!-- /SECTION BANNER -->
-							
-							
-				<!-- SECTION HEADER -->
-<!-- supermarket -->
 
-<div class="section-header">
-      <!-- SECTION HEADER INFO -->
-      <div class="section-header-info">
-        <!-- SECTION PRETITLE -->
-        <p class="section-pretitle">Get info !</p>
-        <!-- /SECTION PRETITLE -->
-  
-        <!-- SECTION TITLE -->
-        <h2 class="section-title">Today event</h2>
-        <!-- /SECTION TITLE -->
-      </div>
-      <!-- /SECTION HEADER INFO -->
-    </div>
-    <br></br>
-    <div class="quest-item">
-        <!-- QUEST ITEM COVER -->
-        <figure class="quest-item-cover liquid" style="background: url(&quot;files/img/quest/cover/01.png&quot;) center center / cover no-repeat;">
-       <h:graphicImage class="bgSizeContain" library="eventdocs"  name ="#{eventkindergartenController.todayevents.photo}" />
-        </figure>
-        <!-- /QUEST ITEM COVER -->
-    
-        <!-- TEXT STICKER -->
-       
-        <!-- /TEXT STICKER -->
-    
-        <!-- QUEST ITEM INFO -->
-     <!--    <br></br>
+				<!-- SECTION BANNER -->
+				<div class="section-banner" style="background: url(http://localhost:8082/SpringMVC/resources/img/banner/banner-bg.png) no-repeat 50%">
+					<!-- SECTION BANNER ICON -->
+					<img class="section-banner-icon"
+						src="http://localhost:8082/SpringMVC/resources/img/banner/events-icon.png" alt="events-icon" />
+					<!-- /SECTION BANNER ICON -->
+
+					<!-- SECTION BANNER TITLE -->
+
+					<p class="section-banner-title">Events</p>
+					<!-- /SECTION BANNER TITLE -->
+
+					<!-- SECTION BANNER TEXT -->
+					<p class="section-banner-text">Easily participate and follow
+						events or reminders!</p>
+					<!-- /SECTION BANNER TEXT -->
+				</div>
+				<!-- /SECTION BANNER -->
+
+
+				<!-- SECTION HEADER -->
+				<!-- supermarket -->
+
+				<div class="section-header">
+					<!-- SECTION HEADER INFO -->
+					<div class="section-header-info">
+						<!-- SECTION PRETITLE -->
+						<p class="section-pretitle">Get info !</p>
+						<!-- /SECTION PRETITLE -->
+
+						<!-- SECTION TITLE -->
+						<h2 class="section-title">Today event</h2>
+						<!-- /SECTION TITLE -->
+					</div>
+					<!-- /SECTION HEADER INFO -->
+				</div>
+				<br></br>
+				<div class="quest-item">
+					<!-- QUEST ITEM COVER -->
+					<figure class="quest-item-cover liquid"
+						style="background: url(&quot;files/img/quest/cover/01.png&quot;) center center / cover no-repeat;">
+					<h:graphicImage class="bgSizeContain" library="eventdocs"
+						name="#{eventkindergartenController.todayevents.photo}" /> </figure>
+					<!-- /QUEST ITEM COVER -->
+
+					<!-- TEXT STICKER -->
+
+					<!-- /TEXT STICKER -->
+
+					<!-- QUEST ITEM INFO -->
+					<!--    <br></br>
         <div class="calendar-event-preview secondary" >
            
            
@@ -86,382 +88,460 @@
            
             </div>
           </div> -->
-        
-        <div class="quest-item-info">
-         
-         <p class="quest-item-title"><h:outputText value="#{eventkindergartenController.todayevents.title}"></h:outputText></p>
-          <!-- /QUEST ITEM TITLE -->
-          <br></br>
-    <h6>
-<h:outputText  value="#{eventkindergartenController.todayevents.event_start_heure.hours}:#{eventkindergartenController.todayevents.event_start_heure.minutes}"/> - 
-<h:outputText value="#{eventkindergartenController.todayevents.event_fin_heure.hours}:#{eventkindergartenController.todayevents.event_fin_heure.minutes}" /></h6>
-    
-    
-          <!-- QUEST ITEM TEXT -->
-          <p class="quest-item-text"><h:outputText value="#{eventkindergartenController.todayevents.description}"></h:outputText></p>
-                        <br></br>
-          
-          <div class="decorated-text">
-              <!-- DECORATED TEXT ICON -->
-              <svg class="decorated-text-icon icon-pin">
-                <use xlink:href="#svg-pin" />
-              </svg>
-              <!-- /DECORATED TEXT ICON -->
-    
-              <!-- DECORATED TEXT CONTENT -->
-<p class="decorated-text-content">kindergarten , <h:outputText value="#{eventkindergartenController.todayevents.location_event}" /></p>
-              <!-- /DECORATED TEXT CONTENT -->
-            </div>
-          <!-- QUEST ITEM META -->
-          <div class="quest-item-meta">
-            <!-- USER AVATAR LIST -->
-            
-           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <!-- /USER AVATAR LIST -->
-    
-            <!-- QUEST ITEM META INFO -->
-            <div class="quest-item-meta-info">
-              <!-- QUEST ITEM META TITLE -->
-              <p class="quest-item-meta-title"><h:outputText value="#{eventkindergartenController.todayevents.nbr_participants}"></h:outputText> parents</p>
-              <!-- /QUEST ITEM META TITLE -->
-    
-              <!-- QUEST ITEM META TEXT -->
-              <p class="quest-item-meta-text">participated </p>
-              <!-- /QUEST ITEM META TEXT -->
-            </div>
-            
-                        <div class="quest-item-meta-info">
-            </div>
-                        <div class="quest-item-meta-info">
-            </div>
-             <div class="quest-item-meta-info offset-sm-1">
-              <!-- QUEST ITEM META TITLE -->
-              <p class="quest-item-meta-title"><h:outputText value="#{eventkindergartenController.todayevents.nbr_interssants}"></h:outputText> parents</p>
-              <!-- /QUEST ITEM META TITLE -->
-    
-              <!-- QUEST ITEM META TEXT -->
-              <p class="quest-item-meta-text"> interested  </p>
-              <!-- /QUEST ITEM META TEXT -->
-            </div>
-         
-                                 <div class="quest-item-meta-info">
-         </div>
-                                 <div class="quest-item-meta-info">
-         </div>
-                                 <div class="quest-item-meta-info">
-         
-         </div>                        
-                                 <div class="quest-item-meta-info">
-         </div>
-                                 <div class="quest-item-meta-info">
-         </div>
-          <div class="quest-item-meta-info">
-         </div> <div class="quest-item-meta-info">
-         </div> <div class="quest-item-meta-info">
-         </div> <div class="quest-item-meta-info">
-         </div> <div class="quest-item-meta-info">
-         </div>
-            
-            <div class=" offset-sm-9">
-            <h:link  outcome="descripevent" >
-<h:outputText class="quest-item-title" value="detail" ></h:outputText>
-<f:param name="id" value="#{eventkindergartenController.todayevents.id}"></f:param>
-</h:link>
-</div>
-            <!-- /QUEST ITEM META INFO -->
-          </div>
-          <!-- /QUEST ITEM META -->
-        </div>
-        <!-- /QUEST ITEM INFO -->
-     </div>
-    
-   
-    <div class="section-filters-bar v7">
-  
-  <div class="section-filters-bar-info">
-          <!-- SECTION FILTERS BAR TITLE -->
-          <p class="section-filters-bar-title">Browse events</p>
-          <!-- /SECTION FILTERS BAR TITLE -->
-  
-          <!-- SECTION FILTERS BAR TEXT -->
-          <!-- /SECTION FILTERS BAR TEXT -->
-        </div>
-      <!-- SECTION FILTERS BAR ACTIONS -->
-      <h:form id="formfilter">
-      <div class="section-filters-bar-actions">
-        <!-- SECTION FILTERS BAR INFO -->
-        <h:commandButton class="button small white offset-sm-1 " value="Upcoming events" action="#{eventkindergartenController.setfiltervalue(0)}">
-       <f:ajax render="filterpanel" execute="formfilter"> </f:ajax>
-       </h:commandButton>
-        
-      <h:commandButton class="button small white offset-sm-1 " value="Passed events" action="#{eventkindergartenController.setfiltervalue(2)}">
-       <f:ajax render="filterpanel" execute="formfilter"> </f:ajax>
-       </h:commandButton>
-              <h:commandButton class="button small white offset-sm-1 " value="Interrested events" action="#{eventkindergartenController.setfiltervalue(1)}">
-                     <f:ajax render="filterpanel" execute="formfilter"> </f:ajax>
-              
-              </h:commandButton>
-       
-              <h:commandButton class="button small white offset-sm-1 " value="Participated events" action="#{eventkindergartenController.setfiltervalue(3)}">
-                     <f:ajax render="filterpanel" execute="formfilter"> </f:ajax>
-              
-              </h:commandButton>
-       
-        <!-- /SECTION FILTERS BAR INFO -->
-      </div>
-      </h:form>
-      <!-- /SECTION FILTERS BAR ACTIONS -->
-  
-      <!-- SECTION FILTERS BAR ACTIONS -->
-      <div class="section-filters-bar-actions">
-        <!-- FORM -->
-        <h:form class="form" id="formsearch">
-          <!-- FORM ITEM -->
-          <div class="form-item split offset-sm-1 ">
-            <!-- FORM INPUT -->
-            <div class="form-input small col-sm-8 ">
-              <label for="forum-search">Search event</label>
-            <p:autoComplete value="#{eventkindergartenController.nameeventsearch}" style="margin-right:15px;" completeMethod="#{eventkindergartenController.completeLanguage}" forceSelection="true" required="true" requiredMessage="choose a event">
-               <f:ajax render=":filterpanel"  listener="#{eventkindergartenController.listsearch()}"   ></f:ajax> 
-            </p:autoComplete>
-            </div>
-            <!-- /FORM INPUT -->
-  
-            <!-- BUTTON -->
-             <h:commandButton class="button primary " value="search" action="#{eventkindergartenController.getListeventsearch()}" >
-               <f:ajax render=":filterpanel" execute="formsearch"   ></f:ajax>
-              <!-- /ICON MAGNIFYING GLASS -->
-            </h:commandButton>
-            <!-- /BUTTON -->
-          </div>
-          <!-- /FORM ITEM -->
-        </h:form>
-        <!-- /FORM -->
-      </div>
-   
-      <!-- /SECTION FILTERS BAR ACTIONS -->
-    </div>
+
+					<div class="quest-item-info">
+
+						<p class="quest-item-title">
+							<h:outputText
+								value="#{eventkindergartenController.todayevents.title}"></h:outputText>
+						</p>
+						<!-- /QUEST ITEM TITLE -->
+						<br></br>
+						<h6>
+							<h:outputText
+								value="#{eventkindergartenController.todayevents.event_start_heure.hours}:#{eventkindergartenController.todayevents.event_start_heure.minutes}" />
+							-
+							<h:outputText
+								value="#{eventkindergartenController.todayevents.event_fin_heure.hours}:#{eventkindergartenController.todayevents.event_fin_heure.minutes}" />
+						</h6>
 
 
-<h:panelGroup id="filterpanel">
-<div class="grid grid-3-3-3-3 ">
- <c:choose>
-	<c:when test="#{eventkindergartenController.verifierlistsearchevent()}" > 
-	
- <ui:repeat var="filterevent" value="#{eventkindergartenController.getAlleventbycategorie()}" varStatus="status">
- <div class="event-preview">
-        <!-- EVENT PREVIEW COVER -->
-        <figure class="event-preview-cover liquid" style="background: url(&quot;files/img/cover/47.jpg&quot;) center center / cover no-repeat;">
-       <h:graphicImage class="bgSizeContain" library="eventdocs"  name ="#{filterevent.photo}" />
-        </figure>
- 
- <div class="event-preview-info">
-          <!-- EVENT PREVIEW INFO TOP -->
-          
-            <!-- DATE STICKER -->
-            
-<div class="date-sticker">
-              <!-- DATE STICKER DAY -->
-              
-<p class="date-sticker-day"><h:outputText value="#{filterevent.date_event.date}" /></p>
-              <!-- /DATE STICKER DAY -->
-      
-              <!-- DATE STICKER MONTH -->
-              
-<p class="date-sticker-month"><h:outputText value="#{eventkindergartenController.getMonth(filterevent.date_event)}" /></p>
-              <!-- /DATE STICKER MONTH -->
-            </div>
-            <!-- /DATE STICKER -->
-    
-            <!-- EVENT PREVIEW TITLE -->
-        
-<h:link  outcome="descripevent">
-<h:outputText   class="event-preview-title" value="#{filterevent.title}" ></h:outputText>
-<f:param name="id" value="#{filterevent.id}"></f:param>
-</h:link>
-            <!-- /EVENT PREVIEW TITLE -->
-    
-            <!-- EVENT PREVIEW TIMESTAMP -->
-            
-<p class="event-preview-timestamp"><span class="bold"><h:outputText value="#{filterevent.event_start_heure.hours}:#{filterevent.event_start_heure.minutes}" /></span> AM - <span class="bold">
-<h:outputText value="#{filterevent.event_fin_heure.hours}:#{filterevent.event_fin_heure.minutes}"  /></span> PM</p>    
-        <!-- /EVENT PREVIEW TIMESTAMP -->
-    
-            <!-- EVENT PREVIEW TEXT -->
-            
-<!-- <p class="event-preview-text"><h:outputText value="#{upcomevent.description}" /></p> -->
-            <!-- /EVENT PREVIEW TEXT -->
-          
-          <!-- /EVENT PREVIEW INFO TOP -->
-    
-          <!-- EVENT PREVIEW INFO BOTTOM -->
-          
+						<!-- QUEST ITEM TEXT -->
+						<p class="quest-item-text">
+							<h:outputText
+								value="#{eventkindergartenController.todayevents.description}"></h:outputText>
+						</p>
+						<br></br>
 
-            <!-- DECORATED TEXT -->
-            
-<div class="decorated-text">
-              <!-- DECORATED TEXT ICON -->
-              <svg class="decorated-text-icon icon-pin">
-                <use xlink:href="#svg-pin" />
-              </svg>
-              <!-- /DECORATED TEXT ICON -->
-    
-              <!-- DECORATED TEXT CONTENT -->
-              
-<p class="decorated-text-content">kindergarten , <h:outputText value="#{filterevent.location_event}" /></p>
-              <!-- /DECORATED TEXT CONTENT -->
-            </div>
-            <!-- /DECORATED TEXT -->
-    
-            <!-- META LINE -->
-            
-<div class="meta-line">
-              <!-- META LINE LIST -->
-              
+						<div class="decorated-text">
+							<!-- DECORATED TEXT ICON -->
+							<svg class="decorated-text-icon icon-pin"> <use
+								xlink:href="#svg-pin" /> </svg>
+							<!-- /DECORATED TEXT ICON -->
 
-              <!-- /META LINE LIST -->
-    
-              <!-- META LINE TEXT -->
-              
-<p class="meta-line-text align-center"><h:outputText value="#{filterevent.nbr_participants}" /> will assist - <h:outputText value="#{filterevent.nbr_interssants}" /> interested</p>
-              <!-- /META LINE TEXT -->
-            </div>
-            <!-- /META LINE -->
-    
-            <!-- BUTTON -->
-            
-<h:link  outcome="descripevent">
-<h:outputText   class="button white white-tertiary" value="detail" ></h:outputText>
-<f:param name="id" value="#{searchevent.id}"></f:param>
-</h:link>            <!-- /BUTTON -->
-          
-          <!-- /EVENT PREVIEW INFO BOTTOM -->
-        </div>
-        <!-- /EVENT PREVIEW INFO -->
-      </div>
- 
- 
- 
-</ui:repeat>
-
-</c:when>
-	<c:otherwise>
-	<ui:repeat var="searchevent" value="#{eventkindergartenController.listeventsearch}" varStatus="status">
- <div class="event-preview">
-        <figure class="event-preview-cover liquid" style="background: url(&quot;files/img/cover/47.jpg&quot;) center center / cover no-repeat;">
-       <h:graphicImage class="bgSizeContain" library="eventdocs"  name ="#{searchevent.photo}" />
-        </figure>
- 
- <div class="event-preview-info">
-          
-            
-<div class="date-sticker">
-              
-<p class="date-sticker-day"><h:outputText value="#{searchevent.date_event.date}" /></p>
-      
-              
-<p class="date-sticker-month"><h:outputText value="#{eventkindergartenController.getMonth(searchevent.date_event)}" /></p>
-            </div>
-    
-        
-<h:link  outcome="descripevent">
-<h:outputText   class="event-preview-title" value="#{searchevent.title}" ></h:outputText>
-<f:param name="id" value="#{searchevent.id}"></f:param>
-</h:link>
-            
-<p class="event-preview-timestamp"><span class="bold"><h:outputText value="#{searchevent.event_start_heure.hours}:#{searchevent.event_start_heure.minutes}" /></span> AM - <span class="bold">
-<h:outputText value="#{searchevent.event_fin_heure.hours}:#{searchevent.event_fin_heure.minutes}"  /></span> PM</p>    
-    
-            
-
-            
-<div class="decorated-text">
-              <svg class="decorated-text-icon icon-pin">
-                <use xlink:href="#svg-pin" />
-              </svg>
-            
-<p class="decorated-text-content">kindergarten , <h:outputText value="#{searchevent.location_event}" /></p>
-            </div>
-          
-<div class="meta-line">
-             
-              
-<p class="meta-line-text align-center"><h:outputText value="#{searchevent.nbr_participants}" /> will assist - <h:outputText value="#{searchevent.nbr_interssants}" /> interested</p>
-            </div>
-    
-            
-<h:link  outcome="descripevent">
-<h:outputText   class="button white white-tertiary" value="detail" ></h:outputText>
-<f:param name="id" value="#{searchevent.id}"></f:param>
-</h:link>
-          
-        </div>
-      </div>
- 
- 
- 
-</ui:repeat>
-	
-	
-</c:otherwise>
-</c:choose>
-</div>
-</h:panelGroup>
+							<!-- DECORATED TEXT CONTENT -->
+							<p class="decorated-text-content">
+								kindergarten ,
+								<h:outputText
+									value="#{eventkindergartenController.todayevents.location_event}" />
+							</p>
+							<!-- /DECORATED TEXT CONTENT -->
+						</div>
+						<!-- QUEST ITEM META -->
+						<div class="quest-item-meta">
+							<!-- USER AVATAR LIST -->
 
 
-     
-     
-     
-    
-    <!-- /SECTION HEADER -->
-    
-    
-    
-    
-    
-    
-      
-    
-    
-    
-    
-    
-   
-    
-    
-    
-    
-    
-  
-	</div> 
- 		 <!-- /CONTENT GRID -->
- 		 
- 		
- 		
- 		
- 		
- 		
- 		
-
- 		
- 		 
- 		 </f:view>
- 		 
-		</ui:define>
 
 
-	</ui:composition>
+
+
+
+
+
+
+
+
+
+							<!-- /USER AVATAR LIST -->
+
+							<!-- QUEST ITEM META INFO -->
+							<div class="quest-item-meta-info">
+								<!-- QUEST ITEM META TITLE -->
+								<p class="quest-item-meta-title">
+									<h:outputText
+										value="#{eventkindergartenController.todayevents.nbr_participants}"></h:outputText>
+									parents
+								</p>
+								<!-- /QUEST ITEM META TITLE -->
+
+								<!-- QUEST ITEM META TEXT -->
+								<p class="quest-item-meta-text">participated</p>
+								<!-- /QUEST ITEM META TEXT -->
+							</div>
+
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info offset-sm-1">
+								<!-- QUEST ITEM META TITLE -->
+								<p class="quest-item-meta-title">
+									<h:outputText
+										value="#{eventkindergartenController.todayevents.nbr_interssants}"></h:outputText>
+									parents
+								</p>
+								<!-- /QUEST ITEM META TITLE -->
+
+								<!-- QUEST ITEM META TEXT -->
+								<p class="quest-item-meta-text">interested</p>
+								<!-- /QUEST ITEM META TEXT -->
+							</div>
+
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+							<div class="quest-item-meta-info"></div>
+
+							<div class=" offset-sm-9">
+								<h:link outcome="descripevent">
+									<h:outputText class="quest-item-title" value="detail"></h:outputText>
+									<f:param name="id"
+										value="#{eventkindergartenController.todayevents.id}"></f:param>
+								</h:link>
+							</div>
+							<!-- /QUEST ITEM META INFO -->
+						</div>
+						<!-- /QUEST ITEM META -->
+					</div>
+					<!-- /QUEST ITEM INFO -->
+				</div>
+
+
+				<div class="section-filters-bar v7">
+
+					<div class="section-filters-bar-info">
+						<!-- SECTION FILTERS BAR TITLE -->
+						<p class="section-filters-bar-title">Browse events</p>
+						<!-- /SECTION FILTERS BAR TITLE -->
+
+						<!-- SECTION FILTERS BAR TEXT -->
+						<!-- /SECTION FILTERS BAR TEXT -->
+					</div>
+					<!-- SECTION FILTERS BAR ACTIONS -->
+					<h:form id="formfilter">
+						<div class="section-filters-bar-actions">
+							<!-- SECTION FILTERS BAR INFO -->
+							<h:commandButton class="button small white offset-sm-1 "
+								value="Upcoming events"
+								action="#{eventkindergartenController.setfiltervalue(0)}">
+								<f:ajax render="filterpanel" execute="formfilter">
+								</f:ajax>
+							</h:commandButton>
+
+							<h:commandButton class="button small white offset-sm-1 "
+								value="Passed events"
+								action="#{eventkindergartenController.setfiltervalue(2)}">
+								<f:ajax render="filterpanel" execute="formfilter">
+								</f:ajax>
+							</h:commandButton>
+							<h:commandButton class="button small white offset-sm-1 "
+								value="Interrested events"
+								action="#{eventkindergartenController.setfiltervalue(1)}">
+								<f:ajax render="filterpanel" execute="formfilter">
+								</f:ajax>
+
+							</h:commandButton>
+
+							<h:commandButton class="button small white offset-sm-1 "
+								value="Participated events"
+								action="#{eventkindergartenController.setfiltervalue(3)}">
+								<f:ajax render="filterpanel" execute="formfilter">
+								</f:ajax>
+
+							</h:commandButton>
+
+							<!-- /SECTION FILTERS BAR INFO -->
+						</div>
+					</h:form>
+					<!-- /SECTION FILTERS BAR ACTIONS -->
+
+					<!-- SECTION FILTERS BAR ACTIONS -->
+					<div class="section-filters-bar-actions">
+						<!-- FORM -->
+						<h:form class="form" id="formsearch">
+							<!-- FORM ITEM -->
+							<div class="form-item split offset-sm-1 ">
+								<!-- FORM INPUT -->
+								<div class="form-input small col-sm-8 ">
+									<label for="forum-search">Search event</label>
+									<p:autoComplete
+										value="#{eventkindergartenController.nameeventsearch}"
+										style="margin-right:15px;"
+										completeMethod="#{eventkindergartenController.completeLanguage}"
+										forceSelection="true" required="true"
+										requiredMessage="choose a event">
+										<f:ajax render=":filterpanel"
+											listener="#{eventkindergartenController.listsearch()}"></f:ajax>
+									</p:autoComplete>
+								</div>
+								<!-- /FORM INPUT -->
+
+								<!-- BUTTON -->
+								<h:commandButton class="button primary " value="search"
+									action="#{eventkindergartenController.getListeventsearch()}">
+									<f:ajax render=":filterpanel" execute="formsearch"></f:ajax>
+									<!-- /ICON MAGNIFYING GLASS -->
+								</h:commandButton>
+								<!-- /BUTTON -->
+							</div>
+							<!-- /FORM ITEM -->
+						</h:form>
+						<!-- /FORM -->
+					</div>
+
+					<!-- /SECTION FILTERS BAR ACTIONS -->
+				</div>
+
+
+				<h:panelGroup id="filterpanel">
+					<div class="grid grid-3-3-3-3 ">
+						<c:choose>
+							<c:when
+								test="#{eventkindergartenController.verifierlistsearchevent()}">
+
+								<ui:repeat var="filterevent"
+									value="#{eventkindergartenController.getAlleventbycategorie()}"
+									varStatus="status">
+									<div class="event-preview">
+										<!-- EVENT PREVIEW COVER -->
+										<figure class="event-preview-cover liquid"
+											style="background: url(&quot;files/img/cover/47.jpg&quot;) center center / cover no-repeat;">
+										<h:graphicImage class="bgSizeContain" library="eventdocs"
+											name="#{filterevent.photo}" /> </figure>
+
+										<div class="event-preview-info">
+											<!-- EVENT PREVIEW INFO TOP -->
+
+											<!-- DATE STICKER -->
+
+											<div class="date-sticker">
+												<!-- DATE STICKER DAY -->
+
+												<p class="date-sticker-day">
+													<h:outputText value="#{filterevent.date_event.date}" />
+												</p>
+												<!-- /DATE STICKER DAY -->
+
+												<!-- DATE STICKER MONTH -->
+
+												<p class="date-sticker-month">
+													<h:outputText
+														value="#{eventkindergartenController.getMonth(filterevent.date_event)}" />
+												</p>
+												<!-- /DATE STICKER MONTH -->
+											</div>
+											<!-- /DATE STICKER -->
+
+											<!-- EVENT PREVIEW TITLE -->
+
+											<h:link outcome="descripevent">
+												<h:outputText class="event-preview-title"
+													value="#{filterevent.title}"></h:outputText>
+												<f:param name="id" value="#{filterevent.id}"></f:param>
+											</h:link>
+											<!-- /EVENT PREVIEW TITLE -->
+
+											<!-- EVENT PREVIEW TIMESTAMP -->
+
+											<p class="event-preview-timestamp">
+												<span class="bold"><h:outputText
+														value="#{filterevent.event_start_heure.hours}:#{filterevent.event_start_heure.minutes}" /></span>
+												AM - <span class="bold"> <h:outputText
+														value="#{filterevent.event_fin_heure.hours}:#{filterevent.event_fin_heure.minutes}" /></span>
+												PM
+											</p>
+											<!-- /EVENT PREVIEW TIMESTAMP -->
+
+											<!-- EVENT PREVIEW TEXT -->
+
+											<!-- <p class="event-preview-text"><h:outputText value="#{upcomevent.description}" /></p> -->
+											<!-- /EVENT PREVIEW TEXT -->
+
+											<!-- /EVENT PREVIEW INFO TOP -->
+
+											<!-- EVENT PREVIEW INFO BOTTOM -->
+
+
+											<!-- DECORATED TEXT -->
+
+											<div class="decorated-text">
+												<!-- DECORATED TEXT ICON -->
+												<svg class="decorated-text-icon icon-pin"> <use
+													xlink:href="#svg-pin" /> </svg>
+												<!-- /DECORATED TEXT ICON -->
+
+												<!-- DECORATED TEXT CONTENT -->
+
+												<p class="decorated-text-content">
+													kindergarten ,
+													<h:outputText value="#{filterevent.location_event}" />
+												</p>
+												<!-- /DECORATED TEXT CONTENT -->
+											</div>
+											<!-- /DECORATED TEXT -->
+
+											<!-- META LINE -->
+
+											<div class="meta-line">
+												<!-- META LINE LIST -->
+
+
+												<!-- /META LINE LIST -->
+
+												<!-- META LINE TEXT -->
+
+												<p class="meta-line-text align-center">
+													<h:outputText value="#{filterevent.nbr_participants}" />
+													will assist -
+													<h:outputText value="#{filterevent.nbr_interssants}" />
+													interested
+												</p>
+												<!-- /META LINE TEXT -->
+											</div>
+											<!-- /META LINE -->
+
+											<!-- BUTTON -->
+
+											<h:link outcome="descripevent">
+												<h:outputText class="button white white-tertiary"
+													value="detail"></h:outputText>
+												<f:param name="id" value="#{searchevent.id}"></f:param>
+											</h:link>
+											<!-- /BUTTON -->
+
+											<!-- /EVENT PREVIEW INFO BOTTOM -->
+										</div>
+										<!-- /EVENT PREVIEW INFO -->
+									</div>
+
+
+
+								</ui:repeat>
+
+							</c:when>
+							<c:otherwise>
+								<ui:repeat var="searchevent"
+									value="#{eventkindergartenController.listeventsearch}"
+									varStatus="status">
+									<div class="event-preview">
+										<figure class="event-preview-cover liquid"
+											style="background: url(&quot;files/img/cover/47.jpg&quot;) center center / cover no-repeat;">
+										<h:graphicImage class="bgSizeContain" library="eventdocs"
+											name="#{searchevent.photo}" /> </figure>
+
+										<div class="event-preview-info">
+
+
+											<div class="date-sticker">
+
+												<p class="date-sticker-day">
+													<h:outputText value="#{searchevent.date_event.date}" />
+												</p>
+
+
+												<p class="date-sticker-month">
+													<h:outputText
+														value="#{eventkindergartenController.getMonth(searchevent.date_event)}" />
+												</p>
+											</div>
+
+
+											<h:link outcome="descripevent">
+												<h:outputText class="event-preview-title"
+													value="#{searchevent.title}"></h:outputText>
+												<f:param name="id" value="#{searchevent.id}"></f:param>
+											</h:link>
+
+											<p class="event-preview-timestamp">
+												<span class="bold"><h:outputText
+														value="#{searchevent.event_start_heure.hours}:#{searchevent.event_start_heure.minutes}" /></span>
+												AM - <span class="bold"> <h:outputText
+														value="#{searchevent.event_fin_heure.hours}:#{searchevent.event_fin_heure.minutes}" /></span>
+												PM
+											</p>
+
+
+
+
+											<div class="decorated-text">
+												<svg class="decorated-text-icon icon-pin"> <use
+													xlink:href="#svg-pin" /> </svg>
+
+												<p class="decorated-text-content">
+													kindergarten ,
+													<h:outputText value="#{searchevent.location_event}" />
+												</p>
+											</div>
+
+											<div class="meta-line">
+
+
+												<p class="meta-line-text align-center">
+													<h:outputText value="#{searchevent.nbr_participants}" />
+													will assist -
+													<h:outputText value="#{searchevent.nbr_interssants}" />
+													interested
+												</p>
+											</div>
+
+
+											<h:link outcome="descripevent">
+												<h:outputText class="button white white-tertiary"
+													value="detail"></h:outputText>
+												<f:param name="id" value="#{searchevent.id}"></f:param>
+											</h:link>
+
+										</div>
+									</div>
+
+
+
+								</ui:repeat>
+
+
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</h:panelGroup>
+
+
+
+
+
+
+				<!-- /SECTION HEADER -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</div>
+			<!-- /CONTENT GRID -->
+
+
+
+
+
+
+
+
+
+
+		</f:view>
+
+	</ui:define>
+
+
+</ui:composition>
 
 
 

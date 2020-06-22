@@ -158,10 +158,13 @@ public class DetaileventJardinControllerImpl {
 	
 	public void addimagevent() throws IOException{
 		Date date = new Date();
-		cinf.write("C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"+cinf.getSubmittedFileName());        
-	    File oldFile=new File("C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"+cinf.getSubmittedFileName());
+		cinf.write(		  "C:\\Users\\lenovo\\Desktop\\houssem akkari\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
++cinf.getSubmittedFileName());        
+	    File oldFile=new File("C:\\Users\\lenovo\\Desktop\\houssem akkari\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
++cinf.getSubmittedFileName());
 	    String img= ieventservice.getAlphaNumericString(7)+cinf.getSubmittedFileName();
-	    File newfile =new File("C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"+img);
+	    File newfile =new File(		  "C:\\Users\\lenovo\\Desktop\\houssem akkari\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
++img);
 	    oldFile.renameTo(newfile);
 	
 	    ieventservice.addimageevent(id,img,date);
@@ -203,7 +206,7 @@ public class DetaileventJardinControllerImpl {
 	
 	public String gottoreserveevent() {
 		String navigateTo ="null";
-       this.setIdeventreserve(id);
+       this.setIdeventreserve(this.getId());
 	    navigateTo = "/pages/Jardin/Event/reserverevent.xhtml?faces-redirect=false";
 		return navigateTo;
  
@@ -296,6 +299,7 @@ public StockCategory getCategoriestocksearch() {
 
 			
 		}
+	
 	public int getNbrreservation() {
 		nbrreservation = istockservice.getnbrreservationevent(ideventreserve);
 		return nbrreservation;
@@ -339,6 +343,13 @@ public StockCategory getCategoriestocksearch() {
 		if (geteventbyid ().getFacture_event() == null)
 			return true ;
 		else return false ;
+	}
+	
+	public boolean verifierprix(){
+		if(istockservice.totalpricereservation(ideventreserve) ==0)
+			return true ;
+			else return false ;
+		
 	}
 	
 	

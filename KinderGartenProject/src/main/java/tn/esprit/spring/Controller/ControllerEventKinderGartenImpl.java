@@ -55,6 +55,7 @@ import java.time.temporal.TemporalAccessor;
 @Controller(value = "eventkinderController")
 @ELBeanName(value = "eventkinderController")
 @Join(path = "/jardinevent", to = "/pages/Jardin/Event/WelcomeEvent.jsf")
+
 public class ControllerEventKinderGartenImpl {
 
 	/**
@@ -406,17 +407,18 @@ public class ControllerEventKinderGartenImpl {
 
 	public String addEvent() throws IOException, ParseException {
 		String navigateTo = "null";
-		/*
-		 * cinf.write(
-		 * "C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
-		 * +cinf.getSubmittedFileName()); File oldFile=new File(
-		 * "C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
-		 * +cinf.getSubmittedFileName()); String img=
-		 * ieventservice.getAlphaNumericString(7)+cinf.getSubmittedFileName();
-		 * File newfile =new File(
-		 * "C:\\Users\\lenovo\\git\\KinderGartenProject\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
-		 * +img); oldFile.renameTo(newfile);
-		 */
+		
+		/*  cinf.write(
+		  "C:\\Users\\lenovo\\Desktop\\houssem akkari\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
+				  
+		  +cinf.getSubmittedFileName()); File oldFile=new File(
+				  "C:\\Users\\lenovo\\Desktop\\houssem akkari\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
+		  +cinf.getSubmittedFileName()); String img=
+		  ieventservice.getAlphaNumericString(7)+cinf.getSubmittedFileName();
+		  File newfile =new File(
+				  "C:\\Users\\lenovo\\Desktop\\houssem akkari\\KinderGartenProject\\src\\main\\webapp\\resources\\eventdocs\\"
+		  +img); oldFile.renameTo(newfile);*/
+		 
 
 		ieventservice.addevent(new Event(title, description, dateevent, datefinreservation,
 				changestringtotime(heurestartstr), changestringtotime(heurefinstr), nbr_places, entry_price, category,

@@ -1,6 +1,6 @@
 package tn.esprit.spring.Controller;
-
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+ 
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException; 
 
 import java.util.Date; 
 import java.util.List;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Controller;
 import tn.esprit.spring.Service.IEventService;
 import tn.esprit.spring.Service.IInvitation_EventService;
 import tn.esprit.spring.entities.Discussion_Event;
-import tn.esprit.spring.entities.Etat_Invitation_Event;
 import tn.esprit.spring.entities.Etat_event;
 import tn.esprit.spring.entities.Evaluation_Event;
 import tn.esprit.spring.entities.Event;
@@ -29,7 +28,7 @@ import tn.esprit.spring.entities.Parent;
 @Scope(value = "session")
 @Controller(value = "detaileventController")
 @ELBeanName(value = "detaileventController")
-@Join(path = "/descripevent", to = "/pages/Parent/Event/descripevent.jsf")
+@Join(path = "/descripevent", to = "/pages/parent/Event/descripevent.jsf")
 public class DetaileventController {
 	
 	@Autowired

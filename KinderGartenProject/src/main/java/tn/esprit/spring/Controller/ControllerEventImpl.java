@@ -34,7 +34,7 @@ import tn.esprit.spring.entities.Type_Event;
 @Scope(value = "session")
 @Controller(value = "eventkindergartenController")
 @ELBeanName(value = "eventkindergartenController")
-@Join(path = "/events", to = "/pages/Parent/Event/WelcomeEvent.jsf")
+@Join(path = "/events", to = "/pages/parent/Event/WelcomeEvent.jsf")
 public class ControllerEventImpl {
 	
 	@Autowired

@@ -402,7 +402,7 @@ public String getAlphaNumericString(int n)
 
       return sb.toString(); 
   } 
-
+//
 @Override
 @Transactional
 public Event geteventbydate(Date date) {

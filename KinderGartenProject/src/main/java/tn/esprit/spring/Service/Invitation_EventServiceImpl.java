@@ -57,8 +57,9 @@ public class Invitation_EventServiceImpl implements IInvitation_EventService {
 
 @Override
 public Invitation_Event getinvitationevent (Long idevent)
-{
-	UserApp user = userrepository.findById(1L).get();
+{    	UserApp user = userservices.currentUserJsf();
+
+	//UserApp user = userrepository.findById(1L).get();
 	Parent parent = user.getParent() ;
 	Event event = eventrepository.findById(idevent).get();
 	return invitationrepository.getinvitation(parent, event);
@@ -280,7 +281,7 @@ Date date = new Date();
 	@Transactional
 	public void participer_parentjsf(Long id_event) {
 		Date date = new Date();
-		UserApp user = userrepository.findById(1L).get();
+		UserApp user = userservices.currentUserJsf();
 		Parent parent = user.getParent() ;
 		Event event = eventrepository.findById(id_event).get();
 		Invitation_Event invitation = invitationrepository.getinvitation(parent, event);
@@ -353,7 +354,7 @@ if (parent.getInvitations().contains(invitation)){
 	@Transactional
 	public void annuler_participation_eventjsf(Long id_event) {
 		Date date = new Date();
-		UserApp user = userrepository.findById(1L).get();
+		UserApp user = userservices.currentUserJsf();
 		Parent parent = user.getParent() ;
 		Event event = eventrepository.findById(id_event).get();
 		Invitation_Event invitation = invitationrepository.getinvitation(parent, event);
@@ -381,7 +382,7 @@ if (parent.getInvitations().contains(invitation)){
 	@Transactional
 	public void interesser_parentjsf(Long id_event) {
 		Date date = new Date();
-		UserApp user = userrepository.findById(1L).get();
+		UserApp user = userservices.currentUserJsf();
 		Parent parent = user.getParent() ;
 		Event event = eventrepository.findById(id_event).get();
 		Invitation_Event invitation = invitationrepository.getinvitation(parent, event);
@@ -409,7 +410,7 @@ if (parent.getInvitations().contains(invitation)){
 	@Override
 	public void annuler_interesser_eventjsf(Long id_event) {
 		Date date = new Date();
-		UserApp user = userrepository.findById(1L).get();
+		UserApp user = userservices.currentUserJsf();
 		Parent parent = user.getParent() ;
 		Event event = eventrepository.findById(id_event).get();
 		Invitation_Event invitation = invitationrepository.getinvitation(parent, event);
@@ -426,7 +427,7 @@ if (parent.getInvitations().contains(invitation)){
 
 Date date = new Date();
 		
-       UserApp user = userrepository.findById(2L).get();
+UserApp user = userservices.currentUserJsf();
 		KinderGarten kindergarten = user.getKindergarten() ;
 		
 		if (e.getKindereventmaker().equals(kindergarten)){
@@ -455,7 +456,7 @@ Date date = new Date();
 	
 	@Override
 	public List<Event> listinteressteevents() {
-		UserApp user = userrepository.findById(1L).get();
+		UserApp user = userservices.currentUserJsf();
 		Parent parent = user.getParent() ;
 		return invitationrepository.listeventsinteresses(parent);
 	}
@@ -463,7 +464,7 @@ Date date = new Date();
 	@Override
 	public List<Event> listparticipatedevents() {
 	
-		UserApp user = userrepository.findById(1L).get();
+		UserApp user = userservices.currentUserJsf();
 		Parent parent = user.getParent() ;
 		return invitationrepository.listeventsparticipated(parent);
 	}
